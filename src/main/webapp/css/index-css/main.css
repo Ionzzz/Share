@@ -573,6 +573,7 @@ select {
 	-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
 	-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
 	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+	opacity: 0.8;
 }
 	
 	/**
@@ -1749,7 +1750,7 @@ select {
 
 }
 /**
-*±êÇ©±ä»¯
+*ï¿½ï¿½Ç©ï¿½ä»¯
 */
 .fh5co_tagg {
 	background: #f1f1f1;

@@ -23,7 +23,7 @@
 
 </head>
 <body>
-<div class="container-fluid fh5co_header_bg">
+<div class="container-fluid fh5co_header_bg" style="opacity: 0.9;">
     <div class="container">
         <div class="row">
             <div class="col-12 fh5co_mediya_center"><a href="#" class="color_fff fh5co_mediya_setting"><i

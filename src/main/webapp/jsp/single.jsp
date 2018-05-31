@@ -62,22 +62,14 @@
 
                 </ul><!-- .menu -->
             </nav><!-- #navigation -->
-            <div id="navigation-hamburger">
-                <span class="navigation-hamburger-hook"><span class="fa fa-reorder"></span></span>
-                <select>
-                    <option value="#">- Select -</option>
-                    <!-- automatically populated based on #navigation -->
-                </select>
-            </div><!-- #navigation-hamburger -->
             <div id="header-search">
                 <div class="header-search-inner">
-                    <form method="get" action="#">
-                        <input type="text" name="s" placeholder="Search and hit enter" />
+                    <form method="get" action="">
+                        <input type="text" name="s" placeholder="Search and hit enter" autocomplete="off"/>
                     </form>
                     <span class="header-search-icon"><span class="fa fa-search"></span></span>
                 </div><!-- .search-form-wrapper -->
             </div><!-- #header-search -->
-
         </div><!-- .wrapper -->
     </div><!-- #header-top -->
 </header>
