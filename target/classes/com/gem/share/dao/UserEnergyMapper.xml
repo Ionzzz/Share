@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gem.share.dao.UserEnergyMapper">
+
+  <!--//    根据用户id给用户添加能量-->
+  <!--public boolean addEnergyByUserId(int user_id,int energy);-->
+  <update id="addEnergyByUserId">
+    UPDATE userinfo SET userEnergy = userEnergy+#{param2} WHERE user_id=#{param1}
+  </update>
+
+  <!--//    根据用户id给用户减少能量(被举报减能量)-->
+  <!--public boolean subtractEnergyByUserId(int user_id,int energy);-->
+  <update id="subtractEnergyByUserId" parameterType="int">
+    UPDATE userinfo SET userEnergy = userEnergy-#{param2} WHERE user_id=#{param1}
+  </update>
+
+  <!--//    查询用户能量-->
+  <!--public String selectUserEnergy(int user_id);-->
+  <select id="selectEnergyGrade" parameterType="int" resultType="String">
+    SELECT energy FROM userenergy WHERE user_id=#{_parameter}
+  </select>
+
+  <!--//    查询能量等级的最低能量-->
+  <!--public int selectMinEnergyOfGrade(String energy);-->
+  <select id="selectMinEnergyOfGrade" parameterType="String" resultType="int">
+    SELECT minScore FROM usergrade WHERE gradeName = #{_parameter}
+  </select>
+
+  <!--//    查询能量等级的最高能量-->
+  <!--public int selectMaxEnergyOfGrade(String energy);-->
+  <select id="selectMaxEnergyOfGrade" parameterType="String" resultType="int">
+    SELECT maxScore FROM usergrade WHERE gradeName = #{_parameter}
+  </select>
+
+
+</mapper>

@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gem.share.dao.BlogContentMapper">
+  <resultMap id="BaseResultMap" type="com.gem.share.entity.BlogContent">
+    <id column="blog_id" jdbcType="INTEGER" property="blogId" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="blogPics_id" jdbcType="INTEGER" property="blogpicsId" />
+    <result column="blogCreateTime" jdbcType="TIMESTAMP" property="blogcreatetime" />
+    <result column="blogFlag" jdbcType="VARCHAR" property="blogflag" />
+    <result column="essayFlag" jdbcType="VARCHAR" property="essayflag" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.gem.share.entity.BlogContent">
+    <result column="blogContent" jdbcType="LONGVARCHAR" property="blogcontent" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    blog_id, user_id, blogPics_id, blogCreateTime, blogFlag, essayFlag
+  </sql>
+  <sql id="Blob_Column_List">
+    blogContent
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.gem.share.entity.BlogContentExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from blogcontent
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.gem.share.entity.BlogContentExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from blogcontent
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from blogcontent
+    where blog_id = #{blogId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from blogcontent
+    where blog_id = #{blogId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.gem.share.entity.BlogContentExample">
+    delete from blogcontent
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.gem.share.entity.BlogContent">
+    insert into blogcontent (blog_id, user_id, blogPics_id, 
+      blogCreateTime, blogFlag, essayFlag, 
+      blogContent)
+    values (#{blogId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{blogpicsId,jdbcType=INTEGER}, 
+      #{blogcreatetime,jdbcType=TIMESTAMP}, #{blogflag,jdbcType=VARCHAR}, #{essayflag,jdbcType=VARCHAR}, 
+      #{blogcontent,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gem.share.entity.BlogContent">
+    insert into blogcontent
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="blogId != null">
+        blog_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="blogpicsId != null">
+        blogPics_id,
+      </if>
+      <if test="blogcreatetime != null">
+        blogCreateTime,
+      </if>
+      <if test="blogflag != null">
+        blogFlag,
+      </if>
+      <if test="essayflag != null">
+        essayFlag,
+      </if>
+      <if test="blogcontent != null">
+        blogContent,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="blogId != null">
+        #{blogId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="blogpicsId != null">
+        #{blogpicsId,jdbcType=INTEGER},
+      </if>
+      <if test="blogcreatetime != null">
+        #{blogcreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="blogflag != null">
+        #{blogflag,jdbcType=VARCHAR},
+      </if>
+      <if test="essayflag != null">
+        #{essayflag,jdbcType=VARCHAR},
+      </if>
+      <if test="blogcontent != null">
+        #{blogcontent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.gem.share.entity.BlogContentExample" resultType="java.lang.Long">
+    select count(*) from blogcontent
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update blogcontent
+    <set>
+      <if test="record.blogId != null">
+        blog_id = #{record.blogId,jdbcType=INTEGER},
+      </if>
+      <if test="record.userId != null">
+        user_id = #{record.userId,jdbcType=INTEGER},
+      </if>
+      <if test="record.blogpicsId != null">
+        blogPics_id = #{record.blogpicsId,jdbcType=INTEGER},
+      </if>
+      <if test="record.blogcreatetime != null">
+        blogCreateTime = #{record.blogcreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.blogflag != null">
+        blogFlag = #{record.blogflag,jdbcType=VARCHAR},
+      </if>
+      <if test="record.essayflag != null">
+        essayFlag = #{record.essayflag,jdbcType=VARCHAR},
+      </if>
+      <if test="record.blogcontent != null">
+        blogContent = #{record.blogcontent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update blogcontent
+    set blog_id = #{record.blogId,jdbcType=INTEGER},
+      user_id = #{record.userId,jdbcType=INTEGER},
+      blogPics_id = #{record.blogpicsId,jdbcType=INTEGER},
+      blogCreateTime = #{record.blogcreatetime,jdbcType=TIMESTAMP},
+      blogFlag = #{record.blogflag,jdbcType=VARCHAR},
+      essayFlag = #{record.essayflag,jdbcType=VARCHAR},
+      blogContent = #{record.blogcontent,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update blogcontent
+    set blog_id = #{record.blogId,jdbcType=INTEGER},
+      user_id = #{record.userId,jdbcType=INTEGER},
+      blogPics_id = #{record.blogpicsId,jdbcType=INTEGER},
+      blogCreateTime = #{record.blogcreatetime,jdbcType=TIMESTAMP},
+      blogFlag = #{record.blogflag,jdbcType=VARCHAR},
+      essayFlag = #{record.essayflag,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gem.share.entity.BlogContent">
+    update blogcontent
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="blogpicsId != null">
+        blogPics_id = #{blogpicsId,jdbcType=INTEGER},
+      </if>
+      <if test="blogcreatetime != null">
+        blogCreateTime = #{blogcreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="blogflag != null">
+        blogFlag = #{blogflag,jdbcType=VARCHAR},
+      </if>
+      <if test="essayflag != null">
+        essayFlag = #{essayflag,jdbcType=VARCHAR},
+      </if>
+      <if test="blogcontent != null">
+        blogContent = #{blogcontent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where blog_id = #{blogId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.gem.share.entity.BlogContent">
+    update blogcontent
+    set user_id = #{userId,jdbcType=INTEGER},
+      blogPics_id = #{blogpicsId,jdbcType=INTEGER},
+      blogCreateTime = #{blogcreatetime,jdbcType=TIMESTAMP},
+      blogFlag = #{blogflag,jdbcType=VARCHAR},
+      essayFlag = #{essayflag,jdbcType=VARCHAR},
+      blogContent = #{blogcontent,jdbcType=LONGVARCHAR}
+    where blog_id = #{blogId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gem.share.entity.BlogContent">
+    update blogcontent
+    set user_id = #{userId,jdbcType=INTEGER},
+      blogPics_id = #{blogpicsId,jdbcType=INTEGER},
+      blogCreateTime = #{blogcreatetime,jdbcType=TIMESTAMP},
+      blogFlag = #{blogflag,jdbcType=VARCHAR},
+      essayFlag = #{essayflag,jdbcType=VARCHAR}
+    where blog_id = #{blogId,jdbcType=INTEGER}
+  </update>
+
+  <!--//  按照博客发表时间排序 若时间相同按照用户id升序排列-->
+  <!--public List<BlogContent> orderBlogByCreateTime();-->
+  <select id="orderBlogByCreateTime" resultType="BlogContent">
+      SELECT * FROM blogcontent ORDER BY blogCreateTime DESC,user_id ASC
+  </select>
+
+</mapper>
