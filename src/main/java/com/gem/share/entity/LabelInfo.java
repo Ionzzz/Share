@@ -18,7 +18,7 @@ public class LabelInfo {
 
     @Override
     public String toString() {
-        return "LabelInfo{" +
+        return "LabelInfoService{" +
                 "labelId=" + labelId +
                 ", labelname='" + labelname + '\'' +
                 ", labelcontent='" + labelcontent + '\'' +
