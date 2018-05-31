@@ -1,5 +1,6 @@
 package com.gem.share.service;
 
+import com.gem.share.entity.Notice;
 import com.gem.share.entity.UserInfo;
 
 import java.util.Date;
@@ -38,6 +39,7 @@ public interface UserService {
 //    查询用户注册时间
     public Date selectUserCreateTime(int user_id);
 
-
+    //    通知
+    public Notice selectAllNotice(int user_id);
 
 }
