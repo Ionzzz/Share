@@ -88,7 +88,7 @@
                                         <div class="col-sm-5">
                                             <div class="form-group label-floating">
                                                 <label class="control-label">手机号</label>
-                                                <input type="text" class="form-control" id="exampleInputEmail1">
+                                                <input type="text" class="form-control" >
 
                                             </div>
                                         </div>
@@ -96,7 +96,7 @@
                                         <div class="col-sm-5 col-sm-offset-2">
                                             <div class="form-group label-floating">
                                                 <label class="control-label">输入6位短信验证码</label>
-                                                <input type="text" class="form-control" id="exampleInputEmail1">
+                                                <input type="text" class="form-control" >
                                             </div>
                                         </div>
 
@@ -112,16 +112,13 @@
                                         <div class="col-sm-5 col-sm-offset-2">
                                             <a style="color:orange" href="login_password.jsp">密码登录(手机号或邮箱)</a>
                                         </div>
-
-                                      <%--  <div class="col-sm-5">
-                                            <a style="color:orange" href="#">接收语音验证码</a>
+                                        <div class="col-sm-5">
+                                            <a style="color:orange" href="login_forget.jsp">忘记密码?</a>
                                         </div>
-                                        --%>
                                     </div>
                                 </div>
 
                             </div>
-
 
 
                             <div class="row" style="margin-top:-3em">
@@ -133,12 +130,10 @@
                             </div>
 
 
-
                             <div class="wizard-footer">
                                 <div class="pull-right">
-
                                     <input type='button' class='btn btn-finish btn-fill btn-primary btn-wd' name='finish' style="background-color:#ff9800" value='登录'
-                                           onclick="window.open('index.jsp')"
+                                           onclick="window.location.href='index.jsp'"
                                     />
                                 </div>
                                 <div class="pull-left">

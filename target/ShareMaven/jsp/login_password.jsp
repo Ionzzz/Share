@@ -91,7 +91,9 @@
                                         <div class="col-sm-5 col-sm-offset-2">
                                             <a style="color:orange" href="login_verify.jsp">手机验证码登陆</a>
                                         </div>
-
+                                        <div class="col-sm-5">
+                                            <a style="color:orange" href="login_forget.jsp">忘记密码?</a>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -113,7 +115,7 @@
                                 <div class="pull-right">
 
                                     <input type='button' class='btn btn-finish btn-fill btn-primary btn-wd' name='finish' style="background-color:#ff9800" value='登录'
-                                           onclick="window.open('index.jsp')"
+                                           onclick="window.location.href='index.jsp'"
                                     />
                                 </div>
                                 <div class="pull-left">
