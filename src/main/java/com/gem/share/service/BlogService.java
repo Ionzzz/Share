@@ -11,8 +11,6 @@ public interface BlogService {
 //    查询所有博客
     public List<BlogContent> selectAllBlog();
 
-
-
 //    根据博客id查找博客全部内容
     public BlogContent selectBlogByBlogId(int blog_id);
 
@@ -21,6 +19,9 @@ public interface BlogService {
 
 //    插入博客全部内容
     public boolean insertBlog(BlogContent blogContent);
+
+//    通过博客id找到博客发表的时间
+    public Date selectBlogCreateTimeByBlogId(int blog_id);
 
 //    按照博客发表时间排序  若时间相同按照用户id升序排列
     public List<BlogContent> orderBlogByCreateTime();
@@ -34,20 +35,20 @@ public interface BlogService {
 //    通过博客id找到点赞用户id
     public List<Integer> selectZanUserIdByBlogId(int blog_id);
 
-//    通过博客id找到用户点赞时间
-    public Date selectZanTimeByBlogId(int blog_id);
+//    通过博客id,点赞用户id找到用户点赞时间
+    public Date selectZanTimeByBlogId(int blog_id,int user_id);
+
+//    通过博客id找评论id
+    public List<Integer> selectCommentIdByBlogId(int blog_id);
 
 //    通过博客id找到评论用户id
     public List<Integer> selectBlogCommentUserByBlogId(int blog_id);
 
 //    通过博客id找到评论内容
-    public String selectCommentContentByBlogId(int blog_id);
-
-//    通过博客id找到评论内容的时间
-    public Date selectCommentTimeByBlogId(int blog_id);
+    public List<String> selectCommentContentByBlogId(int blog_id);
 
 //    通过评论id找用户id
-    public Integer selectCommentUserIdByCommentId(int comment_id);
+    public List<Integer> selectCommentUserIdByCommentId(int comment_id);
 
 //    通过评论id找评论内容
     public String selectCommentContentByCommentId(int comment_id);
@@ -56,12 +57,19 @@ public interface BlogService {
     public Date selectCommentTimeByCommentId(int comment_id);
 
 //    通过评论id找点赞用户id
-    public Integer selectZanUserIdByCommentId(int comment_id);
+    public List<Integer> selectZanUserIdByCommentId(int comment_id);
+    
+//    通过评论用户id找全部发表评论id
+    public List<Integer> selectCommentByUserId(int user_id);
+
+//    通过评论id找评论的评论
+    public String selectReplyCommentByCommentId(int comment_id);
+
 
 //    根据博客id得到该博客的浏览次数
     public Integer selectBlogBrowseByBlogId(int blog_id);
 
-//    根据博客id得到该博客的点赞次数
+//    博客id得到该博客的点赞次数
     public Integer selectBlogZanByBlogId(int blog_id);
 
 //    通过用户id得到收藏博客id
