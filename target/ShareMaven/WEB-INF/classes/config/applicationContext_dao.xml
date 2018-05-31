@@ -3,9 +3,7 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
-
     <!--数据源获得:导入外部的properties配置文件-->
-    
     <context:property-placeholder location="classpath:config/db.properties"></context:property-placeholder>
     <!--数据源配置  ：连接池    JDBC的连接池  C3P0    DBCP（连接池）      -->
     <bean id="dataSourceId" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
@@ -24,8 +22,6 @@
       <property name="basePackage" value="com.gem.share.dao"/>
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
-
-
 
 </beans>
 

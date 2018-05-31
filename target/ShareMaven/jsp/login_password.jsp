@@ -11,7 +11,6 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>密码登录页面</title>
-
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
 
@@ -42,7 +41,6 @@
                     <div class="card wizard-card" data-color="orange" id="wizard">
                         <form action="" method="">
                             <!--        You can switch " data-color="rose" "  with one of the next bright colors: "blue", "green", "orange", "purple"        -->
-
                             <div class="wizard-header">
                                 <h3 class="wizard-title">
                                     Share
@@ -67,7 +65,7 @@
                                         <div class="col-sm-7 col-sm-offset-2">
                                             <div class="form-group label-floating">
                                                 <label class="control-label">手机号或邮箱</label>
-                                                <input type="text" class="form-control" id="exampleInputEmail1">
+                                                <input type="text" class="form-control" id="">
 
                                             </div>
                                         </div>
@@ -75,7 +73,7 @@
                                         <div class="col-sm-7 col-sm-offset-2">
                                             <div class="form-group label-floating">
                                                 <label class="control-label">输入密码</label>
-                                                <input type="text" class="form-control" id="exampleInputEmail1">
+                                                <input type="text" class="form-control" id="">
                                             </div>
                                         </div>
 
