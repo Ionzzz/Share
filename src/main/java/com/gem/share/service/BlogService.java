@@ -58,13 +58,12 @@ public interface BlogService {
 
 //    通过评论id找点赞用户id
     public List<Integer> selectZanUserIdByCommentId(int comment_id);
-    
+
 //    通过评论用户id找全部发表评论id
     public List<Integer> selectCommentByUserId(int user_id);
 
 //    通过评论id找评论的评论
-    public String selectReplyCommentByCommentId(int comment_id);
-
+    public List<String> selectReplyCommentByCommentId(int comment_id);
 
 //    根据博客id得到该博客的浏览次数
     public Integer selectBlogBrowseByBlogId(int blog_id);
