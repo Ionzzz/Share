@@ -124,9 +124,8 @@
                             <div class="wizard-footer">
                                 <div class="pull-right">
 
-                                    <input type='button' class='btn btn-finish btn-fill btn-primary btn-wd' name='finish' style="background-color:#ff9800" value='确定'
-                                           onclick="window.open('index.jsp')"
-                                    />
+                                    <input type='button' class='btn btn-finish btn-fill btn-primary btn-wd' name='finish' style="background-color:#ff9800" value='下一步'
+                                           onclick="window.location.href='login_setnewpass.jsp'"/>
                                 </div>
                                 <div class="pull-left">
 
