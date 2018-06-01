@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gem.share.dao.BlogContentMapper">
-  <resultMap id="BaseResultMap" type="com.gem.share.entity.BlogContent">
+  
+  
+  <resultMap id="BaseResultMap" type="BlogContent">
     <id column="blog_id" jdbcType="INTEGER" property="blogId" />
     <result column="user_id" jdbcType="INTEGER" property="userId" />
     <result column="blogPics_id" jdbcType="INTEGER" property="blogpicsId" />
@@ -76,7 +78,7 @@
   <sql id="Blob_Column_List">
     blogContent
   </sql>
-  <select id="selectByExampleWithBLOBs" parameterType="com.gem.share.entity.BlogContentExample" resultMap="ResultMapWithBLOBs">
+  <select id="selectByExampleWithBLOBs" parameterType="BlogContentExample" resultMap="ResultMapWithBLOBs">
     select
     <if test="distinct">
       distinct
@@ -291,4 +293,55 @@
       SELECT * FROM blogcontent ORDER BY blogCreateTime DESC,user_id ASC
   </select>
 
+  <!--public BlogContent selectBlogByBlogId(int blog_id);-->
+  <select id="selectBlogByBlogId" parameterType="int" resultType="BlogContent">
+    select * from blogcontent where blog_id=#{_parameter}
+  </select>
+
+  <!--public List<BlogContent> selectAllBlog();-->
+  <select id="selectAllBlog" resultMap="selectAllBlogMap">
+    select * from blogcontent
+  </select>
+  <resultMap id="selectAllBlogMap" type="BlogContent">
+    <id column="blog_id" property="blogId"/>
+    <result column="user_id" property="userId"/>
+    <result column="blogPics_id" property="blogpicsId"/>
+    <result column="blogCreateTime" property="blogcreatetime"/>
+    <result column="blogFlag" property="blogflag"/>
+    <result column="essayFlag" property="essayflag"/>
+    <result column="blogContent" property="blogcontent"/>
+  </resultMap>
+
+  <!--public boolean updateBlogByBlogId(BlogContent blogContent);-->
+  <update id="updateBlogByBlogId" parameterType="BlogContent" >
+    update blogcontent set blogContent=#{blogcontent},blogPics_id=#{blogpicsId}
+          where blog_id=#{blogId}
+  </update>
+
+<!--  private Integer blogId;
+
+  private Integer userId;
+
+  private Integer blogpicsId;
+
+  private Date blogcreatetime;
+
+  private String blogflag;
+
+  private String essayflag;
+
+  private String blogcontent;-->
+<!--
+  <resultMap id="selectBlogLabelMap" type="BlogContent">
+    <id column="id" property="id"/>
+    <result column="catory_id" property="catoryId"/>
+    <result column="name" property="name"/>
+    <result column="price" property="price"/>
+    <result column="pic" property="pic"/>
+    <result column="createtime" property="createtime"/>
+    <result column="detail" property="detail"/>
+    <association property="catory" javaType="GoodsCatory">
+      <result column="cname" property="cname"/>
+    </association>
+  </resultMap>-->
 </mapper>
