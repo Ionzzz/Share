@@ -209,7 +209,7 @@
     where label_id = #{labelId,jdbcType=INTEGER}
   </update>
 
-  <!--public LabelInfo selectAllLabel();-->
+  <!--public list<LabelInfo> selectAllLabel();-->
   <select id="selectAllLabel" resultType="LabelInfo">
     select * from labelinfo;
   </select>

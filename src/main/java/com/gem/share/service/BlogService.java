@@ -77,6 +77,12 @@ public interface BlogService {
 //    通过博客id得到收藏用户id
     public List<Integer> selectCollectUserIdByBlogId(int blog_id);
 
+    //    通过标签id找到博客id
+    public List<Integer> selectBlogIdByLabelId(int label_id);
 
+//    通过标签id找到博客
+    public List<BlogContent> selectBlogByLabelId(int label_id);
+
+    public List<BlogContent> selectBlogByLabelName(String labelName);
 
 }

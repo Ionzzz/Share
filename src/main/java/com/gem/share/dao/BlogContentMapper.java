@@ -35,7 +35,9 @@ public interface BlogContentMapper {
 
     int updateByPrimaryKey(BlogContent record);
 
+
 //  按照博客发表时间排序  若时间相同按照用户id升序排列
+
     public List<BlogContent> orderBlogByCreateTime();
 
     public BlogContent selectBlogByBlogId(int blog_id);

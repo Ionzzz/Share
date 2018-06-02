@@ -134,4 +134,21 @@ public class BlogServiceImpl implements BlogService {
     public List<Integer> selectCollectUserIdByBlogId(int blog_id) {
         return null;
     }
+
+    @Override
+    public List<Integer> selectBlogIdByLabelId(int label_id) {
+        return null;
+    }
+
+    @Override
+    public List<BlogContent> selectBlogByLabelId(int label_id) {
+        return null;
+    }
+
+    @Override
+    public List<BlogContent> selectBlogByLabelName(String labelName) {
+        return null;
+    }
+
+
 }

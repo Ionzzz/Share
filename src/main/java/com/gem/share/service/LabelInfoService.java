@@ -9,14 +9,17 @@ public interface LabelInfoService {
     public List<LabelInfo> selectAllLabelInfo();
 //    通过标签id查询标签
     public LabelInfo selectLabelInfoById(int label_id);
+
+    public LabelInfo selectLabelByLabelName(String labelName);
+
+    public LabelInfo selectLabelByLikeLabelName(String labelName);
 //    插入一个新标签
-    public boolean insertLabelInfo();
+    public boolean insertLabelInfo(LabelInfo labelInfo);
 //    删除标签
     public boolean deleteLabelInfoByLabelId(int label_id);
 //    通过标签id修改一个标签
     public LabelInfo updateLabeiInfoByLabelId(int label_id);
-//    通过标签id找到博客
-    public List<Integer> selectBlogByLabelId(int label_id);
+
 
 
 

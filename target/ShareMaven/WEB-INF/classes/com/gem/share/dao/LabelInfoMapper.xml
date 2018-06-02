@@ -209,6 +209,10 @@
     where label_id = #{labelId,jdbcType=INTEGER}
   </update>
 
+  <!--public list<LabelInfo> selectAllLabel();-->
+  <select id="selectAllLabel" resultType="LabelInfo">
+    select * from labelinfo;
+  </select>
   <!--public LabelInfo selectLabelByLabelId(int label_id);-->
   <select id="selectLabelByLabelId" parameterType="int" resultType="LabelInfo">
     select * from labelinfo where label_id=#{_parameter}

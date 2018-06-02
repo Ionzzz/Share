@@ -178,7 +178,6 @@
       label_id = #{labelId,jdbcType=INTEGER}
     where bloglabel_id = #{bloglabelId,jdbcType=INTEGER}
   </update>
-
   <!--//    通过博客查询该博客的标签id-->
   <!--public List<LabelInfo> selectLabelByBlogId(int blog_id);-->
   <select id="selectLabelByBlogId" parameterType="int" resultType="LabelInfo">

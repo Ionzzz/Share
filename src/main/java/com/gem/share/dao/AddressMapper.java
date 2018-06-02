@@ -29,6 +29,7 @@ public interface AddressMapper {
 
     int updateByPrimaryKey(Address record);
 
+//
     public Address selectAddress();
 
     public Address selectAddressByCountry(String country);

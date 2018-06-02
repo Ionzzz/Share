@@ -12,4 +12,12 @@ public interface AddressService {
 
     public boolean updateByAddressId(int address_int);
 
+    public Address selectAddress();
+
+    public Address selectAddressByCountry(String country);
+
+    public Address selectAddressByProvince(String province);
+
+    public Address selectAddressByCity(String city);
+
 }
