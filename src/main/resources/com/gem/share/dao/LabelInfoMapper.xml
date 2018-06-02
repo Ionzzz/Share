@@ -208,4 +208,33 @@
       labelModifyTime = #{labelmodifytime,jdbcType=TIMESTAMP}
     where label_id = #{labelId,jdbcType=INTEGER}
   </update>
+
+  <!--public LabelInfo selectLabelByLabelId(int label_id);-->
+  <select id="selectLabelByLabelId" parameterType="int" resultType="LabelInfo">
+    select * from labelinfo where label_id=#{_parameter}
+  </select>
+  <!--public LabelInfo selectLabelByLabelName(String labelName);-->
+  <select id="selectLabelByLabelName" parameterType="String" resultType="LabelInfo">
+    select * from labelinfo where labelName='${_parameter}'
+  </select>
+  <!--public LabelInfo selectLabelByLikeLabelName(String labelName);-->
+  <select id="selectLabelByLikeLabelName" parameterType="String" resultType="LabelInfo">
+    select * from labelinfo where labelName like "%" #{_parameter} "%"
+  </select>
+  <!--public LabelInfo updateLabelByLabelId(LabelInfo labelInfo);-->
+  <update id="updateLabelByLabelId" parameterType="LabelInfo">
+    update labelinfo set labelName=#{labelname},labelContent=#{labelcontent},
+                         labelCreateTime=#{labelcreatetime},
+                         labelModifyTime=#{labelmodifytime}
+                    where label_id=#{labelId}
+  </update>
+  <!--public boolean insertLabelInfo(LabelInfo labelInfo);-->
+  <insert id="insertLabelInfo" parameterType="LabelInfo" useGeneratedKeys="true" keyProperty="label_id">
+    insert into labelinfo values(#{label_id},#{labelName},#{labelContent},#{labelCreateTime},#{labelModifyTime})
+  </insert>
+  <!--public boolean deleteLabelByLabelId(int label_id);-->
+  <delete id="deleteLabelByLabelId" parameterType="int">
+    delete from labelinfo where label_id=#{_parameter}
+  </delete>
+
 </mapper>

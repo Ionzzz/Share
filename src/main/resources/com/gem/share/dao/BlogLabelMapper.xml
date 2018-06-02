@@ -2,9 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gem.share.dao.BlogLabelMapper">
   <resultMap id="BaseResultMap" type="com.gem.share.entity.BlogLabel">
-    <id column="blogLable_id" jdbcType="INTEGER" property="bloglableId" />
+    <id column="bloglabel_id" jdbcType="INTEGER" property="bloglabelId" />
     <result column="blog_id" jdbcType="INTEGER" property="blogId" />
-    <result column="lable_id" jdbcType="INTEGER" property="lableId" />
+    <result column="label_id" jdbcType="INTEGER" property="labelId" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -65,7 +65,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    blogLable_id, blog_id, lable_id
+    bloglabel_id, blog_id, label_id
   </sql>
   <select id="selectByExample" parameterType="com.gem.share.entity.BlogLabelExample" resultMap="BaseResultMap">
     select
@@ -85,11 +85,11 @@
     select 
     <include refid="Base_Column_List" />
     from bloglabel
-    where blogLable_id = #{bloglableId,jdbcType=INTEGER}
+    where bloglabel_id = #{bloglabelId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from bloglabel
-    where blogLable_id = #{bloglableId,jdbcType=INTEGER}
+    where bloglabel_id = #{bloglabelId,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="com.gem.share.entity.BlogLabelExample">
     delete from bloglabel
@@ -98,33 +98,33 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.gem.share.entity.BlogLabel">
-    insert into bloglabel (blogLable_id, blog_id, lable_id
+    insert into bloglabel (bloglabel_id, blog_id, label_id
       )
-    values (#{bloglableId,jdbcType=INTEGER}, #{blogId,jdbcType=INTEGER}, #{lableId,jdbcType=INTEGER}
+    values (#{bloglabelId,jdbcType=INTEGER}, #{blogId,jdbcType=INTEGER}, #{labelId,jdbcType=INTEGER}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.gem.share.entity.BlogLabel">
     insert into bloglabel
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="bloglableId != null">
-        blogLable_id,
+      <if test="bloglabelId != null">
+        bloglabel_id,
       </if>
       <if test="blogId != null">
         blog_id,
       </if>
-      <if test="lableId != null">
-        lable_id,
+      <if test="labelId != null">
+        label_id,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="bloglableId != null">
-        #{bloglableId,jdbcType=INTEGER},
+      <if test="bloglabelId != null">
+        #{bloglabelId,jdbcType=INTEGER},
       </if>
       <if test="blogId != null">
         #{blogId,jdbcType=INTEGER},
       </if>
-      <if test="lableId != null">
-        #{lableId,jdbcType=INTEGER},
+      <if test="labelId != null">
+        #{labelId,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -137,14 +137,14 @@
   <update id="updateByExampleSelective" parameterType="map">
     update bloglabel
     <set>
-      <if test="record.bloglableId != null">
-        blogLable_id = #{record.bloglableId,jdbcType=INTEGER},
+      <if test="record.bloglabelId != null">
+        bloglabel_id = #{record.bloglabelId,jdbcType=INTEGER},
       </if>
       <if test="record.blogId != null">
         blog_id = #{record.blogId,jdbcType=INTEGER},
       </if>
-      <if test="record.lableId != null">
-        lable_id = #{record.lableId,jdbcType=INTEGER},
+      <if test="record.labelId != null">
+        label_id = #{record.labelId,jdbcType=INTEGER},
       </if>
     </set>
     <if test="_parameter != null">
@@ -153,9 +153,9 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update bloglabel
-    set blogLable_id = #{record.bloglableId,jdbcType=INTEGER},
+    set bloglabel_id = #{record.bloglabelId,jdbcType=INTEGER},
       blog_id = #{record.blogId,jdbcType=INTEGER},
-      lable_id = #{record.lableId,jdbcType=INTEGER}
+      label_id = #{record.labelId,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -166,29 +166,39 @@
       <if test="blogId != null">
         blog_id = #{blogId,jdbcType=INTEGER},
       </if>
-      <if test="lableId != null">
-        lable_id = #{lableId,jdbcType=INTEGER},
+      <if test="labelId != null">
+        label_id = #{labelId,jdbcType=INTEGER},
       </if>
     </set>
-    where blogLable_id = #{bloglableId,jdbcType=INTEGER}
+    where bloglabel_id = #{bloglabelId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.gem.share.entity.BlogLabel">
     update bloglabel
     set blog_id = #{blogId,jdbcType=INTEGER},
-      lable_id = #{lableId,jdbcType=INTEGER}
-    where blogLable_id = #{bloglableId,jdbcType=INTEGER}
+      label_id = #{labelId,jdbcType=INTEGER}
+    where bloglabel_id = #{bloglabelId,jdbcType=INTEGER}
   </update>
 
   <!--//    通过博客查询该博客的标签id-->
-  <!--public Integer selectLabelByBlogId(int blog_id);-->
-  <select id="selectLabelByBlogId" parameterType="int" resultType="Integer">
-    SELECT lable_id from bloglabel where blog_id = #{_parameter}
+  <!--public List<LabelInfo> selectLabelByBlogId(int blog_id);-->
+  <select id="selectLabelByBlogId" parameterType="int" resultType="LabelInfo">
+    SELECT * from bloglabel where blog_id = #{_parameter}
   </select>
-
+  <!--public List<Integer> selectLabelIdByBlogId(int blog_id);-->
+  <select id="selectLabelIdByBlogId" parameterType="int" resultType="Integer">
+    SELECT label_id from bloglabel where blog_id = #{_parameter}
+  </select>
   <!--//    通过标签找到博客id-->
   <!--public Integer selectBlogByLabelId(int label_id);-->
   <select id="selectBlogByLabelId" parameterType="int" resultType="Integer">
-    SELECT blog_id FROM bloglabel where lable_id =#{_parameter}
+    SELECT blog_id FROM bloglabel where label_id =#{_parameter}
   </select>
-
+  <!--public List<BlogContent> selectBlogByLabelId(int label_id);-->
+  <select id="selectBlogByLabelId" parameterType="int" resultType="BlogContent">
+    select * from bloglabel where label_id=#{_parameter}
+  </select>
+  <!--public List<BlogContent> selectBlogByLabelName(String labelName);-->
+  <select id="selectBlogByLabelName" parameterType="String" resultType="BlogContent">
+    SELECT * from bloglabel where label_id=(select label_id from labelinfo where labelName=#{_parameter})
+  </select>
 </mapper>

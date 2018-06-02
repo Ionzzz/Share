@@ -376,7 +376,7 @@
 }
 
 .hermit-blue .hermit-song.selected .hermit-song-index {
-	background-image: url(../images/playing_blue.gif)
+	background-image: url(../../images/index-images/playing_blue.gif)
 }
 
 .hermit-blue .hermit-song.selected.paused .hermit-song-index {
@@ -827,7 +827,7 @@ textarea {
 .navi {
 	position: absolute;
 	right: 0;
-	z-index: 999
+	z-index: 1100
 }
 
 .navbar {

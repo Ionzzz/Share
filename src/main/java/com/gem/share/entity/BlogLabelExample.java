@@ -133,63 +133,63 @@ public class BlogLabelExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
-        public Criteria andBloglableIdIsNull() {
-            addCriterion("blogLable_id is null");
+        public Criteria andBloglabelIdIsNull() {
+            addCriterion("bloglabel_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andBloglableIdIsNotNull() {
-            addCriterion("blogLable_id is not null");
+        public Criteria andBloglabelIdIsNotNull() {
+            addCriterion("bloglabel_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andBloglableIdEqualTo(Integer value) {
-            addCriterion("blogLable_id =", value, "bloglableId");
+        public Criteria andBloglabelIdEqualTo(Integer value) {
+            addCriterion("bloglabel_id =", value, "bloglabelId");
             return (Criteria) this;
         }
 
-        public Criteria andBloglableIdNotEqualTo(Integer value) {
-            addCriterion("blogLable_id <>", value, "bloglableId");
+        public Criteria andBloglabelIdNotEqualTo(Integer value) {
+            addCriterion("bloglabel_id <>", value, "bloglabelId");
             return (Criteria) this;
         }
 
-        public Criteria andBloglableIdGreaterThan(Integer value) {
-            addCriterion("blogLable_id >", value, "bloglableId");
+        public Criteria andBloglabelIdGreaterThan(Integer value) {
+            addCriterion("bloglabel_id >", value, "bloglabelId");
             return (Criteria) this;
         }
 
-        public Criteria andBloglableIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("blogLable_id >=", value, "bloglableId");
+        public Criteria andBloglabelIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("bloglabel_id >=", value, "bloglabelId");
             return (Criteria) this;
         }
 
-        public Criteria andBloglableIdLessThan(Integer value) {
-            addCriterion("blogLable_id <", value, "bloglableId");
+        public Criteria andBloglabelIdLessThan(Integer value) {
+            addCriterion("bloglabel_id <", value, "bloglabelId");
             return (Criteria) this;
         }
 
-        public Criteria andBloglableIdLessThanOrEqualTo(Integer value) {
-            addCriterion("blogLable_id <=", value, "bloglableId");
+        public Criteria andBloglabelIdLessThanOrEqualTo(Integer value) {
+            addCriterion("bloglabel_id <=", value, "bloglabelId");
             return (Criteria) this;
         }
 
-        public Criteria andBloglableIdIn(List<Integer> values) {
-            addCriterion("blogLable_id in", values, "bloglableId");
+        public Criteria andBloglabelIdIn(List<Integer> values) {
+            addCriterion("bloglabel_id in", values, "bloglabelId");
             return (Criteria) this;
         }
 
-        public Criteria andBloglableIdNotIn(List<Integer> values) {
-            addCriterion("blogLable_id not in", values, "bloglableId");
+        public Criteria andBloglabelIdNotIn(List<Integer> values) {
+            addCriterion("bloglabel_id not in", values, "bloglabelId");
             return (Criteria) this;
         }
 
-        public Criteria andBloglableIdBetween(Integer value1, Integer value2) {
-            addCriterion("blogLable_id between", value1, value2, "bloglableId");
+        public Criteria andBloglabelIdBetween(Integer value1, Integer value2) {
+            addCriterion("bloglabel_id between", value1, value2, "bloglabelId");
             return (Criteria) this;
         }
 
-        public Criteria andBloglableIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("blogLable_id not between", value1, value2, "bloglableId");
+        public Criteria andBloglabelIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("bloglabel_id not between", value1, value2, "bloglabelId");
             return (Criteria) this;
         }
 
@@ -253,63 +253,63 @@ public class BlogLabelExample {
             return (Criteria) this;
         }
 
-        public Criteria andLableIdIsNull() {
-            addCriterion("lable_id is null");
+        public Criteria andlabelIdIsNull() {
+            addCriterion("label_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andLableIdIsNotNull() {
-            addCriterion("lable_id is not null");
+        public Criteria andlabelIdIsNotNull() {
+            addCriterion("label_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andLableIdEqualTo(Integer value) {
-            addCriterion("lable_id =", value, "lableId");
+        public Criteria andlabelIdEqualTo(Integer value) {
+            addCriterion("label_id =", value, "labelId");
             return (Criteria) this;
         }
 
-        public Criteria andLableIdNotEqualTo(Integer value) {
-            addCriterion("lable_id <>", value, "lableId");
+        public Criteria andlabelIdNotEqualTo(Integer value) {
+            addCriterion("label_id <>", value, "labelId");
             return (Criteria) this;
         }
 
-        public Criteria andLableIdGreaterThan(Integer value) {
-            addCriterion("lable_id >", value, "lableId");
+        public Criteria andlabelIdGreaterThan(Integer value) {
+            addCriterion("label_id >", value, "labelId");
             return (Criteria) this;
         }
 
-        public Criteria andLableIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("lable_id >=", value, "lableId");
+        public Criteria andlabelIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("label_id >=", value, "labelId");
             return (Criteria) this;
         }
 
-        public Criteria andLableIdLessThan(Integer value) {
-            addCriterion("lable_id <", value, "lableId");
+        public Criteria andlabelIdLessThan(Integer value) {
+            addCriterion("label_id <", value, "labelId");
             return (Criteria) this;
         }
 
-        public Criteria andLableIdLessThanOrEqualTo(Integer value) {
-            addCriterion("lable_id <=", value, "lableId");
+        public Criteria andlabelIdLessThanOrEqualTo(Integer value) {
+            addCriterion("label_id <=", value, "labelId");
             return (Criteria) this;
         }
 
-        public Criteria andLableIdIn(List<Integer> values) {
-            addCriterion("lable_id in", values, "lableId");
+        public Criteria andlabelIdIn(List<Integer> values) {
+            addCriterion("label_id in", values, "labelId");
             return (Criteria) this;
         }
 
-        public Criteria andLableIdNotIn(List<Integer> values) {
-            addCriterion("lable_id not in", values, "lableId");
+        public Criteria andlabelIdNotIn(List<Integer> values) {
+            addCriterion("label_id not in", values, "labelId");
             return (Criteria) this;
         }
 
-        public Criteria andLableIdBetween(Integer value1, Integer value2) {
-            addCriterion("lable_id between", value1, value2, "lableId");
+        public Criteria andlabelIdBetween(Integer value1, Integer value2) {
+            addCriterion("label_id between", value1, value2, "labelId");
             return (Criteria) this;
         }
 
-        public Criteria andLableIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("lable_id not between", value1, value2, "lableId");
+        public Criteria andlabelIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("label_id not between", value1, value2, "labelId");
             return (Criteria) this;
         }
     }

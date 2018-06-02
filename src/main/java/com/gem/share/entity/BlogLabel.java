@@ -1,11 +1,11 @@
 package com.gem.share.entity;
 
 public class BlogLabel {
-    private Integer bloglableId;
+    private Integer bloglabelId;
 
     private Integer blogId;
 
-    private Integer lableId;
+    private Integer labelId;
 
     public BlogLabel() {
     }
@@ -13,9 +13,9 @@ public class BlogLabel {
     @Override
     public String toString() {
         return "BlogLabel{" +
-                "bloglableId=" + bloglableId +
+                "bloglabelId=" + bloglabelId +
                 ", blogId=" + blogId +
-                ", lableId=" + lableId +
+                ", labelId=" + labelId +
                 '}';
     }
 
@@ -26,26 +26,26 @@ public class BlogLabel {
 
         BlogLabel blogLabel = (BlogLabel) o;
 
-        if (bloglableId != null ? !bloglableId.equals(blogLabel.bloglableId) : blogLabel.bloglableId != null)
+        if (bloglabelId != null ? !bloglabelId.equals(blogLabel.bloglabelId) : blogLabel.bloglabelId != null)
             return false;
         if (blogId != null ? !blogId.equals(blogLabel.blogId) : blogLabel.blogId != null) return false;
-        return lableId != null ? lableId.equals(blogLabel.lableId) : blogLabel.lableId == null;
+        return labelId != null ? labelId.equals(blogLabel.labelId) : blogLabel.labelId == null;
     }
 
     @Override
     public int hashCode() {
-        int result = bloglableId != null ? bloglableId.hashCode() : 0;
+        int result = bloglabelId != null ? bloglabelId.hashCode() : 0;
         result = 31 * result + (blogId != null ? blogId.hashCode() : 0);
-        result = 31 * result + (lableId != null ? lableId.hashCode() : 0);
+        result = 31 * result + (labelId != null ? labelId.hashCode() : 0);
         return result;
     }
 
-    public Integer getBloglableId() {
-        return bloglableId;
+    public Integer getBloglabelId() {
+        return bloglabelId;
     }
 
-    public void setBloglableId(Integer bloglableId) {
-        this.bloglableId = bloglableId;
+    public void setBloglabelId(Integer bloglabelId) {
+        this.bloglabelId = bloglabelId;
     }
 
     public Integer getBlogId() {
@@ -56,11 +56,11 @@ public class BlogLabel {
         this.blogId = blogId;
     }
 
-    public Integer getLableId() {
-        return lableId;
+    public Integer getlabelId() {
+        return labelId;
     }
 
-    public void setLableId(Integer lableId) {
-        this.lableId = lableId;
+    public void setlabelId(Integer labelId) {
+        this.labelId = labelId;
     }
 }

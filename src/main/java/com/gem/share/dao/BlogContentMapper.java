@@ -44,4 +44,7 @@ public interface BlogContentMapper {
 
     public boolean updateBlogByBlogId(BlogContent blogContent);
 
+    public boolean insertBlog(BlogContent blogContent);
+
+    public boolean deleteBlogByBlogId(int blog_id);
 }

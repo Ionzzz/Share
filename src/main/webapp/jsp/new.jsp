@@ -26,6 +26,8 @@
     <link href="../css/index-css/content_font.css" rel="stylesheet">
     <link href="../css/index-css/owl.carousel.css" rel="stylesheet" type="text/css"/>
     <link href="../css/index-css/owl.theme.default.css" rel="stylesheet" type="text/css"/>
+
+
     <!-- Modernizr JS -->
     <script src="../js/index-js/modernizr-3.5.0.min.js"></script>
 </head>
@@ -70,7 +72,10 @@
         </div><!-- .wrapper -->
     </div><!-- #header-top -->
 </header>
-<div class="container-fluid pb-4 pt-4 paddding" style="margin-top: 50px;">
+
+
+
+<div  class="container-fluid pb-4 pt-4 paddding" style="margin-top: 50px;">
     <div class="container paddding font">
         <div class="row mx-0">
             <div class="col-md-8 animate-box" data-animate-effect="fadeInLeft">
@@ -362,6 +367,7 @@
 <script src="../js/index-js/jquery.waypoints.min.js"></script>
 <!-- Main -->
 <script src="../js/index-js/main.js"></script>
+
 
 </body>
 </html>

@@ -317,6 +317,15 @@
     update blogcontent set blogContent=#{blogcontent},blogPics_id=#{blogpicsId}
           where blog_id=#{blogId}
   </update>
+  <!--public boolean insertBlog(BlogContent blogContent);-->
+  <insert id="insertBlog" parameterType="BlogContent" useGeneratedKeys="true" keyProperty="blog_id">
+    insert into blogcontent values(#{blog_id},#{user_id},#{blogContent},#{blogPics_id},#{blogCreateTime},#{blogFlag},#{essayFlag})
+  </insert>
+  <!--public boolean deleteBlogByBlogId(int blog_id);-->
+  <delete id="deleteBlogByBlogId" parameterType="int">
+    delete from blogcontent where blog_id=#{_parameter}
+  </delete>
+
 
 <!--  private Integer blogId;
 

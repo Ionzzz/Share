@@ -2,8 +2,9 @@ package com.gem.share.dao;
 
 import com.gem.share.entity.LabelInfo;
 import com.gem.share.entity.LabelInfoExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface LabelInfoMapper {
     long countByExample(LabelInfoExample example);
@@ -27,4 +28,16 @@ public interface LabelInfoMapper {
     int updateByPrimaryKeySelective(LabelInfo record);
 
     int updateByPrimaryKey(LabelInfo record);
+
+    public LabelInfo selectLabelByLabelId(int label_id);
+
+    public LabelInfo selectLabelByLabelName(String labelName);
+
+    public LabelInfo selectLabelByLikeLabelName(String labelName);
+
+    public LabelInfo updateLabelByLabelId(LabelInfo labelInfo);
+
+    public boolean insertLabelInfo(LabelInfo labelInfo);
+
+    public boolean deleteLabelByLabelId(int label_id);
 }
