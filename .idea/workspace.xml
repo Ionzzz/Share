@@ -10,33 +10,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5d62ac77-8c7f-4ccb-88a6-f35818686fc8" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ShareMaven/WEB-INF/classes/com/gem/share/dao/BlogContentMapper.class" afterPath="$PROJECT_DIR$/target/ShareMaven/WEB-INF/classes/com/gem/share/dao/BlogContentMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ShareMaven/WEB-INF/classes/com/gem/share/dao/BlogLabelMapper.class" afterPath="$PROJECT_DIR$/target/ShareMaven/WEB-INF/classes/com/gem/share/dao/BlogLabelMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ShareMaven/WEB-INF/classes/com/gem/share/dao/LabelInfoMapper.class" afterPath="$PROJECT_DIR$/target/ShareMaven/WEB-INF/classes/com/gem/share/dao/LabelInfoMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/gem/share/dao/BlogContentMapper.class" afterPath="$PROJECT_DIR$/target/classes/com/gem/share/dao/BlogContentMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/gem/share/dao/BlogLabelMapper.class" afterPath="$PROJECT_DIR$/target/classes/com/gem/share/dao/BlogLabelMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/gem/share/dao/LabelInfoMapper.class" afterPath="$PROJECT_DIR$/target/classes/com/gem/share/dao/LabelInfoMapper.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gem/share/dao/BlogContentMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/gem/share/dao/BlogContentMapper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gem/share/dao/AddressMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/gem/share/dao/AddressMapper.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gem/share/dao/BlogLabelMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/gem/share/dao/BlogLabelMapper.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gem/share/dao/LabelInfoMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/gem/share/dao/LabelInfoMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gem/share/entity/BlogLabel.java" afterPath="$PROJECT_DIR$/src/main/java/com/gem/share/entity/BlogLabel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gem/share/entity/BlogLabelExample.java" afterPath="$PROJECT_DIR$/src/main/java/com/gem/share/entity/BlogLabelExample.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/com/gem/share/dao/BlogContentMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/com/gem/share/dao/BlogContentMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/com/gem/share/dao/BlogLabelMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/com/gem/share/dao/BlogLabelMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/com/gem/share/dao/AddressMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/com/gem/share/dao/AddressMapper.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/com/gem/share/dao/LabelInfoMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/com/gem/share/dao/LabelInfoMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/css/index-css/index.css" afterPath="$PROJECT_DIR$/src/main/webapp/css/index-css/index.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/jsp/new.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/new.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/jsp/treehole.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/treehole.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ShareMaven/WEB-INF/classes/com/gem/share/dao/BlogContentMapper.xml" afterPath="$PROJECT_DIR$/target/ShareMaven/WEB-INF/classes/com/gem/share/dao/BlogContentMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ShareMaven/WEB-INF/classes/com/gem/share/dao/BlogLabelMapper.xml" afterPath="$PROJECT_DIR$/target/ShareMaven/WEB-INF/classes/com/gem/share/dao/BlogLabelMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ShareMaven/WEB-INF/classes/com/gem/share/dao/LabelInfoMapper.xml" afterPath="$PROJECT_DIR$/target/ShareMaven/WEB-INF/classes/com/gem/share/dao/LabelInfoMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ShareMaven/css/index-css/index.css" afterPath="$PROJECT_DIR$/target/ShareMaven/css/index-css/index.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ShareMaven/jsp/new.jsp" afterPath="$PROJECT_DIR$/target/ShareMaven/jsp/new.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ShareMaven/jsp/treehole.jsp" afterPath="$PROJECT_DIR$/target/ShareMaven/jsp/treehole.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/gem/share/dao/BlogContentMapper.xml" afterPath="$PROJECT_DIR$/target/classes/com/gem/share/dao/BlogContentMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/gem/share/dao/BlogLabelMapper.xml" afterPath="$PROJECT_DIR$/target/classes/com/gem/share/dao/BlogLabelMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/gem/share/dao/LabelInfoMapper.xml" afterPath="$PROJECT_DIR$/target/classes/com/gem/share/dao/LabelInfoMapper.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -52,8 +31,61 @@
       <file leaf-file-name="BlogLabelMapper.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/gem/share/dao/BlogLabelMapper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="56">
-              <caret line="10" column="17" lean-forward="false" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+            <state relative-caret-position="210">
+              <caret line="33" column="22" lean-forward="true" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserInfoMapper.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/gem/share/dao/UserInfoMapper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-112">
+              <caret line="9" column="17" lean-forward="false" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AddressMapper.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/gem/share/dao/AddressMapper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="209">
+              <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="36" selection-end-column="52" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AddressMapper.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/com/gem/share/dao/AddressMapper.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="293">
+              <caret line="246" column="0" lean-forward="true" selection-start-line="246" selection-start-column="0" selection-end-line="246" selection-end-column="0" />
+              <folding>
+                <marker date="1527908908921" expanded="true" signature="3634:3752" ph="select from address" />
+                <marker date="1527908908921" expanded="true" signature="3838:3910" ph="delete from " />
+                <marker date="1527908908921" expanded="true" signature="4011:4030" ph="delete from " />
+                <marker date="1527908908921" expanded="true" signature="4207:4509" ph="insert into address... " />
+                <marker date="1527908908921" expanded="true" signature="5789:5817" ph="select count... address" />
+                <marker date="1527908908921" expanded="true" signature="6855:7196" ph="update addre... " />
+                <marker date="1527908908921" expanded="true" signature="7404:7970" ph="update addre... " />
+                <marker date="1527908908921" expanded="true" signature="8067:8369" ph="update addre... " />
+                <marker date="1527908908921" expanded="true" signature="8481:8502" ph="select * fro... address" />
+                <marker date="1527908908921" expanded="true" signature="8667:8716" ph="select * fro... address" />
+                <marker date="1527908908921" expanded="true" signature="8884:8934" ph="select * fro... address" />
+                <marker date="1527908908921" expanded="true" signature="9090:9136" ph="select * fro... address" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Address.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/gem/share/entity/Address.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="28">
+              <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -62,45 +94,51 @@
       <file leaf-file-name="LabelInfoMapper.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/gem/share/dao/LabelInfoMapper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="56">
-              <caret line="9" column="17" lean-forward="false" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+            <state relative-caret-position="237">
+              <caret line="37" column="0" lean-forward="true" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BlogLabelMapper.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/com/gem/share/dao/BlogLabelMapper.xml">
+      <file leaf-file-name="LabelInfoMapper.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/com/gem/share/dao/LabelInfoMapper.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="78">
-              <caret line="182" column="36" lean-forward="false" selection-start-line="182" selection-start-column="36" selection-end-line="182" selection-end-column="36" />
+            <state relative-caret-position="167">
+              <caret line="234" column="61" lean-forward="true" selection-start-line="234" selection-start-column="61" selection-end-line="234" selection-end-column="61" />
               <folding>
-                <marker date="1527905350683" expanded="true" signature="3390:3514" ph="select from bloglabel" />
-                <marker date="1527905350683" expanded="true" signature="3600:3678" ph="delete from " />
-                <marker date="1527905350683" expanded="true" signature="3781:3802" ph="delete from " />
-                <marker date="1527905350683" expanded="true" signature="3981:4152" ph="insert into bloglabel... " />
-                <marker date="1527905350683" expanded="true" signature="4989:5019" ph="select count... bloglabel" />
-                <marker date="1527905350683" expanded="true" signature="5730:5912" ph="update blogl... " />
-                <marker date="1527905350683" expanded="true" signature="6122:6401" ph="update blogl... " />
-                <marker date="1527905350683" expanded="true" signature="6500:6664" ph="update blogl... " />
-                <marker date="1527905350683" expanded="true" signature="6857:6910" ph="SELECT * fro... bloglabel" />
-                <marker date="1527905350683" expanded="true" signature="7072:7132" ph="SELECT label... bloglabel" />
-                <marker date="1527905350683" expanded="true" signature="7311:7370" ph="SELECT blog_... bloglabel" />
-                <marker date="1527905350683" expanded="true" signature="7352:7370" ph="SELECT blog_... bloglabel" />
-                <marker date="1527905350683" expanded="true" signature="7537:7589" ph="select * fro... bloglabel" />
-                <marker date="1527905350683" expanded="true" signature="7767:7868" ph="SELECT * fro... bloglabel" />
-                <marker date="1527905350683" expanded="true" signature="7807:7867" ph="select label... labelinfo" />
+                <element signature="n#resultMap#0;n#mapper#0;n#!!top" expanded="false" />
+                <element signature="n#sql#0;n#mapper#0;n#!!top" expanded="false" />
+                <element signature="n#sql#1;n#mapper#0;n#!!top" expanded="false" />
+                <element signature="n#sql#2;n#mapper#0;n#!!top" expanded="false" />
+                <element signature="n#select#0;n#mapper#0;n#!!top" expanded="false" />
+                <element signature="n#delete#0;n#mapper#0;n#!!top" expanded="false" />
+                <element signature="n#delete#1;n#mapper#0;n#!!top" expanded="false" />
+                <element signature="n#insert#0;n#mapper#0;n#!!top" expanded="false" />
+                <element signature="n#insert#1;n#mapper#0;n#!!top" expanded="false" />
+                <element signature="n#select#2;n#mapper#0;n#!!top" expanded="false" />
+                <element signature="n#update#0;n#mapper#0;n#!!top" expanded="false" />
+                <element signature="n#update#1;n#mapper#0;n#!!top" expanded="false" />
+                <element signature="n#update#2;n#mapper#0;n#!!top" expanded="false" />
+                <element signature="n#update#3;n#mapper#0;n#!!top" expanded="false" />
+                <marker date="1527906930880" expanded="true" signature="3608:3724" ph="select from labelinfo" />
+                <marker date="1527906930880" expanded="true" signature="3810:3880" ph="delete from " />
+                <marker date="1527906930880" expanded="true" signature="3983:4004" ph="delete from " />
+                <marker date="1527906930880" expanded="true" signature="4183:4472" ph="insert into labelinfo... " />
+                <marker date="1527906930880" expanded="true" signature="5683:5713" ph="select count... labelinfo" />
+                <marker date="1527906930880" expanded="true" signature="6700:7028" ph="update label... " />
+                <marker date="1527906930880" expanded="true" signature="7238:7769" ph="update label... " />
+                <marker date="1527906930880" expanded="true" signature="7868:8164" ph="update label... " />
+                <marker date="1527906930880" expanded="true" signature="8280:8303" ph="select * fro... labelinfo" />
+                <marker date="1527906930880" expanded="true" signature="8463:8515" ph="select * fro... labelinfo" />
+                <marker date="1527906930880" expanded="true" signature="8685:8740" ph="select * fro... labelinfo" />
+                <marker date="1527906930880" expanded="true" signature="8918:8984" ph="select * fro... labelinfo" />
+                <marker date="1527906930880" expanded="true" signature="9133:9176" ph="update label... " />
+                <marker date="1527906930880" expanded="true" signature="9133:9206" ph="update label... " />
+                <marker date="1527906930880" expanded="true" signature="9133:9373" ph="update label... " />
+                <marker date="1527906930880" expanded="true" signature="9557:9665" ph="insert into labelinfo... " />
+                <marker date="1527906930880" expanded="true" signature="9799:9849" ph="delete from " />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BlogLabel.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/gem/share/entity/BlogLabel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="28">
-              <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -184,8 +222,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/webapp/css/personal-css/chocolat.css" />
-        <option value="D:/maven/apache-maven-3.5.2/conf/settings.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/css/personal-css/style.css" />
         <option value="$PROJECT_DIR$/src/main/webapp/jsp/personalpage/picture.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/jsp/personalpage/personal.jsp" />
@@ -224,17 +260,19 @@
         <option value="$PROJECT_DIR$/src/main/java/com/gem/share/service/Impl/BlogServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/gem/share/dao/BlogContentMapper.java" />
         <option value="$PROJECT_DIR$/src/main/resources/com/gem/share/dao/BlogContentMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gem/share/dao/LabelInfoMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/com/gem/share/dao/LabelInfoMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/jsp/treehole.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/jsp/index.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/css/index-css/index.css" />
         <option value="$PROJECT_DIR$/src/main/webapp/css/index-css/111.css" />
         <option value="$PROJECT_DIR$/src/main/webapp/jsp/new.jsp" />
         <option value="$PROJECT_DIR$/src/main/resources/com/gem/share/dao/BlogLabelMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gem/share/dao/BlogLabelMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/gem/share/entity/BlogLabel.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/gem/share/entity/BlogLabelExample.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/gem/share/dao/BlogLabelMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/gem/share/dao/LabelInfoMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/com/gem/share/dao/LabelInfoMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/gem/share/dao/AddressMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/com/gem/share/dao/AddressMapper.xml" />
       </list>
     </option>
   </component>
@@ -266,8 +304,8 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="175" />
-    <option name="y" value="94" />
+    <option name="x" value="212" />
+    <option name="y" value="69" />
     <option name="width" value="1154" />
     <option name="height" value="630" />
   </component>
@@ -393,17 +431,6 @@
               <item name="gem" type="462c0819:PsiDirectoryNode" />
               <item name="share" type="462c0819:PsiDirectoryNode" />
               <item name="dao" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ShareMaven" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ShareMaven" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="gem" type="462c0819:PsiDirectoryNode" />
-              <item name="share" type="462c0819:PsiDirectoryNode" />
-              <item name="entity" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ShareMaven" type="b2602c69:ProjectViewProjectNode" />
@@ -837,7 +864,7 @@
       <workItem from="1527727863521" duration="11306000" />
       <workItem from="1527745747601" duration="19241000" />
       <workItem from="1527813119346" duration="25949000" />
-      <workItem from="1527901268158" duration="4604000" />
+      <workItem from="1527901268158" duration="11670000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1527728944158</created>
@@ -923,7 +950,14 @@
       <option name="project" value="LOCAL" />
       <updated>1527831282381</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Initial commit">
+      <created>1527905925145</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1527905925145</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -950,7 +984,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="125143000" />
+    <option name="totallyTimeSpent" value="132209000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -962,7 +996,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="175" y="94" width="1154" height="630" extended-state="0" />
+    <frame x="212" y="69" width="1154" height="630" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -982,10 +1016,10 @@
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32885906" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.4969743" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22315437" sideWeight="0.4969743" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22245763" sideWeight="0.4969743" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32718122" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32885906" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30987203" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35648996" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.295302" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1001,6 +1035,32 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -1028,58 +1088,10 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gem/share/entity/UserGrade.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-27">
-          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gem/share/entity/UserGradeExample.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1">
-          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gem/share/entity/UserInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gem/share/entity/UserInfoExample.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1">
-          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gem/share/entity/UserLabel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-27">
-          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/gem/share/entity/UserLabelExample.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1">
           <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/com/gem/share/dao/AddressMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-55">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1205,62 +1217,6 @@
         <state relative-caret-position="-55">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/com/gem/share/dao/FollowRelationMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-55">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1527737493551" expanded="true" signature="3536:3673" ph="select from followrelation" />
-            <marker date="1527737493551" expanded="true" signature="3759:3850" ph="delete from " />
-            <marker date="1527737493551" expanded="true" signature="3958:3984" ph="delete from " />
-            <marker date="1527737493551" expanded="true" signature="4168:4413" ph="insert into followrelation... " />
-            <marker date="1527737493551" expanded="true" signature="5472:5507" ph="select count... followrelation" />
-            <marker date="1527737493551" expanded="true" signature="6376:6646" ph="update follo... " />
-            <marker date="1527737493551" expanded="true" signature="6861:7280" ph="update follo... " />
-            <marker date="1527737493551" expanded="true" signature="7384:7629" ph="update follo... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/com/gem/share/dao/LabelInfoMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-55">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="n#resultMap#0;n#mapper#0;n#!!top" expanded="false" />
-            <element signature="n#sql#0;n#mapper#0;n#!!top" expanded="false" />
-            <element signature="n#sql#1;n#mapper#0;n#!!top" expanded="false" />
-            <element signature="n#sql#2;n#mapper#0;n#!!top" expanded="false" />
-            <element signature="n#select#0;n#mapper#0;n#!!top" expanded="false" />
-            <element signature="n#delete#0;n#mapper#0;n#!!top" expanded="false" />
-            <element signature="n#delete#1;n#mapper#0;n#!!top" expanded="false" />
-            <element signature="n#insert#0;n#mapper#0;n#!!top" expanded="false" />
-            <element signature="n#insert#1;n#mapper#0;n#!!top" expanded="false" />
-            <element signature="n#select#2;n#mapper#0;n#!!top" expanded="false" />
-            <element signature="n#update#0;n#mapper#0;n#!!top" expanded="false" />
-            <element signature="n#update#1;n#mapper#0;n#!!top" expanded="false" />
-            <element signature="n#update#2;n#mapper#0;n#!!top" expanded="false" />
-            <element signature="n#update#3;n#mapper#0;n#!!top" expanded="false" />
-            <marker date="1527836870149" expanded="true" signature="3608:3724" ph="select from labelinfo" />
-            <marker date="1527836870149" expanded="true" signature="3810:3880" ph="delete from " />
-            <marker date="1527836870149" expanded="true" signature="3983:4004" ph="delete from " />
-            <marker date="1527836870149" expanded="true" signature="4183:4472" ph="insert into labelinfo... " />
-            <marker date="1527836870149" expanded="true" signature="5683:5713" ph="select count... labelinfo" />
-            <marker date="1527836870149" expanded="true" signature="6700:7028" ph="update label... " />
-            <marker date="1527836870149" expanded="true" signature="7238:7769" ph="update label... " />
-            <marker date="1527836870149" expanded="true" signature="7868:8164" ph="update label... " />
-            <marker date="1527836870149" expanded="true" signature="8324:8376" ph="select * fro... labelinfo" />
-            <marker date="1527836870149" expanded="true" signature="8546:8601" ph="select * fro... labelinfo" />
-            <marker date="1527836870149" expanded="true" signature="8779:8845" ph="select * fro... labelinfo" />
-            <marker date="1527836870149" expanded="true" signature="8994:9037" ph="update label... " />
-            <marker date="1527836870149" expanded="true" signature="8994:9067" ph="update label... " />
-            <marker date="1527836870149" expanded="true" signature="8994:9234" ph="update label... " />
-            <marker date="1527836870149" expanded="true" signature="9418:9526" ph="insert into labelinfo... " />
-            <marker date="1527836870149" expanded="true" signature="9660:9710" ph="delete from " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1532,22 +1488,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gem/share/dao/BlogLabelMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="56">
-          <caret line="10" column="17" lean-forward="false" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gem/share/dao/LabelInfoMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="56">
-          <caret line="9" column="17" lean-forward="false" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/com/gem/share/dao/BlogContentMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1988">
@@ -1581,10 +1521,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/com/gem/share/dao/FollowRelationMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1527737493551" expanded="true" signature="3536:3673" ph="select from followrelation" />
+            <marker date="1527737493551" expanded="true" signature="3759:3850" ph="delete from " />
+            <marker date="1527737493551" expanded="true" signature="3958:3984" ph="delete from " />
+            <marker date="1527737493551" expanded="true" signature="4168:4413" ph="insert into followrelation... " />
+            <marker date="1527737493551" expanded="true" signature="5472:5507" ph="select count... followrelation" />
+            <marker date="1527737493551" expanded="true" signature="6376:6646" ph="update follo... " />
+            <marker date="1527737493551" expanded="true" signature="6861:7280" ph="update follo... " />
+            <marker date="1527737493551" expanded="true" signature="7384:7629" ph="update follo... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/com/gem/share/dao/BlogLabelMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="78">
-          <caret line="182" column="36" lean-forward="false" selection-start-line="182" selection-start-column="36" selection-end-line="182" selection-end-column="36" />
+        <state relative-caret-position="237">
+          <caret line="196" column="80" lean-forward="true" selection-start-line="196" selection-start-column="80" selection-end-line="196" selection-end-column="80" />
           <folding>
             <marker date="1527905350683" expanded="true" signature="3390:3514" ph="select from bloglabel" />
             <marker date="1527905350683" expanded="true" signature="3600:3678" ph="delete from " />
@@ -1601,6 +1558,123 @@
             <marker date="1527905350683" expanded="true" signature="7537:7589" ph="select * fro... bloglabel" />
             <marker date="1527905350683" expanded="true" signature="7767:7868" ph="SELECT * fro... bloglabel" />
             <marker date="1527905350683" expanded="true" signature="7807:7867" ph="select label... labelinfo" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gem/share/dao/LabelInfoMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="237">
+          <caret line="37" column="0" lean-forward="true" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gem/share/dao/ManagerOpeContentMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gem/share/dao/ManagerInfoMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="321">
+          <caret line="28" column="47" lean-forward="true" selection-start-line="28" selection-start-column="47" selection-end-line="28" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gem/share/dao/BlogLabelMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="33" column="22" lean-forward="true" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gem/share/dao/UserInfoMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-112">
+          <caret line="9" column="17" lean-forward="false" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gem/share/entity/Address.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="28">
+          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gem/share/dao/AddressMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="36" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/com/gem/share/dao/AddressMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="293">
+          <caret line="246" column="0" lean-forward="true" selection-start-line="246" selection-start-column="0" selection-end-line="246" selection-end-column="0" />
+          <folding>
+            <marker date="1527908908921" expanded="true" signature="3634:3752" ph="select from address" />
+            <marker date="1527908908921" expanded="true" signature="3838:3910" ph="delete from " />
+            <marker date="1527908908921" expanded="true" signature="4011:4030" ph="delete from " />
+            <marker date="1527908908921" expanded="true" signature="4207:4509" ph="insert into address... " />
+            <marker date="1527908908921" expanded="true" signature="5789:5817" ph="select count... address" />
+            <marker date="1527908908921" expanded="true" signature="6855:7196" ph="update addre... " />
+            <marker date="1527908908921" expanded="true" signature="7404:7970" ph="update addre... " />
+            <marker date="1527908908921" expanded="true" signature="8067:8369" ph="update addre... " />
+            <marker date="1527908908921" expanded="true" signature="8481:8502" ph="select * fro... address" />
+            <marker date="1527908908921" expanded="true" signature="8667:8716" ph="select * fro... address" />
+            <marker date="1527908908921" expanded="true" signature="8884:8934" ph="select * fro... address" />
+            <marker date="1527908908921" expanded="true" signature="9090:9136" ph="select * fro... address" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/com/gem/share/dao/LabelInfoMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="167">
+          <caret line="234" column="61" lean-forward="true" selection-start-line="234" selection-start-column="61" selection-end-line="234" selection-end-column="61" />
+          <folding>
+            <element signature="n#resultMap#0;n#mapper#0;n#!!top" expanded="false" />
+            <element signature="n#sql#0;n#mapper#0;n#!!top" expanded="false" />
+            <element signature="n#sql#1;n#mapper#0;n#!!top" expanded="false" />
+            <element signature="n#sql#2;n#mapper#0;n#!!top" expanded="false" />
+            <element signature="n#select#0;n#mapper#0;n#!!top" expanded="false" />
+            <element signature="n#delete#0;n#mapper#0;n#!!top" expanded="false" />
+            <element signature="n#delete#1;n#mapper#0;n#!!top" expanded="false" />
+            <element signature="n#insert#0;n#mapper#0;n#!!top" expanded="false" />
+            <element signature="n#insert#1;n#mapper#0;n#!!top" expanded="false" />
+            <element signature="n#select#2;n#mapper#0;n#!!top" expanded="false" />
+            <element signature="n#update#0;n#mapper#0;n#!!top" expanded="false" />
+            <element signature="n#update#1;n#mapper#0;n#!!top" expanded="false" />
+            <element signature="n#update#2;n#mapper#0;n#!!top" expanded="false" />
+            <element signature="n#update#3;n#mapper#0;n#!!top" expanded="false" />
+            <marker date="1527906930880" expanded="true" signature="3608:3724" ph="select from labelinfo" />
+            <marker date="1527906930880" expanded="true" signature="3810:3880" ph="delete from " />
+            <marker date="1527906930880" expanded="true" signature="3983:4004" ph="delete from " />
+            <marker date="1527906930880" expanded="true" signature="4183:4472" ph="insert into labelinfo... " />
+            <marker date="1527906930880" expanded="true" signature="5683:5713" ph="select count... labelinfo" />
+            <marker date="1527906930880" expanded="true" signature="6700:7028" ph="update label... " />
+            <marker date="1527906930880" expanded="true" signature="7238:7769" ph="update label... " />
+            <marker date="1527906930880" expanded="true" signature="7868:8164" ph="update label... " />
+            <marker date="1527906930880" expanded="true" signature="8280:8303" ph="select * fro... labelinfo" />
+            <marker date="1527906930880" expanded="true" signature="8463:8515" ph="select * fro... labelinfo" />
+            <marker date="1527906930880" expanded="true" signature="8685:8740" ph="select * fro... labelinfo" />
+            <marker date="1527906930880" expanded="true" signature="8918:8984" ph="select * fro... labelinfo" />
+            <marker date="1527906930880" expanded="true" signature="9133:9176" ph="update label... " />
+            <marker date="1527906930880" expanded="true" signature="9133:9206" ph="update label... " />
+            <marker date="1527906930880" expanded="true" signature="9133:9373" ph="update label... " />
+            <marker date="1527906930880" expanded="true" signature="9557:9665" ph="insert into labelinfo... " />
+            <marker date="1527906930880" expanded="true" signature="9799:9849" ph="delete from " />
           </folding>
         </state>
       </provider>

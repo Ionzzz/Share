@@ -39,5 +39,6 @@ public interface BlogLabelMapper {
     public List<Integer> selectBlogIdByLabelId(int label_id);
 //    通过标签找博客
     public List<BlogContent> selectBlogByLabelId(int label_id);
+
     public List<BlogContent> selectBlogByLabelName(String labelName);
 }

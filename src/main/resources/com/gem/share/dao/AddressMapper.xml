@@ -226,4 +226,21 @@
       detail_address = #{detailAddress,jdbcType=VARCHAR}
     where address_id = #{addressId,jdbcType=INTEGER}
   </update>
+  
+  <!--public Address selectAddress();-->
+  <select id="selectAddress" resultType="Address">
+    select * from address;
+  </select>
+  <!--public Address selectAddressByCountry(String country);-->
+  <select id="selectAddressByCountry" parameterType="String" resultType="Address">
+    select * from address where country=#{_parameter};
+  </select>
+  <!--public Address selectAddressByProvince(String province);-->
+  <select id="selectAddressByProvince" parameterType="String" resultType="Address">
+    select * from address where province=#{_parameter};
+  </select>
+  <!--public Address selectAddressByCity(String city);-->
+  <select id="selectAddressByCity" parameterType="String" resultType="Address">
+    select * from address where city=#{_parameter};
+  </select>
 </mapper>

@@ -29,6 +29,8 @@ public interface LabelInfoMapper {
 
     int updateByPrimaryKey(LabelInfo record);
 
+    public LabelInfo selectAllLabel();
+
     public LabelInfo selectLabelByLabelId(int label_id);
 
     public LabelInfo selectLabelByLabelName(String labelName);

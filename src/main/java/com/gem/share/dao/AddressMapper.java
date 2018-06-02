@@ -2,8 +2,9 @@ package com.gem.share.dao;
 
 import com.gem.share.entity.Address;
 import com.gem.share.entity.AddressExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface AddressMapper {
     long countByExample(AddressExample example);
@@ -27,4 +28,12 @@ public interface AddressMapper {
     int updateByPrimaryKeySelective(Address record);
 
     int updateByPrimaryKey(Address record);
+
+    public Address selectAddress();
+
+    public Address selectAddressByCountry(String country);
+
+    public Address selectAddressByProvince(String province);
+
+    public Address selectAddressByCity(String city);
 }
