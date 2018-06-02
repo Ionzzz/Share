@@ -10,29 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5d62ac77-8c7f-4ccb-88a6-f35818686fc8" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ShareMaven/WEB-INF/classes/com/gem/share/dao/AddressMapper.class" afterPath="$PROJECT_DIR$/target/ShareMaven/WEB-INF/classes/com/gem/share/dao/AddressMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ShareMaven/WEB-INF/classes/com/gem/share/dao/BlogLabelMapper.class" afterPath="$PROJECT_DIR$/target/ShareMaven/WEB-INF/classes/com/gem/share/dao/BlogLabelMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ShareMaven/WEB-INF/classes/com/gem/share/dao/LabelInfoMapper.class" afterPath="$PROJECT_DIR$/target/ShareMaven/WEB-INF/classes/com/gem/share/dao/LabelInfoMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ShareMaven/WEB-INF/classes/com/gem/share/entity/BlogLabel.class" afterPath="$PROJECT_DIR$/target/ShareMaven/WEB-INF/classes/com/gem/share/entity/BlogLabel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ShareMaven/WEB-INF/classes/com/gem/share/entity/BlogLabelExample$Criteria.class" afterPath="$PROJECT_DIR$/target/ShareMaven/WEB-INF/classes/com/gem/share/entity/BlogLabelExample$Criteria.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ShareMaven/WEB-INF/classes/com/gem/share/entity/BlogLabelExample$GeneratedCriteria.class" afterPath="$PROJECT_DIR$/target/ShareMaven/WEB-INF/classes/com/gem/share/entity/BlogLabelExample$GeneratedCriteria.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ShareMaven/WEB-INF/classes/com/gem/share/service/AddressService.class" afterPath="$PROJECT_DIR$/target/ShareMaven/WEB-INF/classes/com/gem/share/service/AddressService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ShareMaven/WEB-INF/classes/com/gem/share/service/BlogService.class" afterPath="$PROJECT_DIR$/target/ShareMaven/WEB-INF/classes/com/gem/share/service/BlogService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/gem/share/dao/AddressMapper.class" afterPath="$PROJECT_DIR$/target/classes/com/gem/share/dao/AddressMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/gem/share/dao/BlogLabelMapper.class" afterPath="$PROJECT_DIR$/target/classes/com/gem/share/dao/BlogLabelMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/gem/share/dao/LabelInfoMapper.class" afterPath="$PROJECT_DIR$/target/classes/com/gem/share/dao/LabelInfoMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/gem/share/entity/BlogLabel.class" afterPath="$PROJECT_DIR$/target/classes/com/gem/share/entity/BlogLabel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/gem/share/entity/BlogLabelExample$Criteria.class" afterPath="$PROJECT_DIR$/target/classes/com/gem/share/entity/BlogLabelExample$Criteria.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/gem/share/entity/BlogLabelExample$GeneratedCriteria.class" afterPath="$PROJECT_DIR$/target/classes/com/gem/share/entity/BlogLabelExample$GeneratedCriteria.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/gem/share/service/AddressService.class" afterPath="$PROJECT_DIR$/target/classes/com/gem/share/service/AddressService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/gem/share/service/BlogService.class" afterPath="$PROJECT_DIR$/target/classes/com/gem/share/service/BlogService.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ShareMaven/WEB-INF/classes/com/gem/share/dao/AddressMapper.xml" afterPath="$PROJECT_DIR$/target/ShareMaven/WEB-INF/classes/com/gem/share/dao/AddressMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ShareMaven/WEB-INF/classes/com/gem/share/dao/BlogLabelMapper.xml" afterPath="$PROJECT_DIR$/target/ShareMaven/WEB-INF/classes/com/gem/share/dao/BlogLabelMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ShareMaven/WEB-INF/classes/com/gem/share/dao/LabelInfoMapper.xml" afterPath="$PROJECT_DIR$/target/ShareMaven/WEB-INF/classes/com/gem/share/dao/LabelInfoMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/gem/share/dao/AddressMapper.xml" afterPath="$PROJECT_DIR$/target/classes/com/gem/share/dao/AddressMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/gem/share/dao/BlogLabelMapper.xml" afterPath="$PROJECT_DIR$/target/classes/com/gem/share/dao/BlogLabelMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/gem/share/dao/LabelInfoMapper.xml" afterPath="$PROJECT_DIR$/target/classes/com/gem/share/dao/LabelInfoMapper.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -105,21 +83,21 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/gem/share/service/Impl/AddressServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="179">
-              <caret line="24" column="13" lean-forward="true" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+              <caret line="23" column="13" lean-forward="true" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#814#815#0" expanded="true" />
-                <element signature="e#842#843#0" expanded="true" />
+                <element signature="e#753#754#0" expanded="true" />
+                <element signature="e#781#782#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AddressMapper.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="AddressMapper.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/gem/share/dao/AddressMapper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="31" column="2" lean-forward="false" selection-start-line="31" selection-start-column="2" selection-end-line="31" selection-end-column="2" />
+            <state relative-caret-position="154">
+              <caret line="15" column="31" lean-forward="true" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -148,18 +126,18 @@
       <file leaf-file-name="BlogService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/gem/share/service/BlogService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="316">
+            <state relative-caret-position="1120">
               <caret line="83" column="63" lean-forward="false" selection-start-line="83" selection-start-column="63" selection-end-line="83" selection-end-column="63" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LabelInfoMapper.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="LabelInfoMapper.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/gem/share/dao/LabelInfoMapper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="277">
-              <caret line="32" column="44" lean-forward="true" selection-start-line="32" selection-start-column="44" selection-end-line="32" selection-end-column="44" />
+            <state relative-caret-position="249">
+              <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -334,9 +312,9 @@
         <option value="$PROJECT_DIR$/src/main/java/com/gem/share/service/Impl/AddressServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/gem/share/service/LabelInfoService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/gem/share/service/Impl/LabelInfoServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gem/share/dao/AddressMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/gem/share/dao/BlogContentMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/gem/share/dao/LabelInfoMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/gem/share/dao/AddressMapper.java" />
       </list>
     </option>
   </component>
@@ -880,7 +858,7 @@
       <workItem from="1527727863521" duration="11306000" />
       <workItem from="1527745747601" duration="19241000" />
       <workItem from="1527813119346" duration="25949000" />
-      <workItem from="1527901268158" duration="15659000" />
+      <workItem from="1527901268158" duration="17857000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1527728944158</created>
@@ -994,7 +972,14 @@
       <option name="project" value="LOCAL" />
       <updated>1527930228857</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Initial commit">
+      <created>1527930257163</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1527930257163</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1021,7 +1006,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="136198000" />
+    <option name="totallyTimeSpent" value="138396000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1034,7 +1019,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15268457" sideWeight="0.5030257" order="7" side_tool="true" content_ui="tabs" />
@@ -1054,7 +1038,7 @@
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32885906" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3338926" sideWeight="0.4969743" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22245763" sideWeight="0.4969743" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22147651" sideWeight="0.4969743" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32718122" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32885906" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2685325" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1592,26 +1576,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gem/share/service/BlogService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="316">
-          <caret line="83" column="63" lean-forward="false" selection-start-line="83" selection-start-column="63" selection-end-line="83" selection-end-column="63" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/gem/share/service/AddressService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
           <caret line="10" column="45" lean-forward="false" selection-start-line="10" selection-start-column="45" selection-end-line="10" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gem/share/service/LabelInfoService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="14" column="66" lean-forward="false" selection-start-line="14" selection-start-column="66" selection-end-line="14" selection-end-column="66" />
           <folding />
         </state>
       </provider>
@@ -1645,19 +1613,35 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/gem/share/service/Impl/AddressServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="179">
-          <caret line="24" column="13" lean-forward="true" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+          <caret line="23" column="13" lean-forward="true" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#814#815#0" expanded="true" />
-            <element signature="e#842#843#0" expanded="true" />
+            <element signature="e#753#754#0" expanded="true" />
+            <element signature="e#781#782#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gem/share/dao/AddressMapper.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gem/share/dao/LabelInfoMapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="31" column="2" lean-forward="false" selection-start-line="31" selection-start-column="2" selection-end-line="31" selection-end-column="2" />
+        <state relative-caret-position="249">
+          <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gem/share/service/BlogService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1120">
+          <caret line="83" column="63" lean-forward="false" selection-start-line="83" selection-start-column="63" selection-end-line="83" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gem/share/service/LabelInfoService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="14" column="66" lean-forward="false" selection-start-line="14" selection-start-column="66" selection-end-line="14" selection-end-column="66" />
           <folding />
         </state>
       </provider>
@@ -1670,10 +1654,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gem/share/dao/LabelInfoMapper.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gem/share/dao/AddressMapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="32" column="44" lean-forward="true" selection-start-line="32" selection-start-column="44" selection-end-line="32" selection-end-column="44" />
+        <state relative-caret-position="154">
+          <caret line="15" column="31" lean-forward="true" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
           <folding />
         </state>
       </provider>
