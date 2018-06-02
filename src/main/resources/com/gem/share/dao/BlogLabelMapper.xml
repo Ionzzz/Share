@@ -189,8 +189,8 @@
     SELECT label_id from bloglabel where blog_id = #{_parameter}
   </select>
   <!--//    通过标签找到博客id-->
-  <!--public Integer selectBlogByLabelId(int label_id);-->
-  <select id="selectBlogByLabelId" parameterType="int" resultType="Integer">
+  <!--public List<Integer> selectBlogIdByLabelId(int label_id);-->
+  <select id="selectBlogIdByLabelId" parameterType="int" resultType="Integer">
     SELECT blog_id FROM bloglabel where label_id =#{_parameter}
   </select>
   <!--public List<BlogContent> selectBlogByLabelId(int label_id);-->
