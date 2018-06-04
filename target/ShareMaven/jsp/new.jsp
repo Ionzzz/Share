@@ -7,6 +7,12 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <html lang="en" class="no-js">
 <head>
     <!-- Required meta tags -->
@@ -82,6 +88,8 @@
                 <div>
                     <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">News</div>
                 </div>
+
+            <c:forEach items="${bloglist}" var="blog">
                 <div class="row pb-4">
                     <div class="col-md-5">
                         <div class="fh5co_hover_news_img">
@@ -90,14 +98,15 @@
                         </div>
                     </div>
                     <div class="col-md-7 animate-box">
-                        <a href="single.jsp" class="fh5co_magna py-2"> Magna aliqua ut enim ad minim veniam quis
-                            nostrud quis xercitation ullamco. </a> <br/><a href="#" class="fh5co_mini_time py-3"> Thomson Smith -
-                        April 18,2018 </a>
-                        <div class="fh5co_consectetur"> Amet consectetur adipisicing elit, sed do eiusmod tempor incididunt
-                            ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
+                        <a href="single.jsp" class="fh5co_magna py-2">${blog.blogcontent} </a> <br/>
+                        <a href="#" class="fh5co_mini_time py-3"> ${blog.blogId}-<fmt:formatDate value="${blog.blogcreatetime}" pattern="yyyy-MM-dd HH:mm:ss"/> </a>
+                        <div class="fh5co_consectetur"> ${blog.blogcontent}
                         </div>
                     </div>
                 </div>
+            </c:forEach>
+
+
                 <div class="row pb-4">
                     <div class="col-md-5">
                         <div class="fh5co_hover_news_img">
