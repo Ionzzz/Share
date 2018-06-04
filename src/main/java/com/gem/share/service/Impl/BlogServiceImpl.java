@@ -21,6 +21,16 @@ public class BlogServiceImpl implements BlogService {
     @Autowired
     private BlogPicsMapper blogPicsMapper;
 
+    @Override
+    public String selectPicByBlogPicsId(int blogPics_id) {
+        return blogPicsMapper.selectPicByBlogPicsId(blogPics_id);
+    }
+
+    @Override//查询前四条数据
+    public List<BlogContent> selectFourBlog() {
+        return blogContentMapper.selectFourBlog();
+    }
+
     @Override//分页
     public PageInfo<BlogContent> selectAllBlogByPage(Map<String, Object> map) {
         int curPage= (int) map.get("curPage");
@@ -68,7 +78,7 @@ public class BlogServiceImpl implements BlogService {
 
     @Override
     public Integer selectBlogPicsByBlogId(int blog_id) {
-        return blogPicsMapper.selectBlogPicsByBlogId(blog_id);
+        return blogPicsMapper.selectBlogPicsIdByBlogId(blog_id);
     }
 
     @Override

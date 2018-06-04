@@ -6,6 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -92,7 +94,7 @@
                         <a class="nav-link" href="single.jsp">话题 <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link " href="publishBlog.jsp" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">发布</a>
+                        <a class="nav-link" href="publishBlog.jsp" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">发布</a>
                     </li>
                     <li class="nav-item ">
                         <a class="nav-link" href="<%=basePath%>shuDong/main.action">树洞 <span class="sr-only">(current)</span></a>
@@ -124,45 +126,20 @@
         </div>
         <div class="col-md-6">
             <div class="row">
-                <div class="col-md-6 col-6 paddding animate-box" data-animate-effect="fadeIn">
-                    <div class="fh5co_suceefh5co_height_2"><img src="<%=basePath%>images/index-images/science-578x362.jpg" alt="img"/>
+                <c:forEach items="${blogfourlist}" var="blogfourlist">
+                    <div class="col-md-6 col-6 paddding animate-box" data-animate-effect="fadeIn">
+                      <div class="fh5co_suceefh5co_height_2"><img src="<%=basePath%>${pic.get(blogfourlist.blogId-1)}" alt="img"/>
                         <div class="fh5co_suceefh5co_height_position_absolute"></div>
                         <div class="fh5co_suceefh5co_height_position_absolute_font_2">
-                            <div class=""><a href="#" class="color_fff"> <i class="fa fa-clock-o"></i>&nbsp;&nbsp;Oct
-                                28,2017 </a></div>
-                            <div class=""><a href="single.jsp" class="fh5co_good_font_2"> After all is said and done, <br>more is said than done </a></div>
+                            <div class=""><a href="#" class="color_fff"> <i class="fa fa-clock-o"></i>&nbsp;&nbsp;<fmt:formatDate value="${blogfourlist.blogcreatetime}" pattern="yyyy-MM-dd HH:mm:ss"/> </a></div>
+                            <div class=""><a href="single.jsp" class="fh5co_good_font_2"> ${blogfourlist.blogcontent} </a></div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-6 paddding animate-box" data-animate-effect="fadeIn">
-                    <div class="fh5co_suceefh5co_height_2"><img src="<%=basePath%>images/index-images/joe-gardner-75333.jpg" alt="img"/>
-                        <div class="fh5co_suceefh5co_height_position_absolute"></div>
-                        <div class="fh5co_suceefh5co_height_position_absolute_font_2">
-                            <div class=""><a href="#" class="color_fff"> <i class="fa fa-clock-o"></i>&nbsp;&nbsp;Oct 28,2017 </a></div>
-                            <div class=""><a href="single.jsp" class="fh5co_good_font_2"> After all is said and done... </a></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-6 paddding animate-box" data-animate-effect="fadeIn">
-                    <div class="fh5co_suceefh5co_height_2"><img src="<%=basePath%>images/index-images/ryan-moreno-98837.jpg" alt="img"/>
-                        <div class="fh5co_suceefh5co_height_position_absolute"></div>
-                        <div class="fh5co_suceefh5co_height_position_absolute_font_2">
-                            <div class=""><a href="#" class="color_fff"> <i class="fa fa-clock-o"></i>&nbsp;&nbsp;Oct
-                                28,2017 </a></div>
-                            <div class=""><a href="single.jsp" class="fh5co_good_font_2"> After all is said and done, more is said than done </a></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-6 paddding animate-box" data-animate-effect="fadeIn">
-                    <div class="fh5co_suceefh5co_height_2"><img src="<%=basePath%>images/index-images/10-1-1-875x500.jpg" alt="img"/>
-                        <div class="fh5co_suceefh5co_height_position_absolute"></div>
-                        <div class="fh5co_suceefh5co_height_position_absolute_font_2">
-                            <div class=""><a href="#" class="color_fff"> <i class="fa fa-clock-o"></i>&nbsp;&nbsp;Oct
-                                28,2017 </a></div>
-                            <div class=""><a href="single.jsp" class="fh5co_good_font_2"> After all is said and done, more is said... </a></div>
-                        </div>
-                    </div>
-                </div>
+                         </div>
+                      </div>
+                </c:forEach>
+
+
+
             </div>
         </div>
     </div>
@@ -215,6 +192,26 @@
             <div class="item px-2">
                 <div class="fh5co_latest_trading_img_position_relative">
                     <div class="fh5co_latest_trading_img"><img src="<%=basePath%>images/index-images/science-578x362.jpg" alt="" class="fh5co_img_special_relative"/></div>
+                    <div class="fh5co_latest_trading_img_position_absolute"></div>
+                    <div class="fh5co_latest_trading_img_position_absolute_1">
+                        <a href="single.jsp" class="text-white"> Here's a new way to take better photos for instagram </a>
+                        <div class="fh5co_latest_trading_date_and_name_color"> Walter Johson - March 7,2017</div>
+                    </div>
+                </div>
+            </div>
+            <div class="item px-2">
+                <div class="fh5co_latest_trading_img_position_relative">
+                    <div class="fh5co_latest_trading_img"><img src="<%=basePath%>images/index-images/nick-karvounis-78711.jpg" alt="" class="fh5co_img_special_relative"/></div>
+                    <div class="fh5co_latest_trading_img_position_absolute"></div>
+                    <div class="fh5co_latest_trading_img_position_absolute_1">
+                        <a href="single.jsp" class="text-white"> Here's a new way to take better photos for instagram </a>
+                        <div class="fh5co_latest_trading_date_and_name_color"> Walter Johson - March 7,2017</div>
+                    </div>
+                </div>
+            </div>
+            <div class="item px-2">
+                <div class="fh5co_latest_trading_img_position_relative">
+                    <div class="fh5co_latest_trading_img"><img src="<%=basePath%>images/index-images/nick-karvounis-78711.jpg" alt="" class="fh5co_img_special_relative"/></div>
                     <div class="fh5co_latest_trading_img_position_absolute"></div>
                     <div class="fh5co_latest_trading_img_position_absolute_1">
                         <a href="single.jsp" class="text-white"> Here's a new way to take better photos for instagram </a>

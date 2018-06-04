@@ -30,7 +30,9 @@ public interface BlogPicsMapper {
     int updateByPrimaryKey(BlogPics record);
 
     //    通过博客id得到博客图片，上传相册
-    public Integer selectBlogPicsByBlogId(int blog_id);
+    public Integer selectBlogPicsIdByBlogId(int blog_id);
+
+    public String selectPicByBlogPicsId(int blogPics_id);
 
 
 }

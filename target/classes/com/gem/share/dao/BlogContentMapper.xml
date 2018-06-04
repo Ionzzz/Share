@@ -330,19 +330,24 @@
   <select id="selectBlogCreateTimeByBlogId" parameterType="int" resultType="Date">
     select createtime from blogcentent where blog_id=#{_parameter};
   </select>
-<!--  private Integer blogId;
 
-  private Integer userId;
+  <!--public List<BlogContent> selectFourBlog();-->
+  <select id="selectFourBlog" resultType="BlogContent">
+    select * from blogcontent limit 4
+  </select>
+  <!--  private Integer blogId;
 
-  private Integer blogpicsId;
+    private Integer userId;
 
-  private Date blogcreatetime;
+    private Integer blogpicsId;
 
-  private String blogflag;
+    private Date blogcreatetime;
 
-  private String essayflag;
+    private String blogflag;
 
-  private String blogcontent;-->
+    private String essayflag;
+
+    private String blogcontent;-->
 <!--
   <resultMap id="selectBlogLabelMap" type="BlogContent">
     <id column="id" property="id"/>

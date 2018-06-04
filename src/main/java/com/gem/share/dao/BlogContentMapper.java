@@ -55,4 +55,6 @@ public interface BlogContentMapper {
     public boolean deleteBlogByBlogId(int blog_id);
 
     public Date selectBlogCreateTimeByBlogId(int blog_id);
+
+    public List<BlogContent> selectFourBlog();
 }

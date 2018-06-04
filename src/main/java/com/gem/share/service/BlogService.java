@@ -9,6 +9,12 @@ import java.util.Map;
 
 public interface BlogService {
 
+    public String selectPicByBlogPicsId(int blogPics_id);
+
+
+    public List<BlogContent> selectFourBlog();
+
+
     public PageInfo<BlogContent> selectAllBlogByPage(Map<String,Object> map);
 
 //    通过博客id修改博客
