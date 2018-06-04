@@ -28,11 +28,18 @@
     <link href="<%=basePath%>css/index-css/content_font.css" rel="stylesheet">
     <link href="<%=basePath%>css/index-css/owl.carousel.css" rel="stylesheet" type="text/css"/>
     <link href="<%=basePath%>css/index-css/owl.theme.default.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=basePath%>css/index-css/css1.css" rel="stylesheet" type="text/css"/>
+
     <!-- Bootstrap CSS -->
 
     <!-- Modernizr JS -->
     <script src="<%=basePath%>js/index-js/modernizr-3.5.0.min.js"></script>
+
+    <style type="text/css">
+
+    </style>
 </head>
+
 <body>
 
 <header id="header">
@@ -77,6 +84,37 @@
         </div><!-- .wrapper -->
     </div><!-- #header-top -->
 </header>
+
+
+
+
+<!--右侧悬浮菜单-->
+<div class="slide">
+    <ul class="icon">
+        <li class="up" title="上一页"></li>
+        <li class="qq"></li>
+        <li class="tel"></li>
+        <li class="wx"></li>
+        <li class="down" title="下一页"></li>
+    </ul>
+    <ul class="info">
+        <li class="qq">
+            <p>在线沟通，请点我<a href="http://wpa.qq.com/msgrd?v=3&uin=1149911982&site=qq&menu=yes" target="_blank">在线咨询</a></p>
+        </li>
+        <li class="tel">
+            <p>咨询热线：<br>400-110-1111<br>客服qq：<br>1149911982</p>
+        </li>
+        <li class="wx">
+            <div class="img"><img src="../images/index-images/img/1441956938.png" /></div>
+        </li>
+    </ul>
+</div>
+<div id="btn" class="index_cy"></div>
+
+
+
+
+
 
 <div class="container-fluid contact_us_bg_img">
     <div class="container">
@@ -153,7 +191,7 @@
                 </form>
             </div>
             <div class="col-12 col-md-6 align-self-center">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3168.639290621062!2d-122.08624618469247!3d37.421999879825215!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sfr!2sbe!4v1514861541665" class="map_sss" allowfullscreen></iframe>
+                <iframe src="http://map.baidu.com/?newmap=1&ie=utf-8&s=s%26wd%3D%E8%8B%8F%E5%B7%9E%E5%B8%82%E6%9E%97%E6%B3%89%E8%A1%97567%E5%8F%B7" class="map_sss" allowfullscreen></iframe>
             </div>
         </div>
     </div>
@@ -245,6 +283,8 @@
     <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
 </div>
 
+
+
 <script src="<%=basePath%>js/index-js/jquery.min.js"></script>
 <script src="<%=basePath%>js/index-js/owl.carousel.min.js"></script>
 <!--<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>-->
@@ -254,6 +294,33 @@
 <script src="<%=basePath%>js/index-js/jquery.waypoints.min.js"></script>
 <!-- Main -->
 <script src="<%=basePath%>js/index-js/main.js"></script>
+
+<script type="text/javascript">
+    $(function(){
+
+        $('.slide .icon li').not('.up,.down').mouseenter(function(){
+            $('.slide .info').addClass('hover');
+            $('.slide .info li').hide();
+            $('.slide .info li.'+$(this).attr('class')).show();//.slide .info li.qq
+        });
+        $('.slide').mouseleave(function(){
+            $('.slide .info').removeClass('hover');
+        });
+
+        $('#btn').click(function(){
+            $('.slide').toggle();
+            if($(this).hasClass('index_cy')){
+                $(this).removeClass('index_cy');
+                $(this).addClass('index_cy2');
+            }else{
+                $(this).removeClass('index_cy2');
+                $(this).addClass('index_cy');
+            }
+
+        });
+
+    });
+</script>
 
 </body>
 

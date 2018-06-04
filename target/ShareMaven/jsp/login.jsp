@@ -10,12 +10,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>登录页面</title>
-<link href="<%=basePath%>css/index-css/style.css" rel="stylesheet" type="text/css" media="all"/>
+<link href="../css/index-css/style.css" rel="stylesheet" type="text/css" media="all"/>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link rel="stylesheet" href="<%=path %>bootstrap/css/bootstrap.min.css" />
-<script type="text/javascript" src="<%=path%>bootstrap/js/jQuery.js"></script>
-<script type="text/javascript" src="<%=path%>bootstrap/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="<%=request.getContextPath() %>/bootstrap/css/bootstrap.min.css" />
+<script type="text/javascript" src="<%=request.getContextPath()%>/bootstrap/js/jQuery.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <script type="text/javascript">
     var InterValObj; //timer变量，控制时间
