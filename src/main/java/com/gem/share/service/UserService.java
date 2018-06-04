@@ -7,7 +7,7 @@ import java.util.Date;
 
 public interface UserService {
 
-    public UserInfo selectByUserInfoId(int user_id);
+    public UserInfo selectUserInfoByUserId(int user_id);
 
     public boolean insertUserInfo(UserInfo userInfo);
 
@@ -41,5 +41,7 @@ public interface UserService {
 
     //    通知
     public Notice selectAllNotice(int user_id);
+
+
 
 }

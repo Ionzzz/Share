@@ -158,77 +158,18 @@
             <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">家居</div>
         </div>
         <div class="owl-carousel owl-theme js" id="slider1">
-            <div class="item px-2">
-                <div class="fh5co_latest_trading_img_position_relative">
-                    <div class="fh5co_latest_trading_img"><img src="<%=basePath%>images/index-images/allef-vinicius-108153.jpg" alt=""
-                                                               class="fh5co_img_special_relative"/></div>
-                    <div class="fh5co_latest_trading_img_position_absolute"></div>
-                    <div class="fh5co_latest_trading_img_position_absolute_1">
-                        <a href="single.jsp" class="text-white"> Here's a new way to take better photos for instagram </a>
-                        <div class="fh5co_latest_trading_date_and_name_color"> Walter Johson - March 7,2017</div>
+            <c:forEach items="${blogJiaJu}" var="blogJiaJu">
+                <div class="item px-2">
+                    <div class="fh5co_latest_trading_img_position_relative">
+                        <div class="fh5co_latest_trading_img"><img src="<%=basePath%>images/index-images/allef-vinicius-108153.jpg" alt=""class="fh5co_img_special_relative"/></div>
+                        <div class="fh5co_latest_trading_img_position_absolute"></div>
+                        <div class="fh5co_latest_trading_img_position_absolute_1">
+                            <a href="single.jsp" class="text-white"> ${blogJiaJu.blogcontent} </a>
+                            <div class="fh5co_latest_trading_date_and_name_color"> ${blogJiaJu.userId} - <fmt:formatDate value="${blogJiaJu.blogcreatetime}" pattern="yyyy-MM-dd HH:mm:ss"/> </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="item px-2">
-                <div class="fh5co_latest_trading_img_position_relative">
-                    <div class="fh5co_latest_trading_img"><img src="<%=basePath%>images/index-images/abigail-keenan-65477.jpg" alt="" class="fh5co_img_special_relative"/></div>
-                    <div class="fh5co_latest_trading_img_position_absolute"></div>
-                    <div class="fh5co_latest_trading_img_position_absolute_1">
-                        <a href="single.jsp" class="text-white"> Here's a new way to take better photos for instagram </a>
-                        <div class="fh5co_latest_trading_date_and_name_color"> Walter Johson - March 7,2017</div>
-                    </div>
-                </div>
-            </div>
-            <div class="item px-2">
-                <div class="fh5co_latest_trading_img_position_relative">
-                    <div class="fh5co_latest_trading_img"><img src="<%=basePath%>images/index-images/ryan-moreno-98837.jpg" alt="" class="fh5co_img_special_relative"/></div>
-                    <div class="fh5co_latest_trading_img_position_absolute"></div>
-                    <div class="fh5co_latest_trading_img_position_absolute_1">
-                        <a href="single.jsp" class="text-white"> Here's a new way to take better photos for instagram </a>
-                        <div class="fh5co_latest_trading_date_and_name_color"> Walter Johson - March 7,2017</div>
-                    </div>
-                </div>
-            </div>
-            <div class="item px-2">
-                <div class="fh5co_latest_trading_img_position_relative">
-                    <div class="fh5co_latest_trading_img"><img src="<%=basePath%>images/index-images/science-578x362.jpg" alt="" class="fh5co_img_special_relative"/></div>
-                    <div class="fh5co_latest_trading_img_position_absolute"></div>
-                    <div class="fh5co_latest_trading_img_position_absolute_1">
-                        <a href="single.jsp" class="text-white"> Here's a new way to take better photos for instagram </a>
-                        <div class="fh5co_latest_trading_date_and_name_color"> Walter Johson - March 7,2017</div>
-                    </div>
-                </div>
-            </div>
-            <div class="item px-2">
-                <div class="fh5co_latest_trading_img_position_relative">
-                    <div class="fh5co_latest_trading_img"><img src="<%=basePath%>images/index-images/nick-karvounis-78711.jpg" alt="" class="fh5co_img_special_relative"/></div>
-                    <div class="fh5co_latest_trading_img_position_absolute"></div>
-                    <div class="fh5co_latest_trading_img_position_absolute_1">
-                        <a href="single.jsp" class="text-white"> Here's a new way to take better photos for instagram </a>
-                        <div class="fh5co_latest_trading_date_and_name_color"> Walter Johson - March 7,2017</div>
-                    </div>
-                </div>
-            </div>
-            <div class="item px-2">
-                <div class="fh5co_latest_trading_img_position_relative">
-                    <div class="fh5co_latest_trading_img"><img src="<%=basePath%>images/index-images/nick-karvounis-78711.jpg" alt="" class="fh5co_img_special_relative"/></div>
-                    <div class="fh5co_latest_trading_img_position_absolute"></div>
-                    <div class="fh5co_latest_trading_img_position_absolute_1">
-                        <a href="single.jsp" class="text-white"> Here's a new way to take better photos for instagram </a>
-                        <div class="fh5co_latest_trading_date_and_name_color"> Walter Johson - March 7,2017</div>
-                    </div>
-                </div>
-            </div>
-            <div class="item px-2">
-                <div class="fh5co_latest_trading_img_position_relative">
-                    <div class="fh5co_latest_trading_img"><img src="<%=basePath%>images/index-images/nick-karvounis-78711.jpg" alt="" class="fh5co_img_special_relative"/></div>
-                    <div class="fh5co_latest_trading_img_position_absolute"></div>
-                    <div class="fh5co_latest_trading_img_position_absolute_1">
-                        <a href="single.jsp" class="text-white"> Here's a new way to take better photos for instagram </a>
-                        <div class="fh5co_latest_trading_date_and_name_color"> Walter Johson - March 7,2017</div>
-                    </div>
-                </div>
-            </div>
+            </c:forEach>
         </div>
     </div>
 </div>
@@ -238,42 +179,17 @@
             <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">旅行</div>
         </div>
         <div class="owl-carousel owl-theme" id="slider2">
-            <div class="item px-2">
-                <div class="fh5co_hover_news_img">
-                    <div class="fh5co_news_img"><img src="<%=basePath%>images/index-images/39-324x235.jpg" alt=""/></div>
-                    <div>
-                        <a href="single.jsp" class="d-block fh5co_small_post_heading"><span class="">The top 10 best computer speakers in the market</span></a>
-                        <div class="c_g"><i class="fa fa-clock-o"></i> Oct 16,2017</div>
+            <c:forEach items="${blogLvXing}" var="blogLvXing">
+                <div class="item px-2">
+                    <div class="fh5co_hover_news_img">
+                        <div class="fh5co_news_img"><img src="<%=basePath%>images/index-images/joe-gardner-75333.jpg" alt=""/></div>
+                        <div>
+                            <a href="single.jsp" class="d-block fh5co_small_post_heading"><span class="">${blogLvXing.blogcontent}</span></a>
+                            <div class="c_g"><i class="fa fa-clock-o"></i> <fmt:formatDate value="${blogLvXing.blogcreatetime}" pattern="yyyy-MM-dd HH:mm:ss"/></div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="item px-2">
-                <div class="fh5co_hover_news_img">
-                    <div class="fh5co_news_img"><img src="<%=basePath%>images/index-images/joe-gardner-75333.jpg" alt=""/></div>
-                    <div>
-                        <a href="single.jsp" class="d-block fh5co_small_post_heading"><span class="">The top 10 best computer speakers in the market</span></a>
-                        <div class="c_g"><i class="fa fa-clock-o"></i> Oct 16,2017</div>
-                    </div>
-                </div>
-            </div>
-            <div class="item px-2">
-                <div class="fh5co_hover_news_img">
-                    <div class="fh5co_news_img"><img src="<%=basePath%>images/index-images/ryan-moreno-98837.jpg" alt=""/></div>
-                    <div>
-                        <a href="single.jsp" class="d-block fh5co_small_post_heading"><span class="">The top 10 best computer speakers in the market</span></a>
-                        <div class="c_g"><i class="fa fa-clock-o"></i> Oct 16,2017</div>
-                    </div>
-                </div>
-            </div>
-            <div class="item px-2">
-                <div class="fh5co_hover_news_img">
-                    <div class="fh5co_news_img"><img src="<%=basePath%>images/index-images/seth-doyle-133175.jpg" alt=""/></div>
-                    <div>
-                        <a href="single.jsp" class="d-block fh5co_small_post_heading"><span class="">The top 10 best computer speakers in the market</span></a>
-                        <div class="c_g"><i class="fa fa-clock-o"></i> Oct 16,2017</div>
-                    </div>
-                </div>
-            </div>
+            </c:forEach>
         </div>
     </div>
 </div>
@@ -290,22 +206,6 @@
             <div class="col-md-8 animate-box" data-animate-effect="fadeInLeft">
                 <div>
                     <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">书籍</div>
-                </div>
-                <div class="row pb-4">
-                    <div class="col-md-5">
-                        <div class="fh5co_hover_news_img">
-                            <div class="fh5co_news_img"><img src="<%=basePath%>images/index-images/nathan-mcbride-229637.jpg" alt=""/></div>
-                            <div></div>
-                        </div>
-                    </div>
-                    <div class="col-md-7 animate-box">
-                        <a href="single.jsp" class="fh5co_magna py-2"> Magna aliqua ut enim ad minim veniam quis
-                            nostrud quis xercitation ullamco. </a> <a href="single.jsp" class="fh5co_mini_time py-3"> Thomson Smith -
-                        April 18,2018 </a>
-                        <div class="fh5co_consectetur"> Amet consectetur adipisicing elit, sed do eiusmod tempor incididunt
-                            ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
-                        </div>
-                    </div>
                 </div>
                 <div class="row pb-4">
                     <div class="col-md-5">
@@ -330,40 +230,22 @@
                         </ul>
                     </div>
                 </div>
-                <div class="row pb-4">
-                    <div class="col-md-5">
-                        <div class="fh5co_hover_news_img">
-                            <div class="fh5co_news_img">
-                                <img src="<%=basePath%>images/index-images/photo-1449157291145-7efd050a4d0e-578x362.jpg" alt=""/>
+                <c:forEach items="${blogbook}" var="blogbook">
+                    <div class="row pb-4">
+                        <div class="col-md-5">
+                            <div class="fh5co_hover_news_img">
+                                <div class="fh5co_news_img"><img src="<%=basePath%>images/index-images/nathan-mcbride-229637.jpg" alt=""/></div>
+                                <div></div>
                             </div>
-                            <div></div>
+                        </div>
+                        <div class="col-md-7 animate-box">
+                            <a href="single.jsp" class="fh5co_magna py-2"> Magna aliqua ut enim ad minim veniam quisnostrud quis xercitation ullamco. </a>
+                            <a href="single.jsp" class="fh5co_mini_time py-3"> Thomson Smith -  <fmt:formatDate value="${blogbook.blogcreatetime}" pattern="yyyy-MM-dd HH:mm:ss"/> </a>
+                            <div class="fh5co_consectetur"> ${blogbook.blogcontent}
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md-7">
-                        <a href="single.jsp" class="fh5co_magna py-2"> Magna aliqua ut enim ad minim veniam quis
-                            nostrud quis xercitation ullamco. </a> <a href="#" class="fh5co_mini_time py-3"> Thomson Smith -
-                        April 18,2018 </a>
-                        <div class="fh5co_consectetur"> Quis nostrud xercitation ullamco laboris nisi aliquip ex ea commodo
-                            consequat.
-                        </div>
-                    </div>
-                </div>
-                <div class="row pb-4">
-                    <div class="col-md-5">
-                        <div class="fh5co_hover_news_img">
-                            <div class="fh5co_news_img"><img src="<%=basePath%>images/index-images/office-768x512.jpg" alt=""/></div>
-                            <div></div>
-                        </div>
-                    </div>
-                    <div class="col-md-7">
-                        <a href="single.jsp" class="fh5co_magna py-2"> Magna aliqua ut enim ad minim veniam quis
-                            nostrud quis xercitation ullamco. </a> <a href="#" class="fh5co_mini_time py-3"> Thomson Smith -
-                        April 18,2018 </a>
-                        <div class="fh5co_consectetur"> Amet consectetur adipisicing elit, sed do eiusmod tempor incididunt
-                            ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
-                        </div>
-                    </div>
-                </div>
+                </c:forEach>
             </div>
             <div class="col-md-3 animate-box" data-animate-effect="fadeInRight">
                 <div>

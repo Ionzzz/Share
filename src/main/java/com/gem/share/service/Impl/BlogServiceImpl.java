@@ -1,14 +1,17 @@
 package com.gem.share.service.Impl;
 
 import com.gem.share.dao.BlogContentMapper;
+import com.gem.share.dao.BlogLabelMapper;
 import com.gem.share.dao.BlogPicsMapper;
 import com.gem.share.entity.BlogContent;
+import com.gem.share.entity.BlogLabel;
 import com.gem.share.service.BlogService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -20,6 +23,8 @@ public class BlogServiceImpl implements BlogService {
     private BlogContentMapper blogContentMapper;
     @Autowired
     private BlogPicsMapper blogPicsMapper;
+    @Autowired
+    private BlogLabelMapper blogLabelMapper;
 
     @Override
     public String selectPicByBlogPicsId(int blogPics_id) {
@@ -166,14 +171,26 @@ public class BlogServiceImpl implements BlogService {
         return null;
     }
 
-    @Override
+    @Override//标签id查询博客集合
     public List<BlogContent> selectBlogByLabelId(int label_id) {
-        return null;
+        List<BlogLabel> blogLabels=blogLabelMapper.selectBlogByLabelId(label_id);
+        List<BlogContent> blogContents=new ArrayList<>();
+        for(BlogLabel blogLabel:blogLabels){
+            BlogContent blogContent=blogContentMapper.selectBlogByBlogId(blogLabel.getBlogId());
+            blogContents.add(blogContent);
+        }
+        return blogContents;
     }
 
-    @Override
+    @Override//标签名称查询博客集合
     public List<BlogContent> selectBlogByLabelName(String labelName) {
-        return null;
+        List<BlogLabel> blogLabels=blogLabelMapper.selectBlogByLabelName(labelName);
+        List<BlogContent> blogContents=new ArrayList<>();
+        for(BlogLabel blogLabel:blogLabels){
+            BlogContent blogContent=blogContentMapper.selectBlogByBlogId(blogLabel.getBlogId());
+            blogContents.add(blogContent);
+        }
+        return blogContents;
     }
 
 

@@ -1,6 +1,5 @@
 package com.gem.share.dao;
 
-import com.gem.share.entity.BlogContent;
 import com.gem.share.entity.BlogLabel;
 import com.gem.share.entity.BlogLabelExample;
 import com.gem.share.entity.LabelInfo;
@@ -38,7 +37,7 @@ public interface BlogLabelMapper {
     //    通过标签找到博客id
     public List<Integer> selectBlogIdByLabelId(int label_id);
 //    通过标签找博客
-    public List<BlogContent> selectBlogByLabelId(int label_id);
+    public List<BlogLabel> selectBlogByLabelId(int label_id);
 
-    public List<BlogContent> selectBlogByLabelName(String labelName);
+    public List<BlogLabel> selectBlogByLabelName(String labelName);
 }
