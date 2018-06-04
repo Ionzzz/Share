@@ -1,0 +1,104 @@
+@charset "utf-8";
+/* CSS Document */
+
+.shang{
+	height:30px;
+}
+.touxiang img{
+	margin-top:5px;
+	margin-left:20px;
+	height:35px;
+	width:35px;
+}
+
+.wangming{
+	margin-top:5px;
+	height:20px;
+}
+
+.wangming p span{
+	font-size:10px;
+	color:#999;
+}
+
+.shijian{
+	font-size:10px;
+}
+.xia .me{
+	float:left;
+	height:5px;
+	margin-top:-15px;
+	margin-left:15px;
+	
+}
+.xia .comment{
+	float:left;
+	height:5px;
+	color:#000;
+	margin-top:-15px;
+	margin-left:15px;
+	
+}
+.xia .me a > p {
+	color:#D57D39;
+}
+.xia .comment p > a {
+	color:#D57D39;
+}
+
+.xia .neirong{
+	float:left;
+	width:100%;
+	background-color:#F0F0F0;
+	margin-left:5px;
+	margin-top:35px;
+	padding:5px 10px;
+}
+.xia .neirong .innercontent{
+	margin-top:5px;
+	margin-bottom:-15px;
+}
+.xia .neirong .innercontent a p span{
+	color:#999;
+}
+
+.xia .zanneirong{
+	float:left;
+	width:100%;
+	background-color:#F0F0F0;
+	margin-left:5px;
+	margin-top:20px;
+	padding:5px 10px;
+}
+.xia .zanneirong .innerzancontent{
+	margin-top:5px;
+	margin-bottom:-15px;
+}
+.xia .neirong .innerzancontent a p span{
+	color:#999;
+}
+
+/* a:link：未访问链接 ,如 a:link {color:blue} 
+
+② a:visited：已访问链接 ,如 a:visited{color:blue} 
+
+③ a:active：激活时（链接获得焦点时）链接的颜色 ,如a:active{color:blue} 
+
+④ a:hover：鼠标移到链接上时 ,如 a:hover {color:blue} 
+
+*/
+tbody a{
+	color:#000;
+	
+}
+tbody a:hover{
+	color:#D57D39 ;
+}
+tbody a span{
+	color:#000 ;
+}
+
+
+
+
+
