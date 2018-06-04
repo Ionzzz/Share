@@ -1,4 +1,4 @@
-.chatContainer,.chatContainer div, .chatContainer ul, .chatContainer li, .chatContainer p,{
+.chatContainer,.chatContainer div, .chatContainer ul, .chatContainer li, .chatContainer p{
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -468,7 +468,7 @@
     display: inline-block;
     width: 30px;
     height: 30px;
-    background: url(../img/bqxtb01.png) no-repeat;
+    background: url(../../images/chat-images/img/bqxtb01.png) no-repeat;
     background-size: 200px auto;
     cursor: pointer;
 }

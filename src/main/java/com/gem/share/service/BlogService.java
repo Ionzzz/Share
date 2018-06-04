@@ -26,8 +26,8 @@ public interface BlogService {
 //    按照博客发表时间排序  若时间相同按照用户id升序排列
     public List<BlogContent> orderBlogByCreateTime();
 
-//    通过博客id得到博客图片id，上传相册
-    public List<Integer> selectBlogPicsByBlogId(int blog_id);
+//    通过博客id得到博客图片，上传相册
+    public Integer selectBlogPicsByBlogId(int blog_id);
 
 //    通过博客查询该博客的标签id
     public List<Integer> selectLabelByBlogId(int blog_id);

@@ -1,6 +1,7 @@
 package com.gem.share.service.Impl;
 
 import com.gem.share.dao.BlogContentMapper;
+import com.gem.share.dao.BlogPicsMapper;
 import com.gem.share.entity.BlogContent;
 import com.gem.share.service.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,8 @@ public class BlogServiceImpl implements BlogService {
 
     @Autowired
     private BlogContentMapper blogContentMapper;
+    @Autowired
+    private BlogPicsMapper blogPicsMapper;
 
     @Override
     public BlogContent updateBlogByBlogId(int blog_id) {
@@ -27,12 +30,12 @@ public class BlogServiceImpl implements BlogService {
 
     @Override
     public BlogContent selectBlogByBlogId(int blog_id) {
-        return null;
+        return blogContentMapper.selectBlogByBlogId(blog_id);
     }
 
     @Override
     public boolean deleteBlogByBlogId(int blog_id) {
-        return false;
+        return blogContentMapper.deleteBlogByBlogId(blog_id);
     }
 
     @Override
@@ -42,7 +45,7 @@ public class BlogServiceImpl implements BlogService {
 
     @Override
     public Date selectBlogCreateTimeByBlogId(int blog_id) {
-        return null;
+        return blogContentMapper.selectBlogCreateTimeByBlogId(blog_id);
     }
 
     @Override
@@ -51,8 +54,8 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
-    public List<Integer> selectBlogPicsByBlogId(int blog_id) {
-        return null;
+    public Integer selectBlogPicsByBlogId(int blog_id) {
+        return blogPicsMapper.selectBlogPicsByBlogId(blog_id);
     }
 
     @Override

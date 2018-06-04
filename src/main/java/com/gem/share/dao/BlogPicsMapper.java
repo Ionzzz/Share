@@ -2,8 +2,9 @@ package com.gem.share.dao;
 
 import com.gem.share.entity.BlogPics;
 import com.gem.share.entity.BlogPicsExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface BlogPicsMapper {
     long countByExample(BlogPicsExample example);
@@ -30,5 +31,6 @@ public interface BlogPicsMapper {
 
     //    通过博客id得到博客图片，上传相册
     public Integer selectBlogPicsByBlogId(int blog_id);
+
 
 }

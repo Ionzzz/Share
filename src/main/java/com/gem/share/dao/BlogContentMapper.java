@@ -4,6 +4,7 @@ import com.gem.share.entity.BlogContent;
 import com.gem.share.entity.BlogContentExample;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.Date;
 import java.util.List;
 
 public interface BlogContentMapper {
@@ -49,4 +50,6 @@ public interface BlogContentMapper {
     public boolean insertBlog(BlogContent blogContent);
 
     public boolean deleteBlogByBlogId(int blog_id);
+
+    public Date selectBlogCreateTimeByBlogId(int blog_id);
 }

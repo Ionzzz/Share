@@ -326,7 +326,10 @@
     delete from blogcontent where blog_id=#{_parameter}
   </delete>
 
-
+  <!--public Date selectBlogCreateTimeByBlogId(int blog_id);-->
+  <select id="selectBlogCreateTimeByBlogId" parameterType="int" resultType="Date">
+    select createtime from blogcentent where blog_id=#{_parameter};
+  </select>
 <!--  private Integer blogId;
 
   private Integer userId;

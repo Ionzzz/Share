@@ -183,7 +183,7 @@
 <!--  //    通过博客id得到博客图片，上传相册
   public Integer selectBlogPicsByBlogId(int blog_id);-->
   <select id="selectBlogPicsByBlogId" parameterType="int" resultType="Integer">
-    SELECT pic from blogpics where blog_id = #{_parameter}
+    SELECT blogPics_id from blogpics where blog_id = #{_parameter}
   </select>
 
 

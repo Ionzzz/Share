@@ -18,7 +18,7 @@ body a:hover{
 	text-decoration:none;
 }
 .banner-body{
-	background:url(../images/banner.png) 0px 0px;
+	background:url(../../images/chat-images/images/banner.png) 0px 0px;
 	padding:1em 0;
 }
 .banner-body-content {
@@ -58,61 +58,61 @@ body a:hover{
 /*-- //logo --*/
 /*-- top-nav --*/
 i.home1{
-    background: url(../images/img-sp.png) no-repeat -20px -240px;
+    background: url(../../images/chat-images/images/img-sp.png) no-repeat -20px -240px;
     display: inline-block;
     width: 18px;
     height: 18px;
 }
 i.home,.navbar-default .navbar-nav > li > a:hover i.home1{
-	background: url(../images/img-sp.png) no-repeat -20px -282px;
+	background: url(../../images/chat-images/images/img-sp.png) no-repeat -20px -282px;
     display: inline-block;
 	width: 18px;
     height: 18px;
 }
 i.picture1 {
-    background: url(../images/img-sp.png) no-repeat -97px -240px;
+    background: url(../../images/chat-images/images/img-sp.png) no-repeat -97px -240px;
     display: inline-block;
     width: 18px;
     height: 18px;
 }
 i.picture,.navbar-default .navbar-nav > li > a:hover i.picture1{
-	background: url(../images/img-sp.png) no-repeat -97px -287px;
+	background: url(../../images/chat-images/images/img-sp.png) no-repeat -97px -287px;
     display: inline-block;
 	width: 18px;
     height: 18px;
 }
 i.edit1 {
-    background: url(../images/img-sp.png) no-repeat -182px -240px;
+    background: url(../../images/chat-images/images/img-sp.png) no-repeat -182px -240px;
     display: inline-block;
     width: 18px;
     height: 18px;
 }
 i.edit,.navbar-default .navbar-nav > li > a:hover i.edit1{
-	background: url(../images/img-sp.png) no-repeat -182px -287px;
+	background: url(../../images/chat-images/images/img-sp.png) no-repeat -182px -287px;
     display: inline-block;
 	width: 18px;
     height: 18px;
 }
 i.text-size1 {
-    background: url(../images/img-sp.png) no-repeat -274px -239px;
+    background: url(../../images/chat-images/images/img-sp.png) no-repeat -274px -239px;
     display: inline-block;
     width: 18px;
     height: 18px;
 }
 i.text-size,.navbar-default .navbar-nav > li > a:hover i.text-size1{
-	background: url(../images/img-sp.png) no-repeat -274px -288px;
+	background: url(../../images/chat-images/images/img-sp.png) no-repeat -274px -288px;
     display: inline-block;
 	width: 18px;
     height: 18px;
 }
 i.envelope1{
-    background: url(../images/img-sp.png) no-repeat -354px -240px;
+    background: url(../../images/chat-images/images/img-sp.png) no-repeat -354px -240px;
     display: inline-block;
     width: 18px;
     height: 18px;
 }
 i.envelope,.navbar-default .navbar-nav > li > a:hover i.envelope1{
-	background: url(../images/img-sp.png) no-repeat -354px -287px;
+	background: url(../../images/chat-images/images/img-sp.png) no-repeat -354px -287px;
     display: inline-block;
 	width: 18px;
     height: 18px;
@@ -216,7 +216,7 @@ i.envelope,.navbar-default .navbar-nav > li > a:hover i.envelope1{
 }
 .panel-heading {
     padding: 10px 5px 10px 40px;
-    background: url(../images/img-sp.png) no-repeat -19px -183px;
+    background: url(../../images/chat-images/images/img-sp.png) no-repeat -19px -183px;
 }
 .panel-default {
     border: none;
@@ -259,7 +259,7 @@ i.envelope,.navbar-default .navbar-nav > li > a:hover i.envelope1{
 	min-height:400px;
 }
 .banner{
-	background:url(../images/2.jpg) no-repeat 0px 0px;
+	background:url(../../images/chat-images/images/2.jpg) no-repeat 0px 0px;
 	background-size:cover;
 	-webkit-background-size:cover;
 	-moz-background-size:cover;
@@ -267,7 +267,7 @@ i.envelope,.navbar-default .navbar-nav > li > a:hover i.envelope1{
 	-ms-background-size:cover;
 }
 .banner1{
-	background:url(../images/1.jpg) no-repeat 0px 0px;
+	background:url(../../images/chat-images/images/1.jpg) no-repeat 0px 0px;
 	background-size:cover;
 	-webkit-background-size:cover;
 	-moz-background-size:cover;
@@ -275,7 +275,7 @@ i.envelope,.navbar-default .navbar-nav > li > a:hover i.envelope1{
 	-ms-background-size:cover;
 }
 .banner2{
-	background:url(../images/3.jpg) no-repeat 0px 0px;
+	background:url(../../images/chat-images/images/3.jpg) no-repeat 0px 0px;
 	background-size:cover;
 	-webkit-background-size:cover;
 	-moz-background-size:cover;
@@ -300,13 +300,13 @@ i.envelope,.navbar-default .navbar-nav > li > a:hover i.envelope1{
     background: #212121;
 }
 .banner-left:hover .banner-left11 span{
-	background:url(../images/img-sp.png) no-repeat -85px -13px;
+	background:url(../../images/chat-images/images/img-sp.png) no-repeat -85px -13px;
 }
 .banner-left:hover .banner-left22 span{
-	background:url(../images/img-sp.png) no-repeat -86px -61px;
+	background:url(../../images/chat-images/images/img-sp.png) no-repeat -86px -61px;
 }
 .banner-left:hover .banner-left33 span{
-	background:url(../images/img-sp.png) no-repeat -82px -119px;
+	background:url(../../images/chat-images/images/img-sp.png) no-repeat -82px -119px;
 }
 .copyrights{
 	text-indent:-9999px;
@@ -316,7 +316,7 @@ i.envelope,.navbar-default .navbar-nav > li > a:hover i.envelope1{
 	overflow:hidden;
 }
 .banner-left11 span{
-	background:url(../images/img-sp.png) no-repeat -19px -13px;
+	background:url(../../images/chat-images/images/img-sp.png) no-repeat -19px -13px;
 	display:block;
 	width:40px;
 	height:50px;
@@ -328,7 +328,7 @@ i.envelope,.navbar-default .navbar-nav > li > a:hover i.envelope1{
     -ms-transition: .5s ease-in;
 }
 .banner-left22 span{
-	background:url(../images/img-sp.png) no-repeat -19px -61px;
+	background:url(../../images/chat-images/images/img-sp.png) no-repeat -19px -61px;
 	display:block;
 	width:40px;
 	height:50px;
@@ -340,7 +340,7 @@ i.envelope,.navbar-default .navbar-nav > li > a:hover i.envelope1{
     -ms-transition: .5s ease-in;
 }
 .banner-left33 span{
-	background: url(../images/img-sp.png) no-repeat -16px -119px;
+	background: url(../../images/chat-images/images/img-sp.png) no-repeat -16px -119px;
     display: block;
     width: 40px;
     height: 50px;
@@ -540,7 +540,7 @@ ul.wmuSliderPagination {
 
 .icon-border::after {
   z-index: 2;
-  background: url("../images/img-sp.png");
+  background: url("../../images/chat-images/images/img-sp.png");
 }
 
 /* facebook */
@@ -907,7 +907,7 @@ figure.effect-winston:hover figcaption::before {
 	}
 .reply a{
 	padding: 8px 22px;
-    background: url(../images/update.png) no-repeat 16px 8px #D57D39;
+    background: url(../../images/chat-images/images/update.png) no-repeat 16px 8px #D57D39;
     padding-left: 3.3em;
     display: block;
     color: #fff;
@@ -922,7 +922,7 @@ figure.effect-winston:hover figcaption::before {
 	text-decoration:none;
 	}
 .reply a:hover{
-	background:url(../images/update.png) no-repeat 16px 8px #212121;
+	background:url(../../images/chat-images/images/update.png) no-repeat 16px 8px #212121;
 	display:block;
 	text-decoration:none;
 	}
