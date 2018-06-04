@@ -85,7 +85,7 @@
 
 
 
-<div class="Yarn_Background" style="background-image: url( <%= basePath %>statics/images/47fb3c_.jpg);"></div>
+<div class="Yarn_Background" style="background-image: url( <%= basePath %>images/shudong-images/47fb3c_.jpg);"></div>
 <form class="js-search search-form search-form--modal" method="get" action="search.html" role="search">
     <div class="search-form__inner">
         <div>
@@ -157,7 +157,7 @@
     <div class="site-branding text-center">
         <a href="">
             <figure>
-                <img class="custom-logo avatar" src="<%= basePath %>statics/images/omikron.png" />
+                <img class="custom-logo avatar" src="<%= basePath %>images/shudong-images/omikron.png" />
             </figure>
         </a>
         <h3 class="blog-description"><p>说出平时生活不曾表达的</p></h3>
@@ -185,7 +185,7 @@
                             <div class="row review-item-wrapper">
                                 <div class="col-sm-3">
                                     <a rel="nofollow" href="detail.html">
-                                        <div class="review-item-img" style="background-image: url(<%= basePath %>statics/images/b0ce3f3cde0c084b6d42321b2dcbc407.jpeg);"></div>
+                                        <div class="review-item-img" style="background-image: url(<%= basePath %>images/shudong-images/b0ce3f3cde0c084b6d42321b2dcbc407.jpeg);"></div>
                                     </a>
                                 </div>
                                 <div class="col-sm-9 flex-xs-middle">
@@ -199,7 +199,7 @@
                                 </div>
                             </div>
                             <div class="review-bg-wrapper">
-                                <div class="bg-blur" style="background-image: url(<%= basePath %>statics/images/diego-ph-249471-2-800x1000.jpg);"></div>
+                                <div class="bg-blur" style="background-image: url(<%= basePath %>images/shudong-images/diego-ph-249471-2-800x1000.jpg);"></div>
                             </div>
                         </div>
                         <div class="post-container">
@@ -207,7 +207,7 @@
                             <div class="post-footer">
                                 <%--<a class="gaz-btn primary" href="">READ MORE</a>--%>
                                     <a href="<%= basePath %>shuDong/Zan.action?userId=1&blogId=${sd.blogId}">
-                                        <img id="zanImg" src="<%= basePath %>statics/images/preZan.png"/>
+                                        <img id="zanImg" src="<%= basePath %>images/shudong-images/preZan.png"/>
                                     </a>
                                 <span class="total-comments-on-post pull-right"><a href="">31 Comments</a></span>
                             </div>
@@ -242,7 +242,7 @@
         </li>
         <li class="wechat">
             <a class="socialicon"><i class="iconfont">&#xe609;</i></a>
-            <div class="wechatimg"><img src="<%= basePath %>statics/images/49D3746D-7519-B709-83E4-65BD1927C4E7.jpg"></div>
+            <div class="wechatimg"><img src="<%= basePath %>images/shudong-images/49D3746D-7519-B709-83E4-65BD1927C4E7.jpg"></div>
         </li>
         <li>
             <a title="QQ" class="socialicon" href="" target="_blank"><i class="iconfont" aria-hidden="true">&#xe616;</i></a>
@@ -257,20 +257,19 @@
     $('#zanImg').click().toggle(
         function(){
             alert('111'+this);
-            this.src="<%= basePath %>statics/images/preZan.png";
+            this.src="<%= basePath %>images/shudong-images/preZan.png";
         },
     function(){
         alert(this);
-        this.src="<%= basePath %>statics/images/Zan.png";
+        this.src="<%= basePath %>images/shudong-images/Zan.png";
     }
     );
 </script>
 
-<script type='text/javascript' src='<%=basePath %>statics/js/jquery.min.js'></script>
-<script type='text/javascript' src='<%=basePath %>statics/js/jquery-1.11.2.js'></script>
-<script type='text/javascript' src='<%=basePath %>statics/js/plugins.js'></script>
-<script type='text/javascript' src='<%=basePath %>statics/js/script.js'></script>
-<script type='text/javascript' src='<%=basePath %>statics/js/particles.js'></script>
-<script type='text/javascript' src='<%=basePath %>statics/js/aos.js'></script>
+<script type='text/javascript' src='<%=basePath %>/js/index-js/tree/jquery.min.js'></script>
+<script type='text/javascript' src='<%=basePath %>/js/index-js/tree/plugins.js'></script>
+<script type='text/javascript' src='<%=basePath %>/js/index-js/tree/script.js'></script>
+<script type='text/javascript' src='<%=basePath %>/js/index-js/tree/particles.js'></script>
+<script type='text/javascript' src='<%=basePath %>/js/index-js/tree/aos.js'></script>
 
 </html>
