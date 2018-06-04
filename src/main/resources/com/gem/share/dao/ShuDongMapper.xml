@@ -1,10 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gem.share.dao.ShuDongMapper">
 
-  <!--public List<BlogContent> selectAllShuDongContent();-->
-  <select id="selectAllShuDongContent" resultType="BlogContent">
-    select * from blogcontent
+  <!--//    获得所有树洞内容-->
+  <!--    public List<shuDong> selectAllShuDongContent();-->
+  <resultMap id="selectAllShuDongContentMap" type="shuDong">
+    <id column="user_id" property="userId"></id>
+    <id column="blog_id" property="blogId"></id>
+    <result column="blogContent" property="blogContent"></result>
+    <result column="blogCreateTime" property="blogCreateTime"></result>
+    <result column="bbrowse" property="bbrowse"></result>
+    <result column="blogBrowseCount" property="blogBrowseCount"></result>
+  </resultMap>
+
+  <select id="selectAllShuDongContent" resultMap="selectAllShuDongContentMap">
+    SELECT DISTINCT bc.user_id,bc.blog_id,bc.blogContent,bc.blogCreateTime,blogzan.bbrowse,bb.blogBrowseCount
+    FROM blogcontent bc,blogbrowse bb,(SELECT blog_id,COUNT(*) bbrowse FROM blogzan GROUP BY blogzan.blog_id) blogzan
+    WHERE bc.blogFlag=1 AND blogzan.blog_id = bc.blog_id AND bb.blog_id=bc.blog_id
   </select>
+
+
+  <!--//    根据用户id查询用户是否对该博客有点赞记录-->
+  <!--public List<BlogZan> selectZanRecordByUserId(int blog_id,int user_id);-->
+  <select id="selectZanRecordByUserId"  resultType="BlogZan" parameterType="BlogZan">
+    SELECT * FROM blogzan where blog_id=#{blogId} and user_id=#{userId}
+  </select>
+
+  <!--//    删除用户点赞记录-->
+  <!--public boolean deleteZanRecordByZanId(int zan_id);-->
+  <delete id="deleteZanRecordByZanId" parameterType="int">
+    delete from blogzan WHERE blogZan_id = #{_parameter}
+  </delete>
+
+  <!--//    得到该树洞的点赞数-->
+  <!--public int selectCountZan(int blog_id);-->
+  <select id="selectCountZan" parameterType="int" resultType="int">
+    SELECT COUNT(*) FROM blogzan GROUP BY blog_id HAVING blog_id=#{_parameter}
+  </select>
+
+  <!--//    增加用户点赞记录-->
+  <!--public boolean addZanRecord(BlogZan blogZan);-->
+  <insert id="addZanRecord" parameterType="BlogZan">
+    INSERT INTO blogzan(blog_id,user_id,zan_time)VALUES(#{blogId},#{userId},#{zanTime})
+  </insert>
 
 </mapper>

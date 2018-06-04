@@ -6,24 +6,28 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <html>
 <head>
     <title>publishBlog</title>
-    <link href="../css/index-css/media_query.css" rel="stylesheet" type="text/css"/>
-    <link href="../css/index-css/bootstrap.css" rel="stylesheet" type="text/css"/>
-    <link href="../css/index-css/font-awesome.min.css">
-    <link href="../css/index-css/animate.css" rel="stylesheet" type="text/css"/>
-    <link href="../css/index-css/Poppins.css" rel="stylesheet">
-    <link href="../css/index-css/owl.carousel.css" rel="stylesheet" type="text/css"/>
-    <link href="../css/index-css/owl.theme.default.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=basePath%>css/index-css/media_query.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=basePath%>css/index-css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=basePath%>css/index-css/font-awesome.min.css">
+    <link href="<%=basePath%>css/index-css/animate.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=basePath%>css/index-css/Poppins.css" rel="stylesheet">
+    <link href="<%=basePath%>css/index-css/owl.carousel.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=basePath%>css/index-css/owl.theme.default.css" rel="stylesheet" type="text/css"/>
     <!-- Bootstrap CSS -->
-    <link href="../css/index-css/style_1.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=basePath%>css/index-css/style_1.css" rel="stylesheet" type="text/css"/>
     <!-- Modernizr JS -->
-    <script src="../js/index-js/modernizr-3.5.0.min.js"></script>
+    <script src="<%=basePath%>js/index-js/modernizr-3.5.0.min.js"></script>
 
-    <script type="text/javascript" charset="utf-8" src="../editor/ueditor.config.js"></script>
-    <script type="text/javascript" charset="utf-8" src="../editor/ueditor.all.min.js"> </script>
-    <script type="text/javascript" charset="utf-8" src="../editor/lang/zh-cn/zh-cn.js"></script>
+    <script type="text/javascript" charset="utf-8" src="<%=basePath%>editor/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="<%=basePath%>editor/ueditor.all.min.js"> </script>
+    <script type="text/javascript" charset="utf-8" src="<%=basePath%>editor/lang/zh-cn/zh-cn.js"></script>
 </head>
 <body>
 <div class="container-fluid fh5co_header_bg">
@@ -292,13 +296,13 @@
 
 
 </body>
-<script src="../js/index-js/jquery.min.js"></script>
-<script src="../js/index-js/owl.carousel.min.js"></script>
+<script src="<%=basePath%>js/index-js/jquery.min.js"></script>
+<script src="<%=basePath%>js/index-js/owl.carousel.min.js"></script>
 <!--<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>-->
-<script src="../js/index-js/tether.min.js"></script>
-<script src="../js/index-js/bootstrap.min.js"></script>
+<script src="<%=basePath%>js/index-js/tether.min.js"></script>
+<script src="<%=basePath%>js/index-js/bootstrap.min.js"></script>
 <!-- Waypoints -->
-<script src="../js/index-js/jquery.waypoints.min.js"></script>
+<script src="<%=basePath%>js/index-js/jquery.waypoints.min.js"></script>
 <!-- Main -->
-<script src="../js/index-js/main.js"></script>
+<script src="<%=basePath%>js/index-js/main.js"></script>
 </html>

@@ -6,6 +6,10 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <!doctype html>
 <html lang="zh">
 
@@ -15,19 +19,19 @@
     <title>树洞</title>
     <meta name="description" content="" />
     <meta name="keywords" content="" />
-    <link rel="stylesheet" type="text/css" href="../css/index-css/index.css" media="all" />
-    <link rel="stylesheet" href="../css/index-css/main.css">
-    <link href='../css/index-css/nav_font.css' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>css/index-css/index.css" media="all" />
+    <link rel="stylesheet" href="<%=basePath%>css/index-css/main.css">
+    <link href='<%=basePath%>css/index-css/nav_font.css' rel='stylesheet' type='text/css'>
 
-    <link href="../css/index-css/media_query.css" rel="stylesheet" type="text/css"/>
-    <link href="../css/index-css/bootstrap.css" rel="stylesheet" type="text/css"/>
-    <link href="../css/index-css/font-awesome.min.css">
-    <link href="../css/index-css/animate.css" rel="stylesheet" type="text/css"/>
-    <link href="../css/index-css/content_font.css" rel="stylesheet">
-    <link href="../css/index-css/owl.carousel.css" rel="stylesheet" type="text/css"/>
-    <link href="../css/index-css/owl.theme.default.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=basePath%>css/index-css/media_query.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=basePath%>css/index-css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=basePath%>css/index-css/font-awesome.min.css">
+    <link href="<%=basePath%>css/index-css/animate.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=basePath%>css/index-css/content_font.css" rel="stylesheet">
+    <link href="<%=basePath%>css/index-css/owl.carousel.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=basePath%>css/index-css/owl.theme.default.css" rel="stylesheet" type="text/css"/>
     <!-- Modernizr JS -->
-    <script src="../js/index-js/modernizr-3.5.0.min.js"></script>
+    <script src="<%=basePath%>js/index-js/modernizr-3.5.0.min.js"></script>
 
 </head>
 
@@ -79,7 +83,7 @@
 
 
 
-<div class="Yarn_Background" style="background-image: url( ../images/index-images/47fb3c_.jpg)"></div>
+<div class="Yarn_Background" style="background-image: url( <%=basePath%>images/index-images/47fb3c_.jpg)"></div>
 <form class="js-search search-form search-form--modal" method="get" action="" role="search">
     <div class="search-form__inner">
         <div>
@@ -152,7 +156,7 @@
     <div class="site-branding text-center">
         <a href="">
             <figure>
-                <img class="custom-logo avatar" src=" ../images/index-images/omikron.png" />
+                <img class="custom-logo avatar" src=" <%=basePath%>images/index-images/omikron.png" />
             </figure>
         </a>
         <h3 class="blog-description"><p>This is beauty</p></h3>
@@ -182,7 +186,7 @@
             <div class="posts-list js-posts">
                 <div class="post post-layout-list" data-aos="fade-up">
                     <div class="status_list_item icon_kyubo">
-                        <div class="status_user" style="background-image: url(../images/index-images/b0ce3f3cde0c084b6d42321b2dcbc407.jpeg);">
+                        <div class="status_user" style="background-image: url(<%=basePath%>images/index-images/b0ce3f3cde0c084b6d42321b2dcbc407.jpeg);">
                             <div class="status_section">
                                 <a href="detail.jsp" class="status_btn">交代是不可能交代的</a>
                                 <p class="section_p">相隔上一次的更新我掰手指数一数，下意识的双腿一软，给各位小哥哥小姐姐们跪下了。自从有了对象后，周末几乎落下了主题的进度（邪魅的笑）。一边开发新的主题，一边收集您们给我反馈回来的"臭虫"，还有新的主题后台看见了一些大神在... </p>
@@ -196,7 +200,7 @@
                             <div class="row review-item-wrapper">
                                 <div class="col-sm-3">
                                     <a rel="nofollow" href="detail.jsp">
-                                        <div class="review-item-img" style="background-image: url(../images/index-images/diego-ph-249471-2-800x1000.jpg);"></div>
+                                        <div class="review-item-img" style="background-image: url(<%=basePath%>images/index-images/diego-ph-249471-2-800x1000.jpg);"></div>
                                     </a>
                                 </div>
                                 <div class="col-sm-9 flex-xs-middle">
@@ -208,7 +212,7 @@
                                 </div>
                             </div>
                             <div class="review-bg-wrapper">
-                                <div class="bg-blur" style="background-image: url(../images/index-images/diego-ph-249471-2-800x1000.jpg);"></div>
+                                <div class="bg-blur" style="background-image: url(<%=basePath%>images/index-images/diego-ph-249471-2-800x1000.jpg);"></div>
                             </div>
                         </div>
                         <div class="post-container">
@@ -222,7 +226,7 @@
                 </div>
                 <div class="post post-layout-list" data-aos="fade-up">
                     <div class="status_list_item icon_kyubo">
-                        <div class="status_user" style="background-image: url(../images/index-images/b0ce3f3cde0c084b6d42321b2dcbc407.jpeg);">
+                        <div class="status_user" style="background-image: url(<%=basePath%>images/index-images/b0ce3f3cde0c084b6d42321b2dcbc407.jpeg);">
                             <div class="status_section">
                                 <a href="detail.jsp" class="status_btn">状态</a>
                                 <p class="section_p">因为我这后半年飘忽不定的更新节奏，感觉真的对不住用户。最近才松下来能处理反馈的bug，顺便加快新主题 Dcras 的制作，农历年后或许能上线，准确时间，不敢说-- 为了感谢大家对 Yarn 的支持，Dcras 会以 获兑现码半价的承诺 给 Yarn ... </p>
@@ -233,7 +237,7 @@
                 <div class="post post-layout-list js-gallery" data-aos="fade-up">
                     <div class="post-album">
                         <div class="row content">
-                            <div class="bg" style="background-image: url(../images/index-images/IMG_0150.jpg);"></div>
+                            <div class="bg" style="background-image: url(<%=basePath%>images/index-images/IMG_0150.jpg);"></div>
                             <div class="contentext flex-xs-middle">
                                 <div class="album-title">
                                     <a href="detail.jsp">重构图像样式测试</a>
@@ -243,11 +247,11 @@
                             </div>
                             <div class="album-thumb-width flex-xs-middle">
                                 <div class="row album-thumb no-gutter">
-                                    <div class="col-xs-4"><img class="thumb" src="../images/index-images/IMG_0150-250x250.jpg" /></div>
-                                    <div class="col-xs-4"><img class="thumb" src="../images/index-images/IMG_0149-250x250.jpg" /></div>
-                                    <div class="col-xs-4"><img class="thumb" src="../images/index-images/IMG_0146-250x250.jpg" /></div>
-                                    <div class="col-xs-4"><img class="thumb" src="../images/index-images/IMG_0147-250x250.jpg" /></div>
-                                    <div class="col-xs-4"><img class="thumb" src="../images/index-images/IMG_0148-250x250.jpg" /></div>
+                                    <div class="col-xs-4"><img class="thumb" src="<%=basePath%>images/index-images/IMG_0150-250x250.jpg" /></div>
+                                    <div class="col-xs-4"><img class="thumb" src="<%=basePath%>images/index-images/IMG_0149-250x250.jpg" /></div>
+                                    <div class="col-xs-4"><img class="thumb" src="<%=basePath%>images/index-images/IMG_0146-250x250.jpg" /></div>
+                                    <div class="col-xs-4"><img class="thumb" src="<%=basePath%>images/index-images/IMG_0147-250x250.jpg" /></div>
+                                    <div class="col-xs-4"><img class="thumb" src="<%=basePath%>images/index-images/IMG_0148-250x250.jpg" /></div>
                                     <div class="col-xs-4">
                                         <a href="">5 pics</a>
                                     </div>
@@ -262,7 +266,7 @@
                             <div class="row review-item-wrapper">
                                 <div class="col-sm-3">
                                     <a rel="nofollow" href="detail.jsp">
-                                        <div class="review-item-img" style="background-image: url(../images/index-images/47fb3c_9afed6c259f94589881bd55376206366mv2_d_3840_5784_s_4_2-800x450.jpg);"></div>
+                                        <div class="review-item-img" style="background-image: url(<%=basePath%>images/index-images/47fb3c_9afed6c259f94589881bd55376206366mv2_d_3840_5784_s_4_2-800x450.jpg);"></div>
                                     </a>
                                 </div>
                                 <div class="col-sm-9 flex-xs-middle">
@@ -274,7 +278,7 @@
                                 </div>
                             </div>
                             <div class="review-bg-wrapper">
-                                <div class="bg-blur" style="background-image: url(../images/index-images/47fb3c_9afed6c259f94589881bd55376206366mv2_d_3840_5784_s_4_2-800x450.jpg);"></div>
+                                <div class="bg-blur" style="background-image: url(<%=basePath%>images/index-images/47fb3c_9afed6c259f94589881bd55376206366mv2_d_3840_5784_s_4_2-800x450.jpg);"></div>
                             </div>
                         </div>
                         <div class="post-container">
@@ -307,11 +311,11 @@
         </svg>
     </div>
 
-    <script type='text/javascript' src='../js/index-js/tree/jquery.min.js'></script>
-    <script type='text/javascript' src='../js/index-js/tree/plugins.js'></script>
-    <script type='text/javascript' src='../js/index-js/tree/script.js'></script>
-    <script type='text/javascript' src='../js/index-js/tree/particles.js'></script>
-    <script type='text/javascript' src='../js/index-js/tree/aos.js'></script>
+    <script type='text/javascript' src='<%=basePath%>js/index-js/tree/jquery.min.js'></script>
+    <script type='text/javascript' src='<%=basePath%>js/index-js/tree/plugins.js'></script>
+    <script type='text/javascript' src='<%=basePath%>js/index-js/tree/script.js'></script>
+    <script type='text/javascript' src='<%=basePath%>js/index-js/tree/particles.js'></script>
+    <script type='text/javascript' src='<%=basePath%>js/index-js/tree/aos.js'></script>
 </footer>
 </body>
 

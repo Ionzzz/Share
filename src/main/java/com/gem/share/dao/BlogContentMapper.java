@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 public interface BlogContentMapper {
     long countByExample(BlogContentExample example);
@@ -36,6 +37,8 @@ public interface BlogContentMapper {
 
     int updateByPrimaryKey(BlogContent record);
 
+
+    public List<BlogContent> selectAllBlogByPage(Map<String,Object> map);
 
 //  按照博客发表时间排序  若时间相同按照用户id升序排列
 

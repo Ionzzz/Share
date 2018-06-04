@@ -6,12 +6,16 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <html>
 <head>
     <title>登陆前页面</title>
-    <link rel="stylesheet" type="text/css" href="../css/indexbefore-css/normalize.css" />
-    <link rel="stylesheet" type="text/css" href="../css/indexbefore-css/default.css">
-    <link rel="stylesheet" type="text/css" href="../css/indexbefore-css/styles.css">
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>css/indexbefore-css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>css/indexbefore-css/default.css">
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>css/indexbefore-css/styles.css">
 </head>
 <body>
 
@@ -19,7 +23,7 @@
 <div class="top">
     <div class="header">
         <div class="logo">
-            <a href="index.html"><img src="../images/index-images/logo.png" /></a>
+            <a href="index.html"><img src="<%=basePath%>images/index-images/logo.png" /></a>
         </div>
         <div class="nav">
             <div class="kk"><i class="icon iconfont"></i></div>
@@ -111,8 +115,8 @@
 <h2 class="scroll-down">Scroll down</h2>
 </div>
 
-<script type="text/javascript" src='../js/indexbefore-js/stopExecutionOnTimeout.js'></script>
-<script type="text/javascript" src='../js/indexbefore-js/jquery.min.js'></script>
-<script type="text/javascript" src="../js/indexbefore-js/main.js"></script>
+<script type="text/javascript" src='<%=basePath%>js/indexbefore-js/stopExecutionOnTimeout.js'></script>
+<script type="text/javascript" src='<%=basePath%>js/indexbefore-js/jquery.min.js'></script>
+<script type="text/javascript" src="<%=basePath%>js/indexbefore-js/main.js"></script>
 </body>
 </html>

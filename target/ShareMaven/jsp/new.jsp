@@ -21,21 +21,21 @@
     <title>New of Share</title>
 
     <!-- Bootstrap CSS -->
-    <link href="../css/index-css/style_1.css" rel="stylesheet" type="text/css"/>
-    <link href="../css/index-css/main.css" rel="stylesheet" >
-    <link href="../css/index-css/nav_font.css" rel='stylesheet' type='text/css'>
+    <link href="<%=basePath%>css/index-css/style_1.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=basePath%>css/index-css/main.css" rel="stylesheet" >
+    <link href="<%=basePath%>css/index-css/nav_font.css" rel='stylesheet' type='text/css'>
 
-    <link href="../css/index-css/media_query.css" rel="stylesheet" type="text/css"/>
-    <link href="../css/index-css/bootstrap.css" rel="stylesheet" type="text/css"/>
-    <link href="../css/index-css/font-awesome.min.css">
-    <link href="../css/index-css/animate.css" rel="stylesheet" type="text/css"/>
-    <link href="../css/index-css/content_font.css" rel="stylesheet">
-    <link href="../css/index-css/owl.carousel.css" rel="stylesheet" type="text/css"/>
-    <link href="../css/index-css/owl.theme.default.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=basePath%>css/index-css/media_query.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=basePath%>css/index-css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=basePath%>css/index-css/font-awesome.min.css">
+    <link href="<%=basePath%>css/index-css/animate.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=basePath%>css/index-css/content_font.css" rel="stylesheet">
+    <link href="<%=basePath%>css/index-css/owl.carousel.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=basePath%>css/index-css/owl.theme.default.css" rel="stylesheet" type="text/css"/>
 
 
     <!-- Modernizr JS -->
-    <script src="../js/index-js/modernizr-3.5.0.min.js"></script>
+    <script src="<%=basePath%>js/index-js/modernizr-3.5.0.min.js"></script>
 </head>
 <body>
 
@@ -93,12 +93,12 @@
                 <div class="row pb-4">
                     <div class="col-md-5">
                         <div class="fh5co_hover_news_img">
-                            <div class="fh5co_news_img"><img src="../images/index-images/nathan-mcbride-229637.jpg" alt=""/></div>
+                            <div class="fh5co_news_img"><img src="<%=basePath%>images/index-images/nathan-mcbride-229637.jpg" alt=""/></div>
                             <div></div>
                         </div>
                     </div>
                     <div class="col-md-7 animate-box">
-                        <a href="single.jsp" class="fh5co_magna py-2">${blog.blogcontent} </a> <br/>
+                        <a href="single.jsp" class="fh5co_magna py-2" >${blog.blogcontent} </a> <br/>
                         <a href="#" class="fh5co_mini_time py-3"> ${blog.blogId}-<fmt:formatDate value="${blog.blogcreatetime}" pattern="yyyy-MM-dd HH:mm:ss"/> </a>
                         <div class="fh5co_consectetur"> ${blog.blogcontent}
                         </div>
@@ -110,7 +110,7 @@
                 <div class="row pb-4">
                     <div class="col-md-5">
                         <div class="fh5co_hover_news_img">
-                            <div class="fh5co_news_img"><img src="../images/index-images/ryan-moreno-98837.jpg" alt=""/></div>
+                            <div class="fh5co_news_img"><img src="<%=basePath%>images/index-images/ryan-moreno-98837.jpg" alt=""/></div>
                             <div></div>
                         </div>
                     </div>
@@ -134,7 +134,7 @@
                     <div class="col-md-5">
                         <div class="fh5co_hover_news_img">
                             <div class="fh5co_news_img">
-                                <img src="../images/index-images/photo-1449157291145-7efd050a4d0e-578x362.jpg" alt=""/>
+                                <img src="<%=basePath%>images/index-images/photo-1449157291145-7efd050a4d0e-578x362.jpg" alt=""/>
                             </div>
                             <div></div>
                         </div>
@@ -151,7 +151,7 @@
                 <div class="row pb-4">
                     <div class="col-md-5">
                         <div class="fh5co_hover_news_img">
-                            <div class="fh5co_news_img"><img src="../images/index-images/office-768x512.jpg" alt=""/></div>
+                            <div class="fh5co_news_img"><img src="<%=basePath%>images/index-images/office-768x512.jpg" alt=""/></div>
                             <div></div>
                         </div>
                     </div>
@@ -189,7 +189,7 @@
                 </div>
                 <div class="row pb-3">
                     <div class="col-5 align-self-center">
-                        <img src="../images/index-images/download (1).jpg" alt="img" class="fh5co_most_trading"/>
+                        <img src="<%=basePath%>images/index-images/download (1).jpg" alt="img" class="fh5co_most_trading"/>
                     </div>
                     <div class="col-7 paddding">
                         <div class="most_fh5co_treding_font"> Magna aliqua ut enim ad minim veniam quis nostrud.</div>
@@ -198,7 +198,7 @@
                 </div>
                 <div class="row pb-3">
                     <div class="col-5 align-self-center">
-                        <img src="../images/index-images/allef-vinicius-108153.jpg" alt="img" class="fh5co_most_trading"/>
+                        <img src="<%=basePath%>images/index-images/allef-vinicius-108153.jpg" alt="img" class="fh5co_most_trading"/>
                     </div>
                     <div class="col-7 paddding">
                         <div class="most_fh5co_treding_font"> Enim ad minim veniam nostrud xercitation ullamco.</div>
@@ -207,7 +207,7 @@
                 </div>
                 <div class="row pb-3">
                     <div class="col-5 align-self-center">
-                        <img src="../images/index-images/download (2).jpg" alt="img" class="fh5co_most_trading"/>
+                        <img src="<%=basePath%>images/index-images/download (2).jpg" alt="img" class="fh5co_most_trading"/>
                     </div>
                     <div class="col-7 paddding">
                         <div class="most_fh5co_treding_font"> Magna aliqua ut enim ad minim veniam quis nostrud.</div>
@@ -215,7 +215,7 @@
                     </div>
                 </div>
                 <div class="row pb-3">
-                    <div class="col-5 align-self-center"><img src="../images/index-images/seth-doyle-133175.jpg" alt="img"
+                    <div class="col-5 align-self-center"><img src="<%=basePath%>images/index-images/seth-doyle-133175.jpg" alt="img"
                                                               class="fh5co_most_trading"/></div>
                     <div class="col-7 paddding">
                         <div class="most_fh5co_treding_font"> Magna aliqua ut enim ad minim veniam quis nostrud.</div>
@@ -244,7 +244,7 @@
         <div class="owl-carousel owl-theme" id="slider2">
             <div class="item px-2">
                 <div class="fh5co_hover_news_img">
-                    <div class="fh5co_news_img"><img src="../images/index-images/39-324x235.jpg" alt=""/></div>
+                    <div class="fh5co_news_img"><img src="<%=basePath%>images/index-images/39-324x235.jpg" alt=""/></div>
                     <div>
                         <a href="#" class="d-block fh5co_small_post_heading"><span class="">The top 10 best computer speakers in the market</span></a>
                         <div class="c_g"><i class="fa fa-clock-o"></i> Oct 16,2017</div>
@@ -253,7 +253,7 @@
             </div>
             <div class="item px-2">
                 <div class="fh5co_hover_news_img">
-                    <div class="fh5co_news_img"><img src="../images/index-images/joe-gardner-75333.jpg" alt=""/></div>
+                    <div class="fh5co_news_img"><img src="<%=basePath%>images/index-images/joe-gardner-75333.jpg" alt=""/></div>
                     <div>
                         <a href="#" class="d-block fh5co_small_post_heading"><span class="">The top 10 best computer speakers in the market</span></a>
                         <div class="c_g"><i class="fa fa-clock-o"></i> Oct 16,2017</div>
@@ -262,7 +262,7 @@
             </div>
             <div class="item px-2">
                 <div class="fh5co_hover_news_img">
-                    <div class="fh5co_news_img"><img src="../images/index-images/ryan-moreno-98837.jpg" alt=""/></div>
+                    <div class="fh5co_news_img"><img src="<%=basePath%>images/index-images/ryan-moreno-98837.jpg" alt=""/></div>
                     <div>
                         <a href="#" class="d-block fh5co_small_post_heading"><span class="">The top 10 best computer speakers in the market</span></a>
                         <div class="c_g"><i class="fa fa-clock-o"></i> Oct 16,2017</div>
@@ -271,7 +271,7 @@
             </div>
             <div class="item px-2">
                 <div class="fh5co_hover_news_img">
-                    <div class="fh5co_news_img"><img src="../images/index-images/seth-doyle-133175.jpg" alt=""/></div>
+                    <div class="fh5co_news_img"><img src="<%=basePath%>images/index-images/seth-doyle-133175.jpg" alt=""/></div>
                     <div>
                         <a href="#" class="d-block fh5co_small_post_heading"><span class="">The top 10 best computer speakers in the market</span></a>
                         <div class="c_g"><i class="fa fa-clock-o"></i> Oct 16,2017</div>
@@ -284,7 +284,7 @@
 <div class="container-fluid fh5co_footer_bg pb-3">
     <div class="container animate-box">
         <div class="row">
-            <div class="col-12 spdp_right py-5"><img src="../images/index-images/white_logo.png" alt="img" class="footer_logo"/></div>
+            <div class="col-12 spdp_right py-5"><img src="<%=basePath%>images/index-images/white_logo.png" alt="img" class="footer_logo"/></div>
             <div class="clearfix"></div>
             <div class="col-12 col-md-4 col-lg-3">
                 <div class="footer_main_title py-3"> About</div>
@@ -331,19 +331,19 @@
                 <a href="#" class="footer_post pb-4"> Success is not a good teacher failure makes you humble </a>
                 <div class="footer_makes_sub_font"> Dec 31, 2018</div>
                 <a href="#" class="footer_post pb-4"> Success is not a good teacher failure makes you humble </a>
-                <div class="footer_position_absolute"><img src="../images/index-images/footer_sub_tipik.png" alt="img" class="width_footer_sub_img"/></div>
+                <div class="footer_position_absolute"><img src="<%=basePath%>images/index-images/footer_sub_tipik.png" alt="img" class="width_footer_sub_img"/></div>
             </div>
             <div class="col-12 col-md-12 col-lg-4 ">
                 <div class="footer_main_title py-3"> 动态</div>
-                <a href="#" class="footer_img_post_6"><img src="../images/index-images/allef-vinicius-108153.jpg" alt="img"/></a>
-                <a href="#" class="footer_img_post_6"><img src="../images/index-images/32-450x260.jpg" alt="img"/></a>
-                <a href="#" class="footer_img_post_6"><img src="../images/index-images/download (1).jpg" alt="img"/></a>
-                <a href="#" class="footer_img_post_6"><img src="../images/index-images/science-578x362.jpg" alt="img"/></a>
-                <a href="#" class="footer_img_post_6"><img src="../images/index-images/vil-son-35490.jpg" alt="img"/></a>
-                <a href="#" class="footer_img_post_6"><img src="../images/index-images/zack-minor-15104.jpg" alt="img"/></a>
-                <a href="#" class="footer_img_post_6"><img src="../images/index-images/download.jpg" alt="img"/></a>
-                <a href="#" class="footer_img_post_6"><img src="../images/index-images/download (2).jpg" alt="img"/></a>
-                <a href="#" class="footer_img_post_6"><img src="../images/index-images/ryan-moreno-98837.jpg" alt="img"/></a>
+                <a href="#" class="footer_img_post_6"><img src="<%=basePath%>images/index-images/allef-vinicius-108153.jpg" alt="img"/></a>
+                <a href="#" class="footer_img_post_6"><img src="<%=basePath%>images/index-images/32-450x260.jpg" alt="img"/></a>
+                <a href="#" class="footer_img_post_6"><img src="<%=basePath%>images/index-images/download (1).jpg" alt="img"/></a>
+                <a href="#" class="footer_img_post_6"><img src="<%=basePath%>images/index-images/science-578x362.jpg" alt="img"/></a>
+                <a href="#" class="footer_img_post_6"><img src="<%=basePath%>images/index-images/vil-son-35490.jpg" alt="img"/></a>
+                <a href="#" class="footer_img_post_6"><img src="<%=basePath%>images/index-images/zack-minor-15104.jpg" alt="img"/></a>
+                <a href="#" class="footer_img_post_6"><img src="<%=basePath%>images/index-images/download.jpg" alt="img"/></a>
+                <a href="#" class="footer_img_post_6"><img src="<%=basePath%>images/index-images/download (2).jpg" alt="img"/></a>
+                <a href="#" class="footer_img_post_6"><img src="<%=basePath%>images/index-images/ryan-moreno-98837.jpg" alt="img"/></a>
             </div>
         </div>
         <div class="row justify-content-center pt-2 pb-4">
@@ -367,15 +367,15 @@
     <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
 </div>
 
-<script src="../js/index-js/jquery.min.js"></script>
-<script src="../js/index-js/owl.carousel.min.js"></script>
+<script src="<%=basePath%>js/index-js/jquery.min.js"></script>
+<script src="<%=basePath%>js/index-js/owl.carousel.min.js"></script>
 <!--<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>-->
-<script src="../js/index-js/tether.min.js"></script>
-<script src="../js/index-js/bootstrap.min.js"></script>
+<script src="<%=basePath%>js/index-js/tether.min.js"></script>
+<script src="<%=basePath%>js/index-js/bootstrap.min.js"></script>
 <!-- Waypoints -->
-<script src="../js/index-js/jquery.waypoints.min.js"></script>
+<script src="<%=basePath%>js/index-js/jquery.waypoints.min.js"></script>
 <!-- Main -->
-<script src="../js/index-js/main.js"></script>
+<script src="<%=basePath%>js/index-js/main.js"></script>
 
 
 </body>

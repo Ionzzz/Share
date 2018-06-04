@@ -6,6 +6,10 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,11 +24,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSS -->
-    <link rel="stylesheet" href="../css/index-css/fonts/font-awesome.css">
-    <link rel="stylesheet" href="../css/index-css/plugins.css">
-    <link rel="stylesheet" href="../css/index-css/main.css">
-    <link rel='stylesheet' type='text/css' href='../css/index-css/nav_font.css'>
-    <link rel="stylesheet" type="text/css" href="../css/index-css/style_1.css" />
+    <link rel="stylesheet" href="<%=basePath%>css/index-css/fonts/font-awesome.css">
+    <link rel="stylesheet" href="<%=basePath%>css/index-css/plugins.css">
+    <link rel="stylesheet" href="<%=basePath%>css/index-css/main.css">
+    <link rel='stylesheet' type='text/css' href='<%=basePath%>css/index-css/nav_font.css'>
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>css/index-css/style_1.css" />
 
 </head>
 <body>
@@ -84,7 +88,7 @@
                 <div class="blog-post-alt carousel-item">
                     <div class="blog-post-alt-thumb">
                         <div class="blog-post-alt-thumb-inner">
-                            <a href="single.jsp"><img src="../images/index-images/featured-posts/featured-1.jpg" alt="" /></a>
+                            <a href="single.jsp"><img src="<%=basePath%>images/index-images/featured-posts/featured-1.jpg" alt="" /></a>
                         </div><!-- .blog-post-alt-thumb-inner -->
                         <div class="blog-post-alt-thumb-cover"></div>
                     </div><!-- .blog-post-alt-thumb -->
@@ -108,7 +112,7 @@
                 <div class="blog-post-alt carousel-item">
                     <div class="blog-post-alt-thumb">
                         <div class="blog-post-alt-thumb-inner">
-                            <a href="single.jsp"><img src="../images/index-images/featured-posts/featured-2.jpg" alt="" /></a>
+                            <a href="single.jsp"><img src="<%=basePath%>images/index-images/featured-posts/featured-2.jpg" alt="" /></a>
                         </div><!-- .blog-post-alt-thumb-inner -->
                         <div class="blog-post-alt-thumb-cover"></div>
                     </div><!-- .blog-post-alt-thumb -->
@@ -132,7 +136,7 @@
                 <div class="blog-post-alt carousel-item">
                     <div class="blog-post-alt-thumb">
                         <div class="blog-post-alt-thumb-inner">
-                            <a href="single.jsp"><img src="../images/index-images/featured-posts/featured-3.jpg" alt="" /></a>
+                            <a href="single.jsp"><img src="<%=basePath%>images/index-images/featured-posts/featured-3.jpg" alt="" /></a>
                         </div><!-- .blog-post-alt-thumb-inner -->
                         <div class="blog-post-alt-thumb-cover"></div>
                     </div><!-- .blog-post-alt-thumb -->
@@ -156,7 +160,7 @@
                 <div class="blog-post-alt carousel-item">
                     <div class="blog-post-alt-thumb">
                         <div class="blog-post-alt-thumb-inner">
-                            <a href="single.jsp"><img src="../images/index-images/featured-posts/featured-4.jpg" alt="" /></a>
+                            <a href="single.jsp"><img src="<%=basePath%>images/index-images/featured-posts/featured-4.jpg" alt="" /></a>
                         </div><!-- .blog-post-alt-thumb-inner -->
                         <div class="blog-post-alt-thumb-cover"></div>
                     </div><!-- .blog-post-alt-thumb -->
@@ -180,7 +184,7 @@
                 <div class="blog-post-alt carousel-item">
                     <div class="blog-post-alt-thumb">
                         <div class="blog-post-alt-thumb-inner">
-                            <a href="single.jsp"><img src="../images/index-images/featured-posts/featured-5.jpg" alt="" /></a>
+                            <a href="single.jsp"><img src="<%=basePath%>images/index-images/featured-posts/featured-5.jpg" alt="" /></a>
                         </div><!-- .blog-post-alt-thumb-inner -->
                         <div class="blog-post-alt-thumb-cover"></div>
                     </div><!-- .blog-post-alt-thumb -->
@@ -204,7 +208,7 @@
                 <div class="blog-post-alt carousel-item">
                     <div class="blog-post-alt-thumb">
                         <div class="blog-post-alt-thumb-inner">
-                            <a href="single.jsp"><img src="../images/index-images/featured-posts/featured-6.jpg" alt="" /></a>
+                            <a href="single.jsp"><img src="<%=basePath%>images/index-images/featured-posts/featured-6.jpg" alt="" /></a>
                         </div><!-- .blog-post-alt-thumb-inner -->
                         <div class="blog-post-alt-thumb-cover"></div>
                     </div><!-- .blog-post-alt-thumb -->
@@ -241,7 +245,7 @@
                 <div class="blog-post">
 
                     <div class="blog-post-thumb">
-                        <a href="single.jsp"><img src="../images/index-images/logo.png" alt="" /></a>
+                        <a href="single.jsp"><img src="<%=basePath%>images/index-images/logo.png" alt="" /></a>
                     </div><!-- .blog-post-thumb -->
 
                     <div class="blog-post-main clearfix">
@@ -249,7 +253,7 @@
                         <div class="blog-post-author">
 
                             <div class="blog-post-author-avatar">
-                                <img src="../images/index-images/blog-posts/avatar.png" alt="" />
+                                <img src="<%=basePath%>images/index-images/blog-posts/avatar.png" alt="" />
                             </div><!-- .blog-post-author-avatar -->
 
                             <div class="blog-post-author-name">
@@ -294,7 +298,7 @@
                 <div class="blog-post">
 
                     <div class="blog-post-thumb">
-                        <a href="single.jsp"><img src="../images/index-images/blog-posts/post-2.jpg" alt="" /></a>
+                        <a href="single.jsp"><img src="<%=basePath%>images/index-images/blog-posts/post-2.jpg" alt="" /></a>
                     </div><!-- .blog-post-thumb -->
 
                     <div class="blog-post-main clearfix">
@@ -302,7 +306,7 @@
                         <div class="blog-post-author">
 
                             <div class="blog-post-author-avatar">
-                                <img src="../images/index-images/blog-posts/avatar.png" alt="" />
+                                <img src="<%=basePath%>images/index-images/blog-posts/avatar.png" alt="" />
                             </div><!-- .blog-post-author-avatar -->
 
                             <div class="blog-post-author-name">
@@ -347,7 +351,7 @@
                 <div class="blog-post">
 
                     <div class="blog-post-thumb">
-                        <a href="single.jsp"><img src="../images/index-images/blog-posts/post-3.jpg" alt="" /></a>
+                        <a href="single.jsp"><img src="<%=basePath%>images/index-images/blog-posts/post-3.jpg" alt="" /></a>
                     </div><!-- .blog-post-thumb -->
 
                     <div class="blog-post-main clearfix">
@@ -355,7 +359,7 @@
                         <div class="blog-post-author">
 
                             <div class="blog-post-author-avatar">
-                                <img src="../images/index-images/blog-posts/avatar.png" alt="" />
+                                <img src="<%=basePath%>images/index-images/blog-posts/avatar.png" alt="" />
                             </div><!-- .blog-post-author-avatar -->
 
                             <div class="blog-post-author-name">
@@ -415,10 +419,10 @@
 
                 <div class="about-author-widget">
                     <div class="about-author-widget-banner">
-                        <img src="../images/index-images/widget-about-author/banner.png" alt="" />
+                        <img src="<%=basePath%>images/index-images/widget-about-author/banner.png" alt="" />
                     </div>
                     <div class="about-author-widget-avatar">
-                        <img src="../images/index-images/widget-about-author/avatar.png" alt="" />
+                        <img src="<%=basePath%>images/index-images/widget-about-author/avatar.png" alt="" />
                     </div>
                     <h2 class="about-author-widget-name">Stephany Moore</h2>
                     <h3 class="about-author-widget-position">Lifestyle Blogger</h3>
@@ -458,7 +462,7 @@
                         <div class="recent-posts-widget-post">
 
                             <div class="recent-posts-widget-thumb">
-                                <a href="single.jsp"><img src="../images/index-images/widget-recent-posts/post-1.jpg" alt="" /></a>
+                                <a href="single.jsp"><img src="<%=basePath%>images/index-images/widget-recent-posts/post-1.jpg" alt="" /></a>
                             </div><!-- .recent-posts-widget-thumb -->
 
                             <div class="recent-posts-widget-main">
@@ -474,7 +478,7 @@
                         <div class="recent-posts-widget-post">
 
                             <div class="recent-posts-widget-thumb">
-                                <a href="single.jsp"><img src="../images/index-images/widget-recent-posts/post-2.jpg" alt="" /></a>
+                                <a href="single.jsp"><img src="<%=basePath%>images/index-images/widget-recent-posts/post-2.jpg" alt="" /></a>
                             </div><!-- .recent-posts-widget-thumb -->
 
                             <div class="recent-posts-widget-main">
@@ -490,7 +494,7 @@
                         <div class="recent-posts-widget-post">
 
                             <div class="recent-posts-widget-thumb">
-                                <a href="single.jsp"><img src="../images/index-images/widget-recent-posts/post-3.jpg" alt="" /></a>
+                                <a href="single.jsp"><img src="<%=basePath%>images/index-images/widget-recent-posts/post-3.jpg" alt="" /></a>
                             </div><!-- .recent-posts-widget-thumb -->
 
                             <div class="recent-posts-widget-main">
@@ -566,9 +570,9 @@
     </div>
 </div>
 <!-- JavaScript -->
-<script type="text/javascript" src="../js/index-js/javascript/jquery-1.11.3.min.js"></script>
-<script type="text/javascript" src="../js/index-js/javascript/plugins.js"></script>
-<script type="text/javascript" src="../js/index-js/javascript/main.js"></script>
+<script type="text/javascript" src="<%=basePath%>js/index-js/javascript/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="<%=basePath%>js/index-js/javascript/plugins.js"></script>
+<script type="text/javascript" src="<%=basePath%>js/index-js/javascript/main.js"></script>
 
 </body>
 </html>

@@ -1,5 +1,6 @@
 package com.gem.share.control;
 
+import com.gem.share.entity.BlogContent;
 import com.gem.share.service.BlogService;
 import com.gem.share.service.LabelInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
 @RequestMapping("/new")
@@ -22,7 +26,18 @@ public class NewControl {
 
     @RequestMapping("/main.action")
     public void main(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("bloglist",blogService.selectAllBlog());
+        List<BlogContent> bloglist=blogService.selectAllBlog();
+        Map<String,Object> map=new HashMap<>();
+
+        for (BlogContent blogContent:bloglist){
+            BlogContent blog=blogContent;
+            map.put("blogcontent",blog);
+            request.setAttribute("blogcontent",blog);
+        }
+
+
+
+        request.setAttribute("bloglist",bloglist);
         request.setAttribute("labellist",infoService.selectAllLabelInfo());
 
         request.getRequestDispatcher("/jsp/new.jsp").forward(request,response);

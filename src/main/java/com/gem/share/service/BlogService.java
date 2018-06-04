@@ -1,11 +1,16 @@
 package com.gem.share.service;
 
 import com.gem.share.entity.BlogContent;
+import com.github.pagehelper.PageInfo;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 public interface BlogService {
+
+    public PageInfo<BlogContent> selectAllBlogByPage(Map<String,Object> map);
+
 //    通过博客id修改博客
     public BlogContent updateBlogByBlogId(int blog_id);
 //    查询所有博客

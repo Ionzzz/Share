@@ -5,6 +5,10 @@
   Time: 20:00
   To change this template use File | Settings | File Templates.
 --%>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
@@ -15,18 +19,18 @@
 
     <title>关于我们</title>
     <link rel="stylesheet"
-          href="../css/index-css/content_font.css">
+          href="<%=basePath%>css/index-css/content_font.css">
     <!-- Google web font "Open Sans" -->
-    <link rel="stylesheet" href="../css/index-css/font-awesome.min.css">
-    <link rel="stylesheet" href="../css/index-css/bootstrap.min.css">
+    <link rel="stylesheet" href="<%=basePath%>css/index-css/font-awesome.min.css">
+    <link rel="stylesheet" href="<%=basePath%>css/index-css/bootstrap.min.css">
 
-    <link rel="stylesheet" href="../css/index-css/main.css">
-    <link href='../css/index-css/nav_font.css' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="<%=basePath%>css/index-css/main.css">
+    <link href='<%=basePath%>css/index-css/nav_font.css' rel='stylesheet' type='text/css'>
 
-    <link rel="stylesheet" href="../css/index-css/demo.css" />
-    <link rel="stylesheet" href="../css/index-css/templatemo-style.css">
+    <link rel="stylesheet" href="<%=basePath%>css/index-css/demo.css" />
+    <link rel="stylesheet" href="<%=basePath%>css/index-css/templatemo-style.css">
 
-    <script type="text/javascript" src="../js/index-js/modernizr.custom.86080.js"></script>
+    <script type="text/javascript" src="<%=basePath%>js/index-js/modernizr.custom.86080.js"></script>
 
 </head>
 
@@ -150,6 +154,6 @@
 </div>
 </body>
 
-<script type="text/javascript" src="../js/index-js/particles.js"></script>
-<script type="text/javascript" src="../js/index-js/app.js"></script>
+<script type="text/javascript" src="<%=basePath%>js/index-js/particles.js"></script>
+<script type="text/javascript" src="<%=basePath%>js/index-js/app.js"></script>
 </html>

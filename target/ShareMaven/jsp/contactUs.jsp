@@ -5,6 +5,10 @@
   Time: 19:56
   To change this template use File | Settings | File Templates.
 --%>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en" class="no-js">
@@ -13,21 +17,21 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>联系我们</title>
-    <link href="../css/index-css/style_1.css" rel="stylesheet" type="text/css"/>
-    <link href="../css/index-css/main.css" rel="stylesheet">
-    <link href='../css/index-css/nav_font.css' rel='stylesheet' type='text/css'>
+    <link href="<%=basePath%>css/index-css/style_1.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=basePath%>css/index-css/main.css" rel="stylesheet">
+    <link href='<%=basePath%>css/index-css/nav_font.css' rel='stylesheet' type='text/css'>
 
-    <link href="../css/index-css/media_query.css" rel="stylesheet" type="text/css"/>
-    <link href="../css/index-css/bootstrap.css" rel="stylesheet" type="text/css"/>
-    <link href="../css/index-css/font-awesome.min.css">
-    <link href="../css/index-css/animate.css" rel="stylesheet" type="text/css"/>
-    <link href="../css/index-css/content_font.css" rel="stylesheet">
-    <link href="../css/index-css/owl.carousel.css" rel="stylesheet" type="text/css"/>
-    <link href="../css/index-css/owl.theme.default.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=basePath%>css/index-css/media_query.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=basePath%>css/index-css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=basePath%>css/index-css/font-awesome.min.css">
+    <link href="<%=basePath%>css/index-css/animate.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=basePath%>css/index-css/content_font.css" rel="stylesheet">
+    <link href="<%=basePath%>css/index-css/owl.carousel.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=basePath%>css/index-css/owl.theme.default.css" rel="stylesheet" type="text/css"/>
     <!-- Bootstrap CSS -->
 
     <!-- Modernizr JS -->
-    <script src="../js/index-js/modernizr-3.5.0.min.js"></script>
+    <script src="<%=basePath%>js/index-js/modernizr-3.5.0.min.js"></script>
 </head>
 <body>
 
@@ -157,7 +161,7 @@
 <div class="container-fluid fh5co_footer_bg pb-3">
     <div class="container animate-box">
         <div class="row">
-            <div class="col-12 spdp_right py-5"><img src="../images/index-images/white_logo.png" alt="img" class="footer_logo"/></div>
+            <div class="col-12 spdp_right py-5"><img src="<%=basePath%>images/index-images/white_logo.png" alt="img" class="footer_logo"/></div>
             <div class="clearfix"></div>
             <div class="col-12 col-md-4 col-lg-3">
                 <div class="footer_main_title py-3"> About</div>
@@ -205,19 +209,19 @@
                 <a href="#" class="footer_post pb-4"> Success is not a good teacher failure makes you humble </a>
                 <div class="footer_makes_sub_font"> Dec 31, 2018</div>
                 <a href="#" class="footer_post pb-4"> Success is not a good teacher failure makes you humble </a>
-                <div class="footer_position_absolute"><img src="../images/index-images/footer_sub_tipik.png" alt="img" class="width_footer_sub_img"/></div>
+                <div class="footer_position_absolute"><img src="<%=basePath%>images/index-images/footer_sub_tipik.png" alt="img" class="width_footer_sub_img"/></div>
             </div>
             <div class="col-12 col-md-12 col-lg-4 ">
                 <div class="footer_main_title py-3"> 动态</div>
-                <a href="#" class="footer_img_post_6"><img src="../images/index-images/allef-vinicius-108153.jpg" alt="img"/></a>
-                <a href="#" class="footer_img_post_6"><img src="../images/index-images/32-450x260.jpg" alt="img"/></a>
-                <a href="#" class="footer_img_post_6"><img src="../images/index-images/download (1).jpg" alt="img"/></a>
-                <a href="#" class="footer_img_post_6"><img src="../images/index-images/science-578x362.jpg" alt="img"/></a>
-                <a href="#" class="footer_img_post_6"><img src="../images/index-images/vil-son-35490.jpg" alt="img"/></a>
-                <a href="#" class="footer_img_post_6"><img src="../images/index-images/zack-minor-15104.jpg" alt="img"/></a>
-                <a href="#" class="footer_img_post_6"><img src="../images/index-images/download.jpg" alt="img"/></a>
-                <a href="#" class="footer_img_post_6"><img src="../images/index-images/download (2).jpg" alt="img"/></a>
-                <a href="#" class="footer_img_post_6"><img src="../images/index-images/ryan-moreno-98837.jpg" alt="img"/></a>
+                <a href="#" class="footer_img_post_6"><img src="<%=basePath%>images/index-images/allef-vinicius-108153.jpg" alt="img"/></a>
+                <a href="#" class="footer_img_post_6"><img src="<%=basePath%>images/index-images/32-450x260.jpg" alt="img"/></a>
+                <a href="#" class="footer_img_post_6"><img src="<%=basePath%>images/index-images/download (1).jpg" alt="img"/></a>
+                <a href="#" class="footer_img_post_6"><img src="<%=basePath%>images/index-images/science-578x362.jpg" alt="img"/></a>
+                <a href="#" class="footer_img_post_6"><img src="<%=basePath%>images/index-images/vil-son-35490.jpg" alt="img"/></a>
+                <a href="#" class="footer_img_post_6"><img src="<%=basePath%>images/index-images/zack-minor-15104.jpg" alt="img"/></a>
+                <a href="#" class="footer_img_post_6"><img src="<%=basePath%>images/index-images/download.jpg" alt="img"/></a>
+                <a href="#" class="footer_img_post_6"><img src="<%=basePath%>images/index-images/download (2).jpg" alt="img"/></a>
+                <a href="#" class="footer_img_post_6"><img src="<%=basePath%>images/index-images/ryan-moreno-98837.jpg" alt="img"/></a>
             </div>
         </div>
         <div class="row justify-content-center pt-2 pb-4">
@@ -241,15 +245,15 @@
     <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
 </div>
 
-<script src="../js/index-js/jquery.min.js"></script>
-<script src="../js/index-js/owl.carousel.min.js"></script>
+<script src="<%=basePath%>js/index-js/jquery.min.js"></script>
+<script src="<%=basePath%>js/index-js/owl.carousel.min.js"></script>
 <!--<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>-->
-<script src="../js/index-js/tether.min.js"></script>
-<script src="../js/index-js/bootstrap.min.js"></script>
+<script src="<%=basePath%>js/index-js/tether.min.js"></script>
+<script src="<%=basePath%>js/index-js/bootstrap.min.js"></script>
 <!-- Waypoints -->
-<script src="../js/index-js/jquery.waypoints.min.js"></script>
+<script src="<%=basePath%>js/index-js/jquery.waypoints.min.js"></script>
 <!-- Main -->
-<script src="../js/index-js/main.js"></script>
+<script src="<%=basePath%>js/index-js/main.js"></script>
 
 </body>
 
