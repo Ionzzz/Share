@@ -192,8 +192,8 @@
                     <div class="fh5co_hover_news_img">
                         <div class="fh5co_news_img"><img src="<%=basePath%>images/index-images/joe-gardner-75333.jpg" alt=""/></div>
                         <div>
-                            <p class="texthidden"  style="width: 350px"></p><a href="single.jsp" class="d-block fh5co_small_post_heading" ><span class=>${blogLvXing.blogcontent}</span></a>
-                            <div class="c_g"><i class="fa fa-clock-o"></i> <fmt:formatDate value="${blogLvXing.blogcreatetime}" pattern="yyyy-MM-dd HH:mm:ss"/></div>
+                            <p class="texthidden" style="width: 350px"><a href="single.jsp" class="fh5co_small_post_heading" >${blogLvXing.blogcontent}</a></p>
+                            <p style="text-align: right"><fmt:formatDate value="${blogLvXing.blogcreatetime}" pattern="yyyy-MM-dd HH:mm:ss"/></p>
                         </div>
                     </div>
                 </div>
@@ -215,7 +215,7 @@
                 <div>
                     <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">书籍</div>
                 </div>
-                <div class="row pb-4">
+               <%-- <div class="row pb-4">
                     <div class="col-md-5">
                         <div class="fh5co_hover_news_img">
                             <div class="fh5co_news_img"><img src="<%=basePath%>images/index-images/ryan-moreno-98837.jpg" alt=""/></div>
@@ -237,7 +237,7 @@
                             <li> You and Your Kids can Enjoy this News Gaming Console</li>
                         </ul>
                     </div>
-                </div>
+                </div>--%>
                 <c:forEach items="${blogbook}" var="blogbook">
                     <div class="row pb-4">
                         <div class="col-md-5">

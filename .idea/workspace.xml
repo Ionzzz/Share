@@ -11,16 +11,8 @@
   <component name="ChangeListManager">
     <list default="true" id="5d62ac77-8c7f-4ccb-88a6-f35818686fc8" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gem/share/control/NewControl.java" afterPath="$PROJECT_DIR$/src/main/java/com/gem/share/control/NewControl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gem/share/service/Impl/BlogServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/gem/share/service/Impl/BlogServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/config/SqlMapConfig.xml" afterPath="$PROJECT_DIR$/src/main/resources/config/SqlMapConfig.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/css/index-css/main.css" afterPath="$PROJECT_DIR$/src/main/webapp/css/index-css/main.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/jsp/index.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/index.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/jsp/new.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/new.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ShareMaven/WEB-INF/classes/config/SqlMapConfig.xml" afterPath="$PROJECT_DIR$/target/ShareMaven/WEB-INF/classes/config/SqlMapConfig.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ShareMaven/css/index-css/main.css" afterPath="$PROJECT_DIR$/target/ShareMaven/css/index-css/main.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ShareMaven/jsp/new.jsp" afterPath="$PROJECT_DIR$/target/ShareMaven/jsp/new.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/config/SqlMapConfig.xml" afterPath="$PROJECT_DIR$/target/classes/config/SqlMapConfig.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ShareMaven/jsp/index.jsp" afterPath="$PROJECT_DIR$/target/ShareMaven/jsp/index.jsp" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -47,7 +39,7 @@
       <file leaf-file-name="new.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/new.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
+            <state relative-caret-position="126">
               <caret line="110" column="67" lean-forward="false" selection-start-line="110" selection-start-column="67" selection-end-line="110" selection-end-column="67" />
               <folding>
                 <element signature="n#header#0;n#body#0;n#html#0;n#!!top" expanded="false" />
@@ -109,12 +101,13 @@
       <file leaf-file-name="index.jsp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/index.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="182">
-              <caret line="199" column="24" lean-forward="true" selection-start-line="199" selection-start-column="24" selection-end-line="199" selection-end-column="24" />
+            <state relative-caret-position="188">
+              <caret line="189" column="62" lean-forward="true" selection-start-line="189" selection-start-column="62" selection-end-line="189" selection-end-column="62" />
               <folding>
                 <element signature="n#style#0;n#p#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#p#0;n#div#2;n#div#0;n#div#0;n#div#1;n#div#0;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#p#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#1;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -885,7 +878,7 @@
       <workItem from="1528075927699" duration="41586000" />
       <workItem from="1528120606019" duration="8000" />
       <workItem from="1528157828728" duration="752000" />
-      <workItem from="1528160234456" duration="21448000" />
+      <workItem from="1528160234456" duration="24210000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1527728944158</created>
@@ -1069,7 +1062,14 @@
       <option name="project" value="LOCAL" />
       <updated>1528119081576</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
+      <created>1528192483099</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1528192483099</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1096,7 +1096,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="205122000" />
+    <option name="totallyTimeSpent" value="207884000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1585,7 +1585,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/new.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
+        <state relative-caret-position="126">
           <caret line="110" column="67" lean-forward="false" selection-start-line="110" selection-start-column="67" selection-end-line="110" selection-end-column="67" />
           <folding>
             <element signature="n#header#0;n#body#0;n#html#0;n#!!top" expanded="false" />
@@ -1601,12 +1601,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/index.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="199" column="24" lean-forward="true" selection-start-line="199" selection-start-column="24" selection-end-line="199" selection-end-column="24" />
+        <state relative-caret-position="188">
+          <caret line="189" column="62" lean-forward="true" selection-start-line="189" selection-start-column="62" selection-end-line="189" selection-end-column="62" />
           <folding>
             <element signature="n#style#0;n#p#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#p#0;n#div#2;n#div#0;n#div#0;n#div#1;n#div#0;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#p#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#1;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
