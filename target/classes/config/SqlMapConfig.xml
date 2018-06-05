@@ -14,6 +14,10 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<package name="com.gem.share.entity"/>
 	</typeAliases>
 
+	<plugins>
+		<!--将第三方分页插件添加-->
+		<plugin interceptor="com.github.pagehelper.PageInterceptor"></plugin>
+	</plugins>
 	<!-- 加载 映射文件 -->
 	<mappers>
 		<package name="com.gem.share.dao"/>

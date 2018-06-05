@@ -3,6 +3,7 @@ package com.gem.share.control;
 import com.gem.share.entity.BlogContent;
 import com.gem.share.service.BlogService;
 import com.gem.share.service.LabelInfoService;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,12 +29,21 @@ public class NewControl {
     public void main(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<BlogContent> bloglist=blogService.selectAllBlog();
         Map<String,Object> map=new HashMap<>();
-
-        for (BlogContent blogContent:bloglist){
+        int pageSize=5;
+        int curPage=1;
+        String scurPage=request.getParameter("curPage");
+        if(scurPage!=null&&!scurPage.trim().equals("")) {
+            curPage = Integer.parseInt(scurPage);
+        }
+        map.put("curPage",curPage);
+        map.put("pageSize",pageSize);
+        PageInfo<BlogContent> pageInfo=blogService.selectAllBlogByPage(map);
+        request.setAttribute("pageInfo",pageInfo);
+/*        for (BlogContent blogContent:bloglist){
             BlogContent blog=blogContent;
             map.put("blogcontent",blog);
             request.setAttribute("blogcontent",blog);
-        }
+        }*/
 
 
 

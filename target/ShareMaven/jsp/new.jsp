@@ -36,6 +36,15 @@
 
     <!-- Modernizr JS -->
     <script src="<%=basePath%>js/index-js/modernizr-3.5.0.min.js"></script>
+
+    <style>
+        .texthidden{
+            width:400px;
+            white-space: nowrap;/*控制单行显示*/
+            overflow: hidden;/*超出隐藏*/
+            text-overflow: ellipsis;/*隐藏的字符用省略号表示*/
+        }
+    </style>
 </head>
 <body>
 
@@ -80,162 +89,153 @@
 </header>
 
 
-
-<div  class="container-fluid pb-4 pt-4 paddding" style="margin-top: 50px;">
-    <div class="container paddding font">
-        <div class="row mx-0">
-            <div class="col-md-8 animate-box" data-animate-effect="fadeInLeft">
-                <div>
-                    <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">News</div>
-                </div>
-
-            <c:forEach items="${bloglist}" var="blog">
-                <div class="row pb-4">
-                    <div class="col-md-5">
-                        <div class="fh5co_hover_news_img">
-                            <div class="fh5co_news_img"><img src="<%=basePath%>images/index-images/nathan-mcbride-229637.jpg" alt=""/></div>
-                            <div></div>
-                        </div>
-                    </div>
-                    <div class="col-md-7 animate-box">
-                        <a href="single.jsp" class="fh5co_magna py-2" >${blog.blogcontent} </a> <br/>
-                        <a href="#" class="fh5co_mini_time py-3"> ${blog.blogId}-<fmt:formatDate value="${blog.blogcreatetime}" pattern="yyyy-MM-dd HH:mm:ss"/> </a>
-                        <div class="fh5co_consectetur"> ${blog.blogcontent}
-                        </div>
-                    </div>
-                </div>
-            </c:forEach>
-
-
-                <div class="row pb-4">
-                    <div class="col-md-5">
-                        <div class="fh5co_hover_news_img">
-                            <div class="fh5co_news_img"><img src="<%=basePath%>images/index-images/ryan-moreno-98837.jpg" alt=""/></div>
-                            <div></div>
-                        </div>
-                    </div>
-                    <div class="col-md-7">
-                        <a href="single.jsp" class="fh5co_magna py-2"> Magna aliqua ut enim ad minim veniam quis
-                            nostrud quis xercitation ullamco. </a> <br/><a href="#" class="fh5co_mini_time py-3"> Thomson Smith -
-                        April 18,2018 </a>
-                        <div class="fh5co_consectetur"> Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                            commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-                            dolore.
-                        </div>
-                        <ul class="fh5co_gaming_topikk pt-3">
-                            <li> Why 2017 Might Just Be the Worst Year Ever for Gaming</li>
-                            <li> Ghost Racer Wants to Be the Most Ambitious Car Game</li>
-                            <li> New Nintendo Wii Console Goes on Sale in Strategy Reboot</li>
-                            <li> You and Your Kids can Enjoy this News Gaming Console</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="row pb-4">
-                    <div class="col-md-5">
-                        <div class="fh5co_hover_news_img">
-                            <div class="fh5co_news_img">
-                                <img src="<%=basePath%>images/index-images/photo-1449157291145-7efd050a4d0e-578x362.jpg" alt=""/>
+<form action="<%=basePath%>new/main.action" id="mainForm" method="post">
+    <div  class="container-fluid pb-4 pt-4 paddding" style="margin-top: 50px;">
+        <div class="container paddding font">
+            <div class="row mx-0">
+                    <div class="col-md-8 animate-box" data-animate-effect="fadeInLeft" style="width: 760px;">
+                            <div>
+                                <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">News</div>
                             </div>
-                            <div></div>
+                            <input type="hidden" name="curPage"  id="curPage">
+                            <c:forEach items="${pageInfo.list}" var="blog">
+                                <div class="row pb-4">
+                                    <div class="col-md-5">
+                                        <div class="fh5co_hover_news_img">
+                                            <div class="fh5co_news_img"><img src="<%=basePath%>images/index-images/nathan-mcbride-229637.jpg" alt=""/></div>
+                                            <div></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-7 animate-box">
+
+                                        <p class="texthidden"> <a href="single.jsp" class="fh5co_magna py-2" >${blog.blogcontent} </a> </p><br/>
+                                        <p  style="text-align: right"><a href="" class="fh5co_mini_time py-3" >${blog.blogId}-<fmt:formatDate value="${blog.blogcreatetime}" pattern="yyyy-MM-dd HH:mm:ss"/> </a></p>
+
+                                        <div class="fh5co_consectetur"> ${blog.blogcontent}
+                                        </div>
+                                    </div>
+                                </div>
+                            </c:forEach>
+
+                            <div class="row pb-4">
+                                <div class="col-md-5">
+                                    <div class="fh5co_hover_news_img">
+                                        <div class="fh5co_news_img"><img src="<%=basePath%>images/index-images/ryan-moreno-98837.jpg" alt=""/></div>
+                                        <div></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                    <a href="single.jsp" class="fh5co_magna py-2"> <p class="texthidden"> Magna aliqua ut enim ad minim veniam quis
+                                        nostrud quis xercitation ullamco. </p></a> <br/><a href="#" class="fh5co_mini_time py-3"> Thomson Smith -
+                                    April 18,2018 </a>
+                                    <div class="fh5co_consectetur"> Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                                        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+                                        dolore.
+                                    </div>
+                                    <ul class="fh5co_gaming_topikk pt-3">
+                                        <li> Why 2017 Might Just Be the Worst Year Ever for Gaming</li>
+                                        <li> Ghost Racer Wants to Be the Most Ambitious Car Game</li>
+                                        <li> New Nintendo Wii Console Goes on Sale in Strategy Reboot</li>
+                                        <li> You and Your Kids can Enjoy this News Gaming Console</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                    </div>
+
+                <div class="col-md-3 animate-box" data-animate-effect="fadeInRight">
+                    <div>
+                        <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">Tags</div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="fh5co_tags_all">
+                        <a href="#" class="fh5co_tagg">音乐</a>
+                        <a href="#" class="fh5co_tagg">旅行</a>
+                        <a href="#" class="fh5co_tagg">美食</a>
+                        <a href="#" class="fh5co_tagg">手绘</a>
+                        <a href="#" class="fh5co_tagg">书籍</a>
+                        <a href="#" class="fh5co_tagg">手工</a>
+                        <a href="#" class="fh5co_tagg">家居</a>
+                        <a href="#" class="fh5co_tagg">Lifestyle</a>
+                        <a href="#" class="fh5co_tagg">Art</a>
+                        <a href="#" class="fh5co_tagg">Education</a>
+                        <a href="#" class="fh5co_tagg">Social</a>
+                        <a href="#" class="fh5co_tagg">Three</a>
+                    </div>
+                    <div>
+                        <div class="fh5co_heading fh5co_heading_border_bottom pt-3 py-2 mb-4">Most Popular</div>
+                    </div>
+                    <div class="row pb-3">
+                        <div class="col-5 align-self-center">
+                            <img src="<%=basePath%>images/index-images/download (1).jpg" alt="img" class="fh5co_most_trading"/>
+                        </div>
+                        <div class="col-7 paddding">
+                            <div class="most_fh5co_treding_font"> Magna aliqua ut enim ad minim veniam quis nostrud.</div>
+                            <div class="most_fh5co_treding_font_123"> April 18, 2018</div>
                         </div>
                     </div>
-                    <div class="col-md-7">
-                        <a href="single.jsp" class="fh5co_magna py-2"> Magna aliqua ut enim ad minim veniam quis
-                            nostrud quis xercitation ullamco. </a> <br/><a href="#" class="fh5co_mini_time py-3"> Thomson Smith -
-                        April 18,2018 </a>
-                        <div class="fh5co_consectetur"> Quis nostrud xercitation ullamco laboris nisi aliquip ex ea commodo
-                            consequat.
+                    <div class="row pb-3">
+                        <div class="col-5 align-self-center">
+                            <img src="<%=basePath%>images/index-images/allef-vinicius-108153.jpg" alt="img" class="fh5co_most_trading"/>
+                        </div>
+                        <div class="col-7 paddding">
+                            <div class="most_fh5co_treding_font"> Enim ad minim veniam nostrud xercitation ullamco.</div>
+                            <div class="most_fh5co_treding_font_123"> April 18, 2018</div>
                         </div>
                     </div>
-                </div>
-                <div class="row pb-4">
-                    <div class="col-md-5">
-                        <div class="fh5co_hover_news_img">
-                            <div class="fh5co_news_img"><img src="<%=basePath%>images/index-images/office-768x512.jpg" alt=""/></div>
-                            <div></div>
+                    <div class="row pb-3">
+                        <div class="col-5 align-self-center">
+                            <img src="<%=basePath%>images/index-images/download (2).jpg" alt="img" class="fh5co_most_trading"/>
+                        </div>
+                        <div class="col-7 paddding">
+                            <div class="most_fh5co_treding_font"> Magna aliqua ut enim ad minim veniam quis nostrud.</div>
+                            <div class="most_fh5co_treding_font_123"> April 18, 2018</div>
                         </div>
                     </div>
-                    <div class="col-md-7">
-                        <a href="single.jsp" class="fh5co_magna py-2"> Magna aliqua ut enim ad minim veniam quis
-                            nostrud quis xercitation ullamco. </a><br/><a href="#" class="fh5co_mini_time py-3"> Thomson Smith -
-                        April 18,2018 </a>
-                        <div class="fh5co_consectetur"> Amet consectetur adipisicing elit, sed do eiusmod tempor incididunt
-                            ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
+                    <div class="row pb-3">
+                        <div class="col-5 align-self-center"><img src="<%=basePath%>images/index-images/seth-doyle-133175.jpg" alt="img"
+                                                                  class="fh5co_most_trading"/></div>
+                        <div class="col-7 paddding">
+                            <div class="most_fh5co_treding_font"> Magna aliqua ut enim ad minim veniam quis nostrud.</div>
+                            <div class="most_fh5co_treding_font_123"> April 18, 2018</div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-3 animate-box" data-animate-effect="fadeInRight">
-                <div>
-                    <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">Tags</div>
+
+            <div class="row mx-0">
+                <div class="col-12 text-center pb-4 pt-4">
+                    <a href="javascript:getPage(1)" class="btn_mange_pagging"><i class="fa fa-long-arrow-left"></i>&nbsp;&nbsp; HOME PAGE</a>
+
+                    <c:if test="${pageInfo.pageNum==1}">
+                        <a href="javascript:getPage(${pageInfo.pageNum==1?1:pageInfo.prePage})" class="btn_pagging">${pageInfo.pageNum==1?1:pageInfo.prePage}</a>
+                        <a href="javascript:getPage(${pageInfo.pageNum==1?2:pageInfo.pageNum})" class="btn_pagging">${pageInfo.pageNum==1?2:pageInfo.pageNum}</a>
+                        <a href="javascript:getPage(${pageInfo.pageNum==1?3:pageInfo.nextPage})" class="btn_pagging">${pageInfo.pageNum==1?3:pageInfo.nextPage}</a>
+                    </c:if>
+                    <c:if test="${pageInfo.pageNum!=1&&pageInfo.pageNum!=pageInfo.pages}">
+                        <a href="javascript:getPage(${pageInfo.prePage})" class="btn_pagging">${pageInfo.prePage}</a>
+                        <a href="javascript:getPage(${pageInfo.pageNum})" class="btn_pagging">${pageInfo.pageNum}</a>
+                        <a href="javascript:getPage(${pageInfo.nextPage})" class="btn_pagging">${pageInfo.nextPage}</a>
+                    </c:if>
+                    <c:if test="${pageInfo.pageNum==pageInfo.pages}">
+                        <a href="javascript:getPage(${pageInfo.pageNum==pageInfo.pages?pageInfo.prePage-1:pageInfo.prePage})" class="btn_pagging">${pageInfo.pageNum==pageInfo.pages?pageInfo.prePage-1:pageInfo.prePage}</a>
+                        <a href="javascript:getPage(${pageInfo.pageNum==pageInfo.pages?pageInfo.prePage:pageInfo.pageNum})" class="btn_pagging">${pageInfo.pageNum==pageInfo.pages?pageInfo.prePage:pageInfo.pageNum}</a>
+                        <a href="javascript:getPage(${pageInfo.pageNum==pageInfo.pages?pageInfo.pages:pageInfo.nextPage})" class="btn_pagging">${pageInfo.pageNum==pageInfo.pages?pageInfo.pages:pageInfo.nextPage}</a>
+                    </c:if>
+
+                 <%--       <a href="javascript:getPage(${pageInfo.prePage})" class="btn_pagging">${pageInfo.prePage}</a>
+                        <a href="javascript:getPage(${pageInfo.pageNum})" class="btn_pagging">${pageInfo.pageNum}</a>
+                        <a href="javascript:getPage(${pageInfo.nextPage})" class="btn_pagging">${pageInfo.nextPage}</a>
+              --%>
+                    
+                    <a href="javascript:getPage(${pageInfo.pages})" class="btn_mange_pagging">END PAGE <i class="fa fa-long-arrow-right"></i>&nbsp;&nbsp; </a>
+                    <b>${pageInfo.total}</b> 条,共<b>${pageInfo.getPages()}</b>页,当前第<b>${pageInfo.pageNum}</b>页
+
                 </div>
-                <div class="clearfix"></div>
-                <div class="fh5co_tags_all">
-                    <a href="#" class="fh5co_tagg">音乐</a>
-                    <a href="#" class="fh5co_tagg">旅行</a>
-                    <a href="#" class="fh5co_tagg">美食</a>
-                    <a href="#" class="fh5co_tagg">手绘</a>
-                    <a href="#" class="fh5co_tagg">书籍</a>
-                    <a href="#" class="fh5co_tagg">手工</a>
-                    <a href="#" class="fh5co_tagg">家居</a>
-                    <a href="#" class="fh5co_tagg">Lifestyle</a>
-                    <a href="#" class="fh5co_tagg">Art</a>
-                    <a href="#" class="fh5co_tagg">Education</a>
-                    <a href="#" class="fh5co_tagg">Social</a>
-                    <a href="#" class="fh5co_tagg">Three</a>
-                </div>
-                <div>
-                    <div class="fh5co_heading fh5co_heading_border_bottom pt-3 py-2 mb-4">Most Popular</div>
-                </div>
-                <div class="row pb-3">
-                    <div class="col-5 align-self-center">
-                        <img src="<%=basePath%>images/index-images/download (1).jpg" alt="img" class="fh5co_most_trading"/>
-                    </div>
-                    <div class="col-7 paddding">
-                        <div class="most_fh5co_treding_font"> Magna aliqua ut enim ad minim veniam quis nostrud.</div>
-                        <div class="most_fh5co_treding_font_123"> April 18, 2018</div>
-                    </div>
-                </div>
-                <div class="row pb-3">
-                    <div class="col-5 align-self-center">
-                        <img src="<%=basePath%>images/index-images/allef-vinicius-108153.jpg" alt="img" class="fh5co_most_trading"/>
-                    </div>
-                    <div class="col-7 paddding">
-                        <div class="most_fh5co_treding_font"> Enim ad minim veniam nostrud xercitation ullamco.</div>
-                        <div class="most_fh5co_treding_font_123"> April 18, 2018</div>
-                    </div>
-                </div>
-                <div class="row pb-3">
-                    <div class="col-5 align-self-center">
-                        <img src="<%=basePath%>images/index-images/download (2).jpg" alt="img" class="fh5co_most_trading"/>
-                    </div>
-                    <div class="col-7 paddding">
-                        <div class="most_fh5co_treding_font"> Magna aliqua ut enim ad minim veniam quis nostrud.</div>
-                        <div class="most_fh5co_treding_font_123"> April 18, 2018</div>
-                    </div>
-                </div>
-                <div class="row pb-3">
-                    <div class="col-5 align-self-center"><img src="<%=basePath%>images/index-images/seth-doyle-133175.jpg" alt="img"
-                                                              class="fh5co_most_trading"/></div>
-                    <div class="col-7 paddding">
-                        <div class="most_fh5co_treding_font"> Magna aliqua ut enim ad minim veniam quis nostrud.</div>
-                        <div class="most_fh5co_treding_font_123"> April 18, 2018</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row mx-0">
-            <div class="col-12 text-center pb-4 pt-4">
-                <a href="#" class="btn_mange_pagging"><i class="fa fa-long-arrow-left"></i>&nbsp;&nbsp; Previous</a>
-                <a href="#" class="btn_pagging">1</a>
-                <a href="#" class="btn_pagging">2</a>
-                <a href="#" class="btn_pagging">3</a>
-                <a href="#" class="btn_pagging">...</a>
-                <a href="#" class="btn_mange_pagging">Next <i class="fa fa-long-arrow-right"></i>&nbsp;&nbsp; </a>
             </div>
         </div>
     </div>
-</div>
+</form>
 <div class="container-fluid pb-4 pt-5">
     <div class="container animate-box">
         <div>
@@ -377,6 +377,12 @@
 <!-- Main -->
 <script src="<%=basePath%>js/index-js/main.js"></script>
 
-
+<script>
+    function getPage(curPage) {
+        document.getElementById("curPage").value=curPage;
+//				触发表单提交事件
+        document.getElementById("mainForm").submit();
+    }
+</script>
 </body>
 </html>

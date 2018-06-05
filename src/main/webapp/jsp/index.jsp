@@ -27,6 +27,14 @@
     <!-- Modernizr JS -->
     <script src="<%=basePath%>js/index-js/modernizr-3.5.0.min.js"></script>
 
+    <style>
+        .texthidden{
+            white-space: nowrap;/*控制单行显示*/
+            overflow: hidden;/*超出隐藏*/
+            text-overflow: ellipsis;/*隐藏的字符用省略号表示*/
+        }
+    </style>
+
 </head>
 <body>
 <div class="container-fluid fh5co_header_bg" style="opacity: 0.9;">
@@ -129,13 +137,13 @@
                 <c:forEach items="${blogfourlist}" var="blogfourlist">
                     <div class="col-md-6 col-6 paddding animate-box" data-animate-effect="fadeIn">
                       <div class="fh5co_suceefh5co_height_2"><img src="<%=basePath%>${pic.get(blogfourlist.blogId-1)}" alt="img"/>
-                        <div class="fh5co_suceefh5co_height_position_absolute"></div>
+                        <div class="fh5co_suceefh5co_height_position_absolute"><p>111111111111</p></div>
                         <div class="fh5co_suceefh5co_height_position_absolute_font_2">
-                            <div class=""><a href="#" class="color_fff"> <i class="fa fa-clock-o"></i>&nbsp;&nbsp;<fmt:formatDate value="${blogfourlist.blogcreatetime}" pattern="yyyy-MM-dd HH:mm:ss"/> </a></div>
-                            <div class=""><a href="single.jsp" class="fh5co_good_font_2"> ${blogfourlist.blogcontent} </a></div>
+                            <a href="#" class="color_fff"> <i class="fa fa-clock-o"></i>&nbsp;&nbsp;<fmt:formatDate value="${blogfourlist.blogcreatetime}" pattern="yyyy-MM-dd HH:mm:ss"/> </a>
+                            <p class="texthidden"  style=" width:300px;"><a href="single.jsp" class="fh5co_good_font_2 texthidden"> ${blogfourlist.blogcontent} </a></p>
                         </div>
-                         </div>
                       </div>
+                    </div>
                 </c:forEach>
 
 
@@ -164,7 +172,7 @@
                         <div class="fh5co_latest_trading_img"><img src="<%=basePath%>images/index-images/allef-vinicius-108153.jpg" alt=""class="fh5co_img_special_relative"/></div>
                         <div class="fh5co_latest_trading_img_position_absolute"></div>
                         <div class="fh5co_latest_trading_img_position_absolute_1">
-                            <a href="single.jsp" class="text-white"> ${blogJiaJu.blogcontent} </a>
+                            <p class="texthidden"  style=" width:250px;"> <a href="single.jsp" class="text-white"> ${blogJiaJu.blogcontent} </a></p>
                             <div class="fh5co_latest_trading_date_and_name_color"> ${blogJiaJu.userId} - <fmt:formatDate value="${blogJiaJu.blogcreatetime}" pattern="yyyy-MM-dd HH:mm:ss"/> </div>
                         </div>
                     </div>
@@ -184,7 +192,7 @@
                     <div class="fh5co_hover_news_img">
                         <div class="fh5co_news_img"><img src="<%=basePath%>images/index-images/joe-gardner-75333.jpg" alt=""/></div>
                         <div>
-                            <a href="single.jsp" class="d-block fh5co_small_post_heading"><span class="">${blogLvXing.blogcontent}</span></a>
+                            <p class="texthidden"  style="width: 350px"></p><a href="single.jsp" class="d-block fh5co_small_post_heading" ><span class=>${blogLvXing.blogcontent}</span></a>
                             <div class="c_g"><i class="fa fa-clock-o"></i> <fmt:formatDate value="${blogLvXing.blogcreatetime}" pattern="yyyy-MM-dd HH:mm:ss"/></div>
                         </div>
                     </div>

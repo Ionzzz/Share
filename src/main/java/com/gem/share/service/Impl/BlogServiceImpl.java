@@ -41,9 +41,10 @@ public class BlogServiceImpl implements BlogService {
         int curPage= (int) map.get("curPage");
         int pageSize= (int) map.get("pageSize");
         PageHelper.startPage(curPage,pageSize);
-        List<BlogContent> list=blogContentMapper.selectAllBlogByPage((Map<String, Object>) map.get("blogcontent"));
-        PageInfo<BlogContent> pageInfo= (PageInfo<BlogContent>) blogContentMapper.selectAllBlogByPage((Map<String, Object>) map.get("blogcontent"));
-        return null;
+        List<BlogContent> list=blogContentMapper.selectAllBlog();
+        PageInfo<BlogContent> pageInfo=new PageInfo<>(list);
+
+        return pageInfo;
     }
 
     @Override
