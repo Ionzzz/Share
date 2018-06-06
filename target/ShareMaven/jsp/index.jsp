@@ -170,7 +170,7 @@
                         <div class="fh5co_latest_trading_img"><img src="<%=basePath%>${blogJiaJu.blogPics.pic}" alt=""class="fh5co_img_special_relative"/></div>
                         <div class="fh5co_latest_trading_img_position_absolute"></div>
                         <div class="fh5co_latest_trading_img_position_absolute_1">
-                            <p class="texthidden"  style=" width:250px;"> <a href="single.jsp" class="text-white"> ${blogJiaJu.blogContent.blogcontent} </a></p>
+                            <p class="texthidden "  style=" width:240px;"> <a href="single.jsp" class="text-white"> ${blogJiaJu.blogContent.blogcontent} </a></p>
                             <div class="fh5co_latest_trading_date_and_name_color">
                                     ${blogJiaJu.userInfo.usernickname} - <fmt:formatDate value="${blogJiaJu.blogContent.blogcreatetime}" pattern="yyyy-MM-dd HH:mm:ss"/> </div>
                         </div>
@@ -238,10 +238,10 @@
                             </div>
                         </div>
                         <div class="col-md-7">
-                            <a href="single.jsp" class="fh5co_magna py-2"> Magna aliqua ut enim ad minim veniam quisnostrud quis xercitation ullamco. </a>
+                            <p class="texthidden" style="width: 350px"> <a href="single.jsp" class="fh5co_magna py-2"> Magna aliqua ut enim ad minim veniam quisnostrud quis xercitation ullamco. </a></p>
                             <a href="single.jsp" class="fh5co_mini_time py-3">
                                     ${blogbook.userInfo.username} -  <fmt:formatDate value="${blogbook.blogContent.blogcreatetime}" pattern="yyyy-MM-dd HH:mm:ss"/> </a>
-                            <div class="fh5co_consectetur"> <p class="texthidden" style="width: 350px">${blogbook.blogContent.blogcontent}</p>
+                            <div class="fh5co_consectetur"> ${blogbook.blogContent.blogcontent}
                             </div>
                         </div>
                     </div>

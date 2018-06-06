@@ -385,7 +385,9 @@
   <!--public BlogUserPics selectBlogUserByBlogId(int blog_id);-->
   <select id="selectBlogUserByBlogId" resultMap="selectBlogUserMap" parameterType="int">
     select * from blogcontent,userinfo,blogpics
-    where blogcontent.user_id=userinfo.user_id and blogcontent.blogPics_id=blogpics.blogPics_id and blogcontent.blog_id=#{_parameter}
+    where blogcontent.user_id=userinfo.user_id
+    and blogcontent.blogPics_id=blogpics.blogPics_id
+    and blogcontent.blog_id=#{_parameter}
   </select>
 
   <!--  private Integer blogId;

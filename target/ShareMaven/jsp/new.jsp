@@ -44,6 +44,10 @@
             overflow: hidden;/*超出隐藏*/
             text-overflow: ellipsis;/*隐藏的字符用省略号表示*/
         }
+        .default-image{
+            background: url("<%=basePath%>images/index-images/default.jpg");
+            no-repeat:50% 50%;
+        }
     </style>
 </head>
 <body>
@@ -102,14 +106,14 @@
                                 <div class="row pb-4">
                                     <div class="col-md-5">
                                         <div class="fh5co_hover_news_img">
-                                            <div class="fh5co_news_img"><img src="<%=basePath%>images/index-images/nathan-mcbride-229637.jpg" alt=""/></div>
+                                            <div class="fh5co_news_img"><img style="height: 200px" src="<%=basePath%>${blog.blogPics.pic}" alt="" class="default-image"/></div>
                                             <div></div>
                                         </div>
                                     </div>
                                     <div class="col-md-7 animate-box">
 
-                                        <p class="texthidden"> <a href="single.jsp" class="fh5co_magna py-2" >${blog.blogContent.blogcontent} </a> </p><br/>
-                                        <p  style="text-align: right"><a href="" class="fh5co_mini_time py-3" >${blog.userInfo.usernickname}-<fmt:formatDate value="${blog.blogContent.blogcreatetime}" pattern="yyyy-MM-dd HH:mm:ss"/> </a></p>
+                                        <p class="texthidden"> <a href="single.jsp" class="fh5co_magna py-2" >${blog.blogContent.blogcontent} </a> </p><p  style="text-align: right">浏览量</p>
+                                        <a href="" class="fh5co_mini_time py-3" >${blog.userInfo.usernickname}-<fmt:formatDate value="${blog.blogContent.blogcreatetime}" pattern="yyyy-MM-dd HH:mm:ss"/> </a>
 
                                         <div class="fh5co_consectetur"> ${blog.blogContent.blogcontent}
                                         </div>
