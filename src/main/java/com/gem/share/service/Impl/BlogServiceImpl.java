@@ -3,6 +3,7 @@ package com.gem.share.service.Impl;
 import com.gem.share.dao.BlogContentMapper;
 import com.gem.share.dao.BlogLabelMapper;
 import com.gem.share.dao.BlogPicsMapper;
+import com.gem.share.dao.LabelInfoMapper;
 import com.gem.share.entity.BlogContent;
 import com.gem.share.entity.BlogLabel;
 import com.gem.share.entity.BlogUserPics;
@@ -26,15 +27,23 @@ public class BlogServiceImpl implements BlogService {
     private BlogPicsMapper blogPicsMapper;
     @Autowired
     private BlogLabelMapper blogLabelMapper;
+    @Autowired
+    private LabelInfoMapper labelInfoMapper;
+
+    @Override//查询浏览量最高的一条
+    public BlogUserPics selectOneBlogOrderBlogBrowse() {
+        BlogUserPics blogUserPics=blogContentMapper.selectOneBlogOrderBlogBrowse();
+        return blogUserPics;
+    }
 
     @Override
     public String selectPicByBlogPicsId(int blogPics_id) {
         return blogPicsMapper.selectPicByBlogPicsId(blogPics_id);
     }
 
-    @Override//查询前四条数据
-    public List<BlogUserPics> selectFourBlog() {
-        return blogContentMapper.selectFourBlog();
+    @Override//查询前几条数据
+    public List<BlogUserPics> selectBlogCount(int count) {
+        return blogContentMapper.selectBlogCount(count);
     }
 
     @Override
@@ -64,8 +73,18 @@ public class BlogServiceImpl implements BlogService {
         List<BlogLabel> blogLabels=blogLabelMapper.selectBlogByLabelName(labelName);
         List<BlogUserPics> blogUserPics=new ArrayList<>();
         for(BlogLabel blogLabel:blogLabels){
-            BlogUserPics blogUserPic=blogContentMapper.selectBlogUserByBlogId(blogLabel.getBlogId());
+            BlogUserPics blogUserPic=blogContentMapper.selectBlogUserPicsByBlogId(blogLabel.getBlogId());
             blogUserPics.add(blogUserPic);
+        }
+        return blogUserPics;
+    }
+
+    @Override//返回指定数量的指定标签名的BlogUserPics
+    public List<BlogUserPics> selectBlogUserPicsCountByLabelName(String labelName, int count) {
+        List<BlogUserPics> list=selectBlogUserPicsByLabelName(labelName);
+        List<BlogUserPics> blogUserPics=new ArrayList<>();
+        for(int i=0;i<count;i++){
+            blogUserPics.add(list.get(i));
         }
         return blogUserPics;
     }
@@ -105,7 +124,25 @@ public class BlogServiceImpl implements BlogService {
 
     @Override
     public BlogContent selectBlogByBlogId(int blog_id) {
+
         return blogContentMapper.selectBlogByBlogId(blog_id);
+    }
+
+    @Override
+    public BlogUserPics selectBlogUserPicsByBlogId(int blog_id) {
+
+        return blogContentMapper.selectBlogUserPicsByBlogId(blog_id);
+    }
+
+    @Override//通过博客id 查询该博客上所有标签名称
+    public List<String> selectBlogLabelNameByBlogId(int blog_id) {
+        List<Integer> listId=selectLabelIdByBlogId(blog_id);
+        List<String> listName=new ArrayList<>();
+        for(Integer i:listId){
+            String s= labelInfoMapper.selectLabelByLabelId(i).getLabelname();
+            listName.add(s);
+        }
+        return listName;
     }
 
     @Override
@@ -134,8 +171,9 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
-    public List<Integer> selectLabelByBlogId(int blog_id) {
-        return null;
+    public List<Integer> selectLabelIdByBlogId(int blog_id) {
+
+        return blogLabelMapper.selectLabelIdByBlogId(blog_id);
     }
 
     @Override

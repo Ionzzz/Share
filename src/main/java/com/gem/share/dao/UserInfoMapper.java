@@ -2,10 +2,10 @@ package com.gem.share.dao;
 
 import com.gem.share.entity.UserInfo;
 import com.gem.share.entity.UserInfoExample;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.Date;
 import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
 public interface UserInfoMapper {
     long countByExample(UserInfoExample example);
@@ -39,5 +39,10 @@ public interface UserInfoMapper {
 
     //    查询用户注册时间
     public Date selectUserCreateTime(int user_id);
+
+    public List<UserInfo> selectAllUserInfo();
+    public List<UserInfo> selectCountUserInfo(int count);
+    public List<UserInfo> selectOrderAllUserInfo();
+    public List<UserInfo> selectOrderCountUserInfo(int count);
 
 }

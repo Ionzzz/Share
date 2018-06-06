@@ -401,10 +401,23 @@
   <select id="selectUserCreateTime" parameterType="int" resultType="Date">
     SELECT userCreateTime from userinfo where user_id=#{_parameter}
   </select>
-  
-  
 
-  
+  <!--public List<UserInfo> selectAllUserInfo();-->
+  <select id="selectAllUserInfo" resultType="UserInfo">
+    select * from userinfo
+  </select>
+  <!--public List<UserInfo> selectCountUserInfo(int count);-->
+  <select id="selectCountUserInfo" resultType="UserInfo" parameterType="int">
+    select * from userinfo limit #{_parameter}
+  </select>
+  <!--public List<UserInfo> selectOrderAllUserInfo();-->
+  <select id="selectOrderAllUserInfo" resultType="UserInfo" parameterType="int">
+    select * from userinfo order by userEnergy desc
+  </select>
+  <!--public List<UserInfo> selectOrderCountUserInfo(int count);-->
+  <select id="selectOrderCountUserInfo" resultType="UserInfo" parameterType="int">
+    select * from userinfo order by userEnergy desc limit #{_parameter}
+  </select>
 
 
 </mapper>

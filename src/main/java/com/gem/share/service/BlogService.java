@@ -10,10 +10,12 @@ import java.util.Map;
 
 public interface BlogService {
 
+    public BlogUserPics selectOneBlogOrderBlogBrowse();//查询浏览量最高的博客
+
+
     public String selectPicByBlogPicsId(int blogPics_id);
 
-
-    public List<BlogUserPics> selectFourBlog();
+    public List<BlogUserPics> selectBlogCount(int count);
 
     public PageInfo<BlogUserPics> selectAllBlogUserPicsByPage(Map<String,Object> map);
 
@@ -21,6 +23,7 @@ public interface BlogService {
     public PageInfo<BlogContent> selectAllBlogByPage(Map<String,Object> map);
 
     public List<BlogUserPics> selectBlogUserPicsByLabelName(String labelName);
+    public List<BlogUserPics> selectBlogUserPicsCountByLabelName(String labelName,int count);
     //    通过标签id找到博客
     public List<BlogContent> selectBlogByLabelId(int label_id);
 
@@ -33,6 +36,9 @@ public interface BlogService {
 
 //    根据博客id查找博客全部内容
     public BlogContent selectBlogByBlogId(int blog_id);
+    public BlogUserPics selectBlogUserPicsByBlogId(int blog_id);
+
+    public List<String> selectBlogLabelNameByBlogId(int blog_id);
 
 //    根据博客id删除博客全部内容
     public boolean deleteBlogByBlogId(int blog_id);
@@ -50,7 +56,7 @@ public interface BlogService {
     public Integer selectBlogPicsByBlogId(int blog_id);
 
 //    通过博客查询该博客的标签id
-    public List<Integer> selectLabelByBlogId(int blog_id);
+    public List<Integer> selectLabelIdByBlogId(int blog_id);
 
 //    通过博客id找到点赞用户id
     public List<Integer> selectZanUserIdByBlogId(int blog_id);

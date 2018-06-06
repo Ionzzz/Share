@@ -8,10 +8,35 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
+
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserService{
     @Autowired
     private UserInfoMapper userInfoMapper;
+
+    @Override
+    public List<UserInfo> selectAllUserInfo() {
+        List<UserInfo> userInfos=userInfoMapper.selectAllUserInfo();
+
+        return userInfos;
+    }
+
+    @Override
+    public List<UserInfo> selectCountUserInfo(int count) {
+        List<UserInfo> userInfos=userInfoMapper.selectCountUserInfo(count);
+        return userInfos;
+    }
+
+    @Override
+    public List<UserInfo> selectOrderAllUserInfo() {
+        return null;
+    }
+    @Override
+    public List<UserInfo> selectOrderCountUserInfo(int count) {
+        return null;
+    }
+
     @Override
     public UserInfo selectUserInfoByUserId(int user_id) {
         return userInfoMapper.selectByPrimaryKey(user_id);

@@ -331,11 +331,11 @@
     select createtime from blogcentent where blog_id=#{_parameter};
   </select>
 
-  <!--public List<BlogUserPics> selectFourBlog();-->
-  <select id="selectFourBlog" resultMap="selectBlogUserMap">
+  <!--public List<BlogUserPics> selectBlogCount(int count);-->
+  <select id="selectBlogCount" resultMap="selectBlogUserMap" parameterType="int">
     select * from blogcontent,userinfo,blogpics
     where blogcontent.user_id=userinfo.user_id and blogcontent.blogPics_id=blogpics.blogPics_id
-    limit 4
+    limit #{_parameter}
   </select>
 
   <!--public List<BlogUserPics> selectBlogUserPics();-->
@@ -343,6 +343,7 @@
     select * from blogcontent,userinfo,blogpics
     where blogcontent.user_id=userinfo.user_id and blogcontent.blogPics_id=blogpics.blogPics_id
   </select>
+
   <resultMap id="selectBlogUserMap" type="BlogUserPics">
     <association property="blogContent" javaType="BlogContent">
       <id column="blog_id" property="blogId"/>
@@ -382,38 +383,22 @@
 
   </resultMap>
 
-  <!--public BlogUserPics selectBlogUserByBlogId(int blog_id);-->
-  <select id="selectBlogUserByBlogId" resultMap="selectBlogUserMap" parameterType="int">
+  <!--public BlogUserPics selectBlogUserPicsByBlogId(int blog_id);-->
+  <select id="selectBlogUserPicsByBlogId" resultMap="selectBlogUserMap" parameterType="int">
     select * from blogcontent,userinfo,blogpics
     where blogcontent.user_id=userinfo.user_id
     and blogcontent.blogPics_id=blogpics.blogPics_id
     and blogcontent.blog_id=#{_parameter}
   </select>
-
-  <!--  private Integer blogId;
-
-    private Integer userId;
-
-    private Integer blogpicsId;
-
-    private Date blogcreatetime;
-
-    private String blogflag;
-
-    private String essayflag;
-
-    private String blogcontent;-->
-<!--
-  <resultMap id="selectBlogLabelMap" type="BlogContent">
-    <id column="id" property="id"/>
-    <result column="catory_id" property="catoryId"/>
-    <result column="name" property="name"/>
-    <result column="price" property="price"/>
-    <result column="pic" property="pic"/>
-    <result column="createtime" property="createtime"/>
-    <result column="detail" property="detail"/>
-    <association property="catory" javaType="GoodsCatory">
-      <result column="cname" property="cname"/>
-    </association>
-  </resultMap>-->
+  <!--public BlogUserPics selectOneBlogOrderBlogBrowse();-->
+  <select id="selectOneBlogOrderBlogBrowse" resultMap="selectBlogUserMap">
+    select * from blogcontent,userinfo,blogpics
+    where blogcontent.user_id=userinfo.user_id
+    and blogcontent.blogPics_id=blogpics.blogPics_id
+    and blogcontent.blog_id=(select blog_id from blogbrowse order by blogBrowseCount desc limit 1)
+  </select>
+  <!--public boolean updateBlogBrowse(int blog_id);-->
+  <update id="updateBlogBrowse" parameterType="int">
+    update blogbrowse set blogBrowseCount=blogBrowseCount+1 where blog_id=#{_parameter}
+  </update>
 </mapper>

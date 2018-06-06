@@ -123,19 +123,19 @@
 <div class="container-fluid paddding mb-5">
     <div class="row mx-0">
         <div class="col-md-6 col-12 paddding animate-box" data-animate-effect="fadeIn">
-            <div class="fh5co_suceefh5co_height"><img src="<%=basePath%>images/index-images/nick-karvounis-78711.jpg" alt="img"/>
+            <div class="fh5co_suceefh5co_height" onclick="window.location.href='<%=basePath%>single/main.action?blogId=${blogone.blogContent.blogId}'"><img src="<%=basePath%>${blogone.blogPics.pic}" alt="img"/>
                 <div class="fh5co_suceefh5co_height_position_absolute"></div>
                 <div class="fh5co_suceefh5co_height_position_absolute_font">
-                    <div class=""><a href="#" class="color_fff"> <i class="fa fa-clock-o"></i>&nbsp;&nbsp;Dec 31,2017
+                    <div class=""><a href="#" class="color_fff"> <i class="fa fa-clock-o"></i>&nbsp;&nbsp;<fmt:formatDate value="${blogone.blogContent.blogcreatetime}" pattern="MM-dd-yyyy"/>
                     </a></div>
-                    <div class=""><a href="single.jsp" class="fh5co_good_font"> After all is said and done, more is said than done </a></div>
+                    <p class="texthidden"  style=" width:600px;"><a href="single.jsp" class="fh5co_good_font"> ${blogone.blogContent.blogcontent} </a></p>
                 </div>
             </div>
         </div>
         <div class="col-md-6">
             <div class="row">
                 <c:forEach items="${blogfourlist}" var="blogfourlist">
-                    <div class="col-md-6 col-6 paddding animate-box" data-animate-effect="fadeIn">
+                    <div class="col-md-6 col-6 paddding animate-box"  onclick="window.location.href='<%=basePath%>single/main.action?blogId=${blogfourlist.blogContent.blogId}'" data-animate-effect="fadeIn">
                       <div class="fh5co_suceefh5co_height_2"><img src="<%=basePath%>${blogfourlist.blogPics.pic}" alt="img"/>
                         <div class="fh5co_suceefh5co_height_position_absolute"></div>
                         <div class="fh5co_suceefh5co_height_position_absolute_font_2">
@@ -145,12 +145,10 @@
                       </div>
                     </div>
                 </c:forEach>
-
             </div>
         </div>
     </div>
 </div>
-
 
 
 
@@ -165,13 +163,13 @@
         </div>
         <div class="owl-carousel owl-theme js" id="slider1">
             <c:forEach items="${blogJiaJu}" var="blogJiaJu">
-                <div class="item px-2">
+                <div class="item px-2" onclick="window.location.href='<%=basePath%>single/main.action?blogId=${blogJiaJu.blogContent.blogId}'">
                     <div class="fh5co_latest_trading_img_position_relative">
-                        <div class="fh5co_latest_trading_img"><img src="<%=basePath%>${blogJiaJu.blogPics.pic}" alt=""class="fh5co_img_special_relative"/></div>
+                        <div class="fh5co_latest_trading_img"><img src="<%=basePath%>${blogJiaJu.blogPics.pic}" alt="img" class="fh5co_img_special_relative"/></div>
                         <div class="fh5co_latest_trading_img_position_absolute"></div>
                         <div class="fh5co_latest_trading_img_position_absolute_1">
-                            <p class="texthidden "  style=" width:240px;"> <a href="single.jsp" class="text-white"> ${blogJiaJu.blogContent.blogcontent} </a></p>
-                            <div class="fh5co_latest_trading_date_and_name_color">
+                            <p class="text-white texthidden "  style=" width:240px;"> <a href="single.jsp" class="text-white"> ${blogJiaJu.blogContent.blogcontent} </a></p>
+                            <div class="fh5co_latest_trading_date_and_name_color c_g">
                                     ${blogJiaJu.userInfo.usernickname} - <fmt:formatDate value="${blogJiaJu.blogContent.blogcreatetime}" pattern="yyyy-MM-dd HH:mm:ss"/> </div>
                         </div>
                     </div>
@@ -180,6 +178,10 @@
         </div>
     </div>
 </div>
+
+
+
+
 <div class="container-fluid pb-4 pt-5">
     <div class="container animate-box">
         <div>
@@ -187,11 +189,11 @@
         </div>
         <div class="owl-carousel owl-theme" id="slider2">
             <c:forEach items="${blogLvXing}" var="blogLvXing">
-                <div class="item px-2">
+                <div class="item px-2" onclick="window.location.href='<%=basePath%>single/main.action?blogId=${blogLvXing.blogContent.blogId}'">
                     <div class="fh5co_hover_news_img">
-                        <div class="fh5co_news_img"><img src="<%=basePath%>${blogLvXing.blogPics.pic}" alt=""/></div>
+                        <div class="fh5co_news_img"><img src="<%=basePath%>${blogLvXing.blogPics.pic}" alt="img"/></div>
                         <div>
-                            <p class="texthidden" style="width: 350px"><a href="single.jsp" class="fh5co_small_post_heading" >${blogLvXing.blogContent.blogcontent}</a></p>
+                            <p class="texthidden" style="width: 350px"><a href="single.jsp" class="fh5co_small_post_heading " >${blogLvXing.blogContent.blogcontent}</a></p>
                             <p style="text-align: right"><fmt:formatDate value="${blogLvXing.blogContent.blogcreatetime}" pattern="yyyy-MM-dd HH:mm:ss"/></p>
                         </div>
                     </div>
@@ -201,11 +203,29 @@
     </div>
 </div>
 
+<div class="container-fluid fh5co_video_news_bg pb-4">
+    <div class="container animate-box" data-animate-effect="fadeIn">
+        <div>
+            <div class="fh5co_heading fh5co_heading_border_bottom pt-5 pb-2 mb-4  text-white">美食</div>
+        </div>
+        <div>
+            <div class="owl-carousel owl-theme" id="slider3">
+                <c:forEach items="${blogFood}" var="blogfood">
+                    <div class="item px-2" onclick="window.location.href='<%=basePath%>single/main.action?blogId=${blogfood.blogContent.blogId}'">
+                        <div class="fh5co_hover_news_img">
+                            <div class="fh5co_news_img"><img src="<%=basePath%>${blogfood.blogPics.pic}" alt="img"/></div>
+                            <div>
+                                <p class="text-white texthidden" style="width: 350px"><a href="single.jsp" class="fh5co_small_post_heading fh5co_small_post_heading_1" >${blogfood.blogContent.blogcontent}</a></p>
+                                <p style="text-align: right"><fmt:formatDate value="${blogfood.blogContent.blogcreatetime}" pattern="yyyy-MM-dd HH:mm:ss"/></p>
+                            </div>
+                        </div>
+                    </div>
+                </c:forEach>
 
-
-
-
-
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="container-fluid pb-4 pt-4 paddding">
     <div class="container paddding">
@@ -214,31 +234,15 @@
                 <div>
                     <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">书籍</div>
                 </div>
-               <%-- <c:forEach items="${blogbook}" var="blogbook">
-                    <div class="row pb-4">
-                        <div class="col-md-5">
-                            <div class="fh5co_hover_news_img">
-                                <div class="fh5co_news_img"><img src="<%=basePath%>${blogbook.blogPics.pic}" alt=""/></div>
-                            </div>
-                        </div>
-                        <div class="col-md-7 animate-box">
-                            <a href="single.jsp" class="fh5co_magna py-2"> Magna aliqua ut enim ad minim veniam quisnostrud quis xercitation ullamco. </a>
-                            <a href="single.jsp" class="fh5co_mini_time py-3">
-                                    ${blogbook.userInfo.username} -  <fmt:formatDate value="${blogbook.blogContent.blogcreatetime}" pattern="yyyy-MM-dd HH:mm:ss"/> </a>
-                            <div class="fh5co_consectetur"> <p class="texthidden" style="width: 350px">${blogbook.blogContent.blogcontent}</p>
-                            </div>
-                        </div>
-                    </div>
-                </c:forEach>--%>
-                <c:forEach items="${blogBook}" var="blogbook">
-                    <div class="row pb-4">
+                <c:forEach items="${blogBook4}" var="blogbook">
+                    <div class="row pb-4" onclick="window.location.href='<%=basePath%>single/main.action?blogId=${blogbook.blogContent.blogId}'">
                         <div class="col-md-5">
                             <div class="fh5co_hover_news_img">
                                 <div class="fh5co_news_img"><img src="<%=basePath%>${blogbook.blogPics.pic}" alt=""/></div>
                             </div>
                         </div>
                         <div class="col-md-7">
-                            <p class="texthidden" style="width: 350px"> <a href="single.jsp" class="fh5co_magna py-2"> Magna aliqua ut enim ad minim veniam quisnostrud quis xercitation ullamco. </a></p>
+                            <p class="texthidden" style="width: 400px"> <a href="single.jsp" class="fh5co_magna py-2"> Magna aliqua ut enim ad minim veniam quisnostrud quis xercitation ullamco. </a></p>
                             <a href="single.jsp" class="fh5co_mini_time py-3">
                                     ${blogbook.userInfo.username} -  <fmt:formatDate value="${blogbook.blogContent.blogcreatetime}" pattern="yyyy-MM-dd HH:mm:ss"/> </a>
                             <div class="fh5co_consectetur"> ${blogbook.blogContent.blogcontent}
@@ -246,29 +250,6 @@
                         </div>
                     </div>
                 </c:forEach>
-                <div class="row pb-4">
-                    <div class="col-md-5">
-                        <div class="fh5co_hover_news_img">
-                            <div class="fh5co_news_img"><img src="<%=basePath%>images/index-images/ryan-moreno-98837.jpg" alt=""/></div>
-                            <div></div>
-                        </div>
-                    </div>
-                    <div class="col-md-7">
-                        <a href="single.jsp" class="fh5co_magna py-2"> <p class="texthidden"> Magna aliqua ut enim ad minim veniam quis
-                            nostrud quis xercitation ullamco. </p></a> <br/><a href="#" class="fh5co_mini_time py-3"> Thomson Smith -
-                        April 18,2018 </a>
-                        <div class="fh5co_consectetur"> Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                            commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-                            dolore.
-                        </div>
-                        <ul class="fh5co_gaming_topikk pt-3">
-                            <li> Why 2017 Might Just Be the Worst Year Ever for Gaming</li>
-                            <li> Ghost Racer Wants to Be the Most Ambitious Car Game</li>
-                            <li> New Nintendo Wii Console Goes on Sale in Strategy Reboot</li>
-                            <li> You and Your Kids can Enjoy this News Gaming Console</li>
-                        </ul>
-                    </div>
-                </div>
             </div>
             <div class="col-md-3 animate-box" data-animate-effect="fadeInRight">
                 <div>
@@ -276,71 +257,39 @@
                 </div>
                 <div class="clearfix"></div>
                 <div class="fh5co_tags_all">
-                    <a href="#" class="fh5co_tagg">音乐</a>
-                    <a href="#" class="fh5co_tagg">旅行</a>
-                    <a href="#" class="fh5co_tagg">美食</a>
-                    <a href="#" class="fh5co_tagg">手绘</a>
-                    <a href="#" class="fh5co_tagg">书籍</a>
-                    <a href="#" class="fh5co_tagg">手工DIY</a>
-                    <a href="#" class="fh5co_tagg">家居</a>
-                    <a href="#" class="fh5co_tagg">设计</a>
-                    <a href="#" class="fh5co_tagg">插花</a>
-                    <a href="#" class="fh5co_tagg">搭配</a>
-                    <a href="#" class="fh5co_tagg">美妆</a>
+                    <c:forEach items="${labelList}" var="labellist">
+                        <a href="#" class="fh5co_tagg">${labellist.labelname}</a>
+                    </c:forEach>
                     <a href="#" class="fh5co_tagg">更多...</a>
                 </div>
                 <div>
                     <div class="fh5co_heading fh5co_heading_border_bottom pt-3 py-2 mb-4">能量达人</div>
                 </div>
-                <div class="row pb-3">
-                    <div class="col-5 align-self-center">
-                        <img src="<%=basePath%>images/index-images/download (1).jpg" alt="img" class="fh5co_most_trading"/>
+                <c:forEach items="${userList5}" var="userlist">
+                    <div class="row pb-3">
+                        <div class="col-5 align-self-center">
+                            <img src="<%=basePath%>${userlist.userimg}" alt="img" class="fh5co_most_trading"/>
+                        </div>
+                        <div class="col-7 paddding">
+                            <div class="most_fh5co_treding_font"> ${userlist.usernickname}</div>
+                            <div class="most_fh5co_treding_font_123"> ${userlist.userintroduce}</div>
+                        </div>
                     </div>
-                    <div class="col-7 paddding">
-                        <div class="most_fh5co_treding_font"> Magna aliqua ut enim ad minim veniam quis nostrud.</div>
-                        <div class="most_fh5co_treding_font_123"> April 18, 2018</div>
-                    </div>
-                </div>
-                <div class="row pb-3">
-                    <div class="col-5 align-self-center">
-                        <img src="<%=basePath%>images/index-images/allef-vinicius-108153.jpg" alt="img" class="fh5co_most_trading"/>
-                    </div>
-                    <div class="col-7 paddding">
-                        <div class="most_fh5co_treding_font"> Enim ad minim veniam nostrud xercitation ullamco.</div>
-                        <div class="most_fh5co_treding_font_123"> April 18, 2018</div>
-                    </div>
-                </div>
-                <div class="row pb-3">
-                    <div class="col-5 align-self-center">
-                        <img src="<%=basePath%>images/index-images/download (2).jpg" alt="img" class="fh5co_most_trading"/>
-                    </div>
-                    <div class="col-7 paddding">
-                        <div class="most_fh5co_treding_font"> Magna aliqua ut enim ad minim veniam quis nostrud.</div>
-                        <div class="most_fh5co_treding_font_123"> April 18, 2018</div>
-                    </div>
-                </div>
-                <div class="row pb-3">
-                    <div class="col-5 align-self-center"><img src="<%=basePath%>images/index-images/seth-doyle-133175.jpg" alt="img"
-                                                              class="fh5co_most_trading"/></div>
-                    <div class="col-7 paddding">
-                        <div class="most_fh5co_treding_font"> Magna aliqua ut enim ad minim veniam quis nostrud.</div>
-                        <div class="most_fh5co_treding_font_123"> April 18, 2018</div>
-                    </div>
-                </div>
+                </c:forEach>
+
+
             </div>
         </div>
-        <div class="row mx-0 animate-box" data-animate-effect="fadeInUp">
-            <div class="col-12 text-center pb-4 pt-4">
-                <a href="#" class="btn_mange_pagging"><i class="fa fa-long-arrow-left"></i>&nbsp;&nbsp; 前一页</a>
-                <a href="#" class="btn_pagging">1</a>
-                <a href="#" class="btn_pagging">2</a>
-                <a href="#" class="btn_pagging">3</a>
-                <a href="#" class="btn_pagging">...</a>
-                <a href="#" class="btn_mange_pagging">下一页 <i class="fa fa-long-arrow-right"></i>&nbsp;&nbsp; </a>
-            </div>
-        </div>
+
     </div>
 </div>
+
+
+
+
+
+
+
 <div class="container-fluid fh5co_footer_bg pb-3">
     <div class="container animate-box">
         <div class="row">

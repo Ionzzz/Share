@@ -4,8 +4,14 @@ import com.gem.share.entity.Notice;
 import com.gem.share.entity.UserInfo;
 
 import java.util.Date;
+import java.util.List;
 
 public interface UserService {
+
+    public List<UserInfo> selectAllUserInfo();
+    public List<UserInfo> selectCountUserInfo(int count);
+    public List<UserInfo> selectOrderAllUserInfo();
+    public List<UserInfo> selectOrderCountUserInfo(int count);
 
     public UserInfo selectUserInfoByUserId(int user_id);
 

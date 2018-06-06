@@ -1,8 +1,11 @@
 package com.gem.share.control;
 
 import com.gem.share.entity.BlogUserPics;
+import com.gem.share.entity.LabelInfo;
+import com.gem.share.entity.UserInfo;
 import com.gem.share.service.BlogService;
 import com.gem.share.service.LabelInfoService;
+import com.gem.share.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,11 +24,16 @@ public class IndexControl {
     private BlogService blogService;
     @Autowired
     private LabelInfoService infoService;
+    @Autowired
+    private UserService userService;
 
     @RequestMapping("/main.action")
     public void main(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        List<BlogUserPics> blogfourlist=blogService.selectFourBlog();
+
+        BlogUserPics blogtheone=blogService.selectOneBlogOrderBlogBrowse();
+        request.setAttribute("blogone",blogtheone);
+        List<BlogUserPics> blogfourlist=blogService.selectBlogCount(4);
 //        System.out.println("----------"+pic.get(0));
         request.setAttribute("blogfourlist",blogfourlist);
 
@@ -35,11 +43,17 @@ public class IndexControl {
         List<BlogUserPics> bloglvxing=blogService.selectBlogUserPicsByLabelName("旅行");
         request.setAttribute("blogLvXing",bloglvxing);
 
-        List<BlogUserPics> blogbook=blogService.selectBlogUserPicsByLabelName("书籍");
-        request.setAttribute("blogBook",blogbook);
+        List<BlogUserPics> blogfood=blogService.selectBlogUserPicsByLabelName("美食");
+        request.setAttribute("blogFood",blogfood);
 
-        request.setAttribute("bloglist",blogService.selectAllBlog());
-        request.setAttribute("labellist",infoService.selectAllLabelInfo());
+        List<BlogUserPics> blogbook=blogService.selectBlogUserPicsCountByLabelName("书籍",4);
+        request.setAttribute("blogBook4",blogbook);
+
+        List<LabelInfo> labelInfos=infoService.selectAllLabelInfo();
+        request.setAttribute("labelList",labelInfos);
+
+        List<UserInfo> userInfos=userService.selectCountUserInfo(5);
+        request.setAttribute("userList5",userInfos);
 
         request.getRequestDispatcher("/jsp/index.jsp").forward(request,response);
 
