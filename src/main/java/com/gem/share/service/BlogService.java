@@ -1,6 +1,7 @@
 package com.gem.share.service;
 
 import com.gem.share.entity.BlogContent;
+import com.gem.share.entity.BlogUserPics;
 import com.github.pagehelper.PageInfo;
 
 import java.util.Date;
@@ -12,10 +13,18 @@ public interface BlogService {
     public String selectPicByBlogPicsId(int blogPics_id);
 
 
-    public List<BlogContent> selectFourBlog();
+    public List<BlogUserPics> selectFourBlog();
+
+    public PageInfo<BlogUserPics> selectAllBlogUserPicsByPage(Map<String,Object> map);
 
 
     public PageInfo<BlogContent> selectAllBlogByPage(Map<String,Object> map);
+
+    public List<BlogUserPics> selectBlogUserPicsByLabelName(String labelName);
+    //    通过标签id找到博客
+    public List<BlogContent> selectBlogByLabelId(int label_id);
+
+    public List<BlogContent> selectBlogByLabelName(String labelName);
 
 //    通过博客id修改博客
     public BlogContent updateBlogByBlogId(int blog_id);
@@ -91,9 +100,6 @@ public interface BlogService {
     //    通过标签id找到博客id
     public List<Integer> selectBlogIdByLabelId(int label_id);
 
-//    通过标签id找到博客
-    public List<BlogContent> selectBlogByLabelId(int label_id);
 
-    public List<BlogContent> selectBlogByLabelName(String labelName);
 
 }

@@ -5,6 +5,7 @@ import com.gem.share.dao.BlogLabelMapper;
 import com.gem.share.dao.BlogPicsMapper;
 import com.gem.share.entity.BlogContent;
 import com.gem.share.entity.BlogLabel;
+import com.gem.share.entity.BlogUserPics;
 import com.gem.share.service.BlogService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -32,8 +33,19 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override//查询前四条数据
-    public List<BlogContent> selectFourBlog() {
+    public List<BlogUserPics> selectFourBlog() {
         return blogContentMapper.selectFourBlog();
+    }
+
+    @Override
+    public PageInfo<BlogUserPics> selectAllBlogUserPicsByPage(Map<String, Object> map) {
+        int curPage= (int) map.get("curPage");
+        int pageSize= (int) map.get("pageSize");
+        PageHelper.startPage(curPage,pageSize);
+        List<BlogUserPics> list=blogContentMapper.selectBlogUserPics();
+        PageInfo<BlogUserPics> pageInfo=new PageInfo<>(list);
+
+        return pageInfo;
     }
 
     @Override//分页
@@ -46,6 +58,40 @@ public class BlogServiceImpl implements BlogService {
 
         return pageInfo;
     }
+
+    @Override
+    public List<BlogUserPics> selectBlogUserPicsByLabelName(String labelName) {
+        List<BlogLabel> blogLabels=blogLabelMapper.selectBlogByLabelName(labelName);
+        List<BlogUserPics> blogUserPics=new ArrayList<>();
+        for(BlogLabel blogLabel:blogLabels){
+            BlogUserPics blogUserPic=blogContentMapper.selectBlogUserByBlogId(blogLabel.getBlogId());
+            blogUserPics.add(blogUserPic);
+        }
+        return blogUserPics;
+    }
+
+    @Override//标签id查询博客集合
+    public List<BlogContent> selectBlogByLabelId(int label_id) {
+        List<BlogLabel> blogLabels=blogLabelMapper.selectBlogByLabelId(label_id);
+        List<BlogContent> blogContents=new ArrayList<>();
+        for(BlogLabel blogLabel:blogLabels){
+            BlogContent blogContent=blogContentMapper.selectBlogByBlogId(blogLabel.getBlogId());
+            blogContents.add(blogContent);
+        }
+        return blogContents;
+    }
+
+    @Override//标签名称查询博客集合
+    public List<BlogContent> selectBlogByLabelName(String labelName) {
+        List<BlogLabel> blogLabels=blogLabelMapper.selectBlogByLabelName(labelName);
+        List<BlogContent> blogContents=new ArrayList<>();
+        for(BlogLabel blogLabel:blogLabels){
+            BlogContent blogContent=blogContentMapper.selectBlogByBlogId(blogLabel.getBlogId());
+            blogContents.add(blogContent);
+        }
+        return blogContents;
+    }
+
 
     @Override
     public BlogContent updateBlogByBlogId(int blog_id) {
@@ -170,28 +216,6 @@ public class BlogServiceImpl implements BlogService {
     @Override
     public List<Integer> selectBlogIdByLabelId(int label_id) {
         return null;
-    }
-
-    @Override//标签id查询博客集合
-    public List<BlogContent> selectBlogByLabelId(int label_id) {
-        List<BlogLabel> blogLabels=blogLabelMapper.selectBlogByLabelId(label_id);
-        List<BlogContent> blogContents=new ArrayList<>();
-        for(BlogLabel blogLabel:blogLabels){
-            BlogContent blogContent=blogContentMapper.selectBlogByBlogId(blogLabel.getBlogId());
-            blogContents.add(blogContent);
-        }
-        return blogContents;
-    }
-
-    @Override//标签名称查询博客集合
-    public List<BlogContent> selectBlogByLabelName(String labelName) {
-        List<BlogLabel> blogLabels=blogLabelMapper.selectBlogByLabelName(labelName);
-        List<BlogContent> blogContents=new ArrayList<>();
-        for(BlogLabel blogLabel:blogLabels){
-            BlogContent blogContent=blogContentMapper.selectBlogByBlogId(blogLabel.getBlogId());
-            blogContents.add(blogContent);
-        }
-        return blogContents;
     }
 
 

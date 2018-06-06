@@ -2,6 +2,7 @@ package com.gem.share.dao;
 
 import com.gem.share.entity.BlogContent;
 import com.gem.share.entity.BlogContentExample;
+import com.gem.share.entity.BlogUserPics;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.Date;
@@ -55,6 +56,11 @@ public interface BlogContentMapper {
 
     public Date selectBlogCreateTimeByBlogId(int blog_id);
 
-    public List<BlogContent> selectFourBlog();
+    public List<BlogUserPics> selectFourBlog();
+
+    public List<BlogUserPics> selectBlogUserPics();
+
+    public BlogUserPics selectBlogUserByBlogId(int blog_id);
+
 
 }

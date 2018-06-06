@@ -331,10 +331,63 @@
     select createtime from blogcentent where blog_id=#{_parameter};
   </select>
 
-  <!--public List<BlogContent> selectFourBlog();-->
-  <select id="selectFourBlog" resultType="BlogContent">
-    select * from blogcontent limit 4
+  <!--public List<BlogUserPics> selectFourBlog();-->
+  <select id="selectFourBlog" resultMap="selectBlogUserMap">
+    select * from blogcontent,userinfo,blogpics
+    where blogcontent.user_id=userinfo.user_id and blogcontent.blogPics_id=blogpics.blogPics_id
+    limit 4
   </select>
+
+  <!--public List<BlogUserPics> selectBlogUserPics();-->
+  <select id="selectBlogUserPics" resultMap="selectBlogUserMap">
+    select * from blogcontent,userinfo,blogpics
+    where blogcontent.user_id=userinfo.user_id and blogcontent.blogPics_id=blogpics.blogPics_id
+  </select>
+  <resultMap id="selectBlogUserMap" type="BlogUserPics">
+    <association property="blogContent" javaType="BlogContent">
+      <id column="blog_id" property="blogId"/>
+      <result column="user_id" property="userId"/>
+      <result column="blogPics_id" property="blogpicsId"/>
+      <result column="blogCreateTime" property="blogcreatetime"/>
+      <result column="blogFlag" property="blogflag"/>
+      <result column="essayFlag" property="essayflag"/>
+      <result column="blogContent" property="blogcontent"/>
+    </association>
+    <association property="userInfo" javaType="UserInfo">
+      <id column="user_id" property="userId"/>
+      <result column="userAccount" property="useraccount"/>
+      <result column="userPwd" property="userpwd"/>
+      <result column="userSex" property="usersex"/>
+      <result column="userAge" property="userage"/>
+      <result column="userEducate" property="usereducate"/>
+      <result column="userGraduate" property="usergraduate"/>
+      <result column="userIntroduce" property="userintroduce"/>
+      <result column="userNickName" property="usernickname"/>
+      <result column="userImg" property="userimg"/>
+      <result column="userEmail" property="useremail"/>
+      <result column="addresss_id" property="addresssId"/>
+      <result column="userPhone" property="userphone"/>
+      <result column="userEnergy" property="userenergy"/>
+      <result column="username" property="username"/>
+      <result column="userIdNumber" property="useridnumber"/>
+      <result column="userStatus" property="userstatus"/>
+      <result column="userCreateTime" property="usercreatetime"/>
+      <result column="logintime" property="logintime"/>
+    </association>
+    <association property="blogPics" javaType="BlogPics">
+      <id column="blogPics_id" property="blogpicsId"/>
+      <result column="blog_id" property="blogId"/>
+      <result column="pic" property="pic"/>
+    </association>
+
+  </resultMap>
+
+  <!--public BlogUserPics selectBlogUserByBlogId(int blog_id);-->
+  <select id="selectBlogUserByBlogId" resultMap="selectBlogUserMap" parameterType="int">
+    select * from blogcontent,userinfo,blogpics
+    where blogcontent.user_id=userinfo.user_id and blogcontent.blogPics_id=blogpics.blogPics_id and blogcontent.blog_id=#{_parameter}
+  </select>
+
   <!--  private Integer blogId;
 
     private Integer userId;

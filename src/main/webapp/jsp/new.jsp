@@ -108,10 +108,10 @@
                                     </div>
                                     <div class="col-md-7 animate-box">
 
-                                        <p class="texthidden"> <a href="single.jsp" class="fh5co_magna py-2" >${blog.blogcontent} </a> </p><br/>
-                                        <p  style="text-align: right"><a href="" class="fh5co_mini_time py-3" >${blog.blogId}-<fmt:formatDate value="${blog.blogcreatetime}" pattern="yyyy-MM-dd HH:mm:ss"/> </a></p>
+                                        <p class="texthidden"> <a href="single.jsp" class="fh5co_magna py-2" >${blog.blogContent.blogcontent} </a> </p><br/>
+                                        <p  style="text-align: right"><a href="" class="fh5co_mini_time py-3" >${blog.userInfo.usernickname}-<fmt:formatDate value="${blog.blogContent.blogcreatetime}" pattern="yyyy-MM-dd HH:mm:ss"/> </a></p>
 
-                                        <div class="fh5co_consectetur"> ${blog.blogcontent}
+                                        <div class="fh5co_consectetur"> ${blog.blogContent.blogcontent}
                                         </div>
                                     </div>
                                 </div>
