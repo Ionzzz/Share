@@ -6,6 +6,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>）
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -33,18 +36,13 @@
 </head>
 <body>
 
-
-
-
 <header id="header">
-
     <div id="header-top">
         <div class="wrapper clearfix">
             <nav id="navigation">
                 <ul class="menu">
                     <li>
-                        <a href="index.jsp">首页</a>
-
+                        <a href="<%=basePath%>index/main.action">首页</a>
                     </li>
                     <li>
                         <a href="new.jsp">最新</a>
@@ -59,7 +57,6 @@
                     <li><a href="treehole.jsp">树洞</a></li>
                     <li><a href="about.jsp">关于我们</a></li>
                     <li><a href="contactUs.jsp">联系我们</a></li>
-
                 </ul><!-- .menu -->
             </nav><!-- #navigation -->
             <div id="header-search">
@@ -85,17 +82,21 @@
     <div class="featured-blog-posts-inner">
         <div class="blog-posts-alt blog-posts-alt-diagonal-effect-enabled no-col-spacing carousel-container">
             <div class="carousel" data-stop-on-hover="false" data-columns="4" data-pagination="false" data-slide-speed="200" data-pagination-speed="800" data-scroll-per-page="false">
+
+            <c:forEach items="${blogJiaJu}" var="blogjiaju">
                 <div class="blog-post-alt carousel-item">
                     <div class="blog-post-alt-thumb">
                         <div class="blog-post-alt-thumb-inner">
-                            <a href="single.jsp"><img src="<%=basePath%>images/index-images/featured-posts/featured-1.jpg" alt="" /></a>
+                            <a href="single.jsp"><img src="<%=basePath%>${blogjiaju.blogPics.pic}" style="height:300px;width: 100%" alt="" /></a>
                         </div><!-- .blog-post-alt-thumb-inner -->
                         <div class="blog-post-alt-thumb-cover"></div>
                     </div><!-- .blog-post-alt-thumb -->
                     <div class="blog-post-alt-main">
                         <div class="blog-post-alt-main-inner">
                             <div class="blog-post-alt-date">
-                                October 23, 2015
+                                <fmt:formatDate type="both"
+                                                dateStyle="long" timeStyle="long"
+                                                value="${blogjiaju.blogContent.blogcreatetime}" />
                             </div><!-- .blog-post-alt-date -->
                             <div class="blog-post-alt-title">
                                 <h2><a href="single.jsp">Strawberry Shortcake</a></h2>
@@ -109,126 +110,7 @@
                         </div><!-- .blog-post-alt-main-inner -->
                     </div><!-- .blog-post-alt-main -->
                 </div><!-- .blog-post-alt -->
-                <div class="blog-post-alt carousel-item">
-                    <div class="blog-post-alt-thumb">
-                        <div class="blog-post-alt-thumb-inner">
-                            <a href="single.jsp"><img src="<%=basePath%>images/index-images/featured-posts/featured-2.jpg" alt="" /></a>
-                        </div><!-- .blog-post-alt-thumb-inner -->
-                        <div class="blog-post-alt-thumb-cover"></div>
-                    </div><!-- .blog-post-alt-thumb -->
-                    <div class="blog-post-alt-main">
-                        <div class="blog-post-alt-main-inner">
-                            <div class="blog-post-alt-date">
-                                October 23, 2015
-                            </div><!-- .blog-post-alt-date -->
-                            <div class="blog-post-alt-title">
-                                <h2><a href="single.jsp">Girl With A Rose</a></h2>
-                            </div><!-- .blog-post-alt-title -->
-                            <div class="blog-post-alt-cat">
-                                <a href="single.jsp">Travel</a>
-                            </div><!-- .blog-post-alt-cat -->
-                            <div class="blog-post-alt-read-more">
-                                <a href="single.jsp">READ ARTICLE</a>
-                            </div><!-- .blog-post-alt-read-more -->
-                        </div><!-- .blog-post-alt-main-inner -->
-                    </div><!-- .blog-post-alt-main -->
-                </div><!-- .blog-post-alt -->
-                <div class="blog-post-alt carousel-item">
-                    <div class="blog-post-alt-thumb">
-                        <div class="blog-post-alt-thumb-inner">
-                            <a href="single.jsp"><img src="<%=basePath%>images/index-images/featured-posts/featured-3.jpg" alt="" /></a>
-                        </div><!-- .blog-post-alt-thumb-inner -->
-                        <div class="blog-post-alt-thumb-cover"></div>
-                    </div><!-- .blog-post-alt-thumb -->
-                    <div class="blog-post-alt-main">
-                        <div class="blog-post-alt-main-inner">
-                            <div class="blog-post-alt-date">
-                                October 23, 2015
-                            </div><!-- .blog-post-alt-date -->
-                            <div class="blog-post-alt-title">
-                                <h2><a href="single.jsp">Cat On The Floor</a></h2>
-                            </div><!-- .blog-post-alt-title -->
-                            <div class="blog-post-alt-cat">
-                                <a href="single.jsp">Photography</a>
-                            </div><!-- .blog-post-alt-cat -->
-                            <div class="blog-post-alt-read-more">
-                                <a href="single.jsp">READ ARTICLE</a>
-                            </div><!-- .blog-post-alt-read-more -->
-                        </div><!-- .blog-post-alt-main-inner -->
-                    </div><!-- .blog-post-alt-main -->
-                </div><!-- .blog-post-alt -->
-                <div class="blog-post-alt carousel-item">
-                    <div class="blog-post-alt-thumb">
-                        <div class="blog-post-alt-thumb-inner">
-                            <a href="single.jsp"><img src="<%=basePath%>images/index-images/featured-posts/featured-4.jpg" alt="" /></a>
-                        </div><!-- .blog-post-alt-thumb-inner -->
-                        <div class="blog-post-alt-thumb-cover"></div>
-                    </div><!-- .blog-post-alt-thumb -->
-                    <div class="blog-post-alt-main">
-                        <div class="blog-post-alt-main-inner">
-                            <div class="blog-post-alt-date">
-                                October 23, 2015
-                            </div><!-- .blog-post-alt-date -->
-                            <div class="blog-post-alt-title">
-                                <h2><a href="single.jsp">Beautiful Blonde Hair</a></h2>
-                            </div><!-- .blog-post-alt-title -->
-                            <div class="blog-post-alt-cat">
-                                <a href="#">Fashion</a>
-                            </div><!-- .blog-post-alt-cat -->
-                            <div class="blog-post-alt-read-more">
-                                <a href="single.jsp">READ ARTICLE</a>
-                            </div><!-- .blog-post-alt-read-more -->
-                        </div><!-- .blog-post-alt-main-inner -->
-                    </div><!-- .blog-post-alt-main -->
-                </div><!-- .blog-post-alt -->
-                <div class="blog-post-alt carousel-item">
-                    <div class="blog-post-alt-thumb">
-                        <div class="blog-post-alt-thumb-inner">
-                            <a href="single.jsp"><img src="<%=basePath%>images/index-images/featured-posts/featured-5.jpg" alt="" /></a>
-                        </div><!-- .blog-post-alt-thumb-inner -->
-                        <div class="blog-post-alt-thumb-cover"></div>
-                    </div><!-- .blog-post-alt-thumb -->
-                    <div class="blog-post-alt-main">
-                        <div class="blog-post-alt-main-inner">
-                            <div class="blog-post-alt-date">
-                                October 23, 2015
-                            </div><!-- .blog-post-alt-date -->
-                            <div class="blog-post-alt-title">
-                                <h2><a href="single.jsp">Decorating New Office</a></h2>
-                            </div><!-- .blog-post-alt-title -->
-                            <div class="blog-post-alt-cat">
-                                <a href="#">Photography</a>
-                            </div><!-- .blog-post-alt-cat -->
-                            <div class="blog-post-alt-read-more">
-                                <a href="single.jsp">READ ARTICLE</a>
-                            </div><!-- .blog-post-alt-read-more -->
-                        </div><!-- .blog-post-alt-main-inner -->
-                    </div><!-- .blog-post-alt-main -->
-                </div><!-- .blog-post-alt -->
-                <div class="blog-post-alt carousel-item">
-                    <div class="blog-post-alt-thumb">
-                        <div class="blog-post-alt-thumb-inner">
-                            <a href="single.jsp"><img src="<%=basePath%>images/index-images/featured-posts/featured-6.jpg" alt="" /></a>
-                        </div><!-- .blog-post-alt-thumb-inner -->
-                        <div class="blog-post-alt-thumb-cover"></div>
-                    </div><!-- .blog-post-alt-thumb -->
-                    <div class="blog-post-alt-main">
-                        <div class="blog-post-alt-main-inner">
-                            <div class="blog-post-alt-date">
-                                October 23, 2015
-                            </div><!-- .blog-post-alt-date -->
-                            <div class="blog-post-alt-title">
-                                <h2><a href="single.jsp">Blueberry Shake</a></h2>
-                            </div><!-- .blog-post-alt-title -->
-                            <div class="blog-post-alt-cat">
-                                <a href="#">Food</a>
-                            </div><!-- .blog-post-alt-cat -->
-                            <div class="blog-post-alt-read-more">
-                                <a href="single.jsp">READ ARTICLE</a>
-                            </div><!-- .blog-post-alt-read-more -->
-                        </div><!-- .blog-post-alt-main-inner -->
-                    </div><!-- .blog-post-alt-main -->
-                </div><!-- .blog-post-alt -->
+            </c:forEach>
             </div><!-- .carousel -->
             <a href="#" class="carousel-go-prev"></a>
             <a href="#" class="carousel-go-next"></a>

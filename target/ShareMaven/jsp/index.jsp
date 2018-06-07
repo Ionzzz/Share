@@ -124,9 +124,13 @@
 <div class="container-fluid paddding mb-5">
     <div class="row mx-0">
         <div class="col-md-6 col-12 paddding animate-box" data-animate-effect="fadeIn">
-            <div class="fh5co_suceefh5co_height" onclick="window.location.href='<%=basePath%>single/main.action?blogId=${blogone.blogContent.blogId}'">
-                <img src="<%=basePath%>${blogone.blogPics.pic}" alt="img"/>
-                <div class="fh5co_suceefh5co_height_position_absolute"><p style="margin:30px;text-align: right">热度:6666</p></div>
+            <div class="fh5co_suceefh5co_height">
+                <a href="<%=basePath%>single/main.action?blogId=${blogone.blogContent.blogId}">
+                    <img src="<%=basePath%>${blogone.blogPics.pic}" style="height:100%" alt="img"/>
+                </a>
+                <div class="fh5co_suceefh5co_height_position_absolute">
+                    <p style="margin:30px;text-align: right">热度:6666</p>
+                </div>
                 <div class="fh5co_suceefh5co_height_position_absolute_font">
                      <i class="fa fa-clock-o"></i>&nbsp;&nbsp;<fmt:formatDate value="${blogone.blogContent.blogcreatetime}" pattern="MM-dd-yyyy"/>
                     <p class="texthidden"  style=" width:600px;"><a href="<%=basePath%>single/main.action?blogId=${blogone.blogContent.blogId}" class="fh5co_good_font"> ${blogone.blogContent.blogcontent} </a></p>
@@ -138,7 +142,7 @@
                 <c:forEach items="${blogfourlist}" var="blogfourlist">
                     <div class="col-md-6 col-6 paddding animate-box"  onclick="window.location.href='<%=basePath%>single/main.action?blogId=${blogfourlist.blogContent.blogId}'" data-animate-effect="fadeIn">
                       <div class="fh5co_suceefh5co_height_2">
-                          <img src="<%=basePath%>${blogfourlist.blogPics.pic}" alt="img"/>
+                          <img src="<%=basePath%>${blogfourlist.blogPics.pic}" style="width: 100%" alt="img"/>
                         <div class="fh5co_suceefh5co_height_position_absolute"></div>
                         <div class="fh5co_suceefh5co_height_position_absolute_font_2">
                          <i class="fa fa-clock-o"></i>&nbsp;&nbsp;<fmt:formatDate value="${blogfourlist.blogContent.blogcreatetime}" pattern="MM-dd-yyyy"/>
@@ -194,7 +198,8 @@
             <c:forEach items="${blogLvXing}" var="blogLvXing">
                 <div class="item px-2" onclick="window.location.href='<%=basePath%>single/main.action?blogId=${blogLvXing.blogContent.blogId}'">
                     <div class="fh5co_hover_news_img">
-                        <div class="fh5co_news_img"><img src="<%=basePath%>${blogLvXing.blogPics.pic}" alt="img"/></div>
+                        <div class="fh5co_news_img">
+                            <img src="<%=basePath%>${blogLvXing.blogPics.pic}" alt="img"/></div>
                         <div>
                             <p class="texthidden" style="width: 350px"><a href="<%=basePath%>single/main.action?blogId=${blogLvXing.blogContent.blogId}" class="fh5co_small_post_heading " >${blogLvXing.blogContent.blogcontent}</a></p>
                             <p style="text-align: right"><fmt:formatDate value="${blogLvXing.blogContent.blogcreatetime}" pattern="yyyy-MM-dd HH:mm:ss"/></p>
@@ -212,11 +217,15 @@
             <div class="fh5co_heading fh5co_heading_border_bottom pt-5 pb-2 mb-4  text-white">美食</div>
         </div>
         <div>
-            <div class="owl-carousel owl-theme" id="slider3">
+            <div class="owl-carousel owl-theme js" id="slider3">
                 <c:forEach items="${blogFood}" var="blogfood">
-                    <div class="item px-2" onclick="window.location.href='<%=basePath%>single/main.action?blogId=${blogfood.blogContent.blogId}'">
+                    <div class="item px-2" ><%--onclick="window.location.href='<%=basePath%>single/main.action?blogId=${blogfood.blogContent.blogId}'"--%>
                         <div class="fh5co_hover_news_img">
-                            <div class="fh5co_news_img"><img src="<%=basePath%>${blogfood.blogPics.pic}" alt="img"/></div>
+                            <div class="fh5co_news_img">
+                                <a href="<%=basePath%>single/main.action?blogId=${blogfood.blogContent.blogId}">
+                                    <img src="<%=basePath%>${blogfood.blogPics.pic}" style="width: 100%;" alt="img"/>
+                                </a>
+                            </div>
                             <div>
                                 <p class="text-white texthidden" style="width: 350px"><a href="<%=basePath%>single/main.action?blogId=${blogfood.blogContent.blogId}" class="fh5co_small_post_heading fh5co_small_post_heading_1" >${blogfood.blogContent.blogcontent}</a></p>
                                 <p style="text-align: right"><fmt:formatDate value="${blogfood.blogContent.blogcreatetime}" pattern="yyyy-MM-dd HH:mm:ss"/></p>
@@ -238,10 +247,14 @@
                     <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">书籍</div>
                 </div>
                 <c:forEach items="${blogBook4}" var="blogbook">
-                    <div class="row pb-4" onclick="window.location.href='<%=basePath%>single/main.action?blogId=${blogbook.blogContent.blogId}'">
-                        <div class="col-md-4">
+                    <div class="row pb-4">
+                        <div class="col-md-4"> <%--onclick="window.location.href='<%=basePath%>single/main.action?blogId=${blogbook.blogContent.blogId}'"--%>
                             <div class="fh5co_hover_news_img">
-                                <div class="fh5co_news_img" style="width: 200px;"><img src="<%=basePath%>${blogbook.blogPics.pic}" alt=""/></div>
+                                <div class="fh5co_news_img" style="width: 200px;">
+                                    <a href="<%=basePath%>single/main.action?blogId=${blogbook.blogContent.blogId}">
+                                        <img src="<%=basePath%>${blogbook.blogPics.pic}"style="width: 200px;" alt=""/>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-7">

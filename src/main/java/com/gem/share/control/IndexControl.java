@@ -23,7 +23,7 @@ public class IndexControl {
     @Autowired
     private BlogService blogService;
     @Autowired
-    private LabelInfoService infoService;
+    private LabelInfoService labelInfoService;
     @Autowired
     private UserService userService;
 
@@ -49,7 +49,7 @@ public class IndexControl {
         List<BlogUserPics> blogbook=blogService.selectBlogUserPicsCountByLabelName("书籍",4);
         request.setAttribute("blogBook4",blogbook);
 
-        List<LabelInfo> labelInfos=infoService.selectAllLabelInfo();
+        List<LabelInfo> labelInfos=labelInfoService.selectAllLabelInfo();
         request.setAttribute("labelList",labelInfos);
 
         List<UserInfo> userInfos=userService.selectCountUserInfo(5);
