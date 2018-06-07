@@ -94,8 +94,7 @@
                     <div class="blog-post-alt-main">
                         <div class="blog-post-alt-main-inner">
                             <div class="blog-post-alt-date">
-                                <fmt:formatDate type="both"
-                                                dateStyle="long" timeStyle="long"
+                                <fmt:formatDate  pattern="yyyy-MM-dd"
                                                 value="${blogjiaju.blogContent.blogcreatetime}" />
                             </div><!-- .blog-post-alt-date -->
                             <div class="blog-post-alt-title">
