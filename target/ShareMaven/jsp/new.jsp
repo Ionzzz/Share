@@ -58,7 +58,7 @@
             <nav id="navigation">
                 <ul class="menu">
                     <li>
-                        <a href="index.jsp">首页</a>
+                        <a href="<%=basePath%>index/main.action">首页</a>
                         <ul>
                             <li class="current-menu-item"><a href="index.jsp">Home Version 1</a></li>
                             <li><a href="#">Home Version 2</a></li>
@@ -67,7 +67,7 @@
                         </ul>
                     </li>
                     <li class="current-menu-item">
-                        <a href="new.jsp">最新</a>
+                        <a href="<%=basePath%>new/main.action">最新</a>
                         <ul>
                             <li><a href="#">Right Sidebar</a></li>
                             <li><a href="#">Left Sidebar</a></li>
@@ -103,7 +103,7 @@
                             </div>
                             <input type="hidden" name="curPage"  id="curPage">
                             <c:forEach items="${pageInfo.list}" var="blog">
-                                <div class="row pb-4">
+                                <div class="row pb-4" onclick="window.location.href='<%=basePath%>single/main.action?blogId=${blog.blogContent.blogId}'">
                                     <div class="col-md-5">
                                         <div class="fh5co_hover_news_img">
                                             <div class="fh5co_news_img"><img style="height: 200px" src="<%=basePath%>${blog.blogPics.pic}" alt="" class="default-image"/></div>
@@ -112,25 +112,27 @@
                                     </div>
                                     <div class="col-md-7 animate-box">
 
-                                        <p class="texthidden"> <a href="single.jsp" class="fh5co_magna py-2" >${blog.blogContent.blogcontent} </a> </p><p  style="text-align: right">浏览量</p>
-                                        <a href="" class="fh5co_mini_time py-3" >${blog.userInfo.usernickname}-<fmt:formatDate value="${blog.blogContent.blogcreatetime}" pattern="yyyy-MM-dd HH:mm:ss"/> </a>
+                                        <p class="texthidden">
+                                            <a href="<%=basePath%>single/main.action?blogId=${blog.blogContent.blogId}" class="fh5co_magna py-2" >${blog.blogContent.blogcontent} </a>
+                                        </p>
+                                            <a href="<%=basePath%>single/main.action?blogId=${blog.blogContent.blogId}" class="fh5co_mini_time py-3">${blog.userInfo.usernickname}-<fmt:formatDate value="${blog.blogContent.blogcreatetime}" pattern="yyyy-MM-dd HH:mm:ss"/> </a>
+                                        <p  style="float: right;position: relative">浏览量</p>
+                                        <div class="fh5co_consectetur"> ${blog.blogContent.blogcontent}</div>
 
-                                        <div class="fh5co_consectetur"> ${blog.blogContent.blogcontent}
-                                        </div>
                                     </div>
                                 </div>
                             </c:forEach>
 
-                            <div class="row pb-4">
+                            <div class="row pb-4" >
                                 <div class="col-md-5">
                                     <div class="fh5co_hover_news_img">
                                         <div class="fh5co_news_img"><img src="<%=basePath%>images/index-images/ryan-moreno-98837.jpg" alt=""/></div>
                                         <div></div>
                                     </div>
                                 </div>
-                                <div class="col-md-7">
+                                <div class="col-md-7" style=" height: 200px; overflow:hidden;text-overflow:ellipsis;">
                                     <a href="single.jsp" class="fh5co_magna py-2"> <p class="texthidden"> Magna aliqua ut enim ad minim veniam quis
-                                        nostrud quis xercitation ullamco. </p></a> <br/><a href="#" class="fh5co_mini_time py-3"> Thomson Smith -
+                                        nostrud quis xercitation ullamco. </p></a><a href="#" class="fh5co_mini_time py-3"> Thomson Smith -
                                     April 18,2018 </a>
                                     <div class="fh5co_consectetur"> Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
                                         commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
@@ -207,7 +209,7 @@
                 </div>
             </div>
 
-            <div class="row mx-0">
+            <div class="row mx-0" style="margin-top: 50px;">
                 <div class="col-12 text-center pb-4 pt-4">
                     <a href="javascript:getPage(1)" class="btn_mange_pagging"><i class="fa fa-long-arrow-left"></i>&nbsp;&nbsp; HOME PAGE</a>
 

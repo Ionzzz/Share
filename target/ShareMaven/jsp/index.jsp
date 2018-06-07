@@ -93,10 +93,10 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent" >
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="index.jsp">首页 <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="<%=basePath%>index/main.action">首页 <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href="new.jsp">最新 <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="<%=basePath%>new/main.action">最新 <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item ">
                         <a class="nav-link" href="single.jsp">话题 <span class="sr-only">(current)</span></a>
@@ -267,9 +267,9 @@
                     <div class="fh5co_heading fh5co_heading_border_bottom pt-3 py-2 mb-4">能量达人</div>
                 </div>
                 <c:forEach items="${userList5}" var="userlist">
-                    <div class="row pb-3">
+                    <div class="row pb-3"  style="margin: 20px 0;">
                         <div class="col-5 align-self-center">
-                            <img src="<%=basePath%>${userlist.userimg}" alt="img" class="fh5co_most_trading"/>
+                            <img src="<%=basePath%>img${userlist.userimg}" alt="img" class="fh5co_most_trading"/>
                         </div>
                         <div class="col-7 paddding">
                             <div class="most_fh5co_treding_font"> ${userlist.usernickname}</div>
