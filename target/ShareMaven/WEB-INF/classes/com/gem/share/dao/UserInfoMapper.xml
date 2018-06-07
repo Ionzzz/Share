@@ -408,7 +408,7 @@
   </select>
   <!--public List<UserInfo> selectCountUserInfo(int count);-->
   <select id="selectCountUserInfo" resultType="UserInfo" parameterType="int">
-    select * from userinfo where userNickName is not null  limit #{_parameter}
+    select * from userinfo where userNickName is not null limit #{_parameter}
   </select>
   <!--public List<UserInfo> selectOrderAllUserInfo();-->
   <select id="selectOrderAllUserInfo" resultType="UserInfo" parameterType="int">

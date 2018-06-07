@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>）
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -167,7 +168,7 @@
                 <div class="item px-2" onclick="window.location.href='<%=basePath%>single/main.action?blogId=${blogJiaJu.blogContent.blogId}'">
                     <div class="fh5co_latest_trading_img_position_relative">
                         <div class="fh5co_latest_trading_img">
-                            <img src="<%=basePath%>${blogJiaJu.blogPics.pic}" alt="img" class="fh5co_img_special_relative"/></div>
+                            <img src="<%=basePath%>${blogJiaJu.blogPics.pic}" alt="img"/></div>
                         <div class="fh5co_latest_trading_img_position_absolute"></div>
                         <div class="fh5co_latest_trading_img_position_absolute_1">
                             <p class="text-white texthidden "  style=" width:240px;"> <a href="<%=basePath%>single/main.action?blogId=${blogJiaJu.blogContent.blogId}" class="text-white"> ${blogJiaJu.blogContent.blogcontent} </a></p>
@@ -244,7 +245,12 @@
                             </div>
                         </div>
                         <div class="col-md-7">
-                            <p class="texthidden" style="width: 400px"> <a href="<%=basePath%>single/main.action?blogId=${blogbook.blogContent.blogId}" class="fh5co_magna py-2"> Magna aliqua ut enim ad minim veniam quisnostrud quis xercitation ullamco. </a></p>
+                            <p></p>
+                            <p class="texthidden" style="width: 400px">
+                                <a href="<%=basePath%>single/main.action?blogId=${blogbook.blogContent.blogId}" class="fh5co_magna py-2">
+                                    <c:set var="bookname" value="${blogbook.blogContent.blogcontent}"/>
+                                      《${fn:substringBefore(bookname,"||" )}》  </a></p>
+
                                     ${blogbook.userInfo.username} -  <fmt:formatDate value="${blogbook.blogContent.blogcreatetime}" pattern="yyyy-MM-dd HH:mm:ss"/>
                             <div class="fh5co_consectetur"> ${blogbook.blogContent.blogcontent}
                             </div>
