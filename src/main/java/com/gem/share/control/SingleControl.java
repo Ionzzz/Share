@@ -1,7 +1,7 @@
 package com.gem.share.control;
 
 
-import com.gem.share.entity.BlogUserPics;
+import com.gem.share.entity.BlogUserPicsLabel;
 import com.gem.share.service.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,10 +27,10 @@ public class SingleControl {
   /*      if(blogId.equals(null)){
 
         }*/
-        BlogUserPics blogUserPics=blogService.selectBlogUserPicsByBlogId(Integer.parseInt(blogId));
+        BlogUserPicsLabel blogUserPicsLabel =blogService.selectBlogUserPicsByBlogId(Integer.parseInt(blogId));
         List<String> blogLabelName=blogService.selectBlogLabelNameByBlogId(Integer.parseInt(blogId));
 
-        request.setAttribute("blog",blogUserPics);
+        request.setAttribute("blog", blogUserPicsLabel);
         request.setAttribute("LabelName",blogLabelName);
 
         request.getRequestDispatcher("/jsp/single.jsp").forward(request,response);

@@ -6,7 +6,7 @@ import com.gem.share.dao.BlogPicsMapper;
 import com.gem.share.dao.LabelInfoMapper;
 import com.gem.share.entity.BlogContent;
 import com.gem.share.entity.BlogLabel;
-import com.gem.share.entity.BlogUserPics;
+import com.gem.share.entity.BlogUserPicsLabel;
 import com.gem.share.service.BlogService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -31,9 +31,9 @@ public class BlogServiceImpl implements BlogService {
     private LabelInfoMapper labelInfoMapper;
 
     @Override//查询浏览量最高的一条
-    public BlogUserPics selectOneBlogOrderBlogBrowse() {
-        BlogUserPics blogUserPics=blogContentMapper.selectOneBlogOrderBlogBrowse();
-        return blogUserPics;
+    public BlogUserPicsLabel selectOneBlogOrderBlogBrowse() {
+        BlogUserPicsLabel blogUserPicsLabel =blogContentMapper.selectOneBlogOrderBlogBrowse();
+        return blogUserPicsLabel;
     }
 
     @Override
@@ -42,17 +42,17 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override//查询前几条数据
-    public List<BlogUserPics> selectBlogCount(int count) {
+    public List<BlogUserPicsLabel> selectBlogCount(int count) {
         return blogContentMapper.selectBlogCount(count);
     }
 
     @Override
-    public PageInfo<BlogUserPics> selectAllBlogUserPicsByPage(Map<String, Object> map) {
+    public PageInfo<BlogUserPicsLabel> selectAllBlogUserPicsByPage(Map<String, Object> map) {
         int curPage= (int) map.get("curPage");
         int pageSize= (int) map.get("pageSize");
         PageHelper.startPage(curPage,pageSize);
-        List<BlogUserPics> list=blogContentMapper.selectBlogUserPics();
-        PageInfo<BlogUserPics> pageInfo=new PageInfo<>(list);
+        List<BlogUserPicsLabel> list=blogContentMapper.selectBlogUserPics();
+        PageInfo<BlogUserPicsLabel> pageInfo=new PageInfo<>(list);
 
         return pageInfo;
     }
@@ -69,24 +69,24 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
-    public List<BlogUserPics> selectBlogUserPicsByLabelName(String labelName) {
+    public List<BlogUserPicsLabel> selectBlogUserPicsByLabelName(String labelName) {
         List<BlogLabel> blogLabels=blogLabelMapper.selectBlogByLabelName(labelName);
-        List<BlogUserPics> blogUserPics=new ArrayList<>();
+        List<BlogUserPicsLabel> blogUserPicLabels =new ArrayList<>();
         for(BlogLabel blogLabel:blogLabels){
-            BlogUserPics blogUserPic=blogContentMapper.selectBlogUserPicsByBlogId(blogLabel.getBlogId());
-            blogUserPics.add(blogUserPic);
+            BlogUserPicsLabel blogUserPic=blogContentMapper.selectBlogUserPicsByBlogId(blogLabel.getBlogId());
+            blogUserPicLabels.add(blogUserPic);
         }
-        return blogUserPics;
+        return blogUserPicLabels;
     }
 
     @Override//返回指定数量的指定标签名的BlogUserPics
-    public List<BlogUserPics> selectBlogUserPicsCountByLabelName(String labelName, int count) {
-        List<BlogUserPics> list=selectBlogUserPicsByLabelName(labelName);
-        List<BlogUserPics> blogUserPics=new ArrayList<>();
+    public List<BlogUserPicsLabel> selectBlogUserPicsCountByLabelName(String labelName, int count) {
+        List<BlogUserPicsLabel> list=selectBlogUserPicsByLabelName(labelName);
+        List<BlogUserPicsLabel> blogUserPicLabels =new ArrayList<>();
         for(int i=0;i<count;i++){
-            blogUserPics.add(list.get(i));
+            blogUserPicLabels.add(list.get(i));
         }
-        return blogUserPics;
+        return blogUserPicLabels;
     }
 
     @Override//标签id查询博客集合
@@ -129,7 +129,7 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
-    public BlogUserPics selectBlogUserPicsByBlogId(int blog_id) {
+    public BlogUserPicsLabel selectBlogUserPicsByBlogId(int blog_id) {
 
         return blogContentMapper.selectBlogUserPicsByBlogId(blog_id);
     }

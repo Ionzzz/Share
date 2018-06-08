@@ -331,20 +331,26 @@
     select createtime from blogcentent where blog_id=#{_parameter};
   </select>
 
-  <!--public List<BlogUserPics> selectBlogCount(int count);-->
-  <select id="selectBlogCount" resultMap="selectBlogUserMap" parameterType="int">
-    select * from blogcontent,userinfo,blogpics
-    where blogcontent.user_id=userinfo.user_id and blogcontent.blogPics_id=blogpics.blogPics_id
+  <!--public List<BlogUserPicsLabel> selectBlogCount(int count);-->
+  <select id="selectBlogCount" resultMap="selectBlogUserLabelMap" parameterType="int">
+    select * from blogcontent,userinfo,blogpics,bloglabel,labelinfo
+    where blogcontent.user_id=userinfo.user_id
+    and blogcontent.blogPics_id=blogpics.blogPics_id
+    and blogcontent.blog_id=bloglabel.blog_id
+    and bloglabel.label_id=labelinfo.label_id
     limit #{_parameter}
   </select>
 
-  <!--public List<BlogUserPics> selectBlogUserPics();-->
-  <select id="selectBlogUserPics" resultMap="selectBlogUserMap">
-    select * from blogcontent,userinfo,blogpics
-    where blogcontent.user_id=userinfo.user_id and blogcontent.blogPics_id=blogpics.blogPics_id
+  <!--public List<BlogUserPicsLabel> selectBlogUserPics();-->
+  <select id="selectBlogUserPics" resultMap="selectBlogUserLabelMap">
+    select * from blogcontent,userinfo,blogpics,bloglabel,labelinfo
+    where blogcontent.user_id=userinfo.user_id
+    and blogcontent.blogPics_id=blogpics.blogPics_id
+    and blogcontent.blog_id=bloglabel.blog_id
+    and bloglabel.label_id=labelinfo.label_id
   </select>
 
-  <resultMap id="selectBlogUserMap" type="BlogUserPics">
+  <resultMap id="selectBlogUserLabelMap" type="BlogUserPicsLabel">
     <association property="blogContent" javaType="BlogContent">
       <id column="blog_id" property="blogId"/>
       <result column="user_id" property="userId"/>
@@ -380,21 +386,37 @@
       <result column="blog_id" property="blogId"/>
       <result column="pic" property="pic"/>
     </association>
-
+    <association property="blogLabel" javaType="BlogLabel">
+      <id column="blogLabel_id" property="bloglabelId"/>
+      <result column="blog_id" property="blogId"/>
+      <result column="label_id" property="labelId"/>
+    </association>
+    <association property="labelInfo" javaType="LabelInfo">
+      <id column="label_id" property="labelId"/>
+      <result column="labelName" property="labelname"/>
+      <result column="labelContent" property="labelcontent"/>
+      <result column="labelCreateTime" property="labelcreatetime"/>
+      <result column="labelModifyTime" property="labelmodifytime"/>
+    </association>
+    
   </resultMap>
 
-  <!--public BlogUserPics selectBlogUserPicsByBlogId(int blog_id);-->
-  <select id="selectBlogUserPicsByBlogId" resultMap="selectBlogUserMap" parameterType="int">
-    select * from blogcontent,userinfo,blogpics
+  <!--public BlogUserPicsLabel selectBlogUserPicsByBlogId(int blog_id);-->
+  <select id="selectBlogUserPicsByBlogId" resultMap="selectBlogUserLabelMap" parameterType="int">
+    select * from blogcontent,userinfo,blogpics,bloglabel,labelinfo
     where blogcontent.user_id=userinfo.user_id
     and blogcontent.blogPics_id=blogpics.blogPics_id
+    and blogcontent.blog_id=bloglabel.blog_id
+    and bloglabel.label_id=labelinfo.label_id
     and blogcontent.blog_id=#{_parameter}
   </select>
-  <!--public BlogUserPics selectOneBlogOrderBlogBrowse();-->
-  <select id="selectOneBlogOrderBlogBrowse" resultMap="selectBlogUserMap">
-    select * from blogcontent,userinfo,blogpics
+  <!--public BlogUserPicsLabel selectOneBlogOrderBlogBrowse();-->
+  <select id="selectOneBlogOrderBlogBrowse" resultMap="selectBlogUserLabelMap">
+    select * from blogcontent,userinfo,blogpics,bloglabel,labelinfo
     where blogcontent.user_id=userinfo.user_id
     and blogcontent.blogPics_id=blogpics.blogPics_id
+    and blogcontent.blog_id=bloglabel.blog_id
+    and bloglabel.label_id=labelinfo.label_id
     and blogcontent.blog_id=(select blog_id from blogbrowse order by blogBrowseCount desc limit 1)
   </select>
   <!--public boolean updateBlogBrowse(int blog_id);-->

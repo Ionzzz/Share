@@ -1,7 +1,7 @@
 package com.gem.share.control;
 
 import com.gem.share.entity.BlogContent;
-import com.gem.share.entity.BlogUserPics;
+import com.gem.share.entity.BlogUserPicsLabel;
 import com.gem.share.service.BlogService;
 import com.gem.share.service.LabelInfoService;
 import com.github.pagehelper.PageInfo;
@@ -38,7 +38,7 @@ public class NewControl {
         }
         map.put("curPage",curPage);
         map.put("pageSize",pageSize);
-        PageInfo<BlogUserPics> pageInfo=blogService.selectAllBlogUserPicsByPage(map);
+        PageInfo<BlogUserPicsLabel> pageInfo=blogService.selectAllBlogUserPicsByPage(map);
         request.setAttribute("pageInfo",pageInfo);
 /*        for (BlogContent blogContent:bloglist){
             BlogContent blog=blogContent;

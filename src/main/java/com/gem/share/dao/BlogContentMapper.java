@@ -2,7 +2,7 @@ package com.gem.share.dao;
 
 import com.gem.share.entity.BlogContent;
 import com.gem.share.entity.BlogContentExample;
-import com.gem.share.entity.BlogUserPics;
+import com.gem.share.entity.BlogUserPicsLabel;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.Date;
@@ -56,14 +56,14 @@ public interface BlogContentMapper {
 
     public Date selectBlogCreateTimeByBlogId(int blog_id);
 
-    public List<BlogUserPics> selectBlogCount(int count);
+    public List<BlogUserPicsLabel> selectBlogCount(int count);
 
-    public List<BlogUserPics> selectBlogUserPics();
+    public List<BlogUserPicsLabel> selectBlogUserPics();
 
-    public BlogUserPics selectBlogUserPicsByBlogId(int blog_id);
+    public BlogUserPicsLabel selectBlogUserPicsByBlogId(int blog_id);
 
 //    浏览量最高
-    public BlogUserPics selectOneBlogOrderBlogBrowse();
+    public BlogUserPicsLabel selectOneBlogOrderBlogBrowse();
 //    增加一次浏览量
     public boolean updateBlogBrowse(int blog_id);
 

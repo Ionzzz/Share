@@ -1,7 +1,7 @@
 package com.gem.share.control;
 
 
-import com.gem.share.entity.BlogUserPics;
+import com.gem.share.entity.BlogUserPicsLabel;
 import com.gem.share.service.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,7 +21,7 @@ public class TopicControl {
     @RequestMapping("/main.action")
     public void main(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        List<BlogUserPics> blogjiaju=blogService.selectBlogUserPicsByLabelName("家居");
+        List<BlogUserPicsLabel> blogjiaju=blogService.selectBlogUserPicsByLabelName("家居");
         request.setAttribute("blogJiaJu",blogjiaju);
 
         request.getRequestDispatcher("/jsp/topic.jsp").forward(request,response);

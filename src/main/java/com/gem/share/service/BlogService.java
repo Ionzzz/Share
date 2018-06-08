@@ -1,7 +1,7 @@
 package com.gem.share.service;
 
 import com.gem.share.entity.BlogContent;
-import com.gem.share.entity.BlogUserPics;
+import com.gem.share.entity.BlogUserPicsLabel;
 import com.github.pagehelper.PageInfo;
 
 import java.util.Date;
@@ -10,20 +10,20 @@ import java.util.Map;
 
 public interface BlogService {
 
-    public BlogUserPics selectOneBlogOrderBlogBrowse();//查询浏览量最高的博客
+    public BlogUserPicsLabel selectOneBlogOrderBlogBrowse();//查询浏览量最高的博客
 
 
     public String selectPicByBlogPicsId(int blogPics_id);
 
-    public List<BlogUserPics> selectBlogCount(int count);
+    public List<BlogUserPicsLabel> selectBlogCount(int count);
 
-    public PageInfo<BlogUserPics> selectAllBlogUserPicsByPage(Map<String,Object> map);
+    public PageInfo<BlogUserPicsLabel> selectAllBlogUserPicsByPage(Map<String,Object> map);
 
 
     public PageInfo<BlogContent> selectAllBlogByPage(Map<String,Object> map);
 
-    public List<BlogUserPics> selectBlogUserPicsByLabelName(String labelName);
-    public List<BlogUserPics> selectBlogUserPicsCountByLabelName(String labelName,int count);
+    public List<BlogUserPicsLabel> selectBlogUserPicsByLabelName(String labelName);
+    public List<BlogUserPicsLabel> selectBlogUserPicsCountByLabelName(String labelName, int count);
     //    通过标签id找到博客
     public List<BlogContent> selectBlogByLabelId(int label_id);
 
@@ -36,7 +36,7 @@ public interface BlogService {
 
 //    根据博客id查找博客全部内容
     public BlogContent selectBlogByBlogId(int blog_id);
-    public BlogUserPics selectBlogUserPicsByBlogId(int blog_id);
+    public BlogUserPicsLabel selectBlogUserPicsByBlogId(int blog_id);
 
     public List<String> selectBlogLabelNameByBlogId(int blog_id);
 
