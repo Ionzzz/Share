@@ -50,7 +50,7 @@ public interface BlogService {
     public Date selectBlogCreateTimeByBlogId(int blog_id);
 
 //    按照博客发表时间排序  若时间相同按照用户id升序排列
-    public List<BlogContent> orderBlogByCreateTime();
+    public List<BlogUserPicsLabel> orderBlogByCreateTime();
 
 //    通过博客id得到博客图片，上传相册
     public Integer selectBlogPicsByBlogId(int blog_id);

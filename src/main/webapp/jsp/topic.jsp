@@ -84,7 +84,7 @@
             <div class="carousel" data-stop-on-hover="false" data-columns="4" data-pagination="false" data-slide-speed="200" data-pagination-speed="800" data-scroll-per-page="false">
 
             <c:forEach items="${blogJiaJu}" var="blogjiaju">
-                <div class="blog-post-alt carousel-item">
+                <div class="blog-post-alt carousel-item" style="border: 1px solid white;">
                     <div class="blog-post-alt-thumb">
                         <div class="blog-post-alt-thumb-inner">
                             <a href="single.jsp"><img src="<%=basePath%>${blogjiaju.blogPics.pic}" style="height:300px;width: 100%" alt="" /></a>

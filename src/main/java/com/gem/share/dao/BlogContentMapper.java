@@ -58,7 +58,7 @@ public interface BlogContentMapper {
 
     public List<BlogUserPicsLabel> selectBlogCount(int count);
 
-    public List<BlogUserPicsLabel> selectBlogUserPics();
+    public List<BlogUserPicsLabel> selectOrderBlogUserPics();
 
     public BlogUserPicsLabel selectBlogUserPicsByBlogId(int blog_id);
 

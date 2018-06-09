@@ -129,7 +129,7 @@
                     <img src="<%=basePath%>${blogone.blogPics.pic}" style="height:100%" alt="img"/>
                 </a>
                 <div class="fh5co_suceefh5co_height_position_absolute">
-                    <p style="margin:30px;text-align: right">热度:6666</p>
+                    <p style="margin:30px;text-align: right">热度：${blogone.liulan}</p>
                 </div>
                 <div class="fh5co_suceefh5co_height_position_absolute_font">
                      <i class="fa fa-clock-o"></i>&nbsp;&nbsp;<fmt:formatDate value="${blogone.blogContent.blogcreatetime}" pattern="MM-dd-yyyy"/>

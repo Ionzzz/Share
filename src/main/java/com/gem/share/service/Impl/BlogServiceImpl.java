@@ -51,7 +51,7 @@ public class BlogServiceImpl implements BlogService {
         int curPage= (int) map.get("curPage");
         int pageSize= (int) map.get("pageSize");
         PageHelper.startPage(curPage,pageSize);
-        List<BlogUserPicsLabel> list=blogContentMapper.selectBlogUserPics();
+        List<BlogUserPicsLabel> list=blogContentMapper.selectOrderBlogUserPics();
         PageInfo<BlogUserPicsLabel> pageInfo=new PageInfo<>(list);
 
         return pageInfo;
@@ -74,7 +74,11 @@ public class BlogServiceImpl implements BlogService {
         List<BlogUserPicsLabel> blogUserPicLabels =new ArrayList<>();
         for(BlogLabel blogLabel:blogLabels){
             BlogUserPicsLabel blogUserPic=blogContentMapper.selectBlogUserPicsByBlogId(blogLabel.getBlogId());
-            blogUserPicLabels.add(blogUserPic);
+            if(blogUserPic==null){
+                System.out.println("blog_id为"+blogLabel.getBlogId()+"-------赞/评论/浏览---至少有一项为空");
+            }else {
+                blogUserPicLabels.add(blogUserPic);
+            }
         }
         return blogUserPicLabels;
     }
@@ -160,8 +164,9 @@ public class BlogServiceImpl implements BlogService {
         return blogContentMapper.selectBlogCreateTimeByBlogId(blog_id);
     }
 
-    @Override
-    public List<BlogContent> orderBlogByCreateTime() {
+    @Override//按照发布时间排序0
+    public List<BlogUserPicsLabel> orderBlogByCreateTime() {
+
         return null;
     }
 

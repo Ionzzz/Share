@@ -33,9 +33,10 @@ public class IndexControl {
 
         BlogUserPicsLabel blogtheone=blogService.selectOneBlogOrderBlogBrowse();
         request.setAttribute("blogone",blogtheone);
-        List<BlogUserPicsLabel> blogfourlist=blogService.selectBlogCount(4);
+        List<BlogUserPicsLabel> blogflist=blogService.selectBlogCount(4);
 //        System.out.println("----------"+pic.get(0));
-        request.setAttribute("blogfourlist",blogfourlist);
+        request.setAttribute("blogfourlist",blogflist);
+
 
         List<BlogUserPicsLabel> blogjiaju=blogService.selectBlogUserPicsByLabelName("家居");
         request.setAttribute("blogJiaJu",blogjiaju);

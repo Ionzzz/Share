@@ -10,22 +10,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5d62ac77-8c7f-4ccb-88a6-f35818686fc8" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/img/home/120_1.jpg" afterPath="$PROJECT_DIR$/src/main/webapp/img/home/120_1.jpg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ShareMaven/WEB-INF/classes/com/gem/share/dao/BlogContentMapper.class" afterPath="$PROJECT_DIR$/target/ShareMaven/WEB-INF/classes/com/gem/share/dao/BlogContentMapper.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ShareMaven/WEB-INF/classes/com/gem/share/service/BlogService.class" afterPath="$PROJECT_DIR$/target/ShareMaven/WEB-INF/classes/com/gem/share/service/BlogService.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/gem/share/dao/BlogContentMapper.class" afterPath="$PROJECT_DIR$/target/classes/com/gem/share/dao/BlogContentMapper.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/gem/share/service/BlogService.class" afterPath="$PROJECT_DIR$/target/classes/com/gem/share/service/BlogService.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gem/share/control/IndexControl.java" afterPath="$PROJECT_DIR$/src/main/java/com/gem/share/control/IndexControl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gem/share/control/NewControl.java" afterPath="$PROJECT_DIR$/src/main/java/com/gem/share/control/NewControl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gem/share/control/SingleControl.java" afterPath="$PROJECT_DIR$/src/main/java/com/gem/share/control/SingleControl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gem/share/control/TopicControl.java" afterPath="$PROJECT_DIR$/src/main/java/com/gem/share/control/TopicControl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gem/share/dao/BlogContentMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/gem/share/dao/BlogContentMapper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gem/share/entity/BlogUserPicsLabel.java" afterPath="$PROJECT_DIR$/src/main/java/com/gem/share/entity/BlogUserPicsLabel.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gem/share/service/BlogService.java" afterPath="$PROJECT_DIR$/src/main/java/com/gem/share/service/BlogService.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gem/share/service/Impl/BlogServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/gem/share/service/Impl/BlogServiceImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/com/gem/share/dao/BlogContentMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/com/gem/share/dao/BlogContentMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/jsp/index.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/index.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/jsp/login_verify.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/login_verify.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/jsp/new.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/new.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/jsp/topic.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/topic.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ShareMaven/WEB-INF/classes/com/gem/share/dao/BlogContentMapper.xml" afterPath="$PROJECT_DIR$/target/ShareMaven/WEB-INF/classes/com/gem/share/dao/BlogContentMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ShareMaven/jsp/index.jsp" afterPath="$PROJECT_DIR$/target/ShareMaven/jsp/index.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ShareMaven/jsp/new.jsp" afterPath="$PROJECT_DIR$/target/ShareMaven/jsp/new.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ShareMaven/jsp/topic.jsp" afterPath="$PROJECT_DIR$/target/ShareMaven/jsp/topic.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/gem/share/dao/BlogContentMapper.xml" afterPath="$PROJECT_DIR$/target/classes/com/gem/share/dao/BlogContentMapper.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/gem/share/entity/BlogUserPics.java" afterPath="$PROJECT_DIR$/src/main/java/com/gem/share/entity/BlogUserPicsLabel.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -49,23 +54,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="IndexControl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/gem/share/control/IndexControl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="350">
-              <caret line="39" column="45" lean-forward="false" selection-start-line="39" selection-start-column="45" selection-end-line="39" selection-end-column="45" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="topic.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/topic.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1526">
-              <caret line="109" column="54" lean-forward="false" selection-start-line="109" selection-start-column="54" selection-end-line="109" selection-end-column="54" />
+            <state relative-caret-position="0">
+              <caret line="86" column="87" lean-forward="false" selection-start-line="86" selection-start-column="87" selection-end-line="86" selection-end-column="87" />
               <folding />
             </state>
           </provider>
@@ -74,76 +67,59 @@
       <file leaf-file-name="BlogContentMapper.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/com/gem/share/dao/BlogContentMapper.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5754">
-              <caret line="411" column="11" lean-forward="false" selection-start-line="411" selection-start-column="11" selection-end-line="411" selection-end-column="11" />
+            <state relative-caret-position="469">
+              <caret line="439" column="43" lean-forward="true" selection-start-line="439" selection-start-column="43" selection-end-line="439" selection-end-column="43" />
               <folding>
-                <marker date="1528379154096" expanded="true" signature="4366:4529" ph="select , fro... " />
-                <marker date="1528379154096" expanded="true" signature="4615:4685" ph="delete from " />
-                <marker date="1528379154096" expanded="true" signature="4790:4813" ph="delete from " />
-                <marker date="1528379154096" expanded="true" signature="4994:5363" ph="insert into blogcontent... " />
-                <marker date="1528379154096" expanded="true" signature="6844:6876" ph="select count... blogcontent" />
-                <marker date="1528379154096" expanded="true" signature="8068:8490" ph="update blogc... " />
-                <marker date="1528379154096" expanded="true" signature="8661:9019" ph="update blogc... " />
-                <marker date="1528379154096" expanded="true" signature="9231:9931" ph="update blogc... " />
-                <marker date="1528379154096" expanded="true" signature="10041:10417" ph="update blogc... " />
-                <marker date="1528379154096" expanded="true" signature="10518:10837" ph="update blogc... " />
-                <marker date="1528379154096" expanded="true" signature="11019:11085" ph="SELECT * FRO... blogcontent" />
-                <marker date="1528379154096" expanded="true" signature="11244:11297" ph="select * fro... blogcontent" />
-                <marker date="1528379154096" expanded="true" signature="11425:11450" ph="select * fro... blogcontent" />
-                <marker date="1528379154096" expanded="true" signature="12050:12159" ph="update blogc... " />
-                <marker date="1528379154096" expanded="true" signature="12338:12464" ph="insert into blogcontent... " />
-                <marker date="1528379154096" expanded="true" signature="12593:12644" ph="delete from " />
-                <marker date="1528379154096" expanded="true" signature="12809:12871" ph="select creat... blogcentent" />
-                <marker date="1528379154096" expanded="true" signature="13045:13311" ph="select * fro... blogcontent" />
-                <marker date="1528379154096" expanded="true" signature="13045:13324" ph="select * fro... blogcontent" />
-                <marker date="1528379154096" expanded="true" signature="13474:13729" ph="select * fro... blogcontent" />
-                <marker date="1528379154096" expanded="true" signature="16498:16795" ph="select * fro... blogcontent" />
-                <marker date="1528379154096" expanded="true" signature="16958:17312" ph="select * fro... blogcontent" />
-                <marker date="1528379154096" expanded="true" signature="17234:17312" ph="select * fro... blogcontent" />
-                <marker date="1528379154096" expanded="true" signature="17437:17520" ph="update blogb... " />
+                <element signature="n#resultMap#3;n#mapper#0;n#!!top" expanded="false" />
+                <marker date="1528512738171" expanded="true" signature="4366:4529" ph="select , fro... " />
+                <marker date="1528512738171" expanded="true" signature="4615:4685" ph="delete from " />
+                <marker date="1528512738171" expanded="true" signature="4790:4813" ph="delete from " />
+                <marker date="1528512738171" expanded="true" signature="4994:5363" ph="insert into blogcontent... " />
+                <marker date="1528512738171" expanded="true" signature="6844:6876" ph="select count... blogcontent" />
+                <marker date="1528512738171" expanded="true" signature="8068:8490" ph="update blogc... " />
+                <marker date="1528512738171" expanded="true" signature="8661:9019" ph="update blogc... " />
+                <marker date="1528512738171" expanded="true" signature="9231:9931" ph="update blogc... " />
+                <marker date="1528512738171" expanded="true" signature="10041:10417" ph="update blogc... " />
+                <marker date="1528512738171" expanded="true" signature="10518:10837" ph="update blogc... " />
+                <marker date="1528512738171" expanded="true" signature="11019:11085" ph="SELECT * FRO... blogcontent" />
+                <marker date="1528512738171" expanded="true" signature="11244:11297" ph="select * fro... blogcontent" />
+                <marker date="1528512738171" expanded="true" signature="11425:11450" ph="select * fro... blogcontent" />
+                <marker date="1528512738171" expanded="true" signature="12050:12159" ph="update blogc... " />
+                <marker date="1528512738171" expanded="true" signature="12338:12464" ph="insert into blogcontent... " />
+                <marker date="1528512738171" expanded="true" signature="12593:12644" ph="delete from " />
+                <marker date="1528512738171" expanded="true" signature="12809:12871" ph="select creat... blogcentent" />
+                <marker date="1528512738171" expanded="true" signature="13043:13967" ph="select blogc... blogcontent" />
+                <marker date="1528512738171" expanded="true" signature="13587:13653" ph="select blog_... blogzan" />
+                <marker date="1528512738171" expanded="true" signature="13705:13779" ph="select blog_... blogcomment" />
+                <marker date="1528512738171" expanded="true" signature="13831:13904" ph="select blog_... blogbrowse" />
+                <marker date="1528512738171" expanded="true" signature="13942:13954" ph="select * fro... blogcontent" />
+                <marker date="1528512738171" expanded="true" signature="13942:13967" ph="select * fro... blogcontent" />
+                <marker date="1528512738171" expanded="true" signature="14125:15070" ph="select blogc... blogcontent" />
+                <marker date="1528512738171" expanded="true" signature="14669:14735" ph="select blog_... blogzan" />
+                <marker date="1528512738171" expanded="true" signature="14787:14861" ph="select blog_... blogcomment" />
+                <marker date="1528512738171" expanded="true" signature="14913:14986" ph="select blog_... blogbrowse" />
+                <marker date="1528512738171" expanded="true" signature="15024:15070" ph="select * fro... blogcontent" />
+                <marker date="1528512738171" expanded="true" signature="17976:18942" ph="select * fro... blogcontent" />
+                <marker date="1528512738171" expanded="true" signature="18538:18604" ph="select blog_... blogzan" />
+                <marker date="1528512738171" expanded="true" signature="18658:18732" ph="select blog_... blogcomment" />
+                <marker date="1528512738171" expanded="true" signature="18786:18859" ph="select blog_... blogbrowse" />
+                <marker date="1528512738171" expanded="true" signature="19667:19733" ph="select blog_... blogzan" />
+                <marker date="1528512738171" expanded="true" signature="19787:19861" ph="select blog_... blogcomment" />
+                <marker date="1528512738171" expanded="true" signature="19915:19988" ph="select blog_... blogbrowse" />
+                <marker date="1528512738171" expanded="true" signature="20026:20060" ph="select * fro... blogcontent" />
+                <marker date="1528512738171" expanded="true" signature="20185:20268" ph="update blogb... " />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BlogUserPicsLabel.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/gem/share/entity/BlogUserPicsLabel.java">
+      <file leaf-file-name="new.jsp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/new.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="98">
-              <caret line="7" column="15" lean-forward="false" selection-start-line="7" selection-start-column="15" selection-end-line="7" selection-end-column="15" />
+            <state relative-caret-position="308">
+              <caret line="131" column="38" lean-forward="true" selection-start-line="131" selection-start-column="38" selection-end-line="131" selection-end-column="38" />
               <folding>
-                <element signature="e#633#634#0" expanded="true" />
-                <element signature="e#667#668#0" expanded="true" />
-                <element signature="e#726#727#0" expanded="true" />
-                <element signature="e#772#773#0" expanded="true" />
-                <element signature="e#809#810#0" expanded="true" />
-                <element signature="e#840#841#0" expanded="true" />
-                <element signature="e#890#891#0" expanded="true" />
-                <element signature="e#930#931#0" expanded="true" />
-                <element signature="e#967#968#0" expanded="true" />
-                <element signature="e#998#999#0" expanded="true" />
-                <element signature="e#1048#1049#0" expanded="true" />
-                <element signature="e#1088#1089#0" expanded="true" />
-                <element signature="e#1127#1128#0" expanded="true" />
-                <element signature="e#1159#1160#0" expanded="true" />
-                <element signature="e#1212#1213#0" expanded="true" />
-                <element signature="e#1254#1255#0" expanded="true" />
-                <element signature="e#1293#1294#0" expanded="true" />
-                <element signature="e#1325#1326#0" expanded="true" />
-                <element signature="e#1378#1379#0" expanded="true" />
-                <element signature="e#1420#1421#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TopicControl.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/gem/share/control/TopicControl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="185">
-              <caret line="15" column="25" lean-forward="true" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="25" />
-              <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -152,8 +128,28 @@
       <file leaf-file-name="index.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/index.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1778">
-              <caret line="127" column="85" lean-forward="false" selection-start-line="127" selection-start-column="85" selection-end-line="127" selection-end-column="85" />
+            <state relative-caret-position="140">
+              <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="71" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IndexControl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/gem/share/control/IndexControl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="364">
+              <caret line="40" column="83" lean-forward="false" selection-start-line="40" selection-start-column="54" selection-end-line="40" selection-end-column="83" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BlogUserPicsLabel.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/gem/share/entity/BlogUserPicsLabel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="98">
+              <caret line="7" column="31" lean-forward="false" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -162,8 +158,28 @@
       <file leaf-file-name="BlogServiceImpl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/gem/share/service/Impl/BlogServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="84">
-              <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+            <state relative-caret-position="140">
+              <caret line="75" column="86" lean-forward="false" selection-start-line="75" selection-start-column="60" selection-end-line="75" selection-end-column="86" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BlogContent.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/gem/share/entity/BlogContent.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="154">
+              <caret line="11" column="32" lean-forward="false" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BlogContentMapper.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/gem/share/dao/BlogContentMapper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="742">
+              <caret line="60" column="58" lean-forward="false" selection-start-line="60" selection-start-column="35" selection-end-line="60" selection-end-column="58" />
               <folding />
             </state>
           </provider>
@@ -186,10 +202,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>html</find>
-      <find>&quot;images</find>
-      <find>contact.jsp</find>
-      <find>images/</find>
       <find>contact_us_bg_img</find>
       <find>overflow</find>
       <find>single.html</find>
@@ -216,6 +228,10 @@
       <find>video news</find>
       <find>selectCountUserInfo</find>
       <find>selectBlogUserLabelMap</find>
+      <find>selectAllBlogUserPicsByPage</find>
+      <find>selectBlogUserPics</find>
+      <find>selectBlogUserPicsByLabelName</find>
+      <find>selectBlogUserPicsByBlogId</find>
     </findStrings>
     <replaceStrings>
       <replace>single.jsp</replace>
@@ -267,7 +283,6 @@
         <option value="$PROJECT_DIR$/src/main/webapp/jsp/login_forget.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/jsp/login_password.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/jsp/login_setnewpass.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/jsp/login_verify.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/jsp/publishBlog.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/jsp/register.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/jsp/search.jsp" />
@@ -292,19 +307,20 @@
         <option value="$PROJECT_DIR$/src/main/java/com/gem/share/service/UserService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/gem/share/service/Impl/UserServiceImpl.java" />
         <option value="H:/高博实践/项目/前端/首页 - 副本/index.html" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gem/share/dao/BlogContentMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gem/share/service/BlogService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gem/share/service/Impl/BlogServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/gem/share/control/SingleControl.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/jsp/single.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/jsp/new.jsp" />
         <option value="$PROJECT_DIR$/src/main/resources/com/gem/share/dao/UserInfoMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/webapp/jsp/index.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gem/share/control/IndexControl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/gem/share/control/TopicControl.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/jsp/topic.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/gem/share/service/BlogService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/gem/share/dao/BlogContentMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/gem/share/entity/BlogUserPicsLabel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/gem/share/control/IndexControl.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/jsp/index.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/gem/share/service/Impl/BlogServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/resources/com/gem/share/dao/BlogContentMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/jsp/login_verify.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/jsp/new.jsp" />
       </list>
     </option>
   </component>
@@ -335,9 +351,9 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="220" />
-    <option name="y" value="24" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="214" />
+    <option name="y" value="32" />
     <option name="width" value="1132" />
     <option name="height" value="717" />
   </component>
@@ -376,9 +392,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="PackagesPane">
         <subPane>
           <expand>
@@ -390,6 +403,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -582,6 +596,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="AndroidView" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -595,24 +611,24 @@
     <property name="list.type.of.created.stylesheet" value="CSS" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\jee-neon\project\ShareMaven\src\main\webapp\img\home" />
-      <recent name="D:\jee-neon\project\ShareMaven\src\main\webapp\img" />
-      <recent name="D:\jee-neon\project\ShareMaven\src\main\webapp\img\dilicious" />
-      <recent name="D:\jee-neon\project\ShareMaven\src\main\webapp\images" />
-      <recent name="D:\jee-neon\project\ShareMaven\src\main\webapp\images\index-images" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.gem.share.entity" />
-      <recent name="com.gem.share.util" />
-      <recent name="com.gem.share.control" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\jee-neon\project\ShareMaven\src\main\webapp\img" />
       <recent name="D:\jee-neon\project\ShareMaven\src\main\webapp" />
       <recent name="D:\jee-neon\project\ShareMaven\src\main\webapp\images\delicious" />
       <recent name="D:\jee-neon\project\ShareMaven\src\main\webapp\images" />
       <recent name="D:\jee-neon\project\ShareMaven\src\main\webapp\images\design" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.gem.share.entity" />
+      <recent name="com.gem.share.util" />
+      <recent name="com.gem.share.control" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\jee-neon\project\ShareMaven\src\main\webapp\img\home" />
+      <recent name="D:\jee-neon\project\ShareMaven\src\main\webapp\img" />
+      <recent name="D:\jee-neon\project\ShareMaven\src\main\webapp\img\dilicious" />
+      <recent name="D:\jee-neon\project\ShareMaven\src\main\webapp\images" />
+      <recent name="D:\jee-neon\project\ShareMaven\src\main\webapp\images\index-images" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -880,7 +896,9 @@
       <workItem from="1528208767166" duration="2644000" />
       <workItem from="1528245915120" duration="32666000" />
       <workItem from="1528331277248" duration="28595000" />
-      <workItem from="1528418195640" duration="105000" />
+      <workItem from="1528418195640" duration="4709000" />
+      <workItem from="1528454388575" duration="6730000" />
+      <workItem from="1528506582622" duration="7975000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1527728944158</created>
@@ -1148,7 +1166,14 @@
       <option name="project" value="LOCAL" />
       <updated>1528376820976</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
+      <created>1528418343098</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1528418343098</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1175,7 +1200,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="282606000" />
+    <option name="totallyTimeSpent" value="301915000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1187,38 +1212,38 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="220" y="24" width="1132" height="717" extended-state="0" />
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3257143" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32761905" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41778523" sideWeight="0.50832075" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.65604025" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1409396" sideWeight="0.49167928" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.56529516" sideWeight="0.4924357" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3257143" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32885906" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22014925" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24948665" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3909396" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3257143" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23993288" sideWeight="0.49394855" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32761905" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1409396" sideWeight="0.49167928" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15100671" sideWeight="0.4924357" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3257143" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32885906" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20801815" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4695122" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23993288" sideWeight="0.49394855" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29338104" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1271,7 +1296,7 @@
           <properties />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="9" />
+      <option name="time" value="11" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1280,40 +1305,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/5.0.1.RELEASE/spring-webmvc-5.0.1.RELEASE.jar!/org/springframework/web/servlet/mvc/method/annotation/ServletInvocableHandlerMethod.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="52" column="98" lean-forward="false" selection-start-line="52" selection-start-column="98" selection-end-line="52" selection-end-column="98" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/5.0.1.RELEASE/spring-web-5.0.1.RELEASE.jar!/org/springframework/web/method/support/InvocableHandlerMethod.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="62">
-          <caret line="57" column="0" lean-forward="false" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/images/index-images/default.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/about.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gem/share/service/LabelInfoService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/gem/share/service/Impl/LabelInfoServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
@@ -1357,6 +1348,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="112">
           <caret line="12" column="51" lean-forward="true" selection-start-line="12" selection-start-column="51" selection-end-line="12" selection-end-column="51" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1375,32 +1367,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gem/share/dao/BlogContentMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="62" column="64" lean-forward="true" selection-start-line="62" selection-start-column="64" selection-end-line="62" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gem/share/entity/BlogContent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="56">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/gem/share/dao/LabelInfoMapper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-202">
           <caret line="8" column="17" lean-forward="false" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gem/share/service/BlogService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="58" column="38" lean-forward="false" selection-start-line="58" selection-start-column="38" selection-end-line="58" selection-end-column="38" />
         </state>
       </provider>
     </entry>
@@ -1445,14 +1415,6 @@
     <entry file="file://$PROJECT_DIR$/src/main/webapp/img/style/178_4.jpg">
       <provider selected="true" editor-type-id="images">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gem/share/service/Impl/BlogServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/log4j.xml" />
@@ -1545,22 +1507,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/new.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="71" column="66" lean-forward="false" selection-start-line="71" selection-start-column="66" selection-end-line="71" selection-end-column="66" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1778">
-          <caret line="127" column="85" lean-forward="false" selection-start-line="127" selection-start-column="85" selection-end-line="127" selection-end-column="85" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/img/251.jpg">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -1601,43 +1547,141 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/com/gem/share/dao/BlogContentMapper.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/img/home/120_1.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/img/home/121_1.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gem/share/control/TopicControl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5754">
-          <caret line="411" column="11" lean-forward="false" selection-start-line="411" selection-start-column="11" selection-end-line="411" selection-end-column="11" />
+        <state relative-caret-position="224">
+          <caret line="26" column="53" lean-forward="false" selection-start-line="26" selection-start-column="53" selection-end-line="26" selection-end-column="53" />
           <folding>
-            <marker date="1528379154096" expanded="true" signature="4366:4529" ph="select , fro... " />
-            <marker date="1528379154096" expanded="true" signature="4615:4685" ph="delete from " />
-            <marker date="1528379154096" expanded="true" signature="4790:4813" ph="delete from " />
-            <marker date="1528379154096" expanded="true" signature="4994:5363" ph="insert into blogcontent... " />
-            <marker date="1528379154096" expanded="true" signature="6844:6876" ph="select count... blogcontent" />
-            <marker date="1528379154096" expanded="true" signature="8068:8490" ph="update blogc... " />
-            <marker date="1528379154096" expanded="true" signature="8661:9019" ph="update blogc... " />
-            <marker date="1528379154096" expanded="true" signature="9231:9931" ph="update blogc... " />
-            <marker date="1528379154096" expanded="true" signature="10041:10417" ph="update blogc... " />
-            <marker date="1528379154096" expanded="true" signature="10518:10837" ph="update blogc... " />
-            <marker date="1528379154096" expanded="true" signature="11019:11085" ph="SELECT * FRO... blogcontent" />
-            <marker date="1528379154096" expanded="true" signature="11244:11297" ph="select * fro... blogcontent" />
-            <marker date="1528379154096" expanded="true" signature="11425:11450" ph="select * fro... blogcontent" />
-            <marker date="1528379154096" expanded="true" signature="12050:12159" ph="update blogc... " />
-            <marker date="1528379154096" expanded="true" signature="12338:12464" ph="insert into blogcontent... " />
-            <marker date="1528379154096" expanded="true" signature="12593:12644" ph="delete from " />
-            <marker date="1528379154096" expanded="true" signature="12809:12871" ph="select creat... blogcentent" />
-            <marker date="1528379154096" expanded="true" signature="13045:13311" ph="select * fro... blogcontent" />
-            <marker date="1528379154096" expanded="true" signature="13045:13324" ph="select * fro... blogcontent" />
-            <marker date="1528379154096" expanded="true" signature="13474:13729" ph="select * fro... blogcontent" />
-            <marker date="1528379154096" expanded="true" signature="16498:16795" ph="select * fro... blogcontent" />
-            <marker date="1528379154096" expanded="true" signature="16958:17312" ph="select * fro... blogcontent" />
-            <marker date="1528379154096" expanded="true" signature="17234:17312" ph="select * fro... blogcontent" />
-            <marker date="1528379154096" expanded="true" signature="17437:17520" ph="update blogb... " />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gem/share/entity/LabelInfo.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gem/share/control/NewControl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="70">
-          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="13" selection-end-column="33" />
+        <state relative-caret-position="350">
+          <caret line="40" column="84" lean-forward="false" selection-start-line="40" selection-start-column="57" selection-end-line="40" selection-end-column="84" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gem/share/entity/BlogCommentExample.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="56">
+          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gem/share/service/BlogService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="14">
+          <caret line="24" column="35" lean-forward="false" selection-start-line="24" selection-start-column="35" selection-end-line="24" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/topic.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="86" column="87" lean-forward="false" selection-start-line="86" selection-start-column="87" selection-end-line="86" selection-end-column="87" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gem/share/control/IndexControl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="364">
+          <caret line="40" column="83" lean-forward="false" selection-start-line="40" selection-start-column="54" selection-end-line="40" selection-end-column="83" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gem/share/entity/BlogContent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="11" column="32" lean-forward="false" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gem/share/dao/BlogContentMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="742">
+          <caret line="60" column="58" lean-forward="false" selection-start-line="60" selection-start-column="35" selection-end-line="60" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gem/share/service/Impl/BlogServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="75" column="86" lean-forward="false" selection-start-line="75" selection-start-column="60" selection-end-line="75" selection-end-column="86" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/com/gem/share/dao/BlogContentMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="469">
+          <caret line="439" column="43" lean-forward="true" selection-start-line="439" selection-start-column="43" selection-end-line="439" selection-end-column="43" />
+          <folding>
+            <element signature="n#resultMap#3;n#mapper#0;n#!!top" expanded="false" />
+            <marker date="1528512738171" expanded="true" signature="4366:4529" ph="select , fro... " />
+            <marker date="1528512738171" expanded="true" signature="4615:4685" ph="delete from " />
+            <marker date="1528512738171" expanded="true" signature="4790:4813" ph="delete from " />
+            <marker date="1528512738171" expanded="true" signature="4994:5363" ph="insert into blogcontent... " />
+            <marker date="1528512738171" expanded="true" signature="6844:6876" ph="select count... blogcontent" />
+            <marker date="1528512738171" expanded="true" signature="8068:8490" ph="update blogc... " />
+            <marker date="1528512738171" expanded="true" signature="8661:9019" ph="update blogc... " />
+            <marker date="1528512738171" expanded="true" signature="9231:9931" ph="update blogc... " />
+            <marker date="1528512738171" expanded="true" signature="10041:10417" ph="update blogc... " />
+            <marker date="1528512738171" expanded="true" signature="10518:10837" ph="update blogc... " />
+            <marker date="1528512738171" expanded="true" signature="11019:11085" ph="SELECT * FRO... blogcontent" />
+            <marker date="1528512738171" expanded="true" signature="11244:11297" ph="select * fro... blogcontent" />
+            <marker date="1528512738171" expanded="true" signature="11425:11450" ph="select * fro... blogcontent" />
+            <marker date="1528512738171" expanded="true" signature="12050:12159" ph="update blogc... " />
+            <marker date="1528512738171" expanded="true" signature="12338:12464" ph="insert into blogcontent... " />
+            <marker date="1528512738171" expanded="true" signature="12593:12644" ph="delete from " />
+            <marker date="1528512738171" expanded="true" signature="12809:12871" ph="select creat... blogcentent" />
+            <marker date="1528512738171" expanded="true" signature="13043:13967" ph="select blogc... blogcontent" />
+            <marker date="1528512738171" expanded="true" signature="13587:13653" ph="select blog_... blogzan" />
+            <marker date="1528512738171" expanded="true" signature="13705:13779" ph="select blog_... blogcomment" />
+            <marker date="1528512738171" expanded="true" signature="13831:13904" ph="select blog_... blogbrowse" />
+            <marker date="1528512738171" expanded="true" signature="13942:13954" ph="select * fro... blogcontent" />
+            <marker date="1528512738171" expanded="true" signature="13942:13967" ph="select * fro... blogcontent" />
+            <marker date="1528512738171" expanded="true" signature="14125:15070" ph="select blogc... blogcontent" />
+            <marker date="1528512738171" expanded="true" signature="14669:14735" ph="select blog_... blogzan" />
+            <marker date="1528512738171" expanded="true" signature="14787:14861" ph="select blog_... blogcomment" />
+            <marker date="1528512738171" expanded="true" signature="14913:14986" ph="select blog_... blogbrowse" />
+            <marker date="1528512738171" expanded="true" signature="15024:15070" ph="select * fro... blogcontent" />
+            <marker date="1528512738171" expanded="true" signature="17976:18942" ph="select * fro... blogcontent" />
+            <marker date="1528512738171" expanded="true" signature="18538:18604" ph="select blog_... blogzan" />
+            <marker date="1528512738171" expanded="true" signature="18658:18732" ph="select blog_... blogcomment" />
+            <marker date="1528512738171" expanded="true" signature="18786:18859" ph="select blog_... blogbrowse" />
+            <marker date="1528512738171" expanded="true" signature="19667:19733" ph="select blog_... blogzan" />
+            <marker date="1528512738171" expanded="true" signature="19787:19861" ph="select blog_... blogcomment" />
+            <marker date="1528512738171" expanded="true" signature="19915:19988" ph="select blog_... blogbrowse" />
+            <marker date="1528512738171" expanded="true" signature="20026:20060" ph="select * fro... blogcontent" />
+            <marker date="1528512738171" expanded="true" signature="20185:20268" ph="update blogb... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/login_verify.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-12">
+          <caret line="138" column="0" lean-forward="true" selection-start-line="138" selection-start-column="0" selection-end-line="138" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1645,56 +1689,33 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/gem/share/entity/BlogUserPicsLabel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="98">
-          <caret line="7" column="15" lean-forward="false" selection-start-line="7" selection-start-column="15" selection-end-line="7" selection-end-column="15" />
-          <folding>
-            <element signature="e#633#634#0" expanded="true" />
-            <element signature="e#667#668#0" expanded="true" />
-            <element signature="e#726#727#0" expanded="true" />
-            <element signature="e#772#773#0" expanded="true" />
-            <element signature="e#809#810#0" expanded="true" />
-            <element signature="e#840#841#0" expanded="true" />
-            <element signature="e#890#891#0" expanded="true" />
-            <element signature="e#930#931#0" expanded="true" />
-            <element signature="e#967#968#0" expanded="true" />
-            <element signature="e#998#999#0" expanded="true" />
-            <element signature="e#1048#1049#0" expanded="true" />
-            <element signature="e#1088#1089#0" expanded="true" />
-            <element signature="e#1127#1128#0" expanded="true" />
-            <element signature="e#1159#1160#0" expanded="true" />
-            <element signature="e#1212#1213#0" expanded="true" />
-            <element signature="e#1254#1255#0" expanded="true" />
-            <element signature="e#1293#1294#0" expanded="true" />
-            <element signature="e#1325#1326#0" expanded="true" />
-            <element signature="e#1378#1379#0" expanded="true" />
-            <element signature="e#1420#1421#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/topic.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1526">
-          <caret line="109" column="54" lean-forward="false" selection-start-line="109" selection-start-column="54" selection-end-line="109" selection-end-column="54" />
+          <caret line="7" column="31" lean-forward="false" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="31" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gem/share/control/IndexControl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gem/share/entity/LabelInfo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="39" column="45" lean-forward="false" selection-start-line="39" selection-start-column="45" selection-end-line="39" selection-end-column="45" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="98">
+          <caret line="7" column="29" lean-forward="true" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="29" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gem/share/control/TopicControl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/index.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="15" column="25" lean-forward="true" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="25" />
+        <state relative-caret-position="140">
+          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="71" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/new.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="131" column="38" lean-forward="true" selection-start-line="131" selection-start-column="38" selection-end-line="131" selection-end-column="38" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
