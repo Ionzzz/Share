@@ -27,8 +27,8 @@ public class SingleControl {
   /*      if(blogId.equals(null)){
 
         }*/
-        BlogUserPicsLabel blogUserPicsLabel =blogService.selectBlogUserPicsByBlogId(Integer.parseInt(blogId));
-        List<String> blogLabelName=blogService.selectBlogLabelNameByBlogId(Integer.parseInt(blogId));
+        BlogUserPicsLabel blogUserPicsLabel = blogService.selectBlogUserPicsByBlogId(Integer.parseInt(blogId));
+        List<String> blogLabelName = blogService.selectBlogLabelNameByBlogId(Integer.parseInt(blogId));
 
         request.setAttribute("blog", blogUserPicsLabel);
         request.setAttribute("LabelName",blogLabelName);

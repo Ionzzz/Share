@@ -40,4 +40,5 @@ public interface BlogLabelMapper {
     public List<BlogLabel> selectBlogByLabelId(int label_id);
 
     public List<BlogLabel> selectBlogByLabelName(String labelName);
+
 }

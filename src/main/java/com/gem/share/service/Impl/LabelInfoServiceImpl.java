@@ -14,12 +14,16 @@ public class LabelInfoServiceImpl implements LabelInfoService {
 
     @Override
     public List<LabelInfo> selectAllLabelInfo() {
-        return labelInfoMapper.selectAllLabel();
+
+        return labelInfoMapper.selectAllLabelInfo();
     }
 
     @Override
-    public LabelInfo selectLabelInfoById(int label_id) {
-        return labelInfoMapper.selectLabelByLabelId(label_id);
+    public LabelInfo selectLabelInfoByLabelId(int label_id) {
+
+        LabelInfo labelInfo=labelInfoMapper.selectLabelByLabelId(label_id);
+
+        return labelInfo;
     }
 
     @Override

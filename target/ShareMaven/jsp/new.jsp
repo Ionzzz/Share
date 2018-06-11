@@ -104,13 +104,15 @@
                         </div>
                             <input type="hidden" name="curPage"  id="curPage">
                             <c:forEach items="${pageInfo.list}" var="blog">
-                                <div class="row pb-4" onclick="window.location.href='<%=basePath%>single/main.action?blogId=${blog.blogContent.blogId}'">
+                                <div class="row pb-4">
                                     <div class="col-md-5">
                                         <div class="fh5co_hover_news_img">
                                             <div class="fh5co_news_img" >
-                                                <img style="height: auto" src="<%=basePath%>${blog.blogPics.pic}" alt="" class="default-image"/>
+                                                <a href="<%=basePath%>single/main.action?blogId=${blog.blogContent.blogId}">
+                                                    <img style="height: auto" src="<%=basePath%>${blog.blogPics.pic}" alt="" class="default-image"/>
+                                                </a>
                                             </div>
-                                        </div>
+                                        </div><%-- onclick="window.location.href='<%=basePath%>single/main.action?blogId=${blog.blogContent.blogId}'"--%>
                                     </div>
                                     <div class="col-md-7 animate-box"style=" height: 200px; overflow:hidden;text-overflow:ellipsis;">
                                         <p class="texthidden">
@@ -127,7 +129,6 @@
                                             <a href="<%=basePath%>single/main.action?blogId=${blog.blogContent.blogId}" class="fh5co_mini_time py-3">${blog.userInfo.usernickname}-<fmt:formatDate value="${blog.blogContent.blogcreatetime}" pattern="yyyy-MM-dd HH:mm:ss"/> </a>
                                         <p  style="float: right;position: relative">浏览量${blog.liulan}</p><br/>
                                         <div class="fh5co_consectetur"> ${blog.blogContent.blogcontent}</div>
-
                                     </div>
                                 </div>
                             </c:forEach>
@@ -139,22 +140,18 @@
                     </div>
                     <div class="clearfix"></div>
                     <div class="fh5co_tags_all">
-                        <a href="#" class="fh5co_tagg">音乐</a>
-                        <a href="#" class="fh5co_tagg">旅行</a>
-                        <a href="#" class="fh5co_tagg">美食</a>
-                        <a href="#" class="fh5co_tagg">手绘</a>
-                        <a href="#" class="fh5co_tagg">书籍</a>
-                        <a href="#" class="fh5co_tagg">手工</a>
-                        <a href="#" class="fh5co_tagg">家居</a>
-                        <a href="#" class="fh5co_tagg">Lifestyle</a>
-                        <a href="#" class="fh5co_tagg">Art</a>
-                        <a href="#" class="fh5co_tagg">Education</a>
-                        <a href="#" class="fh5co_tagg">Social</a>
-                        <a href="#" class="fh5co_tagg">Three</a>
+                        <c:forEach items="${labelList}" var="labellist">
+                            <a href="#" class="fh5co_tagg">${labellist.labelname}</a>
+                        </c:forEach>
+                        <a href="#" class="fh5co_tagg">更多...</a>
                     </div>
+
+
                     <div>
                         <div class="fh5co_heading fh5co_heading_border_bottom pt-3 py-2 mb-4">Most Popular</div>
                     </div>
+
+
                     <div class="row pb-3">
                         <div class="col-5 align-self-center">
                             <img src="<%=basePath%>images/index-images/download (1).jpg" alt="img" class="fh5co_most_trading"/>
@@ -164,32 +161,7 @@
                             <div class="most_fh5co_treding_font_123"> April 18, 2018</div>
                         </div>
                     </div>
-                    <div class="row pb-3">
-                        <div class="col-5 align-self-center">
-                            <img src="<%=basePath%>images/index-images/allef-vinicius-108153.jpg" alt="img" class="fh5co_most_trading"/>
-                        </div>
-                        <div class="col-7 paddding">
-                            <div class="most_fh5co_treding_font"> Enim ad minim veniam nostrud xercitation ullamco.</div>
-                            <div class="most_fh5co_treding_font_123"> April 18, 2018</div>
-                        </div>
-                    </div>
-                    <div class="row pb-3">
-                        <div class="col-5 align-self-center">
-                            <img src="<%=basePath%>images/index-images/download (2).jpg" alt="img" class="fh5co_most_trading"/>
-                        </div>
-                        <div class="col-7 paddding">
-                            <div class="most_fh5co_treding_font"> Magna aliqua ut enim ad minim veniam quis nostrud.</div>
-                            <div class="most_fh5co_treding_font_123"> April 18, 2018</div>
-                        </div>
-                    </div>
-                    <div class="row pb-3">
-                        <div class="col-5 align-self-center"><img src="<%=basePath%>images/index-images/seth-doyle-133175.jpg" alt="img"
-                                                                  class="fh5co_most_trading"/></div>
-                        <div class="col-7 paddding">
-                            <div class="most_fh5co_treding_font"> Magna aliqua ut enim ad minim veniam quis nostrud.</div>
-                            <div class="most_fh5co_treding_font_123"> April 18, 2018</div>
-                        </div>
-                    </div>
+
                 </div>
             </div>
 

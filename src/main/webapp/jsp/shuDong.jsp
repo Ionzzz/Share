@@ -9,10 +9,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
+
 <html>
 
 <head>
@@ -21,6 +23,7 @@
     <title>树洞</title>
     <meta name="description" content="" />
     <meta name="keywords" content="" />
+
     <link rel="stylesheet" type="text/css" href="<%=basePath%>css/index-css/index.css" media="all" />
     <link rel="stylesheet" href="<%=basePath%>css/index-css/main.css">
     <link href='<%=basePath%>css/index-css/nav_font.css' rel='stylesheet' type='text/css'>
@@ -34,68 +37,30 @@
     <link href="<%=basePath%>css/index-css/owl.theme.default.css" rel="stylesheet" type="text/css"/>
     <!-- Modernizr JS -->
     <script src="<%=basePath%>js/index-js/modernizr-3.5.0.min.js"></script>
+    <script>
+        function getPage(curPage) {
+            document.getElementById("curPage").value=curPage;
+//				触发表单提交事件
+            document.getElementById("mainForm").submit();
+        }
+    </script>
+
 
 </head>
 <body>
 
 <body class="home blog custom-background round-avatars">
 
-<header id="header">
-
-    <div id="header-top">
-        <div class="wrapper clearfix">
-            <nav id="navigation">
-                <ul class="menu">
-                    <li>
-                        <a href="<%=basePath%>jsp/index.jsp">首页</a>
-                        <ul>
-                            <li class="current-menu-item"><a href="index.jsp">Home Version 1</a></li>
-                            <li><a href="#">Home Version 2</a></li>
-                            <li><a href="#">Home Version 3</a></li>
-                            <li><a href="#">Home Version 4</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="new.jsp">最新</a>
-                        <ul>
-                            <li><a href="single.jsp">Right Sidebar</a></li>
-                            <li><a href="#">Left Sidebar</a></li>
-                            <li><a href="#">No Sidebar</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="topic.jsp">话题</a></li>
-                    <li><a href="single.jsp">发布</a></li>
-                    <li class="current-menu-item"><a href="treehole.jsp">树洞</a></li>
-                    <li><a href="about.jsp">关于我们</a></li>
-                    <li><a href="contactUs.jsp">联系我们</a></li>
-
-                </ul><!-- .menu -->
-            </nav><!-- #navigation -->
-            <div id="header-search">
-                <div class="header-search-inner">
-                    <form method="get" action="">
-                        <input type="text" name="s" placeholder="Search and hit enter" autocomplete="off"/>
-                    </form>
-                    <span class="header-search-icon"><span class="fa fa-search"></span></span>
-                </div><!-- .search-form-wrapper -->
-            </div><!-- #header-search -->
-        </div><!-- .wrapper -->
-    </div><!-- #header-top -->
-</header>
-
-
-
 <div class="Yarn_Background" style="background-image: url( <%= basePath %>images/shudong-images/47fb3c_.jpg);"></div>
-<form class="js-search search-form search-form--modal" method="get" action="search.html" role="search">
+<form class="js-search search-form search-form--modal" method="get" action="<%=basePath%>shuDong/searchShuDong.action" role="search">
     <div class="search-form__inner">
         <div>
             <div id="search-container" class="ajax_search">
-                <form method="get" id="searchform" action="">
-                    <div class="filter_container"><input type="text" value="" autocomplete="off" placeholder="Type then select or enter" name="s" id="search-input" />
+                    <div class="filter_container">
+                        <input type="text" value="" style="color:black;font-size:18px;" autocomplete="off" placeholder="请输入需要搜索的内容" name="searchContent" id="search-input" />
+                        <input type="submit" name="submit" id="searchsubmit" class="searchsubmit" value="" style="color: white; font-size: 20px;"/>搜索
                         <ul id="search_filtered" class="search_filtered"></ul>
                     </div>
-                    <input type="submit" name="submit" id="searchsubmit" class="searchsubmit" value="" />
-                </form>
             </div>
         </div>
     </div>
@@ -112,35 +77,38 @@
                 <div id="main-menu" class="main-menu-container">
                     <div class="menu-menu-container">
                         <ul id="primary-menu" class="menu">
-                            <li id="menu-item-17" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-17">
-                                <a href="#">首页</a>
-                            </li>
+                            <%--<li id="menu-item-17" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-17">--%>
+                                <%--<a href="#">首页</a>--%>
+                            <%--</li>--%>
 
                             <li id="menu-item-78" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78">
-                                <a href="index.html">树洞</a>
+                                <a href="index.html" style="font-size: 16px;">首页</a>
                             </li>
-                            <li id="menu-item-252" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-252">
-                                <a href="archives.html">归档</a>
-                                <ul class="sub-menu">
-                                    <li id="menu-item-165" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-165">
-                                        <a href="">theme</a>
-                                    </li>
-                                    <li id="menu-item-163" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-163">
-                                        <a href="">Happen</a>
-                                    </li>
-                                    <li id="menu-item-924" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-924">
-                                        <a href="">WeWork</a>
-                                    </li>
-                                    <li id="menu-item-164" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-164">
-                                        <a href="">WordPress</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <%--<li id="menu-item-57" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-57">--%>
-                                <%--<a href="gustbook.html">留言</a>--%>
+                            <%--<li id="menu-item-252" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-252">--%>
+                                <%--<a href="archives.html" style="font-size: 16px;">归档</a>--%>
+                                <%--<ul class="sub-menu">--%>
+                                    <%--<li id="menu-item-165" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-165">--%>
+                                        <%--<a href="">theme</a>--%>
+                                    <%--</li>--%>
+                                    <%--<li id="menu-item-163" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-163">--%>
+                                        <%--<a href="">Happen</a>--%>
+                                    <%--</li>--%>
+                                    <%--<li id="menu-item-924" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-924">--%>
+                                        <%--<a href="">WeWork</a>--%>
+                                    <%--</li>--%>
+                                    <%--<li id="menu-item-164" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-164">--%>
+                                        <%--<a href="">WordPress</a>--%>
+                                    <%--</li>--%>
+                                <%--</ul>--%>
                             <%--</li>--%>
                             <li id="menu-item-57" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-57">
-                                <a href="gustbook.html">发布</a>
+                                <a href="gustbook.html" style="font-size: 16px;">最热</a>
+                            </li>
+                                <li id="menu-item-57" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-57">
+                                    <a href="gustbook.html" style="font-size: 16px;">时空机</a>
+                                </li>
+                            <li id="menu-item-57" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-57">
+                                <a href="#" style="font-size: 16px;">发布</a>
                             </li>
                         </ul>
                     </div>
@@ -175,10 +143,13 @@
 
 <div id="main" class="content">
     <div class="container">
+        <form action="<%= basePath %>shuDong/main.action" id="mainForm" method="post">
+        <%--mainPage--%>
         <article itemscope="itemscope">
-            <div class="posts-list js-posts">
-                <c:forEach items="${sdContent}" var="sd">
 
+            <div class="posts-list js-posts">
+                <input type="hidden" name="curPage"  id="curPage">
+                <c:forEach items="${pageInfo.list}" var="sd">
                 <div class="post post-layout-list" data-aos="fade-up">
                     <div class="postnormal review ">
                         <div class="post-container review-item">
@@ -190,11 +161,11 @@
                                 </div>
                                 <div class="col-sm-9 flex-xs-middle">
                                     <div class="review-item-title">
-                                        <a href="detail.html" rel="bookmark">树洞X</a>
+                                        <a href="detail.html" rel="bookmark" style="font-size:20px; font-weight: bolder">树洞X</a>
                                     </div>
-                                    <div class="review-item-creator"><b>发布日期：</b><fmt:formatDate value="${sd.blogCreateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></div>
-                                    <span class="review-item-info"><b>总浏览量：</b>${sd.blogBrowseCount}</span>
-                                    <span class="review-item-info"><b>点赞：</b>${sd.bbrowse}</span>
+                                    <div class="review-item-creator" style="font-size:15px;"><b>发布日期：</b><fmt:formatDate value="${sd.blogCreateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></div>
+                                    <span class="review-item-info" style="font-size:15px;"><b>总浏览量：</b>${sd.blogBrowseCount}</span>
+                                    <span class="review-item-info" style="font-size:15px;"><b>点赞：</b>${sd.bbrowse}</span>
 
                                 </div>
                             </div>
@@ -209,27 +180,52 @@
                                     <a href="<%= basePath %>shuDong/Zan.action?userId=1&blogId=${sd.blogId}">
                                         <img id="zanImg" src="<%= basePath %>images/shudong-images/preZan.png"/>
                                     </a>
-                                <span class="total-comments-on-post pull-right"><a href="">31 Comments</a></span>
+                                <span class="total-comments-on-post pull-right"><a href="<%= basePath %>shuDong/DetailComment.action?blogId=${sd.blogId}">${sd.bcCount} 条评论</a></span>
                             </div>
                         </div>
                     </div>
                 </div>
-
                     </c:forEach>
-
-
-            </div>
-
-
-            <!-- post-formats end Infinite Scroll star -->
-            <!-- post-formats -->
-            <div class="pagination js-pagination">
-                <div class="js-next pagination__load">
-                    <a href=""><i class="iconfont">&#xe605;</i></a>
-                </div>
             </div>
         </article>
-            <!-- -pagination  -->
+
+        <%--pageInfo--%>
+        <div class="row mx-0" style="margin-top: 50px;">
+            <div class="col-12 text-center pb-4 pt-4">
+                <a href="javascript:getPage(1)" class="btn_mange_pagging"><i class="fa fa-long-arrow-left"></i>&nbsp;&nbsp; 首页</a>
+
+                <c:if test="${!pageInfo.isFirstPage}">
+                    <a href="javascript:getPage(${pageInfo.pageNum == 1?1:pageInfo.prePage})" class='pre'>上一页</a>
+                </c:if>
+
+                <c:if test="${pageInfo.pageNum==1}">
+                    <a href="javascript:getPage(${pageInfo.pageNum==1?1:pageInfo.prePage})" class="btn_pagging">${pageInfo.pageNum==1?1:pageInfo.prePage}</a>
+                    <a href="javascript:getPage(${pageInfo.pageNum==1?2:pageInfo.pageNum})" class="btn_pagging">${pageInfo.pageNum==1?2:pageInfo.pageNum}</a>
+                    <a href="javascript:getPage(${pageInfo.pageNum==1?3:pageInfo.nextPage})" class="btn_pagging">${pageInfo.pageNum==1?3:pageInfo.nextPage}</a>
+                </c:if>
+                <c:if test="${pageInfo.pageNum!=1&&pageInfo.pageNum!=pageInfo.pages}">
+                    <a href="javascript:getPage(${pageInfo.prePage})" class="btn_pagging">${pageInfo.prePage}</a>
+                    <a href="javascript:getPage(${pageInfo.pageNum})" class="btn_pagging">${pageInfo.pageNum}</a>
+                    <a href="javascript:getPage(${pageInfo.nextPage})" class="btn_pagging">${pageInfo.nextPage}</a>
+                </c:if>
+                <c:if test="${pageInfo.pageNum==pageInfo.pages}">
+                    <a href="javascript:getPage(${pageInfo.pageNum==pageInfo.pages?pageInfo.prePage-1:pageInfo.prePage})" class="btn_pagging">${pageInfo.pageNum==pageInfo.pages?pageInfo.prePage-1:pageInfo.prePage}</a>
+                    <a href="javascript:getPage(${pageInfo.pageNum==pageInfo.pages?pageInfo.prePage:pageInfo.pageNum})" class="btn_pagging">${pageInfo.pageNum==pageInfo.pages?pageInfo.prePage:pageInfo.pageNum}</a>
+                    <a href="javascript:getPage(${pageInfo.pageNum==pageInfo.pages?pageInfo.pages:pageInfo.nextPage})" class="btn_pagging">${pageInfo.pageNum==pageInfo.pages?pageInfo.pages:pageInfo.nextPage}</a>
+                </c:if>
+
+                <c:if test="${!pageInfo.isLastPage}">
+                    <a href="javascript:getPage(${pageInfo.nextPage})" class='next'>下一页</a>
+                </c:if>
+
+                <a href="javascript:getPage(${pageInfo.pages})" class="btn_mange_pagging">末页 <i class="fa fa-long-arrow-right"></i>&nbsp;&nbsp; </a>
+                <b>共 ${pageInfo.total}</b> 条   <b>${pageInfo.getPages()}</b>页，当前第<b>${pageInfo.pageNum}</b>页
+
+            </div>
+        </div>
+
+        </form>
+        <!-- -pagination  -->
     </div>
 </div>
 
@@ -266,10 +262,11 @@
     );
 </script>
 
-<script type='text/javascript' src='<%=basePath %>/js/index-js/tree/jquery.min.js'></script>
-<script type='text/javascript' src='<%=basePath %>/js/index-js/tree/plugins.js'></script>
-<script type='text/javascript' src='<%=basePath %>/js/index-js/tree/script.js'></script>
-<script type='text/javascript' src='<%=basePath %>/js/index-js/tree/particles.js'></script>
-<script type='text/javascript' src='<%=basePath %>/js/index-js/tree/aos.js'></script>
+
+<script type='text/javascript' src='<%=basePath %>js/index-js/tree/jquery.min.js'></script>
+<script type='text/javascript' src='<%=basePath %>js/index-js/tree/plugins.js'></script>
+<script type='text/javascript' src='<%=basePath %>js/index-js/tree/script.js'></script>
+<script type='text/javascript' src='<%=basePath %>js/index-js/tree/particles.js'></script>
+<script type='text/javascript' src='<%=basePath %>js/index-js/tree/aos.js'></script>
 
 </html>

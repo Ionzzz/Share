@@ -16,6 +16,13 @@ public class BlogComment {
     public BlogComment() {
     }
 
+    public BlogComment(Integer blogId, Integer commentuserId, String commentcontent, Date commenttime) {
+        this.blogId = blogId;
+        this.commentuserId = commentuserId;
+        this.commentcontent = commentcontent;
+        this.commenttime = commenttime;
+    }
+
     @Override
     public String toString() {
         return "BlogComment{" +

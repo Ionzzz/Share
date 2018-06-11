@@ -8,7 +8,7 @@ public interface LabelInfoService {
 //    查询所有标签
     public List<LabelInfo> selectAllLabelInfo();
 //    通过标签id查询标签
-    public LabelInfo selectLabelInfoById(int label_id);
+    public LabelInfo selectLabelInfoByLabelId(int label_id);
 
     public LabelInfo selectLabelByLabelName(String labelName);
 

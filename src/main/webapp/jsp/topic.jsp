@@ -33,6 +33,18 @@
     <link rel='stylesheet' type='text/css' href='<%=basePath%>css/index-css/nav_font.css'>
     <link rel="stylesheet" type="text/css" href="<%=basePath%>css/index-css/style_1.css" />
 
+
+    <style>
+        .texthidden{
+            white-space: nowrap;/*控制单行显示*/
+            overflow: hidden;/*超出隐藏*/
+            text-overflow: ellipsis;/*隐藏的字符用省略号表示*/
+        }
+        .default-image{
+            background: url("<%=basePath%>images/index-images/default.jpg");
+            no-repeat:50% 50%;
+        }
+    </style>
 </head>
 <body>
 
@@ -45,7 +57,7 @@
                         <a href="<%=basePath%>index/main.action">首页</a>
                     </li>
                     <li>
-                        <a href="new.jsp">最新</a>
+                        <a href="<%=basePath%>new/main.action">最新</a>
                         <ul>
                             <li><a href="#">Right Sidebar</a></li>
                             <li><a href="#">Left Sidebar</a></li>
@@ -83,11 +95,13 @@
         <div class="blog-posts-alt blog-posts-alt-diagonal-effect-enabled no-col-spacing carousel-container">
             <div class="carousel" data-stop-on-hover="false" data-columns="4" data-pagination="false" data-slide-speed="200" data-pagination-speed="800" data-scroll-per-page="false">
 
-            <c:forEach items="${blogJiaJu}" var="blogjiaju">
+            <c:forEach items="${blogList}" var="bloglist">
                 <div class="blog-post-alt carousel-item" style="border: 1px solid white;">
                     <div class="blog-post-alt-thumb">
-                        <div class="blog-post-alt-thumb-inner">
-                            <a href="single.jsp"><img src="<%=basePath%>${blogjiaju.blogPics.pic}" style="height:300px;width: 100%" alt="" /></a>
+                        <div class="blog-post-alt-thumb-inner" style="text-align: center">
+                            <a href="<%=basePath%>single/main.action?blogId=${bloglist.blogContent.blogId}">
+                                <img src="<%=basePath%>${bloglist.blogPics.pic}" style="height:300px;;margin: auto" alt="" />
+                            </a>
                         </div><!-- .blog-post-alt-thumb-inner -->
                         <div class="blog-post-alt-thumb-cover"></div>
                     </div><!-- .blog-post-alt-thumb -->
@@ -95,13 +109,13 @@
                         <div class="blog-post-alt-main-inner">
                             <div class="blog-post-alt-date">
                                 <fmt:formatDate  pattern="yyyy-MM-dd"
-                                                value="${blogjiaju.blogContent.blogcreatetime}" />
+                                                value="${bloglist.blogContent.blogcreatetime}" />
                             </div><!-- .blog-post-alt-date -->
-                            <div class="blog-post-alt-title">
-                                <h2><a href="single.jsp">Strawberry Shortcake</a></h2>
+                            <div class="blog-post-alt-title ">
+                                <h2 class="texthidden" style="width:200px;"><a href="single.jsp">${bloglist.blogContent.blogcontent}</a></h2>
                             </div><!-- .blog-post-alt-title -->
                             <div class="blog-post-alt-cat">
-                                <a href="single.jsp">Food</a>
+                                <a href="single.jsp">${labelinfo.labelname}</a>
                             </div><!-- .blog-post-alt-cat -->
                             <div class="blog-post-alt-read-more">
                                 <a href="single.jsp">READ ARTICLE</a>
@@ -118,342 +132,187 @@
 </div><!-- #featured-blog-posts -->
 
 
-<div id="main">
-    <div class="wrapper clearfix">
-        <div id="content" class="col col-8">
-            <div class="blog-posts clearfix">
+<form action="<%=basePath%>topic/main.action?labelId=${labelinfo.labelId}" id="mainForm" method="post">
 
-                <div class="blog-post">
-
-                    <div class="blog-post-thumb">
-                        <a href="single.jsp"><img src="<%=basePath%>images/index-images/logo.png" alt="" /></a>
-                    </div><!-- .blog-post-thumb -->
-
-                    <div class="blog-post-main clearfix">
-
-                        <div class="blog-post-author">
-
-                            <div class="blog-post-author-avatar">
-                                <img src="<%=basePath%>images/index-images/blog-posts/avatar.png" alt="" />
-                            </div><!-- .blog-post-author-avatar -->
-
-                            <div class="blog-post-author-name">
-                                <span>Posted By</span>
-                                <a href="#">admin</a>
-                            </div><!-- .blog-post-author-name -->
-
-                            <div class="blog-post-tags">
-                                <a href="#">one</a><a href="#">two</a><a href="#">three</a>
-                            </div><!-- .blog-post-tags -->
-
-                        </div><!-- .blog-post-author -->
-
-                        <div class="blog-post-info">
-
-                            <div class="blog-post-info-inner">
-
-                                <div class="blog-post-title">
-                                    <h2><a href="single.jsp">Decorating New Office</a></h2>
-                                </div><!-- .blog-post-title -->
-
-                                <div class="blog-post-meta">
-                                    April 1, 2015, In: <a href="#">Photography</a>
-                                </div><!-- .blog-post-meta -->
-
-                                <div class="blog-post-excerpt">
-                                    Curabitur congue dolor sed massa feugiat, sit amet tempor orci convallis. Donec lacus magna, semper eget nisl sed, posuere pellentesque tellus. Cras mauris tellus, ultricies quis hendrerit imperdiet, faucibus non nulla. Cras ex dolor, aliquet eget enim nec, luctus congue nisi. Fusce facilisis in erat vitae cursus.
-                                </div><!-- .dslc-blog-post-excerpt -->
-
-                                <div class="blog-post-read-more">
-                                    <a href="single.jsp">CONTINUE READING</a>
-                                </div><!-- .blog-post-read-more -->
-
-                            </div><!-- .blog-post-info-inner -->
-
-                        </div><!-- .blog-post-info -->
-
-                    </div><!-- .blog-post-main -->
-
-                </div><!-- .blog-post -->
-
-                <div class="blog-post">
-
-                    <div class="blog-post-thumb">
-                        <a href="single.jsp"><img src="<%=basePath%>images/index-images/blog-posts/post-2.jpg" alt="" /></a>
-                    </div><!-- .blog-post-thumb -->
-
-                    <div class="blog-post-main clearfix">
-
-                        <div class="blog-post-author">
-
-                            <div class="blog-post-author-avatar">
-                                <img src="<%=basePath%>images/index-images/blog-posts/avatar.png" alt="" />
-                            </div><!-- .blog-post-author-avatar -->
-
-                            <div class="blog-post-author-name">
-                                <span>Posted By</span>
-                                <a href="#">admin</a>
-                            </div><!-- .blog-post-author-name -->
-
-                            <div class="blog-post-tags">
-                                <a href="#">one</a><a href="#">two</a><a href="#">three</a>
-                            </div><!-- .blog-post-tags -->
-
-                        </div><!-- .blog-post-author -->
-
-                        <div class="blog-post-info">
-
-                            <div class="blog-post-info-inner">
-
-                                <div class="blog-post-title">
-                                    <h2><a href="single.jsp">Metal Ampersand On Books</a></h2>
-                                </div><!-- .blog-post-title -->
-
-                                <div class="blog-post-meta">
-                                    April 1, 2015, In: <a href="#">Photography</a>
-                                </div><!-- .blog-post-meta -->
-
-                                <div class="blog-post-excerpt">
-                                    Curabitur congue dolor sed massa feugiat, sit amet tempor orci convallis. Donec lacus magna, semper eget nisl sed, posuere pellentesque tellus. Cras mauris tellus, ultricies quis hendrerit imperdiet, faucibus non nulla. Cras ex dolor, aliquet eget enim nec, luctus congue nisi. Fusce facilisis in erat vitae cursus.
-                                </div><!-- .dslc-blog-post-excerpt -->
-
-                                <div class="blog-post-read-more">
-                                    <a href="single.jsp">CONTINUE READING</a>
-                                </div><!-- .blog-post-read-more -->
-
-                            </div><!-- .blog-post-info-inner -->
-
-                        </div><!-- .blog-post-info -->
-
-                    </div><!-- .blog-post-main -->
-
-                </div><!-- .blog-post -->
-
-                <div class="blog-post">
-
-                    <div class="blog-post-thumb">
-                        <a href="single.jsp"><img src="<%=basePath%>images/index-images/blog-posts/post-3.jpg" alt="" /></a>
-                    </div><!-- .blog-post-thumb -->
-
-                    <div class="blog-post-main clearfix">
-
-                        <div class="blog-post-author">
-
-                            <div class="blog-post-author-avatar">
-                                <img src="<%=basePath%>images/index-images/blog-posts/avatar.png" alt="" />
-                            </div><!-- .blog-post-author-avatar -->
-
-                            <div class="blog-post-author-name">
-                                <span>Posted By</span>
-                                <a href="#">admin</a>
-                            </div><!-- .blog-post-author-name -->
-
-                            <div class="blog-post-tags">
-                                <a href="#">one</a><a href="#">two</a><a href="#">three</a>
-                            </div><!-- .blog-post-tags -->
-
-                        </div><!-- .blog-post-author -->
-
-                        <div class="blog-post-info">
-
-                            <div class="blog-post-info-inner">
-
-                                <div class="blog-post-title">
-                                    <h2><a href="single.jsp">Blueberry Protein Shake</a></h2>
-                                </div><!-- .blog-post-title -->
-
-                                <div class="blog-post-meta">
-                                    April 1, 2015, In: <a href="#">Food</a>
-                                </div><!-- .blog-post-meta -->
-
-                                <div class="blog-post-excerpt">
-                                    Curabitur congue dolor sed massa feugiat, sit amet tempor orci convallis. Donec lacus magna, semper eget nisl sed, posuere pellentesque tellus. Cras mauris tellus, ultricies quis hendrerit imperdiet, faucibus non nulla. Cras ex dolor, aliquet eget enim nec, luctus congue nisi. Fusce facilisis in erat vitae cursus.
-                                </div><!-- .dslc-blog-post-excerpt -->
-
-                                <div class="blog-post-read-more">
-                                    <a href="single.jsp">CONTINUE READING</a>
-                                </div><!-- .blog-post-read-more -->
-
-                            </div><!-- .blog-post-info-inner -->
-
-                        </div><!-- .blog-post-info -->
-
-                    </div><!-- .blog-post-main -->
-
-                </div><!-- .blog-post -->
-
-            </div><!-- .blog-posts -->
-            <!--
-                            <div class="pagination">
-                                <a href="#" class="current-pagination-item">1</a>
-                                <a href="#">2</a>
-                                <a href="#">3</a>
-                                <a href="#">4</a>
-                                <a href="#">5</a>
-                            </div>.pagination -->
-
-        </div><!-- #content -->
-
-        <div id="sidebar" class="col col-4 col-last">
-
+    <div id="main">
+        <div id="sidebar" class="col" style="width: 20%">
             <div class="widget">
-
-                <div class="about-author-widget">
-                    <div class="about-author-widget-banner">
-                        <img src="<%=basePath%>images/index-images/widget-about-author/banner.png" alt="" />
-                    </div>
-                    <div class="about-author-widget-avatar">
-                        <img src="<%=basePath%>images/index-images/widget-about-author/avatar.png" alt="" />
-                    </div>
-                    <h2 class="about-author-widget-name">Stephany Moore</h2>
-                    <h3 class="about-author-widget-position">Lifestyle Blogger</h3>
-                    <div class="about-author-widget-text">
-                        Cras mauris tellus, ultricies quis hendrerit imperdiet, faucibus non nulla cras ex dolor aliquet eget.
-                    </div>
-
-                </div><!-- .about-author-widget -->
-
-            </div><!-- .widget -->
-
-            <div class="widget">
-
                 <h3 class="widget-title">
                     <span class="widget-title-line"></span>
-                    <span class="widget-title-text">Textual</span>
+                    <span class="widget-title-text">Tag</span>
                 </h3>
-
                 <div class="widget-content">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+                    <div class="tags-cloud-widget"style="text-align: center">
+                        <a href="#" class="fh5co_tagg" >${labelinfo.labelname}</a>
+                    </div><!-- .tags-cloud-widget -->
                 </div><!-- .widget-content -->
-
             </div><!-- .widget -->
 
             <div class="widget">
+                <h3 class="widget-title">
+                    <span class="widget-title-line"></span>
+                    <span class="widget-title-text">Implication</span>
+                </h3>
+                <h3 class="about-author-widget-position"style="text-align: center">${labelinfo.labelcontent}</h3>
 
+                <div class="widget-content" style="text-align: center">
+                    ${labelinfo.labelcontent}
+                </div><!-- .widget-content -->
+            </div><!-- .widget -->
+            <div class="widget">
                 <h3 class="widget-title">
                     <span class="widget-title-line"></span>
                     <span class="widget-title-text">Recent Posts</span>
                 </h3>
-
                 <div class="widget-content">
-
                     <div class="recent-posts-widget">
-
-                        <div class="recent-posts-widget-post">
-
-                            <div class="recent-posts-widget-thumb">
-                                <a href="single.jsp"><img src="<%=basePath%>images/index-images/widget-recent-posts/post-1.jpg" alt="" /></a>
-                            </div><!-- .recent-posts-widget-thumb -->
-
-                            <div class="recent-posts-widget-main">
-
-                                <div class="recent-posts-widget-date">October 7th, 2015</div>
-                                <div class="recent-posts-widget-title"><a href="single.jsp">Strawberry Cake</a></div>
-                                <div class="recent-posts-widget-category"><a href="#">Food</a></div>
-
-                            </div><!-- .recent-posts-widget-main -->
-
-                        </div><!-- .recent-posts-widget-post -->
-
-                        <div class="recent-posts-widget-post">
-
-                            <div class="recent-posts-widget-thumb">
-                                <a href="single.jsp"><img src="<%=basePath%>images/index-images/widget-recent-posts/post-2.jpg" alt="" /></a>
-                            </div><!-- .recent-posts-widget-thumb -->
-
-                            <div class="recent-posts-widget-main">
-
-                                <div class="recent-posts-widget-date">October 7th, 2015</div>
-                                <div class="recent-posts-widget-title"><a href="single.jsp">Girl With A Rose</a></div>
-                                <div class="recent-posts-widget-category"><a href="#">Photography</a></div>
-
-                            </div><!-- .recent-posts-widget-main -->
-
-                        </div><!-- .recent-posts-widget-post -->
-
-                        <div class="recent-posts-widget-post">
-
-                            <div class="recent-posts-widget-thumb">
-                                <a href="single.jsp"><img src="<%=basePath%>images/index-images/widget-recent-posts/post-3.jpg" alt="" /></a>
-                            </div><!-- .recent-posts-widget-thumb -->
-
-                            <div class="recent-posts-widget-main">
-
-                                <div class="recent-posts-widget-date">October 7th, 2015</div>
-                                <div class="recent-posts-widget-title"><a href="single.jsp">Cat On The Floor</a></div>
-                                <div class="recent-posts-widget-category"><a href="#">Photography</a></div>
-
-                            </div><!-- .recent-posts-widget-main -->
-
-                        </div><!-- .recent-posts-widget-post -->
+                        <c:forEach items="${blogzan}" var="list">
+                            <div class="recent-posts-widget-post">
+                                <div class="recent-posts-widget-thumb">
+                                    <a href=""><img src="" alt="" /></a>
+                                </div><!-- .recent-posts-widget-thumb -->
+                                <div class="recent-posts-widget-main">
+                                    <div class="recent-posts-widget-date">
+                                        <fmt:formatDate  pattern="MM_dd,yyyy"
+                                                         value="${list.blogContent.blogcreatetime}" />
+                                    </div>
+                                    <div class="recent-posts-widget-title texthidden"><a href="">${list.blogContent.blogcontent}</a></div>
+                                    <div class="recent-posts-widget-category"><a href="">${list.labelInfo.labelname}</a></div>
+                                </div><!-- .recent-posts-widget-main -->
+                            </div><!-- .recent-posts-widget-post -->
+                        </c:forEach>
 
                     </div><!-- .recent-posts-widget -->
-
                 </div><!-- .widget-content -->
-
             </div><!-- .widget -->
-            <div class="widget">
-                <h3 class="widget-title">
-                    <span class="widget-title-line"></span>
-                    <span class="widget-title-text">Tags</span>
-                </h3>
-
-                <div class="widget-content">
-                    <div class="tags-cloud-widget">
-                        <a href="#" class="fh5co_tagg">音乐</a>
-                        <a href="#" class="fh5co_tagg">旅行</a>
-                        <a href="#" class="fh5co_tagg">美食</a>
-                        <a href="#" class="fh5co_tagg">手绘</a>
-                        <a href="#" class="fh5co_tagg">书籍</a>
-                        <a href="#" class="fh5co_tagg">手工</a>
-                        <a href="#" class="fh5co_tagg">家居</a>
-                        <a href="#" class="fh5co_tagg">Lifestyle</a>
-                        <a href="#" class="fh5co_tagg">Art</a>
-                        <a href="#" class="fh5co_tagg">Education</a>
-                        <a href="#" class="fh5co_tagg">Social</a>
-                        <a href="#" class="fh5co_tagg">Three</a>
-                    </div><!-- .tags-cloud-widget -->
-                </div><!-- .widget-content -->
-
-            </div><!-- .widget -->
-            <div class="widget">
-
-                <h3 class="widget-title">
-                    <span class="widget-title-line"></span>
-                    <span class="widget-title-text">Search</span>
-                </h3>
-
-                <div class="widget-content">
-                    <form method="get" action="">
-                        <input type="text" class="search-widget-input" placeholder="Type and hit enter" />
-                    </form>
-                </div><!-- .widget-content -->
-
-            </div><!-- .widget -->
-
-
-
         </div><!-- #sidebar -->
 
+
+        <div id="content" class="col" style="width:80%" >
+            <div class="blog-posts clearfix">
+                <div class="blog-post">
+                    <div class="blog-post-thumb">
+                        <a href=""><img src="" alt="" /></a>
+                    </div><!-- .blog-post-thumb -->
+                    <div class="blog-post-main clearfix">
+                        <div class="blog-post-author">
+                            <div class="blog-post-author-avatar">
+                                <img src="" alt="" />
+                            </div><!-- .blog-post-author-avatar -->
+                            <div class="blog-post-author-name">
+                                <span>Posted By</span>
+                                <a href="">admin</a>
+                            </div><!-- .blog-post-author-name -->
+                            <div class="blog-post-tags">
+                                <a href="">one</a><a href="">two</a><a href="">three</a>
+                            </div><!-- .blog-post-tags -->
+                        </div><!-- .blog-post-author -->
+                        <div class="blog-post-info">
+                            <div class="blog-post-info-inner">
+                                <div class="blog-post-title">
+                                    <h2><a href="">Decorating New Office</a></h2>
+                                </div><!-- .blog-post-title -->
+                                <div class="blog-post-meta">
+                                    April 1, 2015, In: <a href="">Photography</a>
+                                </div><!-- .blog-post-meta -->
+                                <div class="blog-post-excerpt">
+                                    Curabitur congue dolor sed massa feugiat, sit amet tempor orci convallis. Donec lacus magna, semper eget nisl sed, posuere pellentesque tellus. Cras mauris tellus, ultricies quis hendrerit imperdiet, faucibus non nulla. Cras ex dolor, aliquet eget enim nec, luctus congue nisi. Fusce facilisis in erat vitae cursus.
+                                </div><!-- .dslc-blog-post-excerpt -->
+                                <div class="blog-post-read-more">
+                                    <a href="">CONTINUE READING</a>
+                                </div><!-- .blog-post-read-more -->
+                            </div><!-- .blog-post-info-inner -->
+                        </div><!-- .blog-post-info -->
+                    </div><!-- .blog-post-main -->
+                </div><!-- .blog-post -->
+
+                <input type="hidden" name="curPage"  id="curPage">
+
+                <c:forEach items="${pageInfo.list}" var="bloglist">
+                    <div class="blog-post col col-6">
+                        <div class="blog-post-thumb">
+                            <a href=""><img src="" alt="" /></a>
+                        </div><!-- .blog-post-thumb -->
+                        <div class="blog-post-main clearfix">
+                            <div class="blog-post-info">
+                                <div class="blog-post-info-inner">
+                                    <div class="blog-post-title">
+                                        <h2 class="texthidden">
+                                            <a href="<%=basePath%>single/main.action?blogId=${bloglist.blogContent.blogId}" >
+                                                <c:if test="${bloglist.labelInfo.labelname=='书籍'}">
+                                                    <c:set var="bookname" value=" ${bloglist.blogContent.blogcontent} "/>
+                                                    《${fn:substringBefore(bookname,"||" )}》
+                                                </c:if>
+                                                <c:if test="${bloglist.labelInfo.labelname!='书籍'}">
+                                                    ${bloglist.blogContent.blogcontent}
+                                                </c:if>
+                                            </a>
+                                        </h2>
+                                    </div><!-- .blog-post-title -->
+                                    <div class="blog-post-meta">
+                                        <fmt:formatDate  pattern="MM dd,yyyy,"
+                                                         value="${bloglist.blogContent.blogcreatetime}" />
+                                         In: <a href="">Spring</a>
+                                    </div><!-- .blog-post-meta -->
+                                    <div class="blog-post-excerpt">
+                                        ${bloglist.blogContent.blogcontent}
+                                    </div><!-- .dslc-blog-post-excerpt -->
+                                    <div class="blog-post-read-more">
+                                        <a href="">CONTINUE READING</a>
+                                    </div><!-- .blog-post-read-more -->
+                                </div><!-- .blog-post-info-inner -->
+                            </div><!-- .blog-post-info -->
+                        </div><!-- .blog-post-main -->
+                    </div><!-- .blog-post -->
+                </c:forEach>
+            </div><!-- .blog-posts -->
+        </div><!-- #content -->
     </div><!-- .wrapper -->
+    <div>${pageInfo.total} 条,共${pageInfo.getPages()}页,当前第${pageInfo.pageNum}页</p>
+    </div>
+    <div class="pagination"style="margin-bottom: 50px;text-align: center;">
+        <a href="javascript:getPage(1)" class="btn_mange_pagging"><i class="fa fa-long-arrow-left"></i>&nbsp;&nbsp; HOME PAGE</a>
+    <c:if test="${pageInfo.pages==1}">
+        <a href="javascript:getPage(${pageInfo.pageNum})" class="btn_pagging">${pageInfo.pageNum}</a>
+    </c:if>
+    <c:if test="${pageInfo.pages==2}">
+        <a href="javascript:getPage(${pageInfo.pageNum})" class="btn_pagging">${pageInfo.pageNum}</a>
+        <a href="javascript:getPage(${pageInfo.nextPage})" class="btn_pagging">${pageInfo.nextPage}</a>
+    </c:if>
+    <c:if test="${pageInfo.pages==3||pageInfo.pages>3}">
+        <c:if test="${pageInfo.pageNum==1}">
+            <a href="javascript:getPage(${pageInfo.pageNum==1?1:pageInfo.prePage})" class="btn_pagging">${pageInfo.pageNum==1?1:pageInfo.prePage}</a>
+            <a href="javascript:getPage(${pageInfo.pageNum==1?2:pageInfo.pageNum})" class="btn_pagging">${pageInfo.pageNum==1?2:pageInfo.pageNum}</a>
+            <a href="javascript:getPage(${pageInfo.pageNum==1?3:pageInfo.nextPage})" class="btn_pagging">${pageInfo.pageNum==1?3:pageInfo.nextPage}</a>
+        </c:if>
+        <c:if test="${pageInfo.pageNum!=1&&pageInfo.pageNum!=pageInfo.pages}">
+            <a href="javascript:getPage(${pageInfo.prePage})" class="btn_pagging">${pageInfo.prePage}</a>
+            <a href="javascript:getPage(${pageInfo.pageNum})" class="btn_pagging">${pageInfo.pageNum}</a>
+            <a href="javascript:getPage(${pageInfo.nextPage})" class="btn_pagging">${pageInfo.nextPage}</a>
+        </c:if>
+        <c:if test="${pageInfo.pageNum==pageInfo.pages&&pageInfo.pageNum!=1}">
+            <a href="javascript:getPage(${pageInfo.pageNum==pageInfo.pages?pageInfo.prePage-1:pageInfo.prePage})" class="btn_pagging">${pageInfo.pageNum==pageInfo.pages?pageInfo.prePage-1:pageInfo.prePage}</a>
+            <a href="javascript:getPage(${pageInfo.pageNum==pageInfo.pages?pageInfo.prePage:pageInfo.pageNum})" class="btn_pagging">${pageInfo.pageNum==pageInfo.pages?pageInfo.prePage:pageInfo.pageNum}</a>
+            <a href="javascript:getPage(${pageInfo.pageNum==pageInfo.pages?pageInfo.pages:pageInfo.nextPage})" class="btn_pagging">${pageInfo.pageNum==pageInfo.pages?pageInfo.pages:pageInfo.nextPage}</a>
+        </c:if>
+    </c:if>
+
+        <a href="javascript:getPage(${pageInfo.pages})" class="btn_mange_pagging">END PAGE <i class="fa fa-long-arrow-right"></i>&nbsp;&nbsp; </a>
+
+    </div><!-- .pagination -->
 
 </div><!-- #main -->
-
-<div class="padding font" style="margin-bottom: 50px;text-align: center;">
-    <div class=" text-center pb-4 pt-4">
-        <a href="#" class="btn_mange_pagging">&nbsp;&nbsp; Previous</a>
-        <a href="#" class="btn_pagging">1</a>
-        <a href="#" class="btn_pagging">2</a>
-        <a href="#" class="btn_pagging">3</a>
-        <a href="#" class="btn_pagging">...</a>
-        <a href="#" class="btn_mange_pagging">Next&nbsp;&nbsp; </a>
-    </div>
-</div>
+</form>
 <!-- JavaScript -->
 <script type="text/javascript" src="<%=basePath%>js/index-js/javascript/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="<%=basePath%>js/index-js/javascript/plugins.js"></script>
 <script type="text/javascript" src="<%=basePath%>js/index-js/javascript/main.js"></script>
-
+<script>
+    function getPage(curPage) {
+        document.getElementById("curPage").value=curPage;
+//				触发表单提交事件
+        document.getElementById("mainForm").submit();
+    }
+</script>
 </body>
 </html>

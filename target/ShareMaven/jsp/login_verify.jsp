@@ -46,7 +46,6 @@
                     <div class="card wizard-card" data-color="orange" id="wizard">
                         <form action="" method="">
                             <!--        You can switch " data-color="rose" "  with one of the next bright colors: "blue", "green", "orange", "purple"        -->
-
                             <div class="wizard-header">
                                 <h3 class="wizard-title">
                                     Share
@@ -55,14 +54,10 @@
                             </div>
                             <div class="wizard-navigation">
                                 <ul>
-
                                     <li><a href="#facilities" data-toggle="tab">登录</a></li>
-
                                 </ul>
                             </div>
-
                             <div class="tab-content">
-
                                 <div class="tab-pane" id="facilities">
                                     <h4 class="info-text">快回到自己的小窝吧</h4>
                                     <div class="row">
@@ -76,8 +71,6 @@
                                                     <option value="TaiWan"> 中国台湾 +886 </option>
                                                     <option value="American"> 美国 +1 </option>
                                                     <option value="Japan"> 日本 +81 </option>
-
-
                                                     <option value="Malaysia"> 马来西亚 +60 </option>
                                                     <option value="Australia"> 澳大利亚 +61 </option>
                                                     <option value="Canada"> 加拿大 +1 </option>
@@ -85,33 +78,26 @@
                                                     <option value="Finland"> 芬兰 +358 </option>
                                                     <option value="...">...</option>
                                                 </select>
-
                                             </div>
                                         </div>
-
                                         <div class="col-sm-5">
                                             <div class="form-group label-floating">
                                                 <label class="control-label">手机号</label>
                                                 <input type="text" class="form-control" >
-
                                             </div>
                                         </div>
-
                                         <div class="col-sm-5 col-sm-offset-2">
                                             <div class="form-group label-floating">
                                                 <label class="control-label">输入6位短信验证码</label>
                                                 <input type="text" class="form-control" >
                                             </div>
                                         </div>
-
                                         <div class="col-sm-3">
                                             <div class="form-group label-floating form-control">
                                                 <a style="color:orange" href="">获取短信验证码</a>
                                             </div>
                                         </div>
-
                                     </div>
-
                                     <div class="row">
                                         <div class="col-sm-5 col-sm-offset-2">
                                             <a style="color:orange" href="login_password.jsp">密码登录(手机号或邮箱)</a>
@@ -121,10 +107,7 @@
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
-
-
                             <div class="row" style="margin-top:-3em">
                                 <div class="col-sm-5 col-sm-offset-3">
                                     <div id="captcha" style="position: relative"></div>
@@ -133,15 +116,12 @@
                                 <div class="col-sm-4"></div>
                             </div>
 
-
                             <div class="wizard-footer">
                                 <div class="pull-right">
                                     <input type='button' class='btn btn-finish btn-fill btn-primary btn-wd' name='finish' style="background-color:#ff9800" value='登录'
-                                           onclick="window.location.href='index.jsp'"
-                                    />
+                                           onclick="window.location.href='index.jsp'"/>
                                 </div>
                                 <div class="pull-left">
-
                                 </div>
                                 <div class="clearfix">
                                 </div>
@@ -152,9 +132,6 @@
             </div>
         </div> <!-- row -->
     </div> <!--  big container -->
-
-
-
 
 
     <div class="footer">

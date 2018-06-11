@@ -9,8 +9,30 @@ public class shuDong {
     private Date blogCreateTime;
     private int bbrowse; // 树洞点赞数
     private int blogBrowseCount; //浏览总数
+    private int bcCount;//评论总数
 
     public shuDong() {
+    }
+
+    @Override
+    public String toString() {
+        return "shuDong{" +
+                "userId=" + userId +
+                ", blogId=" + blogId +
+                ", blogContent='" + blogContent + '\'' +
+                ", blogCreateTime=" + blogCreateTime +
+                ", bbrowse=" + bbrowse +
+                ", blogBrowseCount=" + blogBrowseCount +
+                ", bcCount=" + bcCount +
+                '}';
+    }
+
+    public int getBcCount() {
+        return bcCount;
+    }
+
+    public void setBcCount(int bcCount) {
+        this.bcCount = bcCount;
     }
 
     public int getUserId() {
@@ -61,15 +83,5 @@ public class shuDong {
         this.blogBrowseCount = blogBrowseCount;
     }
 
-    @Override
-    public String toString() {
-        return "shuDong{" +
-                "userId=" + userId +
-                ", blogId=" + blogId +
-                ", blogContent='" + blogContent + '\'' +
-                ", blogCreateTime=" + blogCreateTime +
-                ", bbrowse=" + bbrowse +
-                ", blogBrowseCount=" + blogBrowseCount +
-                '}';
-    }
+
 }

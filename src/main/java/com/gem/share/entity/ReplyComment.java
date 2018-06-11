@@ -13,7 +13,16 @@ public class ReplyComment {
 
     private Date replycommenttime;
 
+    private int replycomment;
+
     public ReplyComment() {
+    }
+
+    public ReplyComment(Integer commentId, Integer userId, String replycommentcontent, Date replycommenttime) {
+        this.commentId = commentId;
+        this.userId = userId;
+        this.replycommentcontent = replycommentcontent;
+        this.replycommenttime = replycommenttime;
     }
 
     @Override
@@ -51,6 +60,14 @@ public class ReplyComment {
         result = 31 * result + (replycommentcontent != null ? replycommentcontent.hashCode() : 0);
         result = 31 * result + (replycommenttime != null ? replycommenttime.hashCode() : 0);
         return result;
+    }
+
+    public int getReplycomment() {
+        return replycomment;
+    }
+
+    public void setReplycomment(int replycomment) {
+        this.replycomment = replycomment;
     }
 
     public Integer getReplycommentId() {

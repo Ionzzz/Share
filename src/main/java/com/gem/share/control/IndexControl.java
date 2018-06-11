@@ -30,13 +30,11 @@ public class IndexControl {
     @RequestMapping("/main.action")
     public void main(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-
         BlogUserPicsLabel blogtheone=blogService.selectOneBlogOrderBlogBrowse();
         request.setAttribute("blogone",blogtheone);
-        List<BlogUserPicsLabel> blogflist=blogService.selectBlogCount(4);
+        List<BlogUserPicsLabel> blogflist=blogService.selectBlogCountOrderZan(4);
 //        System.out.println("----------"+pic.get(0));
         request.setAttribute("blogfourlist",blogflist);
-
 
         List<BlogUserPicsLabel> blogjiaju=blogService.selectBlogUserPicsByLabelName("家居");
         request.setAttribute("blogJiaJu",blogjiaju);

@@ -12,15 +12,15 @@ public interface BlogService {
 
     public BlogUserPicsLabel selectOneBlogOrderBlogBrowse();//查询浏览量最高的博客
 
-
     public String selectPicByBlogPicsId(int blogPics_id);
 
-    public List<BlogUserPicsLabel> selectBlogCount(int count);
-
+    public List<BlogUserPicsLabel> selectBlogCountOrderZan(int count);
+    public List<BlogUserPicsLabel> selectBlogCountOrderLiulan(int count);
+    public List<BlogUserPicsLabel> selectBlogCountOrderPinglun(int count);
     public PageInfo<BlogUserPicsLabel> selectAllBlogUserPicsByPage(Map<String,Object> map);
 
+    public PageInfo<BlogUserPicsLabel> selectAllBlogUserPicsByPageLabelName(Map<String,Object> map);
 
-    public PageInfo<BlogContent> selectAllBlogByPage(Map<String,Object> map);
 
     public List<BlogUserPicsLabel> selectBlogUserPicsByLabelName(String labelName);
     public List<BlogUserPicsLabel> selectBlogUserPicsCountByLabelName(String labelName, int count);

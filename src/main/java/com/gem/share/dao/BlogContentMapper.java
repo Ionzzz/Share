@@ -56,7 +56,11 @@ public interface BlogContentMapper {
 
     public Date selectBlogCreateTimeByBlogId(int blog_id);
 
-    public List<BlogUserPicsLabel> selectBlogCount(int count);
+    public List<BlogUserPicsLabel> selectBlogCountOrderZan(int count);
+
+    public List<BlogUserPicsLabel> selectBlogCountOrderLiulan(int count);
+
+    public List<BlogUserPicsLabel> selectBlogCountOrderPinglun(int count);
 
     public List<BlogUserPicsLabel> selectOrderBlogUserPics();
 
@@ -66,5 +70,7 @@ public interface BlogContentMapper {
     public BlogUserPicsLabel selectOneBlogOrderBlogBrowse();
 //    增加一次浏览量
     public boolean updateBlogBrowse(int blog_id);
+
+    public List<BlogUserPicsLabel> selectBlogUserPicsLabelByLabelName(String labelName);
 
 }

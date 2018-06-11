@@ -1,6 +1,5 @@
 package com.gem.share.control;
 
-import com.gem.share.entity.BlogContent;
 import com.gem.share.entity.BlogUserPicsLabel;
 import com.gem.share.service.BlogService;
 import com.gem.share.service.LabelInfoService;
@@ -14,7 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 
@@ -28,7 +26,7 @@ public class NewControl {
 
     @RequestMapping("/main.action")
     public void main(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<BlogContent> bloglist=blogService.selectAllBlog();
+
         Map<String,Object> map=new HashMap<>();
         int pageSize=5;
         int curPage=1;
@@ -40,16 +38,8 @@ public class NewControl {
         map.put("pageSize",pageSize);
         PageInfo<BlogUserPicsLabel> pageInfo=blogService.selectAllBlogUserPicsByPage(map);
         request.setAttribute("pageInfo",pageInfo);
-/*        for (BlogContent blogContent:bloglist){
-            BlogContent blog=blogContent;
-            map.put("blogcontent",blog);
-            request.setAttribute("blogcontent",blog);
-        }*/
 
-
-
-        request.setAttribute("bloglist",bloglist);
-        request.setAttribute("labellist",infoService.selectAllLabelInfo());
+        request.setAttribute("labelList",infoService.selectAllLabelInfo());
 
         request.getRequestDispatcher("/jsp/new.jsp").forward(request,response);
 

@@ -30,7 +30,7 @@ public interface LabelInfoMapper {
     int updateByPrimaryKey(LabelInfo record);
 
 //
-    public List<LabelInfo> selectAllLabel();
+    public List<LabelInfo> selectAllLabelInfo();
 
     public LabelInfo selectLabelByLabelId(int label_id);
 
