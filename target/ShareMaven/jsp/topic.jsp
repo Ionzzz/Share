@@ -100,7 +100,7 @@
                     <div class="blog-post-alt-thumb">
                         <div class="blog-post-alt-thumb-inner" style="text-align: center">
                             <a href="<%=basePath%>single/main.action?blogId=${bloglist.blogContent.blogId}">
-                                <img src="<%=basePath%>${bloglist.blogPics.pic}" style="height:300px;;margin: auto" alt="" />
+                                <img src="<%=basePath%>${bloglist.blogPics.pic}" style="height:250px;;margin: auto" alt="" />
                             </a>
                         </div><!-- .blog-post-alt-thumb-inner -->
                         <div class="blog-post-alt-thumb-cover"></div>
@@ -115,7 +115,7 @@
                                 <h2 class="texthidden" style="width:200px;"><a href="single.jsp">${bloglist.blogContent.blogcontent}</a></h2>
                             </div><!-- .blog-post-alt-title -->
                             <div class="blog-post-alt-cat">
-                                <a href="single.jsp">${labelinfo.labelname}</a>
+                                <a href="single.jsp">${bloglist.labelInfo.labelname}</a>
                             </div><!-- .blog-post-alt-cat -->
                             <div class="blog-post-alt-read-more">
                                 <a href="single.jsp">READ ARTICLE</a>
@@ -162,7 +162,7 @@
             <div class="widget">
                 <h3 class="widget-title">
                     <span class="widget-title-line"></span>
-                    <span class="widget-title-text">Recent Posts</span>
+                    <span class="widget-title-text">MOST LIKE</span>
                 </h3>
                 <div class="widget-content">
                     <div class="recent-posts-widget">
@@ -194,30 +194,36 @@
                     <div class="blog-post-thumb">
                         <a href=""><img src="" alt="" /></a>
                     </div><!-- .blog-post-thumb -->
+
                     <div class="blog-post-main clearfix">
                         <div class="blog-post-author">
                             <div class="blog-post-author-avatar">
-                                <img src="" alt="" />
+                                <h4>MOST POPULAR</h4>
                             </div><!-- .blog-post-author-avatar -->
                             <div class="blog-post-author-name">
                                 <span>Posted By</span>
-                                <a href="">admin</a>
+                                <a href="">${blogone.get(0).userInfo.usernickname}</a>
                             </div><!-- .blog-post-author-name -->
-                            <div class="blog-post-tags">
-                                <a href="">one</a><a href="">two</a><a href="">three</a>
-                            </div><!-- .blog-post-tags -->
+                            <div class="blog-post-meta">
+                            <fmt:formatDate  pattern="MM dd,yyyy,"
+                                             value="${blogone.get(0).blogContent.blogcreatetime}" />
+                            In: <a href="">${blogone.get(0).labelInfo.labelname}</a>
+                        </div><!-- .blog-post-meta -->
                         </div><!-- .blog-post-author -->
                         <div class="blog-post-info">
                             <div class="blog-post-info-inner">
                                 <div class="blog-post-title">
-                                    <h2><a href="">Decorating New Office</a></h2>
+                                    <h2 class="texthidden"><a href=""> ${blogone.get(0).blogContent.blogcontent}</a></h2>
                                 </div><!-- .blog-post-title -->
-                                <div class="blog-post-meta">
-                                    April 1, 2015, In: <a href="">Photography</a>
-                                </div><!-- .blog-post-meta -->
-                                <div class="blog-post-excerpt">
-                                    Curabitur congue dolor sed massa feugiat, sit amet tempor orci convallis. Donec lacus magna, semper eget nisl sed, posuere pellentesque tellus. Cras mauris tellus, ultricies quis hendrerit imperdiet, faucibus non nulla. Cras ex dolor, aliquet eget enim nec, luctus congue nisi. Fusce facilisis in erat vitae cursus.
-                                </div><!-- .dslc-blog-post-excerpt -->
+                                <div class="blog-post-tags" style="margin-bottom: 20px">
+                                    <a href="">浏览</a>${blogone.get(0).liulan}
+                                    <a href="">点赞</a>${blogone.get(0).zan}
+                                    <a href="">评论</a>${blogone.get(0).pinglun}
+                                    <br/>
+                                </div><!-- .blog-post-tags -->
+                          <%--      <div class="blog-post-excerpt texthidden">
+
+                                </div><!-- .dslc-blog-post-excerpt -->--%>
                                 <div class="blog-post-read-more">
                                     <a href="">CONTINUE READING</a>
                                 </div><!-- .blog-post-read-more -->
@@ -229,12 +235,12 @@
                 <input type="hidden" name="curPage"  id="curPage">
 
                 <c:forEach items="${pageInfo.list}" var="bloglist">
-                    <div class="blog-post col col-6">
+                    <div class="blog-post col col-4">
                         <div class="blog-post-thumb">
-                            <a href=""><img src="" alt="" /></a>
+                            <a href="<%=basePath%>single/main.action?blogId=${bloglist.blogContent.blogId}"><img src="<%=basePath%>${bloglist.blogPics.pic}" style="height:300px;;margin: auto" alt="" /></a>
                         </div><!-- .blog-post-thumb -->
                         <div class="blog-post-main clearfix">
-                            <div class="blog-post-info">
+                            <div class="blog-post-info" >
                                 <div class="blog-post-info-inner">
                                     <div class="blog-post-title">
                                         <h2 class="texthidden">

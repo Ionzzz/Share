@@ -29,6 +29,7 @@ public interface BlogService {
 
     public List<BlogContent> selectBlogByLabelName(String labelName);
 
+
 //    通过博客id修改博客
     public BlogContent updateBlogByBlogId(int blog_id);
 //    查询所有博客

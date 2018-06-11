@@ -101,7 +101,7 @@
                         <a class="nav-link" href="<%=basePath%>new/main.action">最新 <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href="single.jsp">话题 <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="<%=basePath%>topic/all.action">话题 <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link" href="publishBlog.jsp" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">发布</a>

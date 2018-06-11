@@ -16,10 +16,7 @@ public class BlogContent {
     private String essayflag;
 
     private String blogcontent;
-
-    public BlogContent() {
-    }
-
+    private BlogPics pics;
     @Override
     public String toString() {
         return "BlogContent{" +
@@ -30,7 +27,13 @@ public class BlogContent {
                 ", blogflag='" + blogflag + '\'' +
                 ", essayflag='" + essayflag + '\'' +
                 ", blogcontent='" + blogcontent + '\'' +
+                ", pics=" + pics +
                 '}';
+    }
+
+
+
+    public BlogContent() {
     }
 
     @Override
@@ -117,4 +120,12 @@ public class BlogContent {
     public void setBlogcontent(String blogcontent) {
         this.blogcontent = blogcontent == null ? null : blogcontent.trim();
     }
+    public BlogPics getPics() {
+        return pics;
+    }
+
+    public void setPics(BlogPics pics) {
+        this.pics = pics;
+    }
+
 }

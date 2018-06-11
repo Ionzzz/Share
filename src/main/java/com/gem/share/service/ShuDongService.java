@@ -8,7 +8,7 @@ import java.util.Map;
 
 public interface ShuDongService {
 //    获得所有未评论树洞内容
-    public List<shuDong> selectAllShuDongContent();
+    public List<shuDong> selectAllShuDongContent(String searchContent);
 
 //    根据用户id查询用户是否对该博客有点赞记录
     public List<BlogZan> selectZanRecordByUserId(int blog_id, int user_id);
@@ -49,8 +49,8 @@ public interface ShuDongService {
     //    搜索功能
     public List<shuDong> searchShuDong(String searchSDContent);
 
-//    分页功能
-    public PageInfo<shuDong> pageShuDong(Map<String, Object> map);
+    //    分页功能
+    public PageInfo<shuDong> pageShuDong(Map<String, Object> map,String searchContent);
 
 
 

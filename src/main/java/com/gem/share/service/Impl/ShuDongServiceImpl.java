@@ -18,9 +18,9 @@ public class ShuDongServiceImpl implements ShuDongService {
     private ShuDongMapper shuDongMapper;
 
     @Override
-    public List<shuDong> selectAllShuDongContent() {
+    public List<shuDong> selectAllShuDongContent(String searchContent) {
 //        System.out.println("shudongserviceImpl========="+shuDongMapper.selectAllShuDongContent());
-        return shuDongMapper.selectAllShuDongContent();
+        return shuDongMapper.selectAllShuDongContent(searchContent);
     }
 
     @Override
@@ -89,11 +89,11 @@ public class ShuDongServiceImpl implements ShuDongService {
     }
 
     @Override
-    public PageInfo<shuDong> pageShuDong(Map<String, Object> map) {
+    public PageInfo<shuDong> pageShuDong(Map<String, Object> map,String searchContent) {
         int curPage= (int) map.get("curPage");
         int pageSize= (int) map.get("pageSize");
         PageHelper.startPage(curPage,pageSize);
-        List<shuDong> list=shuDongMapper.selectAllShuDongContent();
+        List<shuDong> list=shuDongMapper.selectAllShuDongContent(searchContent);
         PageInfo<shuDong> pageInfo=new PageInfo<>(list);
 
         return pageInfo;

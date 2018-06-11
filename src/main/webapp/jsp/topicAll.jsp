@@ -100,7 +100,7 @@
                     <div class="blog-post-alt-thumb">
                         <div class="blog-post-alt-thumb-inner" style="text-align: center">
                             <a href="<%=basePath%>single/main.action?blogId=${bloglist.blogContent.blogId}">
-                                <img src="<%=basePath%>${bloglist.blogPics.pic}" style="height:300px;margin: auto" alt="" />
+                                <img src="<%=basePath%>${bloglist.blogPics.pic}" style="height:250px;margin: auto" alt="" />
                             </a>
                         </div><!-- .blog-post-alt-thumb-inner -->
                         <div class="blog-post-alt-thumb-cover"></div>
@@ -214,12 +214,6 @@
 <script type="text/javascript" src="<%=basePath%>js/index-js/javascript/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="<%=basePath%>js/index-js/javascript/plugins.js"></script>
 <script type="text/javascript" src="<%=basePath%>js/index-js/javascript/main.js"></script>
-<script>
-    function getPage(curPage) {
-        document.getElementById("curPage").value=curPage;
-//				触发表单提交事件
-        document.getElementById("mainForm").submit();
-    }
-</script>
+
 </body>
 </html>

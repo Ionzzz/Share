@@ -511,6 +511,7 @@
     left join (select blog_id,blogBrowseCount as liulan from blogbrowse group by blog_id) c on (c.blog_id=blogcontent.blog_id)
 
     where labelinfo.labelname='${_parameter}'
-    order by liulan desc
+    order by zan desc
   </select>
+
 </mapper>

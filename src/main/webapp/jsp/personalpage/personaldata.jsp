@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: Danmon
@@ -6,6 +8,11 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+
 <html>
 <head>
     <title>个人资料</title>
@@ -16,18 +23,27 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
     function hideURLbar(){ window.scrollTo(0,1); } </script>
     <!-- //for-mobile-apps -->
-    <link href="../../css/personal-css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-    <link href="../../css/personal-css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="<%=path%>/css/personal-css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="<%=path%>/css/personal-css/style.css" rel="stylesheet" type="text/css" media="all" />
     <!-- js -->
-    <script src="../../js/personal-js/jquery-1.11.1.min.js"></script>
+    <script src="<%=path%>/js/personal-js/jquery-1.11.1.min.js"></script>
     <!-- //js -->
-    <link href='../../css/personal-css/person1.css' rel='stylesheet' type='text/css'>
-    <link href='../../css/personal-css/person2.css' rel='stylesheet' type='text/css'>
-    <link href='../../css/personal-css/person3.css' rel='stylesheet' type='text/css'>
+    <link href='<%=path%>/css/personal-css/person1.css' rel='stylesheet' type='text/css'>
+    <link href='<%=path%>/css/personal-css/person2.css' rel='stylesheet' type='text/css'>
+    <link href='<%=path%>/css/personal-css/person3.css' rel='stylesheet' type='text/css'>
 
-    <link href="../../css/index-css/style_1.css" rel="stylesheet" type="text/css"/>
-    <link href="../../css/index-css/main.css" rel="stylesheet">
-    <link href='../../css/index-css/nav_font.css' rel='stylesheet' type='text/css'>
+    <link href="<%=path%>/css/index-css/style_1.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=path%>/css/index-css/main.css" rel="stylesheet">
+    <link href='<%=path%>/css/index-css/nav_font.css' rel='stylesheet' type='text/css'>
+
+    <%--时间插件--%>
+    <script type="text/javascript" src="<%=path%>/My97DatePicker/WdatePicker.js"></script>
+
+    <%--省市插件--%>
+    <script src="<%=path%>/bootstrap/js/bootstrap.js"></script>
+    <script src="<%=path%>/jQueryDistpicker/js/distpicker.data.js"></script>
+    <script src="<%=path%>/jQueryDistpicker/js/distpicker.js"></script>
+    <script src="<%=path%>/jQueryDistpicker/js/main.js"></script>
 
 </head>
 <body>
@@ -91,7 +107,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="banner-body-content">
             <div class="col-xs-3 banner-body-left">
                 <div class="logo">
-                    <h1><a href="../index.jsp"><img src="../../images/personal-images/co.png"> <span>网名</span></a></h1>
+                    <h1><a href="../index.jsp"><img src="<%=path%>/images${userinfo.userimg}" style="width: 80px; height: 80px"> <span>${userinfo.usernickname}</span></a></h1>
                 </div>
                 <div class="top-nav">
                     <nav class="navbar navbar-default">
@@ -120,6 +136,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </nav>
                 </div>
                 <div class="latest-news">
+
                     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="headingOne">
@@ -129,73 +146,78 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     </a>
                                 </h4>
                             </div>
-                            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                                <div class="panel-body">
-                                    <div class="zan">
-                                        <div class="zan-people row">
-                                            <div class="col-md-4">
-                                                <img src="../../images/personal-images/co.png" style="height:40px; width:40px">
-                                            </div>
-                                            <div class="col-md-8">
-                                                <p>网名</p>
-                                            </div>
+                            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne" style="margin-top: 8px;">
+                                <div class="panel-body" style="border: solid 1px;padding: 0">
+                                    <div class="zan" style="float:left;">
+                                        <div class="pics" style="float:left; height: 80px;width: 80px;">
+                                            <a href="#">
+                                                <img src="<%=path%>/img${commentuser.get(0).userimg}">
+                                            </a>
                                         </div>
-                                        <br/>
-                                        <div class="zan-content">
-                                            被点评博客内容纯文字；被点评博客内容纯文字
-                                            <a href="#">>>more</a>
+                                        <div class="content" style="float:left; height: 80px;width: 149px;padding:0;background-color:#d3d3d3">
+                                            <div class="nickname" style="padding: 0;">
+                                                <p>
+                                                    <a href="#" style="float: left;margin-left: 5px; margin-top: -15px">
+                                                        <strong>${commentuser.get(0).usernickname}</strong>
+                                                    </a>
+                                                </p>
+                                                <P style="width:150px;height:50px;overflow: hidden;">
+                                                    <a href="#" style="color: #000000;margin-left: 5px;float: left">
+                                                        ${comment.get(0).blogcontent}
+                                                    </a>
+                                                </P>
+                                            </div>
                                         </div>
                                     </div>
+                                    <div class="more" style="width:229px;float: left;text-align: center;border-top: solid 1px">
+                                        <a href="#">
+                                            查看更多
+                                        </a>
+                                    </div>
                                 </div>
+
                             </div>
                         </div>
 
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="headingTwo">
                                 <h4 class="panel-title">
-                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    <a class="collapsed" role="button" data-toggle="collapse"
+                                       data-parent="#accordion" href="#collapseTwo"
+                                       aria-expanded="false" aria-controls="collapseTwo">
                                         我的赞
                                     </a>
                                 </h4>
                             </div>
-                            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                                <div class="panel-body">
-                                    <div class="zan">
-                                        <div class="zan-people row">
-                                            <div class="col-md-4">
-                                                <img src="../../images/personal-images/co.png" style="height:40px; width:40px">
-                                            </div>
-                                            <div class="col-md-8">
-                                                <p>网名</p>
-                                            </div>
+                            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo" style="margin-top: 8px;">
+                                <div class="panel-body" style="border: solid 1px;padding: 0">
+                                    <div class="zan" style="float:left;">
+                                        <div class="pics" style="float:left; height: 80px;width: 80px;">
+                                            <a href="#">
+                                                <img src="<%=path%>/img${zanuser.get(0).userimg}">
+                                            </a>
                                         </div>
-                                        <br/>
-                                        <div class="zan-content">
-                                            被点赞博客内容纯文字；被点赞博客内容纯文字
-                                            <a href="#">>>more</a>
+                                        <div class="content" style="float:left; height: 80px;width: 149px;padding:0;background-color:#d3d3d3">
+                                            <div class="nickname" style="padding: 0;">
+                                                <p>
+                                                    <a href="#" style="float: left;margin-left: 5px; margin-top: -15px">
+                                                        <strong>${zanuser.get(0).usernickname}</strong>
+                                                    </a>
+                                                </p>
+                                                <P style="width:150px;height:50px;overflow: hidden;">
+                                                    <a href="#" style="color: #000000;margin-left: 5px;float: left">
+                                                        ${zan.get(0).blogcontent}
+                                                    </a>
+                                                </P>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-
-                                <div class="panel-body">
-                                    <div class="zan">
-                                        <div class="zan-people row">
-                                            <div class="col-md-4">
-                                                <img src="../../images/personal-images/co.png" style="height:40px; width:40px">
-                                            </div>
-                                            <div class="col-md-8">
-                                                <p>网名</p>
-                                            </div>
-                                        </div>
-                                        <br/>
-                                        <div class="zan-content">
-                                            被点赞博客内容纯文字；被点赞博客内容纯文字
-                                            <a href="#">>>more</a>
-                                        </div>
+                                    <div class="more" style="width:229px;float: left;text-align: center;border-top: solid 1px">
+                                        <a href="#">
+                                            查看更多
+                                        </a>
                                     </div>
                                 </div>
-
-
                             </div>
                         </div>
 
@@ -211,27 +233,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
                                 <div class="panel-body">
                                     <div class="pic">
-                                        <div class="col-md-6">
-                                            <a href="#"><img src="../../images/personal-images/1.jpg" style="height:80px; width:80px"></a>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <a href="#"><img src="../../images/personal-images/1.jpg" style="height:80px; width:80px"></a>
-                                        </div>
-                                        <div class="col-md-12">&nbsp;</div>
-
-                                        <div class="col-md-6">
-                                            <a href="#"><img src="../../images/personal-images/1.jpg" style="height:80px; width:80px"></a>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <a href="#"><img src="../../images/personal-images/1.jpg" style="height:80px; width:80px"></a>
-                                        </div>
-                                        <div class="col-md-12">&nbsp;</div>
-                                        <div class="col-md-6">
-                                            <a href="#"><img src="../../images/personal-images/1.jpg" style="height:80px; width:80px"></a>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <a href="#"><img src="../../images/personal-images/1.jpg" style="height:80px; width:80px"></a>
-                                        </div>
+                                        <c:forEach items="${userblog}" var="blogs" begin="0" end="3">
+                                            <div class="col-md-6" style="height:90px;overflow: hidden">
+                                                <a href="#">
+                                                    <img src="<%=basePath%>${blogs.pics.pic}" style="height:80px; width:80px;">
+                                                </a>
+                                                <p>&nbsp;</p>
+                                            </div>
+                                        </c:forEach>
                                         <div class="col-md-7">
                                             &nbsp;
                                         </div>
@@ -244,88 +253,234 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             </div>
                         </div>
                     </div>
+
+
                 </div>
             </div>
 
-
-
-                <script src="../../js/personal-js/jquery.wmuSlider.js"></script>
+        <script src="<%=path%>/js/personal-js/jquery.wmuSlider.js"></script>
                 <script>
                     $('.example1').wmuSlider();
                 </script>
+
+            <script type="text/javascript">
+
+//                    jquery加文本框修改内容
+                    $(function() {
+                    //获取class为caname的元素
+                        $(".changeContent").click(function() {
+//                            var td=$(".content");
+                            var td = $(this).prev();
+                            var a = td.text();
+                            var txt = a.replace(/[ ]/g,"");   //清除空格
+                            var input = $("<input type='text'value='"+txt+"'/>");
+                            td.html(input);
+                            input.click(function() { return false; });
+                    //获取焦点
+                            input.trigger("focus");
+                    //文本框失去焦点后提交内容，重新变为文本
+                            input.blur(function() {
+                                var newtxt = $(this).val();
+                    //判断文本有没有修改
+                                if (newtxt != txt) {
+                                    td.html(newtxt);
+                                    /*
+                                    *不需要使用数据库的这段可以不需要
+                                    var caid = $.trim(td.prev().text());
+                                    //ajax异步更改数据库,加参数date是解决缓存问题
+                                    var url = "../common/Handler2.ashx?caname=" + newtxt + "&caid=" + caid + "&date=" + new Date();
+                                    //使用get()方法打开一个一般处理程序，data接受返回的参数（在一般处理程序中返回参数的方法 context.Response.Write("要返回的参数");）
+                                    //数据库的修改就在一般处理程序中完成
+                                    $.get(url, function(data) {
+                                    if(data=="1")
+                                    {
+                                    alert("该类别已存在！");
+                                    td.html(txt);
+                                    return;
+                                    }
+                                    alert(data);
+                                    td.html(newtxt);
+                                    });
+                                    */
+                                }
+                                else
+                                {
+                                    td.html(newtxt);
+                                }
+                            });
+                        });
+                    });
+
+//                电话号码加密显示
+                $(function() {
+                    var phone = $('#phone').text();
+                    var mphone = phone.substr(0, 3) + '****' + phone.substr(7);
+//                    此时mphone 的值就是中间四位显示为*号的了；
+                    $('#phone').text(mphone);
+                });
+            </script>
+
+
             <div class="col-xs-9 banner-body-right">
                 <div class="gallery-head">
                     <h5>基本信息</h5>
                     <p></p>
                 </div>
                 <div class="table">
-                    <table class="table table-hover">
-                        <th align="center">基本信息</th>
+                    <table class="table-hover">
+                        <tr>
+                            <th align="center">基本信息</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+
                         <tr class="">
                             <td width="100px" align="right">登录名</td>
-                            <td>155***6256<a href="#">修改密码</a></td>
+                            <td>
+                                <span id="phone">${userinfo.userphone}</span>
+                                <a href="#" onclick="change(this)">修改密码</a></td>
                             <td></td>
                         </tr>
                         <tr class="">
                             <td width="100px" align="right">昵称</td>
-                            <td>土豆小姐<a href="#">修改昵称</a></td>
+                            <td>
+                                <c:if test="${not empty userinfo.usernickname}">
+                                    <span id="content">
+                                            ${userinfo.usernickname}
+                                    </span>
+                                    <a href="javaScript:void(0)" class="changeContent">修改昵称</a>
+                                </c:if>
+                                <c:if test="${empty userinfo.usernickname}">
+                                    <a href="javaScript:void(0)" class="changeContent">马上填写</a>昵称
+                                </c:if>
+                            </td>
                             <td></td>
                         </tr>
                         <tr class="">
-                            <td width="100px" align="right">真实姓名</td>
-                            <td><a href="#">马上填写</a>自己的真实姓名</td>
+                            <td width="100px" id="modifyname" align="right">真实姓名</td>
+                            <td>
+                                <c:if test="${not empty userinfo.username}">
+                                    <span id="content">
+                                            ${userinfo.username}
+                                    </span>
+                                    <a href="javaScript:void(0)" class="changeContent">修改姓名</a>
+                                </c:if>
+                                <c:if test="${empty userinfo.username}">
+                                    <a href="javaScript:void(0)" class="changeContent">马上填写</a>自己的真实姓名
+                                </c:if>
+                            </td>
                             <td></td>
                         </tr>
                         <tr class="">
                             <td width="100px" align="right">所在地</td>
                             <td>
-                                <select>
-                                    <option>安徽</option>
-                                    <option>北京</option>
-                                    <option>重庆</option>
-                                    <option>福建</option>
-                                    <option>河南</option>
-                                </select>
-                                <select>
-                                    <option>郑州</option>
-                                    <option>开封</option>
-                                    <option>安阳</option>
-                                    <option>信阳</option>
-                                </select>
+                                <c:if test="${not empty userinfo.usercreatetime}">
+                                    <span id="content">
+                                        ${userinfo.address.province}省 ${userinfo.address.city}市 ${userinfo.address.county}${userinfo.address.detailAddress}
+                                    </span>
+                                </c:if>
+                                <c:if test="${empty userinfo.userintroduce}">
+                                    <form class="form-inline">
+                                        <div data-toggle="distpicker">
+                                            <div class="form-group">
+                                                <label class="sr-only" for="province2">Province</label>
+                                                <select class="form-control" id="province2" data-province="---- 选择省 ----"></select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="sr-only" for="city2">City</label>
+                                                <select class="form-control" id="city2" data-city="---- 选择市 ----"></select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="sr-only" for="district2">District</label>
+                                                <select class="form-control" id="district2" data-district="---- 选择区 ----"></select>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </c:if>
+
                             </td>
                             <td></td>
                         </tr>
                         <tr class="">
                             <td width="100px" align="right">性别</td>
                             <td>
-                                <label class="radio-inline">
-                                    <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1
-                                </label>
-                                <label class="radio-inline">
-                                    <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 2
-                                </label>
+                                <c:if test="${not empty userinfo.usersex}">
+                                    ${userinfo.usersex}
+                                </c:if>
+                                <c:if test="${empty userinfo.usersex}">
+                                    <label class="radio-inline">
+                                        <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">男
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" checked="checked">女
+                                    </label>
+                                </c:if>
                             </td>
                             <td></td>
                         </tr>
                         <tr class="">
                             <td width="100px" align="right">生日</td>
-                            <td></td>
+                            <td>
+                                <c:if test="${not empty userinfo.usercreatetime}">
+                                    <span>
+                                        <fmt:formatDate value="${userinfo.usercreatetime}" pattern="yyyy-MM-dd" />
+                                    </span>
+                                </c:if>
+                                <c:if test="${empty userinfo.userintroduce}">
+                                    <div class="col-md-4">
+                                        请选择自己的出生日期：<input type="text" class="form-control Wdate" value="2001-05-28"
+                                               onClick="WdatePicker()" readonly="readonly" name="startDate"
+                                               id="startDate" placeholder="出生日期" >
+                                    </div>
+                                    <%--<a href="javaScript:void(0)" id="changeContent" onclick="changeContent()">马上填写</a>出生日期--%>
+                                </c:if>
+                            </td>
                             <td></td>
                         </tr>
                         <tr class="">
                             <td width="100px" align="right">简介</td>
-                            <td>愿将希望寄存于星空，抬头全是耀眼的感动。</td>
+                            <td id="modifyintroduct" onclick="startEdit(this.id)">
+                                <c:if test="${not empty userinfo.userintroduce}">
+                                    <span id="content">
+                                            ${userinfo.userintroduce}
+                                    </span>
+                                    <a href="javaScript:void(0)" class="changeContent">修改个人简介</a>
+                                </c:if>
+                                <c:if test="${empty userinfo.userintroduce}">
+                                    <a href="javaScript:void(0)" class="changeContent">马上填写</a>个人简介
+                                </c:if>
+                            </td>
                             <td></td>
                         </tr>
                         <tr class="">
                             <td width="100px" align="right">注册时间</td>
-                            <td><a href="#">马上填写</a>自己的真实姓名</td>
+                            <td>
+                                <c:if test="${not empty userinfo.logintime}">
+                                    <span id="content">
+                                        <fmt:formatDate value="${userinfo.logintime}" pattern="yyyy-MM-dd" />
+                                    </span>
+                                </c:if>
+                            </td>
                             <td></td>
                         </tr>
-                        <th align="center">联系信息</th>
+                        <tr>
+                            <th align="center">联系信息</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
                         <tr class="">
                             <td width="100px" align="right">邮箱</td>
-                            <td><a href="#">马上填写</a>自己的邮箱信息</td>
+                            <td><a href="#">
+                                <c:if test="${not empty userinfo.useremail}">
+                                    <span id="content">
+                                            ${userinfo.useremail}
+                                    </span>
+                                    <a href="javaScript:void(0)" class="changeContent">修改邮箱</a>
+                                </c:if>
+                                <c:if test="${empty userinfo.useremail}">
+                                    <a href="javaScript:void(0)" class="changeContent">马上填写</a>自己的邮箱
+                                </c:if>
+                            </td>
                             <td></td>
                         </tr>
                         <tr class="">
@@ -338,13 +493,24 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <td><a href="#">马上填写</a>自己的MSN信息</td>
                             <td></td>
                         </tr>
-                        <th align="center">教育信息</th>
+                        <tr>
+                            <th align="center">教育信息</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+
                         <tr class="">
                             <td width="100px" align="right">大学</td>
                             <td>
-                                <P><a href="#">苏州大学</a>(2015年)</P>
-                                <br/>
-                                <p>计算机学院</p>
+                                <c:if test="${not empty userinfo.usergraduate}">
+                                    <span id="content">
+                                            ${userinfo.usergraduate}
+                                    </span>
+                                    <a href="javaScript:void(0)" class="changeContent">修改学校信息</a>
+                                </c:if>
+                                <c:if test="${empty userinfo.usergraduate}">
+                                    <a href="javaScript:void(0)" class="changeContent">马上填写</a>自己的毕业院校
+                                </c:if>
                             </td>
                             <td></td>
                         </tr>
@@ -355,7 +521,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </div>
 
             <div class="footer">
+                <hr/>
                 <div class="footer-left">
+
                     <ul>
                         <li><a href="#">Privacy Policy</a>|</li>
                         <li><a href="../about.jsp">Terms of Use</a>|</li>
@@ -375,7 +543,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </div>
 <!-- //banner-body -->
 <!-- for bootstrap working -->
-<script src="../../js/personal-js/bootstrap.js"></script>
+<script src="<%=path%>/js/personal-js/bootstrap.js"></script>
 <!-- //for bootstrap working -->
 </body>
 </html>

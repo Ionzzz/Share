@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Danmon
@@ -6,6 +7,11 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+
 <html>
 <head>
     <title>个人页面</title>
@@ -17,18 +23,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
     function hideURLbar(){ window.scrollTo(0,1); } </script>
     <!-- //for-mobile-apps -->
-    <link href="../../css/personal-css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-    <link href="../../css/personal-css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="<%=path%>/css/personal-css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="<%=path%>/css/personal-css/style.css" rel="stylesheet" type="text/css" media="all" />
     <!-- js -->
-    <script src="../../js/personal-js/jquery-1.11.1.min.js"></script>
+    <script src="<%=path%>/js/personal-js/jquery-1.11.1.min.js"></script>
     <!-- //js -->
-    <link href='../../css/personal-css/person1.css' rel='stylesheet' type='text/css'>
-    <link href='../../css/personal-css/person2.css' rel='stylesheet' type='text/css'>
-    <link href='../../css/personal-css/person3.css' rel='stylesheet' type='text/css'>
+    <link href='<%=path%>/css/personal-css/person1.css' rel='stylesheet' type='text/css'>
+    <link href='<%=path%>/css/personal-css/person2.css' rel='stylesheet' type='text/css'>
+    <link href='<%=path%>/css/personal-css/person3.css' rel='stylesheet' type='text/css'>
 
-    <link href="../../css/index-css/style_1.css" rel="stylesheet" type="text/css"/>
-    <link href="../../css/index-css/main.css" rel="stylesheet">
-    <link href='../../css/index-css/nav_font.css' rel='stylesheet' type='text/css'>
+    <link href="<%=path%>/css/index-css/style_1.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=path%>/css/index-css/main.css" rel="stylesheet">
+    <link href='<%=path%>/css/index-css/nav_font.css' rel='stylesheet' type='text/css'>
 </head>
 <body>
 
@@ -89,7 +95,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="banner-body-content">
             <div class="col-xs-3 banner-body-left">
                 <div class="logo">
-                    <h1><a href="../index.jsp"><img src="../../images/personal-images/co.png"> <span>网名</span></a></h1>
+                    <h1><a href="../index.jsp"><img src="<%=path%>/images/personal-images/co.png"> <span>网名</span></a></h1>
                 </div>
                 <div class="top-nav">
                     <nav class="navbar navbar-default">
@@ -107,9 +113,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
                             <nav class="stroke">
                                 <ul class="nav navbar-nav">
-                                    <li class="active"><a href="personal.jsp"><i class="home"></i>我的主页</a></li>
-                                    <li><a href="picture.jsp" class="hvr-underline-from-left"><i class="picture1"></i>相册</a></li>
-                                    <li><a href="dynamic.jsp" class="hvr-underline-from-left"><i class="edit1"></i>我的动态</a></li>
+                                    <li class="active"><a href="/ShareMaven/personalpage/personal.action"><i class="home"></i>我的主页</a></li>
+                                    <li><a href="/ShareMaven/personalpage/picture.action" class="hvr-underline-from-left"><i class="picture1"></i>相册</a></li>
+                                    <li><a href="/ShareMaven/personalpage/dynamic.action" class="hvr-underline-from-left"><i class="edit1"></i>我的动态</a></li>
                                     <li><a href="personaldata.jsp" class="hvr-underline-from-left"><i class="text-size1"></i>个人资料</a></li>
                                 </ul>
                             </nav>
@@ -146,7 +152,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </div>
 
 
-                <script src="../../js/personal-js/jquery.wmuSlider.js"></script>
+                <script src="<%=path%>/js/personal-js/jquery.wmuSlider.js"></script>
                 <script>
                     $('.example1').wmuSlider();
                 </script>
@@ -160,7 +166,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                         </div>
                         <div class="banner-right1" style="text-align:center">
-                            <a href="#">
+                            <a href="/ShareMaven/personalpage/fellow.action">
                                 <h3>220</h3>
                             </a>
                         </div>
@@ -175,7 +181,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                         </div>
                         <div class="banner-right1" style="text-align:center">
-                            <a href="#">
+                            <a href="/ShareMaven/personalpage/fellow.action">
                                 <h3>5230</h3>
                             </a>
                         </div>
@@ -191,7 +197,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                         </div>
                         <div class="banner-right1" style="text-align:center">
-                            <a href="dynamic.jsp">
+                            <a href="/ShareMaven/personalpage/dynamic.action">
                                 <h3>32</h3>
                             </a>
                         </div>
@@ -218,73 +224,78 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     </a>
                                 </h4>
                             </div>
-                            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                                <div class="panel-body">
-                                    <div class="zan">
-                                        <div class="zan-people row">
-                                            <div class="col-md-4">
-                                                <img src="../../images/personal-images/co.png" style="height:40px; width:40px">
-                                            </div>
-                                            <div class="col-md-8">
-                                                <p>网名</p>
-                                            </div>
+                            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne" style="margin-top: 8px;">
+                                <div class="panel-body" style="border: solid 1px;padding: 0">
+                                    <div class="zan" style="float:left;">
+                                        <div class="pics" style="float:left; height: 80px;width: 80px;">
+                                            <a href="#">
+                                                <img src="<%=path%>/img${commentuser.get(0).userimg}">
+                                            </a>
                                         </div>
-                                        <br/>
-                                        <div class="zan-content">
-                                            被点评博客内容纯文字；被点评博客内容纯文字
-                                            <a href="#">>>more</a>
+                                        <div class="content" style="float:left; height: 80px;width: 149px;padding:0;background-color:#d3d3d3">
+                                            <div class="nickname" style="padding: 0;">
+                                                <p>
+                                                    <a href="#" style="float: left;margin-left: 5px; margin-top: -15px">
+                                                        <strong>${commentuser.get(0).usernickname}</strong>
+                                                    </a>
+                                                </p>
+                                                <P style="width:150px;height:50px;overflow: hidden;">
+                                                    <a href="#" style="color: #000000;margin-left: 5px;float: left">
+                                                        ${comment.get(0).blogcontent}
+                                                    </a>
+                                                </P>
+                                            </div>
                                         </div>
                                     </div>
+                                    <div class="more" style="width:229px;float: left;text-align: center;border-top: solid 1px">
+                                        <a href="#">
+                                            查看更多
+                                        </a>
+                                    </div>
                                 </div>
+
                             </div>
                         </div>
 
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="headingTwo">
                                 <h4 class="panel-title">
-                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    <a class="collapsed" role="button" data-toggle="collapse"
+                                       data-parent="#accordion" href="#collapseTwo"
+                                       aria-expanded="false" aria-controls="collapseTwo">
                                         我的赞
                                     </a>
                                 </h4>
                             </div>
-                            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                                <div class="panel-body">
-                                    <div class="zan">
-                                        <div class="zan-people row">
-                                            <div class="col-md-4">
-                                                <img src="../../images/personal-images/co.png" style="height:40px; width:40px">
-                                            </div>
-                                            <div class="col-md-8">
-                                                <p>网名</p>
-                                            </div>
+                            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo" style="margin-top: 8px;">
+                                <div class="panel-body" style="border: solid 1px;padding: 0">
+                                    <div class="zan" style="float:left;">
+                                        <div class="pics" style="float:left; height: 80px;width: 80px;">
+                                            <a href="#">
+                                                <img src="<%=path%>/img${zanuser.get(0).userimg}">
+                                            </a>
                                         </div>
-                                        <br/>
-                                        <div class="zan-content">
-                                            被点赞博客内容纯文字；被点赞博客内容纯文字
-                                            <a href="#">>>more</a>
+                                        <div class="content" style="float:left; height: 80px;width: 149px;padding:0;background-color:#d3d3d3">
+                                            <div class="nickname" style="padding: 0;">
+                                                <p>
+                                                    <a href="#" style="float: left;margin-left: 5px; margin-top: -15px">
+                                                        <strong>${zanuser.get(0).usernickname}</strong>
+                                                    </a>
+                                                </p>
+                                                <P style="width:150px;height:50px;overflow: hidden;">
+                                                    <a href="#" style="color: #000000;margin-left: 5px;float: left">
+                                                        ${zan.get(0).blogcontent}
+                                                    </a>
+                                                </P>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-
-                                <div class="panel-body">
-                                    <div class="zan">
-                                        <div class="zan-people row">
-                                            <div class="col-md-4">
-                                                <img src="../../images/personal-images/co.png" style="height:40px; width:40px">
-                                            </div>
-                                            <div class="col-md-8">
-                                                <p>网名</p>
-                                            </div>
-                                        </div>
-                                        <br/>
-                                        <div class="zan-content">
-                                            被点赞博客内容纯文字；被点赞博客内容纯文字
-                                            <a href="#">>>more</a>
-                                        </div>
+                                    <div class="more" style="width:229px;float: left;text-align: center;border-top: solid 1px">
+                                        <a href="#">
+                                            查看更多
+                                        </a>
                                     </div>
                                 </div>
-
-
                             </div>
                         </div>
 
@@ -300,27 +311,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
                                 <div class="panel-body">
                                     <div class="pic">
-                                        <div class="col-md-6">
-                                            <a href="#"><img src="../../images/personal-images/1.jpg" style="height:80px; width:80px"></a>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <a href="#"><img src="../../images/personal-images/1.jpg" style="height:80px; width:80px"></a>
-                                        </div>
-                                        <div class="col-md-12">&nbsp;</div>
-
-                                        <div class="col-md-6">
-                                            <a href="#"><img src="../../images/personal-images/1.jpg" style="height:80px; width:80px"></a>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <a href="#"><img src="../../images/personal-images/1.jpg" style="height:80px; width:80px"></a>
-                                        </div>
-                                        <div class="col-md-12">&nbsp;</div>
-                                        <div class="col-md-6">
-                                            <a href="#"><img src="../../images/personal-images/1.jpg" style="height:80px; width:80px"></a>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <a href="#"><img src="../../images/personal-images/1.jpg" style="height:80px; width:80px"></a>
-                                        </div>
+                                        <c:forEach items="${userblog}" var="blogs" begin="0" end="3">
+                                            <div class="col-md-6" style="height:90px;overflow: hidden">
+                                                <a href="#">
+                                                    <img src="<%=basePath%>${blogs.pics.pic}" style="height:80px; width:80px;">
+                                                </a>
+                                                <p>&nbsp;</p>
+                                            </div>
+                                        </c:forEach>
                                         <div class="col-md-7">
                                             &nbsp;
                                         </div>
@@ -344,11 +342,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="msg-text">
                     <div class="col-xs-2 msg-text-left">
                         <p>能量等级</p>
-                        <img src="../../images/personal-images/等级图标.jpg" style="height:40px; width:40px">
+                        <img src="<%=path%>/images/personal-images/等级图标.jpg" style="height:40px; width:40px">
                     </div>
                     <div class="col-xs-10 msg-text-right">
                         <P>&nbsp;个人资料完善度&nbsp;&nbsp;<span style="font-weight:bold">%75</span></P>
-                        <img src="../../images/personal-images/完善条.png">
+                        <img src="<%=path%>/images/personal-images/完善条.png">
                         <br/>
                         <div class="col-md-3"></div>
                         <div class="col-md-9"><a href="personaldata.jsp">>>完善个人资料</a></div>
@@ -362,48 +360,37 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
                 <div class="msg-text-bottom">
-                    <div class="col-md-4 msg-text-bottom-left">
-                        <figure class="effect-winston">
-                            <a href="../single.jsp"><img src="../../images/personal-images/4.jpg" alt=" " class="img-responsive" />
-                                <figcaption>
+                    <div class="gallery-head">
+                        <h5>我的博客</h5>
+                        <p>&nbsp;</p>
+                    </div>
 
+                    <c:forEach items="${userblog}" var="userblogs">
+                        <div class="col-md-4 msg-text-bottom-left">
+                        <figure class="effect-winston">
+                            <a href="../single.jsp">
+                                <img src="<%=basePath%>${userblogs.pics.pic}" alt=" " class="img-responsive"/>
+                                <figcaption>
                                 </figcaption>
                             </a>
                         </figure>
+                            <p style="width:200px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;">
+                                <a href="single.html">
+                                    ${userblogs.blogcontent}
+                                </a>
+                            </p>
+                        </div>
+                    </c:forEach>
 
-                        <h3><a href="../single.jsp">vel illum qui dolorem</a></h3>
-                        <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-                            consectetur, adipisci velit, sed quia.</p>
-                    </div>
-                    <div class="col-md-4 msg-text-bottom-left">
-                        <figure class="effect-winston">
-                            <a href="../single.jsp"><img src="../../images/personal-images/5.jpg" alt=" " class="img-responsive" />
-                                <figcaption>
-
-                                </figcaption>
-                            </a>
-                        </figure>
-                        <h3><a href="../single.jsp">quia dolor sit amet</a></h3>
-                        <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-                            consectetur, adipisci velit, sed quia.</p>
-                    </div>
-                    <div class="col-md-4 msg-text-bottom-left">
-                        <figure class="effect-winston">
-                            <a href="../single.jsp"><img src="../../images/personal-images/6.jpg" alt=" " class="img-responsive" />
-                                <figcaption>
-
-                                </figcaption>
-                            </a>
-                        </figure>
-                        <h3><a href="../single.jsp">porro quisquam est</a></h3>
-                        <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-                            consectetur, adipisci velit, sed quia.</p>
-                    </div>
                     <div class="clearfix"> </div>
                 </div>
             </div>
+
+
+
             <div class="clearfix"> </div>
             <div class="footer">
+                <hr/>
                 <div class="footer-left">
                     <ul>
                         <li><a href="#">Privacy Policy</a>|</li>
@@ -420,7 +407,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </div>
 <!-- //banner-body -->
 <!-- for bootstrap working -->
-<script src="../../js/personal-js/bootstrap.js"></script>
+<script src="<%=basePath%>/js/personal-js/bootstrap.js"></script>
 <!-- //for bootstrap working -->
 </body>
 </html>

@@ -41,6 +41,16 @@ public class UserInfo {
 
     private Date logintime;
 
+    private Address address;
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
     public UserInfo() {
     }
 
@@ -125,6 +135,7 @@ public class UserInfo {
                 ", username='" + username + '\'' +
                 ", usercreatetime=" + usercreatetime +
                 ", logintime=" + logintime +
+                ", address=" + address +
                 '}';
     }
 

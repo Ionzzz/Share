@@ -8,7 +8,7 @@ import java.util.List;
 public interface ShuDongMapper {
 
     //    获得所有已评论树洞内容
-    public List<shuDong> selectAllShuDongContent();
+    public List<shuDong> selectAllShuDongContent(String searchContent);
 
 
     //    根据用户id查询用户是否对该博客有点赞记录

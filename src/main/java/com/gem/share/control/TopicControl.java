@@ -25,6 +25,8 @@ public class TopicControl {
     private BlogService blogService;
     @Autowired
     private LabelInfoService labelInfoService;
+
+
     @RequestMapping("/main.action")
     public void main(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -39,8 +41,11 @@ public class TopicControl {
         List<BlogUserPicsLabel> blogflist=blogService.selectBlogCountOrderZan(3);
         request.setAttribute("blogzan",blogflist);
 
+        List<BlogUserPicsLabel> blogOne=blogService.selectBlogUserPicsCountByLabelName(labelInfo.getLabelname(),1);
+        request.setAttribute("blogone",blogOne);
+
         Map<String,Object> map=new HashMap<>();
-        int pageSize=4;
+        int pageSize=6;
         int curPage=1;
         String scurPage=request.getParameter("curPage");
         if(scurPage!=null&&!scurPage.trim().equals("")) {
@@ -55,6 +60,10 @@ public class TopicControl {
 
         request.getRequestDispatcher("/jsp/topic.jsp").forward(request,response);
     }
+
+
+
+
     @RequestMapping("/all.action")
     public void all(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<LabelInfo> labelInfos=labelInfoService.selectAllLabelInfo();

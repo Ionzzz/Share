@@ -30,10 +30,7 @@ public class ShuDongControl {
 
     @RequestMapping("/main.action")
     public void main(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-//        List<shuDong> shuDongList = shuDongService.selectAllShuDongContent();
-//
-//        request.setAttribute("sdContent",shuDongList);
+        String searchContent = request.getParameter("searchContent");
 
         Map<String,Object> map=new HashMap<>();
         int pageSize=8;
@@ -44,9 +41,11 @@ public class ShuDongControl {
         }
         map.put("curPage",curPage);
         map.put("pageSize",pageSize);
-        PageInfo<shuDong> pageInfo=shuDongService.pageShuDong(map);
+        PageInfo<shuDong> pageInfo=shuDongService.pageShuDong(map,searchContent);
         request.setAttribute("pageInfo",pageInfo);
 
+        //搜索条件分页
+        request.setAttribute("searchContent",searchContent);
         request.getRequestDispatcher("/jsp/shuDong.jsp").forward(request,response);
 
     }

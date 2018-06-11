@@ -52,7 +52,7 @@
 <body class="home blog custom-background round-avatars">
 
 <div class="Yarn_Background" style="background-image: url( <%= basePath %>images/shudong-images/47fb3c_.jpg);"></div>
-<form class="js-search search-form search-form--modal" method="get" action="<%=basePath%>shuDong/searchShuDong.action" role="search">
+<form class="js-search search-form search-form--modal" method="post" action="<%=basePath%>shuDong/main.action" role="search">
     <div class="search-form__inner">
         <div>
             <div id="search-container" class="ajax_search">
@@ -84,23 +84,6 @@
                             <li id="menu-item-78" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78">
                                 <a href="index.html" style="font-size: 16px;">首页</a>
                             </li>
-                            <%--<li id="menu-item-252" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-252">--%>
-                                <%--<a href="archives.html" style="font-size: 16px;">归档</a>--%>
-                                <%--<ul class="sub-menu">--%>
-                                    <%--<li id="menu-item-165" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-165">--%>
-                                        <%--<a href="">theme</a>--%>
-                                    <%--</li>--%>
-                                    <%--<li id="menu-item-163" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-163">--%>
-                                        <%--<a href="">Happen</a>--%>
-                                    <%--</li>--%>
-                                    <%--<li id="menu-item-924" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-924">--%>
-                                        <%--<a href="">WeWork</a>--%>
-                                    <%--</li>--%>
-                                    <%--<li id="menu-item-164" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-164">--%>
-                                        <%--<a href="">WordPress</a>--%>
-                                    <%--</li>--%>
-                                <%--</ul>--%>
-                            <%--</li>--%>
                             <li id="menu-item-57" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-57">
                                 <a href="gustbook.html" style="font-size: 16px;">最热</a>
                             </li>
@@ -143,49 +126,64 @@
 
 <div id="main" class="content">
     <div class="container">
-        <form action="<%= basePath %>shuDong/main.action" id="mainForm" method="post">
+        <form action="<%= basePath %>shuDong/main.action" id="mainForm" method="get">
         <%--mainPage--%>
         <article itemscope="itemscope">
 
             <div class="posts-list js-posts">
                 <input type="hidden" name="curPage"  id="curPage">
-                <c:forEach items="${pageInfo.list}" var="sd">
-                <div class="post post-layout-list" data-aos="fade-up">
-                    <div class="postnormal review ">
-                        <div class="post-container review-item">
-                            <div class="row review-item-wrapper">
-                                <div class="col-sm-3">
-                                    <a rel="nofollow" href="detail.html">
-                                        <div class="review-item-img" style="background-image: url(<%= basePath %>images/shudong-images/b0ce3f3cde0c084b6d42321b2dcbc407.jpeg);"></div>
-                                    </a>
-                                </div>
-                                <div class="col-sm-9 flex-xs-middle">
-                                    <div class="review-item-title">
-                                        <a href="detail.html" rel="bookmark" style="font-size:20px; font-weight: bolder">树洞X</a>
-                                    </div>
-                                    <div class="review-item-creator" style="font-size:15px;"><b>发布日期：</b><fmt:formatDate value="${sd.blogCreateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></div>
-                                    <span class="review-item-info" style="font-size:15px;"><b>总浏览量：</b>${sd.blogBrowseCount}</span>
-                                    <span class="review-item-info" style="font-size:15px;"><b>点赞：</b>${sd.bbrowse}</span>
+                <input type="hidden" name="searchContent" value="${searchContent}"></input>
 
+
+                <c:choose>
+                    <c:when test="${pageInfo.total==0}">
+                        <div style="font-size:18px; text-align: center;">
+                            <img src="<%= basePath %>images/shudong-images/noinfo.gif"/>
+                            <a href="#">暂时没有此类树洞存在，快去发布一个吧</a>
+                        </div>
+                    </c:when>
+                    <c:otherwise>
+                        <%--有数据--%>
+                        <c:forEach items="${pageInfo.list}" var="sd">
+                            <div class="post post-layout-list" data-aos="fade-up">
+                                <div class="postnormal review ">
+                                    <div class="post-container review-item">
+                                        <div class="row review-item-wrapper">
+                                            <div class="col-sm-3">
+                                                <a rel="nofollow" href="detail.html">
+                                                    <div class="review-item-img" style="background-image: url(<%= basePath %>images/shudong-images/b0ce3f3cde0c084b6d42321b2dcbc407.jpeg);"></div>
+                                                </a>
+                                            </div>
+                                            <div class="col-sm-9 flex-xs-middle">
+                                                <div class="review-item-title">
+                                                    <a href="detail.html" rel="bookmark" style="font-size:20px; font-weight: bolder">树洞X</a>
+                                                </div>
+                                                <div class="review-item-creator" style="font-size:15px;"><b>发布日期：</b><fmt:formatDate value="${sd.blogCreateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></div>
+                                                <span class="review-item-info" style="font-size:15px;"><b>总浏览量：</b>${sd.blogBrowseCount}</span>
+                                                <span class="review-item-info" style="font-size:15px;"><b>点赞：</b>${sd.bbrowse}</span>
+
+                                            </div>
+                                        </div>
+                                        <div class="review-bg-wrapper">
+                                            <div class="bg-blur" style="background-image: url(<%= basePath %>images/shudong-images/diego-ph-249471-2-800x1000.jpg);"></div>
+                                        </div>
+                                    </div>
+                                    <div class="post-container">
+                                        <div class="entry-content">${sd.blogContent}</div>
+                                        <div class="post-footer">
+                                                <%--<a class="gaz-btn primary" href="">READ MORE</a>--%>
+                                            <a href="<%= basePath %>shuDong/Zan.action?userId=1&blogId=${sd.blogId}">
+                                                <img id="zanImg" src="<%= basePath %>images/shudong-images/preZan.png"/>
+                                            </a>
+                                            <span class="total-comments-on-post pull-right"><a href="<%= basePath %>shuDong/DetailComment.action?blogId=${sd.blogId}">${sd.bcCount} 条评论</a></span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="review-bg-wrapper">
-                                <div class="bg-blur" style="background-image: url(<%= basePath %>images/shudong-images/diego-ph-249471-2-800x1000.jpg);"></div>
-                            </div>
-                        </div>
-                        <div class="post-container">
-                            <div class="entry-content">${sd.blogContent}</div>
-                            <div class="post-footer">
-                                <%--<a class="gaz-btn primary" href="">READ MORE</a>--%>
-                                    <a href="<%= basePath %>shuDong/Zan.action?userId=1&blogId=${sd.blogId}">
-                                        <img id="zanImg" src="<%= basePath %>images/shudong-images/preZan.png"/>
-                                    </a>
-                                <span class="total-comments-on-post pull-right"><a href="<%= basePath %>shuDong/DetailComment.action?blogId=${sd.blogId}">${sd.bcCount} 条评论</a></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                    </c:forEach>
+                        </c:forEach>
+                    </c:otherwise>
+                </c:choose>
+
             </div>
         </article>
 
@@ -194,29 +192,31 @@
             <div class="col-12 text-center pb-4 pt-4">
                 <a href="javascript:getPage(1)" class="btn_mange_pagging"><i class="fa fa-long-arrow-left"></i>&nbsp;&nbsp; 首页</a>
 
-                <c:if test="${!pageInfo.isFirstPage}">
-                    <a href="javascript:getPage(${pageInfo.pageNum == 1?1:pageInfo.prePage})" class='pre'>上一页</a>
+                <c:if test="${pageInfo.pages==1}">
+                    <a href="javascript:getPage(${pageInfo.pageNum})" class="btn_pagging">${pageInfo.pageNum}</a>
                 </c:if>
-
-                <c:if test="${pageInfo.pageNum==1}">
-                    <a href="javascript:getPage(${pageInfo.pageNum==1?1:pageInfo.prePage})" class="btn_pagging">${pageInfo.pageNum==1?1:pageInfo.prePage}</a>
-                    <a href="javascript:getPage(${pageInfo.pageNum==1?2:pageInfo.pageNum})" class="btn_pagging">${pageInfo.pageNum==1?2:pageInfo.pageNum}</a>
-                    <a href="javascript:getPage(${pageInfo.pageNum==1?3:pageInfo.nextPage})" class="btn_pagging">${pageInfo.pageNum==1?3:pageInfo.nextPage}</a>
-                </c:if>
-                <c:if test="${pageInfo.pageNum!=1&&pageInfo.pageNum!=pageInfo.pages}">
-                    <a href="javascript:getPage(${pageInfo.prePage})" class="btn_pagging">${pageInfo.prePage}</a>
+                <c:if test="${pageInfo.pages==2}">
                     <a href="javascript:getPage(${pageInfo.pageNum})" class="btn_pagging">${pageInfo.pageNum}</a>
                     <a href="javascript:getPage(${pageInfo.nextPage})" class="btn_pagging">${pageInfo.nextPage}</a>
                 </c:if>
-                <c:if test="${pageInfo.pageNum==pageInfo.pages}">
-                    <a href="javascript:getPage(${pageInfo.pageNum==pageInfo.pages?pageInfo.prePage-1:pageInfo.prePage})" class="btn_pagging">${pageInfo.pageNum==pageInfo.pages?pageInfo.prePage-1:pageInfo.prePage}</a>
-                    <a href="javascript:getPage(${pageInfo.pageNum==pageInfo.pages?pageInfo.prePage:pageInfo.pageNum})" class="btn_pagging">${pageInfo.pageNum==pageInfo.pages?pageInfo.prePage:pageInfo.pageNum}</a>
-                    <a href="javascript:getPage(${pageInfo.pageNum==pageInfo.pages?pageInfo.pages:pageInfo.nextPage})" class="btn_pagging">${pageInfo.pageNum==pageInfo.pages?pageInfo.pages:pageInfo.nextPage}</a>
+                <c:if test="${pageInfo.pages==3||pageInfo.pages>3}">
+                    <c:if test="${pageInfo.pageNum==1}">
+                        <a href="javascript:getPage(${pageInfo.pageNum==1?1:pageInfo.prePage})" class="btn_pagging">${pageInfo.pageNum==1?1:pageInfo.prePage}</a>
+                        <a href="javascript:getPage(${pageInfo.pageNum==1?2:pageInfo.pageNum})" class="btn_pagging">${pageInfo.pageNum==1?2:pageInfo.pageNum}</a>
+                        <a href="javascript:getPage(${pageInfo.pageNum==1?3:pageInfo.nextPage})" class="btn_pagging">${pageInfo.pageNum==1?3:pageInfo.nextPage}</a>
+                    </c:if>
+                    <c:if test="${pageInfo.pageNum!=1&&pageInfo.pageNum!=pageInfo.pages}">
+                        <a href="javascript:getPage(${pageInfo.prePage})" class="btn_pagging">${pageInfo.prePage}</a>
+                        <a href="javascript:getPage(${pageInfo.pageNum})" class="btn_pagging">${pageInfo.pageNum}</a>
+                        <a href="javascript:getPage(${pageInfo.nextPage})" class="btn_pagging">${pageInfo.nextPage}</a>
+                    </c:if>
+                    <c:if test="${pageInfo.pageNum==pageInfo.pages&&pageInfo.pageNum!=1}">
+                        <a href="javascript:getPage(${pageInfo.pageNum==pageInfo.pages?pageInfo.prePage-1:pageInfo.prePage})" class="btn_pagging">${pageInfo.pageNum==pageInfo.pages?pageInfo.prePage-1:pageInfo.prePage}</a>
+                        <a href="javascript:getPage(${pageInfo.pageNum==pageInfo.pages?pageInfo.prePage:pageInfo.pageNum})" class="btn_pagging">${pageInfo.pageNum==pageInfo.pages?pageInfo.prePage:pageInfo.pageNum}</a>
+                        <a href="javascript:getPage(${pageInfo.pageNum==pageInfo.pages?pageInfo.pages:pageInfo.nextPage})" class="btn_pagging">${pageInfo.pageNum==pageInfo.pages?pageInfo.pages:pageInfo.nextPage}</a>
+                    </c:if>
                 </c:if>
 
-                <c:if test="${!pageInfo.isLastPage}">
-                    <a href="javascript:getPage(${pageInfo.nextPage})" class='next'>下一页</a>
-                </c:if>
 
                 <a href="javascript:getPage(${pageInfo.pages})" class="btn_mange_pagging">末页 <i class="fa fa-long-arrow-right"></i>&nbsp;&nbsp; </a>
                 <b>共 ${pageInfo.total}</b> 条   <b>${pageInfo.getPages()}</b>页，当前第<b>${pageInfo.pageNum}</b>页

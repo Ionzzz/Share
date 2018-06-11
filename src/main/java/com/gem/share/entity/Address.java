@@ -5,7 +5,7 @@ public class Address {
 
     private String country;
 
-    private String provinice;
+    private String province;
 
     private String city;
 
@@ -21,7 +21,7 @@ public class Address {
         return "Address{" +
                 "addressId=" + addressId +
                 ", country='" + country + '\'' +
-                ", provinice='" + provinice + '\'' +
+                ", province='" + province + '\'' +
                 ", city='" + city + '\'' +
                 ", county='" + county + '\'' +
                 ", detailAddress='" + detailAddress + '\'' +
@@ -37,7 +37,7 @@ public class Address {
 
         if (addressId != null ? !addressId.equals(address.addressId) : address.addressId != null) return false;
         if (country != null ? !country.equals(address.country) : address.country != null) return false;
-        if (provinice != null ? !provinice.equals(address.provinice) : address.provinice != null) return false;
+        if (province != null ? !province.equals(address.province) : address.province != null) return false;
         if (city != null ? !city.equals(address.city) : address.city != null) return false;
         if (county != null ? !county.equals(address.county) : address.county != null) return false;
         return detailAddress != null ? detailAddress.equals(address.detailAddress) : address.detailAddress == null;
@@ -47,7 +47,7 @@ public class Address {
     public int hashCode() {
         int result = addressId != null ? addressId.hashCode() : 0;
         result = 31 * result + (country != null ? country.hashCode() : 0);
-        result = 31 * result + (provinice != null ? provinice.hashCode() : 0);
+        result = 31 * result + (province != null ? province.hashCode() : 0);
         result = 31 * result + (city != null ? city.hashCode() : 0);
         result = 31 * result + (county != null ? county.hashCode() : 0);
         result = 31 * result + (detailAddress != null ? detailAddress.hashCode() : 0);
@@ -70,12 +70,12 @@ public class Address {
         this.country = country == null ? null : country.trim();
     }
 
-    public String getProvinice() {
-        return provinice;
+    public String getprovince() {
+        return province;
     }
 
-    public void setProvinice(String provinice) {
-        this.provinice = provinice == null ? null : provinice.trim();
+    public void setprovince(String province) {
+        this.province = province == null ? null : province.trim();
     }
 
     public String getCity() {
