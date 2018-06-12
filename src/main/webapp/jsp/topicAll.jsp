@@ -66,7 +66,7 @@
                     </li>
                     <li class="current-menu-item"><a href="topic.jsp">话题</a></li>
                     <li><a href="single.jsp">发布</a></li>
-                    <li><a href="treehole.jsp">树洞</a></li>
+                    <li><a href="<%=basePath%>shuDong/main.action">树洞</a></li>
                     <li><a href="about.jsp">关于我们</a></li>
                     <li><a href="contactUs.jsp">联系我们</a></li>
                 </ul><!-- .menu -->
@@ -198,7 +198,7 @@
                                         ${labellist.labelcontent}
                                     </div><!-- .dslc-blog-post-excerpt -->
                                     <div class="blog-post-read-more"style="text-align: center;">
-                                        <a href="">CONTINUE READING</a>
+                                        <a href="<%=basePath%>topic/main.action?labelId=${labellist.labelId}">CONTINUE READING</a>
                                     </div><!-- .blog-post-read-more -->
                                 </div><!-- .blog-post-info-inner -->
                             </div><!-- .blog-post-info -->

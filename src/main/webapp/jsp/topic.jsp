@@ -260,7 +260,7 @@
                                                          value="${bloglist.blogContent.blogcreatetime}" />
                                          In: <a href="">Spring</a>
                                     </div><!-- .blog-post-meta -->
-                                    <div class="blog-post-excerpt">
+                                    <div class="blog-post-excerpt texthidden">
                                         ${bloglist.blogContent.blogcontent}
                                     </div><!-- .dslc-blog-post-excerpt -->
                                     <div class="blog-post-read-more">

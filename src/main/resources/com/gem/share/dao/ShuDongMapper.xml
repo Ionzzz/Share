@@ -39,7 +39,7 @@
   <!--//    得到该树洞的点赞数-->
   <!--public int selectCountZan(int blog_id);-->
   <select id="selectCountZan" parameterType="int" resultType="int">
-    SELECT COUNT(*) FROM blogzan GROUP BY blog_id HAVING blog_id=#{_parameter}
+    SELECT COUNT(*) as zanCount FROM blogzan where blog_id=#{_parameter}
   </select>
 
   <!--//    增加用户点赞记录-->

@@ -57,7 +57,6 @@ public class TopicControl {
         PageInfo<BlogUserPicsLabel> pageInfo=blogService.selectAllBlogUserPicsByPageLabelName(map);
         request.setAttribute("pageInfo",pageInfo);
 
-
         request.getRequestDispatcher("/jsp/topic.jsp").forward(request,response);
     }
 
@@ -72,7 +71,7 @@ public class TopicControl {
         List<BlogUserPicsLabel> blog=blogService.selectBlogCountOrderLiulan(10);
         request.setAttribute("blogliulan",blog);
 
-        List<BlogUserPicsLabel> blogflist=blogService.selectBlogCountOrderZan(3);
+        List<BlogUserPicsLabel> blogflist=blogService.selectBlogCountOrderZan(5);
         request.setAttribute("bloglist",blogflist);
 
         request.getRequestDispatcher("/jsp/topicAll.jsp").forward(request,response);
