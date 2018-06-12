@@ -64,11 +64,11 @@
                             <li><a href="#">No Sidebar</a></li>
                         </ul>
                     </li>
-                    <li class="current-menu-item"><a href="topic.jsp">话题</a></li>
-                    <li><a href="single.jsp">发布</a></li>
+                    <li class="current-menu-item"><a href="<%=basePath%>topic/all.action">话题</a></li>
+                    <li><a href="<%=basePath%>single.jsp">发布</a></li>
                     <li><a href="<%=basePath%>shuDong/main.action">树洞</a></li>
-                    <li><a href="about.jsp">关于我们</a></li>
-                    <li><a href="contactUs.jsp">联系我们</a></li>
+                    <li><a href="<%=basePath%>about.jsp">关于我们</a></li>
+                    <li><a href="<%=basePath%>contactUs.jsp">联系我们</a></li>
                 </ul><!-- .menu -->
             </nav><!-- #navigation -->
             <div id="header-search">

@@ -105,18 +105,18 @@
                         <a class="nav-link" href="<%=basePath%>topic/all.action">话题 <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link" href="publishBlog.jsp" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">发布</a>
+                        <a class="nav-link" href="<%=basePath%>publishBlog.jsp" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">发布</a>
                     </li>
                     <li class="nav-item ">
                         <a class="nav-link" href="<%=basePath%>shuDong/main.action">树洞 <span class="sr-only">(current)</span></a>
                     </li>
 
                     <li class="nav-item ">
-                        <a class="nav-link" href="about.jsp">关于我们 <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="<%=basePath%>about.jsp">关于我们 <span class="sr-only">(current)</span></a>
                     </li>
 
                     <li class="nav-item ">
-                        <a class="nav-link" href="contactUs.jsp">联系我们 <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="<%=basePath%>contactUs.jsp">联系我们 <span class="sr-only">(current)</span></a>
                     </li>
                 </ul>
             </div>

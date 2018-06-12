@@ -96,11 +96,11 @@ public class SingleControl {
 //            内容不为空
             if("1".equals(flag)){
                 //            插入blogComment表
-                BlogComment blogComment = new BlogComment(Integer.parseInt(blogid),409,content2,commentTime);
+                BlogComment blogComment = new BlogComment(Integer.parseInt(blogid),555,content2,commentTime);
                 boolean flag = blogService.insertBlogComment(blogComment);
             }else if ("2".equals(flag)){
                 //             插入replyComment表  二级评论
-                ReplyComment replyComment = new ReplyComment(Integer.parseInt(blogid),278,content2,commentTime);
+                ReplyComment replyComment = new ReplyComment(Integer.parseInt(blogid),233,content2,commentTime);
                 boolean f = blogService.insertReplyComment(replyComment);
             }else if("3".equals(flag)){
 //                三级评论
@@ -108,7 +108,7 @@ public class SingleControl {
 
 //                int replycommentId = blogService.selectUserIdByCommentId(Integer.parseInt(blogid));
                 replyComment.setReplycomment(Integer.parseInt(blogid));
-                replyComment.setUserId(233);
+                replyComment.setUserId(453);
                 replyComment.setReplycommentcontent(content2);
                 replyComment.setReplycommenttime(commentTime);
 
@@ -117,7 +117,7 @@ public class SingleControl {
 
         }else{
 //            内容为空
-            request.getRequestDispatcher("/jsp/shuDongDetail.jsp").forward(request,response);
+            request.getRequestDispatcher("/jsp/single.jsp").forward(request,response);
         }
 
     }

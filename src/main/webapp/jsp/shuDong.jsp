@@ -85,7 +85,7 @@
                                 <a href="<%=basePath%>index/main.action" style="font-size: 16px;">首页</a>
                             </li>
                             <li id="menu-item-57" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-57">
-                                <a href="gustbook.html" style="font-size: 16px;">最热</a>
+                                <a href="<%=basePath%>new/main.action" style="font-size: 16px;">最新</a>
                             </li>
                                 <li id="menu-item-57" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-57">
                                     <a href="gustbook.html" style="font-size: 16px;">时空机</a>
