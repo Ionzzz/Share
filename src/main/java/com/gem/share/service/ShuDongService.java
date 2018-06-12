@@ -29,13 +29,13 @@ public interface ShuDongService {
     public int selectBcommentCount(int blog_id);
 
     //    获得树洞评论的评论(二级评论)
-    public List<replyCommentDetail> selectAllReplyComment(int comment_id);
+    public List<ReplyCommentDetail> selectAllReplyComment(int comment_id);
 
     //    插入一级博客评论内容
     public boolean insertBlogComment(BlogComment blogComment);
 
     //    从二级评论中得到所有的replyComment_id，进而查出所有三级及以下评论
-    public List<replyCommentDetail> selectAllThirdReplyComment(int replyComment_id);
+    public List<ReplyCommentDetail> selectAllThirdReplyComment(int replyComment_id);
 
     //    插入二级评论内容
     public boolean insertReplyComment(ReplyComment replyComment);

@@ -4,10 +4,7 @@ import com.gem.share.dao.BlogContentMapper;
 import com.gem.share.dao.BlogLabelMapper;
 import com.gem.share.dao.BlogPicsMapper;
 import com.gem.share.dao.LabelInfoMapper;
-import com.gem.share.entity.BlogContent;
-import com.gem.share.entity.BlogLabel;
-import com.gem.share.entity.BlogUserPicsLabel;
-import com.gem.share.entity.LabelInfo;
+import com.gem.share.entity.*;
 import com.gem.share.service.BlogService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -30,6 +27,60 @@ public class BlogServiceImpl implements BlogService {
     private BlogLabelMapper blogLabelMapper;
     @Autowired
     private LabelInfoMapper labelInfoMapper;
+
+    @Override
+    public boolean insertReplyComment(ReplyComment replyComment) {
+        return blogContentMapper.insertReplyComment(replyComment);
+    }
+
+    @Override
+    public boolean insertThirdReplyComment(ReplyComment replyComment) {
+        return blogContentMapper.insertThirdReplyComment(replyComment);
+    }
+
+    @Override
+    public int selectUserIdByCommentId(int comment_id) {
+        return blogContentMapper.selectUserIdByCommentId(comment_id);
+    }
+
+    @Override
+    public boolean insertBlogComment(BlogComment blogComment) {
+        return blogContentMapper.insertBlogComment(blogComment);
+    }
+
+    @Override
+    public List<ReplyCommentDetail> selectAllThirdReplyComment(int replyComment_id) {
+
+        List<ReplyCommentDetail> replyCommentDetails=blogContentMapper.selectAllThirdReplyComment(replyComment_id);
+        return replyCommentDetails;
+    }
+
+    @Override
+    public List<ReplyCommentDetail> selectAllReplyComment(int comment_id) {
+        return blogContentMapper.selectAllReplyComment(comment_id);
+    }
+
+    @Override//一级评论
+    public List<shuDongDetail> selectAllBlogCommentByBlogId(int blog_id) {
+
+        return blogContentMapper.selectAllBlogCommentByBlogId(blog_id);
+    }
+
+    @Override
+    public List<BlogZan> selectZanRecordByUserId(int blog_id, int user_id) {
+        List<BlogZan> blogZans=blogContentMapper.selectZanRecordByUserId(blog_id,user_id);
+        return blogZans;
+    }
+
+    @Override//增加赞
+    public boolean addZanRecord(BlogZan blogZan) {
+        return blogContentMapper.addZanRecord(blogZan);
+    }
+
+    @Override//删除赞
+    public boolean deleteZanRecordByZanId(int zan_id) {
+        return blogContentMapper.deleteZanRecordByZanId(zan_id);
+    }
 
     @Override//查询浏览量最高的一条
     public BlogUserPicsLabel selectOneBlogOrderBlogBrowse() {

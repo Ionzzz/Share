@@ -34,50 +34,12 @@
 
     <!-- Modernizr JS -->
     <script src="<%=basePath%>js/index-js/modernizr-3.5.0.min.js"></script>
+    <script type='text/javascript' src='<%=basePath %>js/index-js/jquery-1.11.2.js'></script>
+    <script type='text/javascript' src='<%=basePath %>layer/layer.js'></script>
 </head>
 <body class="single">
 
-<header id="header">
-    <div id="header-top">
-        <div class="wrapper clearfix">
-            <nav id="navigation">
-                <ul class="menu">
-                    <li>
-                        <a href="<%=basePath%>index/main.action">首页</a>
-                        <ul>
-                            <li class="current-menu-item"><a href="index.jsp">Home Version 1</a></li>
-                            <li><a href="#">Home Version 2</a></li>
-                            <li><a href="#">Home Version 3</a></li>
-                            <li><a href="#">Home Version 4</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="new.jsp">最新</a>
-                        <ul>
-                            <li><a href="#">Right Sidebar</a></li>
-                            <li><a href="#">Left Sidebar</a></li>
-                            <li><a href="#">No Sidebar</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="topic.jsp">话题</a></li>
-                    <li class="current-menu-item"><a href="single.jsp">发布</a></li>
-                    <li><a href="treehole.jsp">树洞</a></li>
-                    <li><a href="about.jsp">关于我们</a></li>
-                    <li><a href="contactUs.jsp">联系我们</a></li>
-
-                </ul><!-- .menu -->
-            </nav><!-- #navigation -->
-            <div id="header-search">
-                <div class="header-search-inner">
-                    <form method="get" action="">
-                        <input type="text" name="s" placeholder="Search and hit enter" autocomplete="off"/>
-                    </form>
-                    <span class="header-search-icon"><span class="fa fa-search"></span></span>
-                </div><!-- .search-form-wrapper -->
-            </div><!-- #header-search -->
-        </div><!-- .wrapper -->
-    </div><!-- #header-top -->
-</header>
+<c:import url="header.jsp" ></c:import>
 
 
 <div id="fh5co-title-box" style=" background-image: url(<%=basePath%>images/index-images/letter_bg_01.jpg);  background-position: 0px 50%;" data-stellar-background-ratio="0.5">
@@ -137,78 +99,55 @@
 </div>
 <div id="comments">
     <div class="white-wrap container">
-        <ol class="comments">
-            <li class="comment"><span class="comment-author-avatar">
-					<img src="<%=basePath%>images/index-images/comments/placeholder.png" alt="" />
-			</span>
-                <div class="comment-inner">
-                    <div class="comment-info clearfix">
-                        <div class="comment-meta">
-                            <span class="comment-meta-author">Stephany Moore</span>
-                            <span class="comment-meta-date">March 31, 2015</span>
-                        </div>
-                        <!-- .comment-meta -->
-                        <span class="comment-reply"> <a rel="nofollow" href="#">Reply</a></span>
-                    </div>
-                    <!-- .comment-info -->
-                    <div class="comment-main">
-                        <p>Proin quis nunc ut quam fermentum dignissim. Fusce mi
-                            nisl, auctor non laoreet a, auctor vel sem. Ut quis ex quis
-                            turpis accumsan molestie. Cras lobortis, elit vitae tincidunt
-                            varius, arcu augue vehicula tellus, vel aliquet ante odio eu mi.
-                            Nam nec nulla elit.</p>
-                    </div>
-                    <!-- .comment-main -->
-                </div> <!-- .comment-inner -->
-                <ul class="comment-children">
-                    <li class="comment"><span class="comment-author-avatar"><img src="<%=basePath%>images/index-images/comments/placeholder.png" alt="" /></span>
-                        <div class="comment-inner">
-                            <div class="comment-info clearfix">
-                                <div class="comment-meta">
-                                    <span class="comment-meta-author">Stephany Moore</span>
-                                    <span class="comment-meta-date">March 31, 2015</span>
-                                </div>
-                                <!-- .comment-meta -->
-                                <span class="comment-reply"> <a rel="nofollow" href="#">Reply</a>
-								</span>
+        <div>
+            <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">${blogComments.size()}条评论</div>
+        </div>
+
+        <c:forEach items="${blogComments}" var="bcomment">
+
+            <ol class="comments">
+                <li class="comment">
+                    <c:choose>
+                        <c:when test="${bcomment.commentId==0}">
+                            暂无人评论
+                        </c:when>
+                    <c:otherwise>
+                    <span class="comment-author-avatar">
+                        <img src="<%=basePath%>images/index-images/comments/placeholder.png" alt="" />
+                    </span>
+                    <div class="comment-inner">
+                        <div class="comment-info clearfix">
+                            <div class="comment-meta">
+                                <span class="comment-meta-author">${bcomment.userAccount}${bcomment.userNickName}</span>
+                                <span class="comment-meta-date">${bcomment.commentTime}</span>
                             </div>
-                            <!-- .comment-info -->
-                            <div class="comment-main">
-                                <p>Proin quis nunc ut quam fermentum dignissim. Fusce mi
-                                    nisl, auctor non laoreet a, auctor vel sem. Ut quis ex quis
-                                    turpis accumsan molestie. Cras lobortis, elit vitae tincidunt
-                                    varius, arcu augue vehicula tellus, vel aliquet ante odio eu
-                                    mi. Nam nec nulla elit.</p>
-                            </div>
-                            <!-- .comment-main -->
-                        </div> <!-- .comment-inner --></li>
-                    <!-- .comment -->
-                </ul> <!-- .children --></li>
-            <!-- .comment -->
-            <li class="comment"><span class="comment-author-avatar"><img src="<%=basePath%>images/index-images/comments/placeholder.png" alt="" /></span>
-                <div class="comment-inner">
-                    <div class="comment-info clearfix">
-                        <div class="comment-meta">
-                            <span class="comment-meta-author">Stephany Moore</span> <span class="comment-meta-date">March 31, 2015</span>
+                            <!-- .comment-meta -->
+                            <span id="ReplyComment"><a href="javascript:void(0)" onclick="showAllReplyComment(this,'${bcomment.commentId}')">&nbsp;&nbsp;&nbsp;&nbsp;显示评论</a></span>
+                            <span class="comment-reply"> <a rel="nofollow" href="javascript:void(0)" onclick="blogComment('2','${bcomment.commentId}')" >Reply</a></span>
                         </div>
-                        <!-- .comment-meta -->
-                        <span class="comment-reply"> <a rel="nofollow" href="#">Reply</a>
-						</span>
-                    </div>
-                    <!-- .comment-info -->
-                    <div class="comment-main">
-                        <p>Proin quis nunc ut quam fermentum dignissim. Fusce mi
-                            nisl, auctor non laoreet a, auctor vel sem. Ut quis ex quis
-                            turpis accumsan molestie. Cras lobortis, elit vitae tincidunt
-                            varius, arcu augue vehicula tellus, vel aliquet ante odio eu mi.
-                            Nam nec nulla elit.</p>
-                    </div>
-                    <!-- .comment-main -->
-                </div> <!-- .comment-inner --></li>
-            <!-- .comment -->
-        </ol>
+                        <!-- .comment-info -->
+                        <div class="comment-main">
+                            <p>${bcomment.commentContent}</p>
+                        </div>
+                        <!-- .comment-main -->
+                    </div> <!-- .comment-inner -->
+
+                    <ul class="comment-children">
+                        <div name="${bcomment.commentId}">
+
+                        </div>
+                        <!-- .comment -->
+                    </ul> <!-- .children -->
+
+                    </c:otherwise>
+                    </c:choose>
+                </li>
+                <!-- .comment -->
+            </ol>
+        </c:forEach>
     </div>
     <!-- .white-wrap -->
+
 </div>
 <!-- #comments -->
 
@@ -326,7 +265,7 @@
                 <a href="#" class="footer_img_post_6"><img src="<%=basePath%>images/index-images/ryan-moreno-98837.jpg" alt="img"/></a>
             </div>
         </div>
-        <div class="row justify-content-center pt-2 pb-4">
+        <%--<div class="row justify-content-center pt-2 pb-4">
             <div class="col-12 col-md-8 col-lg-7 ">
                 <div class="input-group">
                     <span class="input-group-addon fh5co_footer_text_box" id="basic-addon1"><i class="fa fa-envelope"></i></span>
@@ -334,7 +273,7 @@
                     <a href="#" class="input-group-addon fh5co_footer_subcribe" id="basic-addon12"> <i class="fa fa-paper-plane-o"></i>&nbsp;&nbsp;发送</a>
                 </div>
             </div>
-        </div>
+        </div>--%>
     </div>
 </div>
 <div class="container-fluid fh5co_footer_right_reserved">
@@ -346,6 +285,89 @@
 <div class="gototop js-top">
     <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
 </div>
+
+<script type="text/javascript">
+
+    //        评论回复遮罩层
+    function blogComment(flag,blogId){
+        $.ajax({
+            type:'post',
+            url:'${pageContext.request.contextPath }/single/InsertBlogCommentBlogId.action?flag='+flag,
+            data:{'blogId':blogId},
+            dateType:'json',
+            success:function (data) {
+                layer.open({
+                    type: 2,
+                    title: '写下你想说的话吧',
+                    maxmin: false,
+                    anim:4,
+                    String:"",
+                    shadeClose: true, //点击遮罩关闭层
+                    area: ['800px', '400px'],
+                    content: '<%=basePath%>jsp/publishShuDong.jsp',
+
+                });
+            }
+        });
+
+    }
+
+
+    //        异步刷新评论
+    function showAllReplyComment(obj,commentId){
+        $.ajax({
+            type:"post",
+            url:'${pageContext.request.contextPath }/single/ReplyComment.action',
+            data : {"commentId":commentId},
+            dateType:'json',
+            success:function (data) {
+//                  获得二级评论
+                if( !$.isEmptyObject(data)){
+                    $("div[name="+commentId+"]").empty();
+
+                    for (var i=0;i<data.length;i++){
+                        var str1="<li class=\"comment\">" +
+                            "       <div class=\"comment-inner\">\n" +
+                            "           <div class=\"comment-info clearfix\">\n" +
+                            "               <div class=\"comment-meta\"> ";
+                        var str2="              <span class=\"comment-meta-author\">"+data[i].userNickName+"</span>";
+                        var str3="              <time><span class=\"comment-meta-date\">"+data[i].replycommenttime+"</span></time>" +
+                            "               </div>";
+                        var str4="          <span class=\"comment-reply\"> <a rel=\"nofollow\" href='javascript:void(0)' onclick='blogComment(3,"+data[i].replycommentId+")'>Reply</a></span>" +
+                            "           </div>";
+                        var str8="      <div class=\"comment-main\"> <p>"+data[i].replycommentcontent+"</p>" +
+                            "           </div>" +
+                            "       </div>" +
+                            "     </li>";
+                        $("div[name="+commentId+"]").append(str1+str2+str3+str4+str8);
+                    }
+                    var str6="<a href='javascript:void(0)' onclick='packUp(this,"+commentId+")'>&nbsp;&nbsp;&nbsp;&nbsp;收起</a></p>";
+                    $("div[name="+commentId+"]").append(str6);
+                }else{
+                    var str5="<i style='font-size: 15px; font-weight: bolder; color: #959381;'>暂时没有评论哦</i>";
+                    var str7="<a href='javascript:void(0)' onclick='packUp(this,"+commentId+")'>&nbsp;&nbsp;&nbsp;&nbsp;收起</a></p>";
+                    $("div[name="+commentId+"]").html(str5+str7);
+                }
+            }
+        });
+    }
+
+    //        收起
+    function packUp(obj,commentId) {
+        $.ajax({
+            type:"post",
+            dateType:'json',
+            success:function (data) {
+                var str8="";
+                $("div[name="+commentId+"]").html(str8);
+            }
+        });
+
+    }
+
+</script>
+
+
 
 <script src="<%=basePath%>js/index-js/jquery.min.js"></script>
 <script src="<%=basePath%>js/index-js/owl.carousel.min.js"></script>

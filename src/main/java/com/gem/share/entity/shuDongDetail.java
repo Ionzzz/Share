@@ -12,6 +12,7 @@ public class shuDongDetail {
     private String commentContent;
     private String commentTime;
     private String userAccount;
+    private String userNickName;
 
     public shuDongDetail() {
     }
@@ -26,6 +27,7 @@ public class shuDongDetail {
                 ", commentContent='" + commentContent + '\'' +
                 ", commentTime='" + commentTime + '\'' +
                 ", userAccount='" + userAccount + '\'' +
+                ", userNickName='" + userNickName + '\'' +
                 '}';
     }
 
@@ -91,5 +93,13 @@ public class shuDongDetail {
 
     public void setCommentTime(String commentTime) {
         this.commentTime = commentTime;
+    }
+
+    public String getUserNickName() {
+        return userNickName;
+    }
+
+    public void setUserNickName(String userNickName) {
+        this.userNickName = userNickName;
     }
 }

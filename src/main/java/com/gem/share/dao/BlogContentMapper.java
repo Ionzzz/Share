@@ -1,8 +1,6 @@
 package com.gem.share.dao;
 
-import com.gem.share.entity.BlogContent;
-import com.gem.share.entity.BlogContentExample;
-import com.gem.share.entity.BlogUserPicsLabel;
+import com.gem.share.entity.*;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.Date;
@@ -70,7 +68,27 @@ public interface BlogContentMapper {
     public BlogUserPicsLabel selectOneBlogOrderBlogBrowse();
 //    增加一次浏览量
     public boolean updateBlogBrowse(int blog_id);
-
+//      标签名查BlogUserPicsLabel
     public List<BlogUserPicsLabel> selectBlogUserPicsLabelByLabelName(String labelName);
+  //    删除用户点赞记录-->
+    public boolean deleteZanRecordByZanId(int zan_id);
+      //    增加用户点赞记录-->
+    public boolean addZanRecord(BlogZan blogZan);
+    //    根据用户id查询用户是否对该博客有点赞记录-->
+    public List<BlogZan> selectZanRecordByUserId(@Param(value = "blogId") int blog_id, @Param(value = "userId") int user_id);
+    //    单个博客评论
+    public List<shuDongDetail> selectAllBlogCommentByBlogId(int blog_id);
+     //    根据一级评论的comment_id获得评论的评论 二级评论-->
+    public List<ReplyCommentDetail> selectAllReplyComment(int comment_id);
+    //    从二级评论中得到所有的replyComment_id，进而查出所有三级及以下评论-->
+    public List<ReplyCommentDetail> selectAllThirdReplyComment(int replyComment_id);
+    //    插入一级博客评论内容
+    public boolean insertBlogComment(BlogComment blogComment);
+    //    插入二级评论内容-->
+    public boolean insertReplyComment(ReplyComment replyComment);
+    //    插入三级评论内容-->
+    public boolean insertThirdReplyComment(ReplyComment replyComment);
+    //    三级评论：根据comment_id 查出 replycomment_id-->
+    public int selectUserIdByCommentId(int comment_id);
 
 }

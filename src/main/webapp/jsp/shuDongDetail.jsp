@@ -170,16 +170,16 @@
                                 <c:otherwise>
                                     <%--有数据显示--%>
                                     <div id="comment-969" class="comment_body contents">
-
                                         <div class="profile">
                                             <a href=""><img src="<%=basePath%>images/shudong-images/9cc50a9e422fb1c89aebafeb959cef7a.jpg" class="gravatar" alt="小布丁"></a>
                                         </div>
                                         <div class="main shadow">
-
                                             <div class="commentinfo">
                                                 <section class="commeta">
                                                     <div class="shang">
-                                                        <h4 class="author"><a href="" target="_blank"><img src="<%=basePath%>images/shudong-images/9cc50a9e422fb1c89aebafeb959cef7a.jpg" class="gravatarsmall" alt="小布丁">${sdd.userAccount}</a>
+                                                        <h4 class="author">
+                                                            <a href="" target="_blank">
+                                                                <img src="<%=basePath%>images/shudong-images/9cc50a9e422fb1c89aebafeb959cef7a.jpg" class="gravatarsmall" alt="小布丁">${sdd.userAccount}</a>
                                                                 <%--<a href="<%=basePath%>shuDong/ReplyComment.action?commentId=${sdd.commentId}" style="font-size: 13px;">&nbsp;&nbsp;&nbsp;&nbsp;显示所有评论</a>--%>
                                                             <span id="ReplyComment"><a href="javascript:void(0)" onclick="showAllReplyComment(this,'${sdd.commentId}')">&nbsp;&nbsp;&nbsp;&nbsp;显示评论</a></span>
                                                         </h4>
@@ -223,7 +223,7 @@
 <div class="p-header">
     <figure class="p-image" style="background-image: url(<%=basePath%>images/shudong-images/47fb3c_9afed6c259f94589881bd55376206366mv2_d_3840_5784_s_4_2.jpg);"></figure>
 </div>
-<
+
 
 <footer id="footer" class="overlay animated from-top">
 
@@ -242,7 +242,7 @@
             </i></a>
         </li>
     </div>
-
+</footer>
     <script type="text/javascript">
 
 //        评论回复遮罩层
@@ -280,6 +280,7 @@
                 success:function (data) {
 //                  获得二级评论
                     if( !$.isEmptyObject(data)){
+                        $("div[name="+commentId+"]").empty();
                         for (var i=0;i<data.length;i++){
                             var str1="<i style='font-size: 15px; font-weight: bolder; color: #959381;'>"
                                 +data[i].userAccount+"&nbsp;&nbsp;评论了&nbsp;&nbsp;share_"+data[i].commentUserId+"&nbsp;&nbsp;:&nbsp;&nbsp;</i>";

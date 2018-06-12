@@ -54,7 +54,7 @@ public class ShuDongServiceImpl implements ShuDongService {
     }
 
     @Override
-    public List<replyCommentDetail> selectAllReplyComment(int comment_id) {
+    public List<ReplyCommentDetail> selectAllReplyComment(int comment_id) {
         return shuDongMapper.selectAllReplyComment(comment_id);
     }
 
@@ -64,7 +64,7 @@ public class ShuDongServiceImpl implements ShuDongService {
     }
 
     @Override
-    public List<replyCommentDetail> selectAllThirdReplyComment(int replyComment_id){
+    public List<ReplyCommentDetail> selectAllThirdReplyComment(int replyComment_id){
         return shuDongMapper.selectAllThirdReplyComment(replyComment_id);
     }
 

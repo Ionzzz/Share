@@ -1,6 +1,7 @@
 package com.gem.share.control;
 
 import com.gem.share.entity.BlogUserPicsLabel;
+import com.gem.share.entity.BlogZan;
 import com.gem.share.entity.LabelInfo;
 import com.gem.share.entity.UserInfo;
 import com.gem.share.service.BlogService;
@@ -14,6 +15,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 
@@ -59,7 +61,37 @@ public class IndexControl {
     }
 
 
+    @RequestMapping("/zan.action")
+    public void zan(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String userId = request.getParameter("userId");
+        String blogId = request.getParameter("blogId");
 
+        List<BlogZan> blogZans =blogService.selectZanRecordByUserId(Integer.parseInt(blogId),Integer.parseInt(userId));
+        if(blogZans != null && blogZans.size()>0){
+//            删除记录
+            boolean f1 = blogService.deleteZanRecordByZanId(blogZans.get(0).getBlogzanId());
+            if(f1){
+//                删除成功，得到该篇文章点赞数
+                int sdCount = blogService.selectBlogUserPicsByBlogId(Integer.parseInt(blogId)).getZan();
+            }else{
+//                删除失败
+                System.out.println("系统维护中，点赞数删除失败");
+            }
+        }else{
+//        如果没有，增加该记录
+            BlogZan blogZan = new BlogZan();
+            blogZan.setBlogId(Integer.parseInt(blogId));
+            blogZan.setUserId(Integer.parseInt(userId));
+            blogZan.setZanTime(new Date());
+
+            blogService.addZanRecord(blogZan);
+
+//        文章点赞数+1
+            int sdCount = blogService.selectBlogUserPicsByBlogId(Integer.parseInt(blogId)).getZan();
+        }
+
+        request.getRequestDispatcher("/index/main.action").forward(request,response);
+    }
 
 
 

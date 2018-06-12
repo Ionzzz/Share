@@ -52,10 +52,10 @@ public class ShuDongControl {
 
     @RequestMapping("/Zan.action")
     public void Zan(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
-        String userId = request.getParameter("userId");
+        int userId=1;
         String blogId = request.getParameter("blogId");
 //        查询是否有该用户对该博客的点赞记录
-        List<BlogZan> blogZans = shuDongService.selectZanRecordByUserId(Integer.parseInt(blogId),Integer.parseInt(userId));
+        List<BlogZan> blogZans = shuDongService.selectZanRecordByUserId(Integer.parseInt(blogId),userId);
 
 //        如果有，删除该记录，同时文章点赞数-1
         if(blogZans != null && blogZans.size()>0){
@@ -74,7 +74,7 @@ public class ShuDongControl {
 //        如果没有，增加该记录
             BlogZan blogZan = new BlogZan();
             blogZan.setBlogId(Integer.parseInt(blogId));
-            blogZan.setUserId(Integer.parseInt(userId));
+            blogZan.setUserId(userId);
             blogZan.setZanTime(new Date());
 
             shuDongService.addZanRecord(blogZan);
@@ -99,15 +99,15 @@ public class ShuDongControl {
 
 
     @RequestMapping("/ReplyComment.action")
-    public @ResponseBody List<replyCommentDetail> ReplyComment(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public @ResponseBody List<ReplyCommentDetail> ReplyComment(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String commentId = request.getParameter("commentId");
 //        得到所有的二级评论
-        List<replyCommentDetail> replyCommentDetails = shuDongService.selectAllReplyComment(Integer.parseInt(commentId));
+        List<ReplyCommentDetail> ReplyCommentDetails = shuDongService.selectAllReplyComment(Integer.parseInt(commentId));
 
 //        以二级评论返回值中的属性作为参数查询三级及以下评论
-        List<replyCommentDetail> ThirdReplyComment = new ArrayList<>();//存放三级及以下评论的list集合
-        for(int i=0; i<replyCommentDetails.size(); i++){
-            ThirdReplyComment.addAll(shuDongService.selectAllThirdReplyComment(replyCommentDetails.get(i).getReplycommentId()));
+        List<ReplyCommentDetail> ThirdReplyComment = new ArrayList<>();//存放三级及以下评论的list集合
+        for(int i = 0; i< ReplyCommentDetails.size(); i++){
+            ThirdReplyComment.addAll(shuDongService.selectAllThirdReplyComment(ReplyCommentDetails.get(i).getReplycommentId()));
 
             if(ThirdReplyComment.size()==0){
                 continue;
@@ -123,9 +123,9 @@ public class ShuDongControl {
 
         }
 
-        replyCommentDetails.addAll(ThirdReplyComment);
+        ReplyCommentDetails.addAll(ThirdReplyComment);
 
-        return replyCommentDetails;
+        return ReplyCommentDetails;
     }
 
 

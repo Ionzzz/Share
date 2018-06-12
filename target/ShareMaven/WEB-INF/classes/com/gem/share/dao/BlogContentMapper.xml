@@ -514,4 +514,75 @@
     order by zan desc
   </select>
 
+  <!--//    删除用户点赞记录-->
+  <!--public boolean deleteZanRecordByZanId(int zan_id);-->
+  <delete id="deleteZanRecordByZanId" parameterType="int">
+    delete from blogzan WHERE blogZan_id = #{_parameter}
+  </delete>
+  <!--//    增加用户点赞记录-->
+  <!--public boolean addZanRecord(BlogZan blogZan);-->
+  <insert id="addZanRecord" parameterType="BlogZan">
+    INSERT INTO blogzan(blog_id,user_id,zan_time)VALUES(#{blogId},#{userId},#{zanTime})
+  </insert>
+  <!--//    根据用户id查询用户是否对该博客有点赞记录-->
+  <!--public List<BlogZan> selectZanRecordByUserId(int blog_id,int user_id);-->
+  <select id="selectZanRecordByUserId"  resultType="BlogZan" parameterType="BlogZan">
+    SELECT * FROM blogzan where blog_id=#{blogId} and user_id=#{userId}
+  </select>
+
+  <!--public List<shuDongDetail> selectAllBlogCommentByBlogId(int blog_id);-->
+  <select id="selectAllBlogCommentByBlogId" parameterType="int" resultType="shuDongDetail">
+    SELECT bc.blog_id,bc.blogContent,bc.blogCreateTime,userinfo.userAccount,userinfo.userNickName,
+    case when blogcomment.comment_id is null then 0 else blogcomment.comment_id end as comment_id,
+    case when blogcomment.commentTime is null then 0 else blogcomment.commentTime end as commentTime,
+    case when blogcomment.commentContent is null then 0 else blogcomment.commentContent end as commentContent
+    FROM blogContent bc
+    LEFT JOIN (SELECT commentContent,comment_id,commentTime,commentUser_id,blog_id FROM blogcomment ) blogcomment ON blogcomment.blog_id=bc.blog_id
+    LEFT JOIN userinfo ON blogcomment.commentUser_id = userinfo.user_id
+    WHERE bc.blog_id=#{_parameter}
+  </select>
+  <!--//    根据一级评论的comment_id获得评论的评论 二级评论-->
+  <!--public List<ReplyCommentDetail> selectAllReplyComment(int comment_id);-->
+  <select id="selectAllReplyComment" parameterType="int" resultType="replyCommentDetail">
+    SELECT r.replycomment_id,bc.commentUser_id,u.user_id,u.userAccount,u.userNickName,r.replycommentcontent,r.replycommenttime
+    FROM replycomment r,blogcomment bc,userinfo u
+    WHERE r.comment_id=bc.comment_id AND u.user_id=r.user_id  AND r.comment_id=#{_parameter}
+  </select>
+  <!--//    插入一级博客评论内容-->
+  <!--public boolean insertBlogComment(BlogComment blogComment);-->
+  <insert id="insertBlogComment" parameterType="BlogComment" useGeneratedKeys="true" keyProperty="commentId">
+    INSERT  into blogcomment  VALUES (#{commentId},#{blogId},#{commentuserId},#{commentcontent},#{commenttime})
+  </insert>
+  <!--//    从二级评论中得到所有的replyComment_id，进而查出所有三级及以下评论-->
+  <!-- public List<ReplyCommentDetail> selectAllThirdReplyComment(int replyComment_id);-->
+  <select id="selectAllThirdReplyComment" resultType="replyCommentDetail">
+    SELECT DISTINCT rr.replycomment_id,rb.user_id commentUser_id,rr.user_id,u.userAccount,u.userNickName,rr.replycommentcontent,rr.replycommenttime
+    from replycomment rr,replycomment rb,userinfo u,blogcomment bc
+    WHERE rr.replycomment=#{_parameter}
+    AND u.user_id=rr.user_id
+    AND rr.replycomment is not null
+    AND rr.replycomment = rb.replycomment_id
+  </select>
+  <!--//    插入二级评论内容-->
+  <!--public boolean insertReplyComment(ReplyComment replyComment);-->
+  <insert id="insertReplyComment" parameterType="ReplyComment" useGeneratedKeys="true" keyProperty="replycommentId">
+    INSERT INTO replycomment
+    VALUES(#{replycommentId},null,#{commentId},#{userId},#{replycommentcontent},#{replycommenttime})
+  </insert>
+
+  <!--//    插入三级评论内容-->
+  <!--public boolean insertThirdReplyComment(ReplyComment replyComment);-->
+  <insert id="insertThirdReplyComment" parameterType="ReplyComment">
+    INSERT INTO replycomment
+    VALUES(#{replycommentId},#{replycomment},NULL,#{userId},#{replycommentcontent},#{replycommenttime})
+  </insert>
+
+  <!--//    三级评论：根据comment_id 查出 replycomment_id-->
+  <!--public int selectUserIdByCommentId(int comment_id);-->
+  <select id="selectUserIdByCommentId" parameterType="int" resultType="int">
+    SELECT replycomment_id FROM blogcomment
+    WHERE comment_id = #{_parameter}
+  </select>
+
+
 </mapper>

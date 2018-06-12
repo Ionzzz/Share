@@ -82,7 +82,7 @@
                             <%--</li>--%>
 
                             <li id="menu-item-78" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78">
-                                <a href="index.html" style="font-size: 16px;">首页</a>
+                                <a href="<%=basePath%>index/main.action" style="font-size: 16px;">首页</a>
                             </li>
                             <li id="menu-item-57" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-57">
                                 <a href="gustbook.html" style="font-size: 16px;">最热</a>
@@ -175,7 +175,9 @@
                                             <a href="<%= basePath %>shuDong/Zan.action?userId=1&blogId=${sd.blogId}">
                                                 <img id="zanImg" src="<%= basePath %>images/shudong-images/preZan.png"/>
                                             </a>
-                                            <span class="total-comments-on-post pull-right"><a href="<%= basePath %>shuDong/DetailComment.action?blogId=${sd.blogId}">${sd.bcCount} 条评论</a></span>
+                                            <span class="total-comments-on-post pull-right">
+                                                <a href="<%= basePath %>shuDong/DetailComment.action?blogId=${sd.blogId}">${sd.bcCount} 条评论</a>
+                                            </span>
                                         </div>
                                     </div>
                                 </div>

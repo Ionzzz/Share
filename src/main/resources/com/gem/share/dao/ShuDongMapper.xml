@@ -51,7 +51,7 @@
   <!--//    获得具体树洞页面内容-->
   <!--public List<shuDongDetail> selectAllShuDongComment(int blog_id);-->
   <select id="selectAllShuDongComment" parameterType="int" resultType="shuDongDetail">
-    SELECT bc.blog_id,bc.blogContent,bc.blogCreateTime,userinfo.userAccount,
+    SELECT bc.blog_id,bc.blogContent,bc.blogCreateTime,userinfo.userAccount,userinfo.userNickName,
 case when blogcomment.comment_id is null then 0 else blogcomment.comment_id end as comment_id,
 case when blogcomment.commentTime is null then 0 else blogcomment.commentTime end as commentTime,
 case when blogcomment.commentContent is null then 0 else blogcomment.commentContent end as commentContent
@@ -68,11 +68,11 @@ WHERE blogFlag=1 AND bc.blog_id=#{_parameter}
   </select>
 
   <!--//    根据一级评论的comment_id获得树洞评论的评论 二级评论-->
-  <!--public List<replyCommentDetail> selectAllReplyComment(int comment_id);-->
+  <!--public List<ReplyCommentDetail> selectAllReplyComment(int comment_id);-->
   <select id="selectAllReplyComment" parameterType="int" resultType="replyCommentDetail">
-    SELECT r.replycomment_id,bc.commentUser_id,u.user_id,u.userAccount,r.replycommentcontent,r.replycommenttime
-FROM replycomment r,blogcomment bc,userinfo u
-WHERE r.comment_id=bc.comment_id AND u.user_id=r.user_id  AND r.comment_id=#{_parameter}
+    SELECT r.replycomment_id,bc.commentUser_id,u.user_id,u.userAccount,u.userNickName,r.replycommentcontent,r.replycommenttime
+    FROM replycomment r,blogcomment bc,userinfo u
+    WHERE r.comment_id=bc.comment_id AND u.user_id=r.user_id  AND r.comment_id=#{_parameter}
   </select>
 
   <!--//    插入一级博客评论内容-->
@@ -83,9 +83,9 @@ WHERE r.comment_id=bc.comment_id AND u.user_id=r.user_id  AND r.comment_id=#{_pa
 
 
   <!--//    从二级评论中得到所有的replyComment_id，进而查出所有三级及以下评论-->
-  <!-- public List<replyCommentDetail> selectAllThirdReplyComment(int replyComment_id);-->
+  <!-- public List<ReplyCommentDetail> selectAllThirdReplyComment(int replyComment_id);-->
   <select id="selectAllThirdReplyComment" resultType="replyCommentDetail">
-SELECT DISTINCT rr.replycomment_id,rb.user_id commentUser_id,rr.user_id,u.userAccount,rr.replycommentcontent,rr.replycommenttime
+SELECT DISTINCT rr.replycomment_id,rb.user_id commentUser_id,rr.user_id,u.userAccount,u.userNickName,rr.replycommentcontent,rr.replycommenttime
 from replycomment rr,replycomment rb,userinfo u,blogcomment bc
 WHERE rr.replycomment=#{_parameter}
 AND u.user_id=rr.user_id

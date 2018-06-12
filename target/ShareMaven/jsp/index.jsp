@@ -73,7 +73,8 @@
                 </div>
 <%--头像  个人中心--%>
                 <div class="text-center d-inline-block">
-                    <a href="personalpage/personal.jsp" target="_blank" class="fh5co_display_table"><div class="fh5co_verticle_middle"><i class="fa fa-facebook"></i></div><img src="<%=basePath%>images/index-images/person_1.jpg" height="50px" width="50px"/></a>
+                    <a href="personalpage/personal.action" target="_blank" class="fh5co_display_table">
+                        <div class="fh5co_verticle_middle"><i class="fa fa-facebook"></i></div><img src="<%=basePath%>images/index-images/person_1.jpg" height="50px" width="50px"/></a>
                 </div>
                 <!--<div class="d-inline-block text-center"><img src="images/country.png" alt="img" class="fh5co_country_width"/></div>-->
                 <div class="d-inline-block text-center dd_position_relative ">
@@ -130,7 +131,16 @@
                     <img src="<%=basePath%>${blogone.blogPics.pic}" style="height:100%" alt="img"/>
                 </a>
                 <div class="fh5co_suceefh5co_height_position_absolute">
-                    <p style="margin:30px;text-align: right">热度：${blogone.liulan}</p>
+                    <p style="margin:30px;color: #00DFB9;text-align: right">
+                        热度：${blogone.liulan}<br/>
+                        <a href="<%= basePath %>index/zan.action?userId=1&blogId=${blogone.blogContent.blogId}">
+                            <img id="zanImg" src="<%= basePath %>images/shudong-images/preZan.png"/>
+                        </a>&nbsp;&nbsp;${blogone.zan}<br/>
+                        评论：${blogone.pinglun}
+                        <span class="total-comments-on-post pull-right">
+                           <a href="<%= basePath %>single/main.action?blogId=${blogone.blogContent.blogId}">${blogone.pinglun} 条评论</a>
+                        </span>
+                       </p>
                 </div>
                 <div class="fh5co_suceefh5co_height_position_absolute_font">
                      <i class="fa fa-clock-o"></i>&nbsp;&nbsp;<fmt:formatDate value="${blogone.blogContent.blogcreatetime}" pattern="MM-dd-yyyy"/>

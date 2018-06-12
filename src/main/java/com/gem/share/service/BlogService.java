@@ -1,7 +1,6 @@
 package com.gem.share.service;
 
-import com.gem.share.entity.BlogContent;
-import com.gem.share.entity.BlogUserPicsLabel;
+import com.gem.share.entity.*;
 import com.github.pagehelper.PageInfo;
 
 import java.util.Date;
@@ -10,6 +9,20 @@ import java.util.Map;
 
 public interface BlogService {
 
+    //    插入二级评论内容-->
+    public boolean insertReplyComment(ReplyComment replyComment);
+    //    插入三级评论内容-->
+    public boolean insertThirdReplyComment(ReplyComment replyComment);
+    //    三级评论：根据comment_id 查出 replycomment_id-->
+    public int selectUserIdByCommentId(int comment_id);
+
+    public boolean insertBlogComment(BlogComment blogComment);
+    public List<ReplyCommentDetail> selectAllThirdReplyComment(int replyComment_id);
+    public List<ReplyCommentDetail> selectAllReplyComment(int comment_id);
+    public List<shuDongDetail> selectAllBlogCommentByBlogId(int blog_id);
+    public List<BlogZan> selectZanRecordByUserId(int blog_id,int user_id);
+    public boolean addZanRecord(BlogZan blogZan);
+    public boolean deleteZanRecordByZanId(int zan_id);
     public BlogUserPicsLabel selectOneBlogOrderBlogBrowse();//查询浏览量最高的博客
 
     public String selectPicByBlogPicsId(int blogPics_id);
@@ -37,6 +50,7 @@ public interface BlogService {
 
 //    根据博客id查找博客全部内容
     public BlogContent selectBlogByBlogId(int blog_id);
+
     public BlogUserPicsLabel selectBlogUserPicsByBlogId(int blog_id);
 
     public List<String> selectBlogLabelNameByBlogId(int blog_id);
