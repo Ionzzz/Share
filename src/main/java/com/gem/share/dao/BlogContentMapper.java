@@ -60,7 +60,7 @@ public interface BlogContentMapper {
 
     public List<BlogUserPicsLabel> selectBlogCountOrderPinglun(int count);
 
-    public List<BlogUserPicsLabel> selectOrderBlogUserPics();
+    public List<BlogUserPicsLabel> selectOrderBlogUserPics(String searchContent);
 
     public BlogUserPicsLabel selectBlogUserPicsByBlogId(int blog_id);
 
@@ -69,7 +69,11 @@ public interface BlogContentMapper {
 //    增加一次浏览量
     public boolean updateBlogBrowse(int blog_id);
 //      标签名查BlogUserPicsLabel
-    public List<BlogUserPicsLabel> selectBlogUserPicsLabelByLabelName(String labelName);
+    public List<BlogUserPicsLabel> selectBlogUserPicsLabelByLabelNameOrderZan(String labelName);
+    public List<BlogUserPicsLabel> selectBlogUserPicsLabelByLabelNameOrderPingLun(String labelName);
+    public List<BlogUserPicsLabel> selectBlogUserPicsLabelByLabelNameOrderLiuLan(String labelName);
+    public List<BlogUserPicsLabel> selectBlogUserPicsLabelByLabelNameOrderTime(String labelName);
+
   //    删除用户点赞记录-->
     public boolean deleteZanRecordByZanId(int zan_id);
       //    增加用户点赞记录-->
@@ -90,5 +94,9 @@ public interface BlogContentMapper {
     public boolean insertThirdReplyComment(ReplyComment replyComment);
     //    三级评论：根据comment_id 查出 replycomment_id-->
     public int selectUserIdByCommentId(int comment_id);
+
+    public List<BlogUserPicsLabel> selectAllBlogByUserId(int user_id);
+
+    public List<BlogUserPicsLabel> selectCountBlogByUserId(int user_id,int count);
 
 }

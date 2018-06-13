@@ -83,12 +83,14 @@
 
                 </ul><!-- .menu -->
             </nav><!-- #navigation -->
-            <div id="header-search">
-                <div class="header-search-inner">
-                    <input type="text" name="s" placeholder="Search and hit enter" autocomplete="off"/>
-                </div><!-- .search-form-wrapper -->
-            </div><!-- #header-search -->
-
+            <form method="post" action="<%=basePath%>new/main.action">
+                <div id="header-search">
+                    <div class="header-search-inner">
+                        <input type="text" placeholder="Search and hit enter" autocomplete="off"name="searchContent"/>
+                        <input type="submit" name="submit"style="display: none" value=""/>
+                    </div><!-- .search-form-wrapper -->
+                </div><!-- #header-search -->
+            </form>
         </div><!-- .wrapper -->
     </div><!-- #header-top -->
 </header>
@@ -102,36 +104,47 @@
                         <div>
                             <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">News</div>
                         </div>
-                            <input type="hidden" name="curPage"  id="curPage">
-                            <c:forEach items="${pageInfo.list}" var="blog">
-                                <div class="row pb-4">
-                                    <div class="col-md-5">
-                                        <div class="fh5co_hover_news_img">
-                                            <div class="fh5co_news_img" >
-                                                <a href="<%=basePath%>single/main.action?blogId=${blog.blogContent.blogId}">
-                                                    <img style="height: auto" src="<%=basePath%>${blog.blogPics.pic}" alt="" class="default-image"/>
-                                                </a>
-                                            </div>
-                                        </div><%-- onclick="window.location.href='<%=basePath%>single/main.action?blogId=${blog.blogContent.blogId}'"--%>
-                                    </div>
-                                    <div class="col-md-7 animate-box"style=" height: 200px; overflow:hidden;text-overflow:ellipsis;">
-                                        <p class="texthidden">
-                                            <a href="<%=basePath%>single/main.action?blogId=${blog.blogContent.blogId}" class="fh5co_magna py-2" >
-                                                <c:if test="${blog.labelInfo.labelname=='书籍'}">
-                                                    <c:set var="bookname" value=" ${blog.blogContent.blogcontent} "/>
-                                                    《${fn:substringBefore(bookname,"||" )}》
-                                                </c:if>
-                                                <c:if test="${blog.labelInfo.labelname!='书籍'}">
-                                                    ${blog.blogContent.blogcontent}
-                                                </c:if>
-                                            </a>
-                                        </p>
-                                            <a href="<%=basePath%>single/main.action?blogId=${blog.blogContent.blogId}" class="fh5co_mini_time py-3">${blog.userInfo.usernickname}-<fmt:formatDate value="${blog.blogContent.blogcreatetime}" pattern="yyyy-MM-dd HH:mm:ss"/> </a>
-                                        <p  style="float: right;position: relative">浏览量${blog.liulan}</p><br/>
-                                        <div class="fh5co_consectetur"> ${blog.blogContent.blogcontent}</div>
-                                    </div>
+                            <input type="hidden" name="curPage" id="curPage">
+                            <input type="hidden" name="searchContent" value="${searchContent}"></input>
+                        <c:choose>
+                            <c:when test="${pageInfo.total==0}">
+                                <div style="font-size:18px; text-align: center;">
+                                    <img src="<%= basePath %>images/shudong-images/noinfo.gif"/>
+                                    <a href="#">暂时没有此类文章存在，快去发布一个吧</a>
                                 </div>
-                            </c:forEach>
+                            </c:when>
+                            <c:otherwise>
+                                <c:forEach items="${pageInfo.list}" var="blog">
+                                    <div class="row pb-4">
+                                        <div class="col-md-5">
+                                            <div class="fh5co_hover_news_img">
+                                                <div class="fh5co_news_img" >
+                                                    <a href="<%=basePath%>single/main.action?blogId=${blog.blogContent.blogId}">
+                                                        <img style="height: auto" src="<%=basePath%>${blog.blogPics.pic}" alt="" class="default-image"/>
+                                                    </a>
+                                                </div>
+                                            </div><%-- onclick="window.location.href='<%=basePath%>single/main.action?blogId=${blog.blogContent.blogId}'"--%>
+                                        </div>
+                                        <div class="col-md-7 animate-box"style=" height: 200px; overflow:hidden;text-overflow:ellipsis;">
+                                            <p class="texthidden">
+                                                <a href="<%=basePath%>single/main.action?blogId=${blog.blogContent.blogId}" class="fh5co_magna py-2" >
+                                                    <c:if test="${blog.labelInfo.labelname=='书籍'}">
+                                                        <c:set var="bookname" value=" ${blog.blogContent.blogcontent} "/>
+                                                        《${fn:substringBefore(bookname,"||" )}》
+                                                    </c:if>
+                                                    <c:if test="${blog.labelInfo.labelname!='书籍'}">
+                                                        ${blog.blogContent.blogcontent}
+                                                    </c:if>
+                                                </a>
+                                            </p>
+                                                <a href="<%=basePath%>single/main.action?blogId=${blog.blogContent.blogId}" class="fh5co_mini_time py-3">${blog.userInfo.usernickname}-<fmt:formatDate value="${blog.blogContent.blogcreatetime}" pattern="yyyy-MM-dd HH:mm:ss"/> </a>
+                                            <p  style="float: right;position: relative">浏览量${blog.liulan}</p><br/>
+                                            <div class="fh5co_consectetur"> ${blog.blogContent.blogcontent}</div>
+                                        </div>
+                                    </div>
+                                 </c:forEach>
+                            </c:otherwise>
+                        </c:choose>
                     </div>
 
                 <div class="col-md-3 animate-box" data-animate-effect="fadeInRight">
@@ -141,7 +154,7 @@
                     <div class="clearfix"></div>
                     <div class="fh5co_tags_all">
                         <c:forEach items="${labelList}" var="labellist">
-                            <a href="#" class="fh5co_tagg">${labellist.labelname}</a>
+                            <a href="<%=basePath%>topic/main.action?labelId=${labellist.labelId}" class="fh5co_tagg">${labellist.labelname}</a>
                         </c:forEach>
                         <a href="#" class="fh5co_tagg">更多...</a>
                     </div>
@@ -151,17 +164,17 @@
                         <div class="fh5co_heading fh5co_heading_border_bottom pt-3 py-2 mb-4">Most Popular</div>
                     </div>
 
-
-                    <div class="row pb-3">
-                        <div class="col-5 align-self-center">
-                            <img src="<%=basePath%>images/index-images/download (1).jpg" alt="img" class="fh5co_most_trading"/>
+                    <c:forEach items="${blogpopular}" var="bpopular">
+                        <div class="row pb-3" style="margin: 20px auto">
+                            <div class="col-5 align-self-center">
+                                <img src="<%=basePath%>${bpopular.blogPics.pic}" alt="img" class="fh5co_most_trading"/>
+                            </div>
+                            <div class="col-7 paddding">
+                                <div class="most_fh5co_treding_font"> ${bpopular.blogContent.blogcontent}</div>
+                                <div class="most_fh5co_treding_font_123"><fmt:formatDate value="${bpopular.blogContent.blogcreatetime}" pattern="MM-dd_yyyy"/></div>
+                            </div>
                         </div>
-                        <div class="col-7 paddding">
-                            <div class="most_fh5co_treding_font"> Magna aliqua ut enim ad minim veniam quis nostrud.</div>
-                            <div class="most_fh5co_treding_font_123"> April 18, 2018</div>
-                        </div>
-                    </div>
-
+                    </c:forEach>
                 </div>
             </div>
 
@@ -169,20 +182,35 @@
                 <div class="col-12 text-center pb-4 pt-4">
                     <a href="javascript:getPage(1)" class="btn_mange_pagging"><i class="fa fa-long-arrow-left"></i>&nbsp;&nbsp; HOME PAGE</a>
 
-                    <c:if test="${pageInfo.pageNum==1}">
-                        <a href="javascript:getPage(${pageInfo.pageNum==1?1:pageInfo.prePage})" class="btn_pagging">${pageInfo.pageNum==1?1:pageInfo.prePage}</a>
-                        <a href="javascript:getPage(${pageInfo.pageNum==1?2:pageInfo.pageNum})" class="btn_pagging">${pageInfo.pageNum==1?2:pageInfo.pageNum}</a>
-                        <a href="javascript:getPage(${pageInfo.pageNum==1?3:pageInfo.nextPage})" class="btn_pagging">${pageInfo.pageNum==1?3:pageInfo.nextPage}</a>
-                    </c:if>
-                    <c:if test="${pageInfo.pageNum!=1&&pageInfo.pageNum!=pageInfo.pages}">
-                        <a href="javascript:getPage(${pageInfo.prePage})" class="btn_pagging">${pageInfo.prePage}</a>
+                    <c:if test="${pageInfo.pages==1}">
                         <a href="javascript:getPage(${pageInfo.pageNum})" class="btn_pagging">${pageInfo.pageNum}</a>
-                        <a href="javascript:getPage(${pageInfo.nextPage})" class="btn_pagging">${pageInfo.nextPage}</a>
                     </c:if>
-                    <c:if test="${pageInfo.pageNum==pageInfo.pages}">
-                        <a href="javascript:getPage(${pageInfo.pageNum==pageInfo.pages?pageInfo.prePage-1:pageInfo.prePage})" class="btn_pagging">${pageInfo.pageNum==pageInfo.pages?pageInfo.prePage-1:pageInfo.prePage}</a>
-                        <a href="javascript:getPage(${pageInfo.pageNum==pageInfo.pages?pageInfo.prePage:pageInfo.pageNum})" class="btn_pagging">${pageInfo.pageNum==pageInfo.pages?pageInfo.prePage:pageInfo.pageNum}</a>
-                        <a href="javascript:getPage(${pageInfo.pageNum==pageInfo.pages?pageInfo.pages:pageInfo.nextPage})" class="btn_pagging">${pageInfo.pageNum==pageInfo.pages?pageInfo.pages:pageInfo.nextPage}</a>
+                    <c:if test="${pageInfo.pages==2}">
+                        <c:if test="${pageInfo.pageNum==1}">
+                            <a href="javascript:getPage(${pageInfo.pageNum})" class="btn_pagging">${pageInfo.pageNum}</a>
+                            <a href="javascript:getPage(${pageInfo.nextPage})" class="btn_pagging">${pageInfo.nextPage}</a>
+                        </c:if>
+                        <c:if test="${pageInfo.pageNum==2}">
+                            <a href="javascript:getPage(${pageInfo.prePage})" class="btn_pagging">${pageInfo.prePage}</a>
+                            <a href="javascript:getPage(${pageInfo.pageNum})" class="btn_pagging">${pageInfo.pageNum}</a>
+                        </c:if>
+                    </c:if>
+                    <c:if test="${pageInfo.pages==3||pageInfo.pages>3}">
+                        <c:if test="${pageInfo.pageNum==1}">
+                            <a href="javascript:getPage(${pageInfo.pageNum==1?1:pageInfo.prePage})" class="btn_pagging">${pageInfo.pageNum==1?1:pageInfo.prePage}</a>
+                            <a href="javascript:getPage(${pageInfo.pageNum==1?2:pageInfo.pageNum})" class="btn_pagging">${pageInfo.pageNum==1?2:pageInfo.pageNum}</a>
+                            <a href="javascript:getPage(${pageInfo.pageNum==1?3:pageInfo.nextPage})" class="btn_pagging">${pageInfo.pageNum==1?3:pageInfo.nextPage}</a>
+                        </c:if>
+                        <c:if test="${pageInfo.pageNum!=1&&pageInfo.pageNum!=pageInfo.pages}">
+                            <a href="javascript:getPage(${pageInfo.prePage})" class="btn_pagging">${pageInfo.prePage}</a>
+                            <a href="javascript:getPage(${pageInfo.pageNum})" class="btn_pagging">${pageInfo.pageNum}</a>
+                            <a href="javascript:getPage(${pageInfo.nextPage})" class="btn_pagging">${pageInfo.nextPage}</a>
+                        </c:if>
+                        <c:if test="${pageInfo.pageNum==pageInfo.pages&&pageInfo.pageNum!=1}">
+                            <a href="javascript:getPage(${pageInfo.pageNum==pageInfo.pages?pageInfo.prePage-1:pageInfo.prePage})" class="btn_pagging">${pageInfo.pageNum==pageInfo.pages?pageInfo.prePage-1:pageInfo.prePage}</a>
+                            <a href="javascript:getPage(${pageInfo.pageNum==pageInfo.pages?pageInfo.prePage:pageInfo.pageNum})" class="btn_pagging">${pageInfo.pageNum==pageInfo.pages?pageInfo.prePage:pageInfo.pageNum}</a>
+                            <a href="javascript:getPage(${pageInfo.pageNum==pageInfo.pages?pageInfo.pages:pageInfo.nextPage})" class="btn_pagging">${pageInfo.pageNum==pageInfo.pages?pageInfo.pages:pageInfo.nextPage}</a>
+                        </c:if>
                     </c:if>
 
                  <%--       <a href="javascript:getPage(${pageInfo.prePage})" class="btn_pagging">${pageInfo.prePage}</a>

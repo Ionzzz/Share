@@ -10,6 +10,9 @@ public interface ShuDongService {
 //    获得所有未评论树洞内容
     public List<shuDong> selectAllShuDongContent(String searchContent);
 
+    //    按照热度排序--浏览量
+    public List<shuDong> selectAllShuDongContentBySDBrowse(String searchContent);
+
 //    根据用户id查询用户是否对该博客有点赞记录
     public List<BlogZan> selectZanRecordByUserId(int blog_id, int user_id);
 
@@ -46,12 +49,16 @@ public interface ShuDongService {
     //    三级评论：根据comment_id 查出 replycomment_id
     public int selectUserIdByCommentId(int comment_id);
 
-    //    搜索功能
-    public List<shuDong> searchShuDong(String searchSDContent);
-
     //    分页功能
-    public PageInfo<shuDong> pageShuDong(Map<String, Object> map,String searchContent);
+    public PageInfo<shuDong> pageShuDong(Map<String, Object> map, String searchContent, int pageShuDong);
 
+    //    树洞浏览量
+    public int selectSDBrowseByUserIdAndBlogId(int user_id, int blog_id);
 
+    //    当浏览量不超过5时，浏览量+1
+    public void insertSDBrowse(int user_id, int blog_id);
+
+    //    删除评论
+    public boolean deleteComment(int replyComment_id);
 
 }

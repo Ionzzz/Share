@@ -8,7 +8,9 @@ import java.util.List;
 import java.util.Map;
 
 public interface BlogService {
-
+    public List<LabelInfo> selectLabelByBlogId(int blog_id);
+    public List<BlogUserPicsLabel> selectCountBlogByUserId(int user_id,int count);
+    public List<BlogUserPicsLabel> selectAllBlogByUserId(int user_id);
     //    插入二级评论内容-->
     public boolean insertReplyComment(ReplyComment replyComment);
     //    插入三级评论内容-->
@@ -35,7 +37,10 @@ public interface BlogService {
     public PageInfo<BlogUserPicsLabel> selectAllBlogUserPicsByPageLabelName(Map<String,Object> map);
 
 
-    public List<BlogUserPicsLabel> selectBlogUserPicsByLabelName(String labelName);
+    public List<BlogUserPicsLabel> selectBlogUserPicsLabelByLabelNameOrderZan(String labelName);
+    public List<BlogUserPicsLabel> selectBlogUserPicsLabelByLabelNameOrderPingLun(String labelName);
+    public List<BlogUserPicsLabel> selectBlogUserPicsLabelByLabelNameOrderLiuLan(String labelName);
+    public List<BlogUserPicsLabel> selectBlogUserPicsLabelByLabelNameOrderTime(String labelName);
     public List<BlogUserPicsLabel> selectBlogUserPicsCountByLabelName(String labelName, int count);
     //    通过标签id找到博客
     public List<BlogContent> selectBlogByLabelId(int label_id);

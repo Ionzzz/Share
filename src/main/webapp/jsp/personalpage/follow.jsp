@@ -107,7 +107,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="row">
                 <div class="col-xs-3 banner-body-left">
                     <div class="logo">
-                        <h1><a href="../index.jsp"><img src="<%=path%>/images/personal-images/co.png"> <span>网名</span></a></h1>
+                        <h1><a href="/ShareMaven/personalpage/personal.action"><img src="<%=path%>/img${userinfo.userimg}" style="width: 80px; height: 80px"> <span>${userinfo.usernickname}</span></a></h1>
                     </div>
                     <div class="top-nav">
                         <nav class="navbar navbar-default">
@@ -128,7 +128,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <li><a href="/ShareMaven/personalpage/personal.action" class="hvr-underline-from-left"><i class="home1"></i>我的主页</a></li>
                                         <li><a href="/ShareMaven/personalpage/picture.action" class="hvr-underline-from-left"><i class="picture1"></i>相册</a></li>
                                         <li><a href="/ShareMaven/personalpage/dynamic.action" class="hvr-underline-from-left"><i class="edit1"></i>我的动态</a></li>
-                                        <li><a href="personaldata.jsp" class="hvr-underline-from-left"><i class="text-size1"></i>个人资料</a></li>
+                                        <li><a href="/ShareMaven/personalpage/data.action" class="hvr-underline-from-left"><i class="text-size1"></i>个人资料</a></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -243,6 +243,29 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 }
 
 
+
+                //                <button class="btn btn-default" type="submit">取消关注</button>
+                //             点击取消关注在关注列表中删除此人
+                function deleteCare(userId) {
+//                    alert("11111111111111111111111111111111"+userId);
+                    $.ajax({
+                        type:"post",
+                        url:'${pageContext.request.contextPath }/personalpage/deletefollow.action',
+                        data:{"userId":userId},
+                        dataType:'json',
+                        success:function (data) {
+//                            alert(data);
+                            if(data == true){
+                                alert("删除成功！！");
+                            }else {
+                                alert("删除失败！！");
+                            }
+
+                        }
+                    });
+                }
+
+
             </script>
 
             <div class="clearfix"> </div>
@@ -299,7 +322,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                                 <option>${groups}</option>
                                                             </c:forEach>
                                                         </select>
-                                                        <button class="btn btn-default" type="submit"
+                                                        <button class="btn btn-default" type="submit" onclick="deleteCare('${concerns.userId}')"
                                                                 style="float:left;height:27px;width: 50px;font-size:3px;padding: 0;margin-left: 3px">取消关注</button>
                                                     </p>
                                                 </div>

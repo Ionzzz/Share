@@ -35,7 +35,7 @@ public class TopicControl {
         LabelInfo labelInfo=labelInfoService.selectLabelInfoByLabelId(Integer.parseInt(labelId));
         request.setAttribute("labelinfo",labelInfo);
 
-        List<BlogUserPicsLabel> bloglist=blogService.selectBlogUserPicsByLabelName(labelInfo.getLabelname());
+        List<BlogUserPicsLabel> bloglist=blogService.selectBlogUserPicsLabelByLabelNameOrderZan(labelInfo.getLabelname());
         request.setAttribute("blogList",bloglist);
 
         List<BlogUserPicsLabel> blogflist=blogService.selectBlogCountOrderZan(3);

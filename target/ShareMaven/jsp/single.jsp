@@ -36,10 +36,23 @@
     <script src="<%=basePath%>js/index-js/modernizr-3.5.0.min.js"></script>
     <script type='text/javascript' src='<%=basePath %>js/index-js/jquery-1.11.2.js'></script>
     <script type='text/javascript' src='<%=basePath %>layer/layer.js'></script>
+
+
+    <style>
+        .texthidden{
+            white-space: nowrap;/*控制单行显示*/
+            overflow: hidden;/*超出隐藏*/
+            text-overflow: ellipsis;/*隐藏的字符用省略号表示*/
+        }
+        .default-image{
+            background: url("<%=basePath%>images/index-images/default.jpg");
+            no-repeat:50% 50%;
+        }
+    </style>
 </head>
 <body class="single">
 
-<c:import url="header.jsp" ></c:import>
+<c:import url="${basePath}header.jsp" ></c:import>
 
 
 <div id="fh5co-title-box" style=" background-image: url(<%=basePath%>images/index-images/letter_bg_01.jpg);  background-position: 0px 50%;" data-stellar-background-ratio="0.5">
@@ -57,14 +70,15 @@
                 <div>
                     <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4"><fmt:formatDate value="${blog.blogContent.blogcreatetime}" pattern="yyyy-MM-dd"/></div>
                 </div>
-                ${blog.blogContent.blogcontent}
-                <%--<p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla malesuada enim id enim congue
-                    convallis. Praesent a cursus orci. Proin mauris eros, rhoncus in risus nec, vestibulum dignissim
-                    diam. Duis dapibus, magna ac fringilla consectetur, tellus quam aliquam quam, molestie tincidunt
-                    justo risus et nunc. Donec quis justo nec diam hendrerit facilisis placerat non magna. Class aptent
-                    taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
-                </p>--%>
+                <div style="width:inherit;float: left;margin: 30px;" >
+                    <span>${blog.blogContent.blogcontent}</span>
+                </div>
+                <div style="width:inherit">
+                    <p> <img src="<%=basePath%>${blog.blogPics.pic}" style="height: 300px;margin:0 20px" align="left"hspace="5" vspace="5">
+                    </p>
+                </div>
+
+
 
             </div>
             <div class="col-md-3 animate-box" data-animate-effect="fadeInRight">
@@ -73,26 +87,25 @@
                 </div>
                 <div class="clearfix"></div>
                 <div class="fh5co_tags_all">
-                    <c:forEach items="${LabelName}" var="labelname">
-                        <a href="#" class="fh5co_tagg">${labelname}</a>
+                    <c:forEach items="${LabelInfo}" var="label">
+                        <a href="<%=basePath%>topic/main.action?labelId=${label.labelId}" class="fh5co_tagg">${label.labelname}</a>
                     </c:forEach>
-                    <a href="#" class="fh5co_tagg">更多</a>
-
+                    <a href="<%=basePath%>topic/all.action" class="fh5co_tagg">更多</a>
                 </div>
                 <div>
                     <div class="fh5co_heading fh5co_heading_border_bottom pt-3 py-2 mb-4">Most Popular</div>
                 </div>
-
-                <div class="row pb-3">
-                    <div class="col-5 align-self-center">
-                        <img src="<%=basePath%>images/index-images/allef-vinicius-108153.jpg" alt="img" class="fh5co_most_trading"/>
+                <c:forEach items="${bmore}" var="bmore">
+                    <div class="row pb-3">
+                        <div class="col-5 align-self-center">
+                            <img src="<%=basePath%>${bmore.blogPics.pic}" alt="img" class="fh5co_most_trading"/>
+                        </div>
+                        <div class="col-7 paddding">
+                            <div class="most_fh5co_treding_font texthidden">${bmore.blogContent.blogcontent}</div>
+                            <div class="most_fh5co_treding_font_123"><fmt:formatDate value="${bmore.blogContent.blogcreatetime}" pattern="yyyy-MM-dd"/></div>
+                        </div>
                     </div>
-                    <div class="col-7 paddding">
-                        <div class="most_fh5co_treding_font"> Enim ad minim veniam nostrud xercitation ullamco.</div>
-                        <div class="most_fh5co_treding_font_123"> April 18, 2018</div>
-                    </div>
-                </div>
-
+                </c:forEach>
             </div>
         </div>
     </div>
@@ -100,10 +113,21 @@
 <div id="comments">
     <div class="white-wrap container">
         <div>
-            <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">${blogComments.size()}条评论</div>
+            <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">
+                <c:choose>
+                    <c:when test="${blogmap['blogComments'].size()==1&&null==blogmap['blogComments'].get(0)||blogmap['blogComments'].size()==0}">
+                        0条评论
+                    </c:when>
+                    <c:otherwise>
+                        ${blogmap['blogComments'].size()}条评论
+                    </c:otherwise>
+                </c:choose>
+                <span><a rel='nofollow' class='comment-reply-link' href="javascript:void(0)"  aria-label='回复给ta' onclick="blogComment('1','${blog.blogContent.blogId}')">&nbsp;&nbsp;&nbsp;评论</a></span>
+            </div>
+
         </div>
 
-        <c:forEach items="${blogComments}" var="bcomment">
+        <c:forEach items="${blogmap['blogComments']}" var="bcomment" varStatus="status">
 
             <ol class="comments">
                 <li class="comment">
@@ -113,12 +137,12 @@
                         </c:when>
                     <c:otherwise>
                     <span class="comment-author-avatar">
-                        <img src="<%=basePath%>images/index-images/comments/placeholder.png" alt="" />
+                        <img src="<%=basePath%>img${blogmap['blogCommentUser'][status.count-1].userimg}" style="width: 80px;height: 80px;" alt="" />
                     </span>
                     <div class="comment-inner">
                         <div class="comment-info clearfix">
                             <div class="comment-meta">
-                                <span class="comment-meta-author">${bcomment.userAccount}${bcomment.userNickName}</span>
+                                <span class="comment-meta-author">${bcomment.userNickName}_(${bcomment.userAccount})</span>
                                 <span class="comment-meta-date">${bcomment.commentTime}</span>
                             </div>
                             <!-- .comment-meta -->
@@ -128,6 +152,7 @@
                         <!-- .comment-info -->
                         <div class="comment-main">
                             <p>${bcomment.commentContent}</p>
+
                         </div>
                         <!-- .comment-main -->
                     </div> <!-- .comment-inner -->
@@ -158,43 +183,25 @@
         <div>
             <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">Trending</div>
         </div>
-        <div class="owl-carousel owl-theme" id="slider2">
-            <div class="item px-2">
-                <div class="fh5co_hover_news_img">
-                    <div class="fh5co_news_img"><img src="<%=basePath%>images/index-images/39-324x235.jpg" alt=""/></div>
-                    <div>
-                        <a href="#" class="d-block fh5co_small_post_heading"><span class="">The top 10 best computer speakers in the market</span></a>
-                        <div class="c_g"><i class="fa fa-clock-o"></i> Oct 16,2017</div>
+        <div class="owl-carousel owl-theme" id="slider1">
+            <c:forEach items="${bpopular}" var="bpopular">
+                <div class="item px-2">
+                    <div class="fh5co_hover_news_img">
+                        <div class="fh5co_news_img">
+                            <a href="<%=basePath%>single/main.action?blogId=${bpopular.blogContent.blogId}" style="margin: auto" >
+                                <img src="<%=basePath%>${bpopular.blogPics.pic}" style="width:100%;margin:auto"  alt=""/>
+                            </a>
+                        </div>
+                        <div>
+                            <a href="<%=basePath%>single/main.action?blogId=${bpopular.blogContent.blogId}" class="d-block fh5co_small_post_heading">
+                                <p class="texthidden">${bpopular.blogContent.blogcontent}</p>
+                            </a>
+                            <div class="c_g"><i class="fa fa-clock-o"></i> <fmt:formatDate value="${bpopular.blogContent.blogcreatetime}" pattern="yyyy-MM-dd"/></div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="item px-2">
-                <div class="fh5co_hover_news_img">
-                    <div class="fh5co_news_img"><img src="<%=basePath%>images/index-images/joe-gardner-75333.jpg" alt=""/></div>
-                    <div>
-                        <a href="#" class="d-block fh5co_small_post_heading"><span class="">The top 10 best computer speakers in the market</span></a>
-                        <div class="c_g"><i class="fa fa-clock-o"></i> Oct 16,2017</div>
-                    </div>
-                </div>
-            </div>
-            <div class="item px-2">
-                <div class="fh5co_hover_news_img">
-                    <div class="fh5co_news_img"><img src="<%=basePath%>images/index-images/ryan-moreno-98837.jpg" alt=""/></div>
-                    <div>
-                        <a href="#" class="d-block fh5co_small_post_heading"><span class="">The top 10 best computer speakers in the market</span></a>
-                        <div class="c_g"><i class="fa fa-clock-o"></i> Oct 16,2017</div>
-                    </div>
-                </div>
-            </div>
-            <div class="item px-2">
-                <div class="fh5co_hover_news_img">
-                    <div class="fh5co_news_img"><img src="<%=basePath%>images/index-images/seth-doyle-133175.jpg" alt=""/></div>
-                    <div>
-                        <a href="#" class="d-block fh5co_small_post_heading"><span class="">The top 10 best computer speakers in the market</span></a>
-                        <div class="c_g"><i class="fa fa-clock-o"></i> Oct 16,2017</div>
-                    </div>
-                </div>
-            </div>
+            </c:forEach>
+
         </div>
     </div>
 </div>
@@ -292,7 +299,7 @@
     function blogComment(flag,blogId){
         $.ajax({
             type:'post',
-            url:'${pageContext.request.contextPath }/single/InsertBlogCommentBlogId.action?flag='+flag,
+            url:'${pageContext.request.contextPath}/single/InsertBlogCommentBlogId.action?flag='+flag,
             data:{'blogId':blogId},
             dateType:'json',
             success:function (data) {
@@ -304,7 +311,7 @@
                     String:"",
                     shadeClose: true, //点击遮罩关闭层
                     area: ['800px', '400px'],
-                    content: '<%=basePath%>jsp/publishShuDong.jsp',
+                    content: '<%=basePath%>jsp/publishBlogComment.jsp',
 
                 });
             }
@@ -330,7 +337,7 @@
                             "       <div class=\"comment-inner\">\n" +
                             "           <div class=\"comment-info clearfix\">\n" +
                             "               <div class=\"comment-meta\"> ";
-                        var str2="              <span class=\"comment-meta-author\">"+data[i].userNickName+"</span>";
+                        var str2="              <span class=\"comment-meta-author\">"+data[i].userNickName+"("+data[i].userAccount+")"+"<span style=\"font-size:13px;font-weight:500;\">&nbsp;&nbsp;评论了</span>&nbsp;&nbsp;share_"+data[i].commentUserId+"</span>";
                         var str3="              <time><span class=\"comment-meta-date\">"+data[i].replycommenttime+"</span></time>" +
                             "               </div>";
                         var str4="          <span class=\"comment-reply\"> <a rel=\"nofollow\" href='javascript:void(0)' onclick='blogComment(3,"+data[i].replycommentId+")'>Reply</a></span>" +

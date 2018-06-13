@@ -181,7 +181,13 @@
   <!--//    通过博客查询该博客的标签id-->
   <!--public List<LabelInfo> selectLabelByBlogId(int blog_id);-->
   <select id="selectLabelByBlogId" parameterType="int" resultType="LabelInfo">
-    SELECT * from bloglabel where blog_id = #{_parameter}
+    SELECT * from labelinfo
+    where label_id in
+    (select label_id from  bloglabel
+     where  bloglabel.label_id=labelinfo.label_id
+     and blog_id in
+     (select blog_id from blogcontent
+      where blogcontent.blog_id=#{_parameter}))
   </select>
   <!--public List<Integer> selectLabelIdByBlogId(int blog_id);-->
   <select id="selectLabelIdByBlogId" parameterType="int" resultType="Integer">

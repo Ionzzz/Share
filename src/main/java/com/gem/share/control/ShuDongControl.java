@@ -31,7 +31,18 @@ public class ShuDongControl {
     @RequestMapping("/main.action")
     public void main(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String searchContent = request.getParameter("searchContent");
+        String SDflag = request.getParameter("SDflag");//区分最热排序或者时间排序
+        String getDate = request.getParameter("getDate");//获取日期
+        System.out.println("-------"+getDate);
 
+        int flag = 0;
+        if(null==SDflag || "".equals(SDflag)){
+            flag = 0;
+        }else{
+            flag = Integer.parseInt(SDflag);
+        }
+
+//        分页功能
         Map<String,Object> map=new HashMap<>();
         int pageSize=8;
         int curPage=1;
@@ -41,21 +52,23 @@ public class ShuDongControl {
         }
         map.put("curPage",curPage);
         map.put("pageSize",pageSize);
-        PageInfo<shuDong> pageInfo=shuDongService.pageShuDong(map,searchContent);
+        PageInfo<shuDong> pageInfo=shuDongService.pageShuDong(map,searchContent,flag);
         request.setAttribute("pageInfo",pageInfo);
 
         //搜索条件分页
         request.setAttribute("searchContent",searchContent);
+        request.setAttribute("SDflag",SDflag);
         request.getRequestDispatcher("/jsp/shuDong.jsp").forward(request,response);
 
     }
 
     @RequestMapping("/Zan.action")
-    public void Zan(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
-        int userId=1;
+    public @ResponseBody int Zan(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
+        int userId = 1;//后期从session获取
         String blogId = request.getParameter("blogId");
 //        查询是否有该用户对该博客的点赞记录
         List<BlogZan> blogZans = shuDongService.selectZanRecordByUserId(Integer.parseInt(blogId),userId);
+        int sdCount = 0;
 
 //        如果有，删除该记录，同时文章点赞数-1
         if(blogZans != null && blogZans.size()>0){
@@ -63,7 +76,7 @@ public class ShuDongControl {
             boolean f1 = shuDongService.deleteZanRecordByZanId(blogZans.get(0).getBlogzanId());
             if(f1){
 //                删除成功，得到该篇文章点赞数
-                int sdCount = shuDongService.selectCountZan(Integer.parseInt(blogId));
+                sdCount = shuDongService.selectCountZan(Integer.parseInt(blogId));
 
             }else{
 //                删除失败
@@ -80,18 +93,30 @@ public class ShuDongControl {
             shuDongService.addZanRecord(blogZan);
 
 //        文章点赞数+1
-            int sdCount = shuDongService.selectCountZan(Integer.parseInt(blogId));
+            sdCount = shuDongService.selectCountZan(Integer.parseInt(blogId));
         }
 
-        request.getRequestDispatcher("/shuDong/main.action").forward(request,response);
+        return sdCount;
+
+//        request.getRequestDispatcher("/shuDong/main.action").forward(request,response);
     }
 
     @RequestMapping("/DetailComment.action")
     public void DetailComment(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
         String blogId = request.getParameter("blogId");
+        int userId = 3;//后期从session中获得
+
+//        查询该用户对该博客树洞的浏览数：
+//        如果同一用户对该树洞浏览次数超过5次，则不做任何操作；否则浏览量加1
+        int SDBrowseCount = shuDongService.selectSDBrowseByUserIdAndBlogId(userId,Integer.parseInt(blogId));
+        if(SDBrowseCount < 5){
+//            在shudongbrowse表中插入浏览记录
+            shuDongService.insertSDBrowse(userId,Integer.parseInt(blogId));
+        }
 
         List<shuDongDetail> shuDongDetails = shuDongService.selectAllShuDongComment(Integer.parseInt(blogId));
         int bcommentCount = shuDongService.selectBcommentCount(Integer.parseInt(blogId));
+
         request.setAttribute("bcommentCount",bcommentCount);
         request.setAttribute("shuDongDetails",shuDongDetails);
         request.getRequestDispatcher("/jsp/shuDongDetail.jsp").forward(request,response);
@@ -106,7 +131,7 @@ public class ShuDongControl {
 
 //        以二级评论返回值中的属性作为参数查询三级及以下评论
         List<ReplyCommentDetail> ThirdReplyComment = new ArrayList<>();//存放三级及以下评论的list集合
-        for(int i = 0; i< ReplyCommentDetails.size(); i++){
+        for(int i=0; i<ReplyCommentDetails.size(); i++){
             ThirdReplyComment.addAll(shuDongService.selectAllThirdReplyComment(ReplyCommentDetails.get(i).getReplycommentId()));
 
             if(ThirdReplyComment.size()==0){
@@ -152,7 +177,7 @@ public class ShuDongControl {
                 boolean flag = shuDongService.insertBlogComment(blogComment);
             }else if ("2".equals(flag)){
                 //             插入replyComment表  二级评论
-                ReplyComment replyComment = new ReplyComment(Integer.parseInt(blogid),278,content2,commentTime);
+                ReplyComment replyComment = new ReplyComment(Integer.parseInt(blogid),277,content2,commentTime);
                 boolean f = shuDongService.insertReplyComment(replyComment);
             }else if("3".equals(flag)){
 //                三级评论
@@ -173,6 +198,67 @@ public class ShuDongControl {
         }
 
     }
+
+    @RequestMapping("/deleteComment.action")
+    public @ResponseBody List<ReplyCommentDetail> deleteComment(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
+        String replycommentId = request.getParameter("replycommentId");
+        String commentId = request.getParameter("commentId");
+        System.out.println("----------commentId--"+commentId);
+        System.out.println("----------replycommentId--"+replycommentId);
+
+//        获取到当前评论，并查出该评论下所有的评论，并删除
+
+
+//        该评论下的所有评论
+        List<ReplyCommentDetail> replyCommentDetails = shuDongService.selectAllThirdReplyComment(Integer.parseInt(replycommentId));
+        System.out.println("-----replyCommentDetails--------"+replyCommentDetails);
+
+//        删除所有评论
+        for(int i=0; i<replyCommentDetails.size(); i++){
+            shuDongService.deleteComment(replyCommentDetails.get(i).getReplycommentId());
+        }
+
+//        查出删除后的二级评论+三级评论 集合合并后返回
+//        二级评论
+        List<ReplyCommentDetail> replyCommentDetails1 = shuDongService.selectAllReplyComment(Integer.parseInt(commentId));
+
+        //     二级评论中，   删除本条评论
+        for(int i=0; i<replyCommentDetails1.size(); i++){
+            if(replyCommentDetails1.get(i).getReplycommentId()==Integer.parseInt(replycommentId)){
+                shuDongService.deleteComment(replyCommentDetails1.get(i).getReplycommentId());
+                replyCommentDetails1.remove(i);
+            }
+        }
+
+//        以二级评论返回值中的属性作为参数查询三级及以下评论
+        List<ReplyCommentDetail> thirdReplyComment = new ArrayList<>();//存放三级及以下评论的list集合
+        for(int i=0; i<replyCommentDetails1.size(); i++){
+            thirdReplyComment.addAll(shuDongService.selectAllThirdReplyComment(replyCommentDetails1.get(i).getReplycommentId()));
+
+            if(thirdReplyComment.size()==0){
+                continue;
+            }else{
+                for(int j=thirdReplyComment.size()-1;j<thirdReplyComment.size();j++){
+                    if(thirdReplyComment.get(j).getReplycommentId()!=0){
+                        thirdReplyComment.addAll(shuDongService.selectAllThirdReplyComment(thirdReplyComment.get(j).getReplycommentId()));
+                    }else {
+                        continue;
+                    }
+                }
+            }
+
+        }
+
+        replyCommentDetails1.addAll(thirdReplyComment);
+
+        return replyCommentDetails1;
+    }
+
+
+
+
+
+
 
 
     @RequestMapping("/myUplaod.action")
@@ -332,20 +418,9 @@ public class ShuDongControl {
         String content4 = request.getParameter("content4");//获取essayFlag
 
 
+
+
     }
-
-
-    @RequestMapping("searchShuDong.action")
-    public void search(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
-        String searchContent = request.getParameter("searchContent");
-        List<shuDong> shuDongList = shuDongService.searchShuDong(searchContent);
-        request.setAttribute("sdContent",shuDongList);
-        request.getRequestDispatcher("/jsp/shuDong.jsp").forward(request,response);
-    }
-
-
-
-
 
 
 

@@ -95,7 +95,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="banner-body-content">
             <div class="col-xs-3 banner-body-left">
                 <div class="logo">
-                    <h1><a href="../index.jsp"><img src="<%=path%>/images/personal-images/co.png"> <span>网名</span></a></h1>
+                    <h1><a href="/ShareMaven/personalpage/personal.action"><img src="<%=path%>/img${userinfo.userimg}" style="width: 80px; height: 80px"> <span>${userinfo.usernickname}</span></a></h1>
                 </div>
                 <div class="top-nav">
                     <nav class="navbar navbar-default">
@@ -116,7 +116,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     <li class="active"><a href="/ShareMaven/personalpage/personal.action"><i class="home"></i>我的主页</a></li>
                                     <li><a href="/ShareMaven/personalpage/picture.action" class="hvr-underline-from-left"><i class="picture1"></i>相册</a></li>
                                     <li><a href="/ShareMaven/personalpage/dynamic.action" class="hvr-underline-from-left"><i class="edit1"></i>我的动态</a></li>
-                                    <li><a href="personaldata.jsp" class="hvr-underline-from-left"><i class="text-size1"></i>个人资料</a></li>
+                                    <li><a href="/ShareMaven/personalpage/data.action" class="hvr-underline-from-left"><i class="text-size1"></i>个人资料</a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -349,7 +349,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <img src="<%=path%>/images/personal-images/完善条.png">
                         <br/>
                         <div class="col-md-3"></div>
-                        <div class="col-md-9"><a href="personaldata.jsp">>>完善个人资料</a></div>
+                        <div class="col-md-9"><a href="/ShareMaven/personalpage/data.action">>>完善个人资料</a></div>
                     </div>
 
                     <div class="clearfix"> </div>

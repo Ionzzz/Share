@@ -29,6 +29,22 @@ public class BlogServiceImpl implements BlogService {
     private LabelInfoMapper labelInfoMapper;
 
     @Override
+    public List<LabelInfo> selectLabelByBlogId(int blog_id) {
+        return blogLabelMapper.selectLabelByBlogId(blog_id);
+    }
+
+    @Override
+    public List<BlogUserPicsLabel> selectCountBlogByUserId(int user_id, int count) {
+        return blogContentMapper.selectCountBlogByUserId(user_id,count);
+    }
+
+    @Override
+    public List<BlogUserPicsLabel> selectAllBlogByUserId(int user_id) {
+
+        return blogContentMapper.selectAllBlogByUserId(user_id);
+    }
+
+    @Override
     public boolean insertReplyComment(ReplyComment replyComment) {
         return blogContentMapper.insertReplyComment(replyComment);
     }
@@ -51,8 +67,8 @@ public class BlogServiceImpl implements BlogService {
     @Override
     public List<ReplyCommentDetail> selectAllThirdReplyComment(int replyComment_id) {
 
-        List<ReplyCommentDetail> replyCommentDetails=blogContentMapper.selectAllThirdReplyComment(replyComment_id);
-        return replyCommentDetails;
+        List<ReplyCommentDetail> ReplyCommentDetails=blogContentMapper.selectAllThirdReplyComment(replyComment_id);
+        return ReplyCommentDetails;
     }
 
     @Override
@@ -113,10 +129,11 @@ public class BlogServiceImpl implements BlogService {
 
     @Override
     public PageInfo<BlogUserPicsLabel> selectAllBlogUserPicsByPage(Map<String, Object> map) {
+        String searchContent= (String) map.get("searchContent");
         int curPage= (int) map.get("curPage");
         int pageSize= (int) map.get("pageSize");
         PageHelper.startPage(curPage,pageSize);
-        List<BlogUserPicsLabel> list=blogContentMapper.selectOrderBlogUserPics();
+        List<BlogUserPicsLabel> list=blogContentMapper.selectOrderBlogUserPics(searchContent);
         PageInfo<BlogUserPicsLabel> pageInfo=new PageInfo<>(list);
 
         return pageInfo;
@@ -131,7 +148,7 @@ public class BlogServiceImpl implements BlogService {
         int curPage= (int) map.get("curPage");
         int pageSize= (int) map.get("pageSize");
         PageHelper.startPage(curPage,pageSize);
-        List<BlogUserPicsLabel> list=selectBlogUserPicsByLabelName(labelname);
+        List<BlogUserPicsLabel> list=selectBlogUserPicsLabelByLabelNameOrderLiuLan(labelname);
         PageInfo<BlogUserPicsLabel> pageInfo=new PageInfo<>(list);
 
         return pageInfo;
@@ -140,9 +157,9 @@ public class BlogServiceImpl implements BlogService {
 
 
     @Override
-    public List<BlogUserPicsLabel> selectBlogUserPicsByLabelName(String labelName) {
+    public List<BlogUserPicsLabel> selectBlogUserPicsLabelByLabelNameOrderZan(String labelName) {
 
-        List<BlogUserPicsLabel> blogUserPicsLabels=blogContentMapper.selectBlogUserPicsLabelByLabelName(labelName);
+        List<BlogUserPicsLabel> blogUserPicsLabels=blogContentMapper.selectBlogUserPicsLabelByLabelNameOrderZan(labelName);
       /*
         List<BlogLabel> blogLabels=blogLabelMapper.selectBlogByLabelName(labelName);
         List<BlogUserPicsLabel> blogUserPicLabels =new ArrayList<>();
@@ -157,9 +174,24 @@ public class BlogServiceImpl implements BlogService {
         return blogUserPicsLabels;
     }
 
+    @Override
+    public List<BlogUserPicsLabel> selectBlogUserPicsLabelByLabelNameOrderPingLun(String labelName) {
+        return blogContentMapper.selectBlogUserPicsLabelByLabelNameOrderPingLun(labelName);
+    }
+
+    @Override
+    public List<BlogUserPicsLabel> selectBlogUserPicsLabelByLabelNameOrderLiuLan(String labelName) {
+        return blogContentMapper.selectBlogUserPicsLabelByLabelNameOrderLiuLan(labelName);
+    }
+
+    @Override
+    public List<BlogUserPicsLabel> selectBlogUserPicsLabelByLabelNameOrderTime(String labelName) {
+        return blogContentMapper.selectBlogUserPicsLabelByLabelNameOrderTime(labelName);
+    }
+
     @Override//返回指定数量的指定标签名的BlogUserPics
     public List<BlogUserPicsLabel> selectBlogUserPicsCountByLabelName(String labelName, int count) {
-        List<BlogUserPicsLabel> list=selectBlogUserPicsByLabelName(labelName);
+        List<BlogUserPicsLabel> list=selectBlogUserPicsLabelByLabelNameOrderTime(labelName);
         List<BlogUserPicsLabel> blogUserPicLabels =new ArrayList<>();
         for(int i=0;i<count;i++){
             blogUserPicLabels.add(list.get(i));

@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
-  User: 刘琪
-  Date: 2018/5/28
-  Time: 18:51
+  User: bin
+  Date: 2018/6/13
+  Time: 14:32
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -53,10 +53,10 @@
 <div><script id="editor" type="text/plain" style="width:760px;height:220px;"></script></div><br>
 
 <div class="col-12 py-3 text-center" style="width:134px; height:30px;">
-    <form id="form1" action="<%=basePath %>shuDong/InsertBlogComment.action">
+    <form id="form1" action="<%=basePath %>single/InsertBlogComment.action">
         <%--判断内容是否为空--%>
         <input type="hidden" name="content1" id="hidden1"/>
-            <%--获取内容--%>
+        <%--获取内容--%>
         <input type="hidden" name="content2" id="hidden2"/>
     </form>
     <span onclick="closeLayer()"><a href="javascript:void(0)" onclick="hasContent()" class="btn contact_btn">发布</a></span>

@@ -35,6 +35,8 @@
     <link href="<%=basePath%>css/index-css/content_font.css" rel="stylesheet">
     <link href="<%=basePath%>css/index-css/owl.carousel.css" rel="stylesheet" type="text/css"/>
     <link href="<%=basePath%>css/index-css/owl.theme.default.css" rel="stylesheet" type="text/css"/>
+    <%--<link href="<%=basePath%>css/chat-css/demo.css" rel="stylesheet" type="text/css"/>--%>
+
     <!-- Modernizr JS -->
     <script src="<%=basePath%>js/index-js/modernizr-3.5.0.min.js"></script>
     <script>
@@ -43,8 +45,35 @@
 //				触发表单提交事件
             document.getElementById("mainForm").submit();
         }
-    </script>
 
+        function getZan(blogId) {
+            $.ajax({
+                type:"post",
+                url:'${pageContext.request.contextPath }/shuDong/Zan.action',
+                data : {"blogId":blogId},
+                dateType:'json',
+                success:function (data) {
+                    $("span[name="+blogId+"]").html(data);
+                }
+            });
+        }
+
+//        点赞特效
+        function changeZanImg(){
+            var praise_img = $("#praise-img");
+            var text_box = $("#add-num");
+            if(praise_img.attr("src") == ("<%=basePath%>images/shudong-images/yizan.png")){
+                $(this).html("<img src='<%=basePath%>images/shudong-images/Zan.png' id='praise-img' class='animation' />");
+                text_box.show().html("<em class='add-animation'>-1</em>");
+                $(".add-animation").removeClass("hover");
+            }else{
+                $(this).html("<img src='<%=basePath%>images/shudong-images/yizan.png' id='praise-img' class='animation' />");
+                text_box.show().html("<em class='add-animation'>+1</em>");
+                $(".add-animation").addClass("hover");
+            }
+        }
+
+    </script>
 
 </head>
 <body>
@@ -52,7 +81,7 @@
 <body class="home blog custom-background round-avatars">
 
 <div class="Yarn_Background" style="background-image: url( <%= basePath %>images/shudong-images/47fb3c_.jpg);"></div>
-<form class="js-search search-form search-form--modal" method="post" action="<%=basePath%>shuDong/main.action" role="search">
+<form class="js-search search-form search-form--modal" method="post" action="<%=basePath%>shuDong/main.action?SDflag=${SDflag}" role="search">
     <div class="search-form__inner">
         <div>
             <div id="search-container" class="ajax_search">
@@ -71,7 +100,7 @@
         <div class="line line2"></div>
         <div class="line line3"></div>
     </div>
-    <div class="navbar animated fadeInRight">
+    <div class="navbar animated fadeInRight" >
         <div class="inner">
             <nav id="site-navigation" class="main-navigation">
                 <div id="main-menu" class="main-menu-container">
@@ -80,16 +109,24 @@
                             <%--<li id="menu-item-17" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-17">--%>
                                 <%--<a href="#">首页</a>--%>
                             <%--</li>--%>
-
                             <li id="menu-item-78" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78">
-                                <a href="<%=basePath%>index/main.action" style="font-size: 16px;">首页</a>
-                            </li>
-                            <li id="menu-item-57" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-57">
-                                <a href="<%=basePath%>new/main.action" style="font-size: 16px;">最新</a>
+                                <a href="<%= basePath %>index/main.action" style="font-size: 16px;">网站首页</a>
                             </li>
                                 <li id="menu-item-57" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-57">
-                                    <a href="gustbook.html" style="font-size: 16px;">时空机</a>
+                                    <a href="<%= basePath %>shuDong/main.action?SDflag=0" style="font-size: 16px;">最新</a>
                                 </li>
+                            <li id="menu-item-57" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-57">
+                                <a href="<%= basePath %>shuDong/main.action?SDflag=1" style="font-size: 16px;">最热</a>
+                            </li>
+                                <li id="menu-item-57" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-57">
+                                    <a href="<%= basePath %>shuDong/main.action?SDflag=2" style="font-size: 16px;">时空机</a>
+                                    <%--<ul class="sub-menu">--%>
+                                        <%--<li id="menu-item-165" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-165">--%>
+                                            <%--<a id="getDate" href="javascript:void(0)" onclick="WdatePicker()" class="form-contro">日期</a>--%>
+                                        <%--</li>--%>
+                                    <%--</ul>--%>
+                                </li>
+
                             <li id="menu-item-57" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-57">
                                 <a href="#" style="font-size: 16px;">发布</a>
                             </li>
@@ -123,21 +160,22 @@
         </div>
     </div>
 </header>
-
+<body>
 <div id="main" class="content">
     <div class="container">
-        <form action="<%= basePath %>shuDong/main.action" id="mainForm" method="get">
+        <form action="<%= basePath %>shuDong/main.action" id="mainForm" method="post">
         <%--mainPage--%>
         <article itemscope="itemscope">
 
             <div class="posts-list js-posts">
                 <input type="hidden" name="curPage"  id="curPage">
                 <input type="hidden" name="searchContent" value="${searchContent}"></input>
+                <input type="hidden" name="SDflag" value="${SDflag}"></input>
 
 
                 <c:choose>
                     <c:when test="${pageInfo.total==0}">
-                        <div style="font-size:18px; text-align: center;">
+                        <div >
                             <img src="<%= basePath %>images/shudong-images/noinfo.gif"/>
                             <a href="#">暂时没有此类树洞存在，快去发布一个吧</a>
                         </div>
@@ -150,17 +188,17 @@
                                     <div class="post-container review-item">
                                         <div class="row review-item-wrapper">
                                             <div class="col-sm-3">
-                                                <a rel="nofollow" href="detail.html">
+                                                <a rel="nofollow" href="<%= basePath %>shuDong/DetailComment.action?blogId=${sd.blogId}">
                                                     <div class="review-item-img" style="background-image: url(<%= basePath %>images/shudong-images/b0ce3f3cde0c084b6d42321b2dcbc407.jpeg);"></div>
                                                 </a>
                                             </div>
-                                            <div class="col-sm-9 flex-xs-middle">
+                                            <div class="col-sm-9 flex-xs-middle" style="color:black;">
                                                 <div class="review-item-title">
-                                                    <a href="detail.html" rel="bookmark" style="font-size:20px; font-weight: bolder">树洞X</a>
+                                                    <a href="<%= basePath %>shuDong/DetailComment.action?blogId=${sd.blogId}" rel="bookmark" style="font-size:20px; font-weight: bolder;">树洞X</a>
                                                 </div>
                                                 <div class="review-item-creator" style="font-size:15px;"><b>发布日期：</b><fmt:formatDate value="${sd.blogCreateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></div>
                                                 <span class="review-item-info" style="font-size:15px;"><b>总浏览量：</b>${sd.blogBrowseCount}</span>
-                                                <span class="review-item-info" style="font-size:15px;"><b>点赞：</b>${sd.bbrowse}</span>
+                                                <span class="review-item-info" style="font-size:15px;"><b>点赞：</b><span name="${sd.blogId}">${sd.bbrowse}</span></span>
 
                                             </div>
                                         </div>
@@ -172,12 +210,12 @@
                                         <div class="entry-content">${sd.blogContent}</div>
                                         <div class="post-footer">
                                                 <%--<a class="gaz-btn primary" href="">READ MORE</a>--%>
-                                            <a href="<%= basePath %>shuDong/Zan.action?userId=1&blogId=${sd.blogId}">
-                                                <img id="zanImg" src="<%= basePath %>images/shudong-images/preZan.png"/>
+                                            <%--<a href="<%= basePath %>shuDong/Zan.action?userId=1&blogId=${sd.blogId}">--%>
+                                            <a href="javascript:void(0)" onclick="getZan('${sd.blogId}')">
+                                                <%--<span id="add-num"><em>+1</em></span>--%>
+                                                <span id="praise" onclick="changeZanImg()"><img id="praise-img" src="<%= basePath %>images/shudong-images/Zan.png"/></span>
                                             </a>
-                                            <span class="total-comments-on-post pull-right">
-                                                <a href="<%= basePath %>shuDong/DetailComment.action?blogId=${sd.blogId}">${sd.bcCount} 条评论</a>
-                                            </span>
+                                            <span class="total-comments-on-post pull-right"><a href="<%= basePath %>shuDong/DetailComment.action?blogId=${sd.blogId}">${sd.bcCount} 条评论</a></span>
                                         </div>
                                     </div>
                                 </div>
@@ -248,21 +286,7 @@
     </div>
 </footer>
 
-
-
 </body>
-<script>
-    $('#zanImg').click().toggle(
-        function(){
-            alert('111'+this);
-            this.src="<%= basePath %>images/shudong-images/preZan.png";
-        },
-    function(){
-        alert(this);
-        this.src="<%= basePath %>images/shudong-images/Zan.png";
-    }
-    );
-</script>
 
 
 <script type='text/javascript' src='<%=basePath %>js/index-js/tree/jquery.min.js'></script>
@@ -270,5 +294,6 @@
 <script type='text/javascript' src='<%=basePath %>js/index-js/tree/script.js'></script>
 <script type='text/javascript' src='<%=basePath %>js/index-js/tree/particles.js'></script>
 <script type='text/javascript' src='<%=basePath %>js/index-js/tree/aos.js'></script>
+<script type='text/javascript' src='<%=basePath %>My97DatePicker/WdatePicker.js'></script>
 
 </html>

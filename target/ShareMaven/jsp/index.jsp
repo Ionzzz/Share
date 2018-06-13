@@ -35,15 +35,40 @@
             overflow: hidden;/*超出隐藏*/
             text-overflow: ellipsis;/*隐藏的字符用省略号表示*/
         }
+        .fontdiv{
+            color:#FFFFFF;
+            text-decoration:blink;
+        }
     </style>
+    <script>
 
+        function getZan(blogId) {
+            $.ajax({
+                type:"post",
+                url:'${pageContext.request.contextPath }/shuDong/Zan.action',
+                data : {"blogId":blogId},
+                dateType:'json',
+                success:function (data) {
+                    $("span[name="+blogId+"]").html(data);
+                }
+            });
+        }
+        $(function () {
+            setInterval(function () {
+
+            }, 1000);
+        });
+
+
+    </script>
 </head>
 <body>
 <div class="container-fluid fh5co_header_bg" style="opacity: 0.9;">
     <div class="container">
         <div class="row">
-            <div class="col-12 fh5co_mediya_center"><a href="#" class="color_fff fh5co_mediya_setting"><i
-                    class="fa fa-clock-o"></i>&nbsp;&nbsp;&nbsp; <fmt:formatDate value="${now}" pattern="yyyy-MM-dd "/></a>
+
+            <div class="col-12 fh5co_mediya_center"><a href="#" class="color_fff fh5co_mediya_setting" name="refreshTime"><i
+                    class="fa fa-clock-o"></i>&nbsp;&nbsp;&nbsp; <fmt:formatDate value="${now}" pattern="yyyy-MM-dd HH:mm:ss"/></a>
                 <div class="d-inline-block fh5co_trading_posotion_relative"><a href="#" class="treding_btn">Share</a>
                     <div class="fh5co_treding_position_absolute"></div>
                 </div>
@@ -73,8 +98,9 @@
                 </div>
 <%--头像  个人中心--%>
                 <div class="text-center d-inline-block">
-                    <a href="personalpage/personal.action" target="_blank" class="fh5co_display_table">
-                        <div class="fh5co_verticle_middle"><i class="fa fa-facebook"></i></div><img src="<%=basePath%>images/index-images/person_1.jpg" height="50px" width="50px"/></a>
+                    <a href="<%=basePath%>personalpage/personal.action" target="_blank" class="fh5co_display_table">
+                        <div class="fh5co_verticle_middle"><i class="fa fa-facebook"></i>
+                        </div><img src="<%=basePath%>images/index-images/person_1.jpg" height="50px" width="50px"/></a>
                 </div>
                 <!--<div class="d-inline-block text-center"><img src="images/country.png" alt="img" class="fh5co_country_width"/></div>-->
                 <div class="d-inline-block text-center dd_position_relative ">
@@ -131,16 +157,16 @@
                     <img src="<%=basePath%>${blogone.blogPics.pic}" style="height:100%" alt="img"/>
                 </a>
                 <div class="fh5co_suceefh5co_height_position_absolute">
-                    <p style="margin:30px;color: #00DFB9;text-align: right">
+                    <p  class="fontdiv" style="margin:30px;text-align: right">
                         热度：${blogone.liulan}<br/>
-                        <a href="<%= basePath %>index/zan.action?userId=1&blogId=${blogone.blogContent.blogId}">
-                            <img id="zanImg" src="<%= basePath %>images/shudong-images/preZan.png"/>
-                        </a>&nbsp;&nbsp;${blogone.zan}<br/>
-                        评论：${blogone.pinglun}
+                        <a href="javascript:void(0)" onclick="getZan('${blogone.blogContent.blogId}')" class="fontdiv">
+                            <span  onclick="changeZanImg()">
+                                <img  src="<%= basePath %>images/shudong-images/Zan.png"/></span>
+                        </a> <span name="${blogone.blogContent.blogId}">${blogone.zan}</span><br/>
                         <span class="total-comments-on-post pull-right">
-                           <a href="<%= basePath %>single/main.action?blogId=${blogone.blogContent.blogId}">${blogone.pinglun} 条评论</a>
+                           <a href="<%= basePath %>single/main.action?blogId=${blogone.blogContent.blogId}"class="fontdiv">${blogone.pinglun} 条评论</a>
                         </span>
-                       </p>
+                    </p>
                 </div>
                 <div class="fh5co_suceefh5co_height_position_absolute_font">
                      <i class="fa fa-clock-o"></i>&nbsp;&nbsp;<fmt:formatDate value="${blogone.blogContent.blogcreatetime}" pattern="MM-dd-yyyy"/>
@@ -151,13 +177,24 @@
         <div class="col-md-6">
             <div class="row">
                 <c:forEach items="${blogfourlist}" var="blogfourlist">
-                    <div class="col-md-6 col-6 paddding animate-box"  onclick="window.location.href='<%=basePath%>single/main.action?blogId=${blogfourlist.blogContent.blogId}'" data-animate-effect="fadeIn">
+                    <div class="col-md-6 col-6 paddding animate-box"data-animate-effect="fadeIn">
                       <div class="fh5co_suceefh5co_height_2">
                           <img src="<%=basePath%>${blogfourlist.blogPics.pic}" style="width: 100%" alt="img"/>
-                        <div class="fh5co_suceefh5co_height_position_absolute"></div>
+                        <div class="fh5co_suceefh5co_height_position_absolute">
+                            <p class="fontdiv" style="margin:30px;text-align: right">
+                                热度：${blogfourlist.liulan}<br/>
+                                <a href="javascript:void(0)" onclick="getZan('${blogfourlist.blogContent.blogId}')">
+                                    <span  onclick="changeZanImg()">
+                                        <img  src="<%= basePath %>images/shudong-images/Zan.png"/></span>
+                                </a> <span name="${blogfourlist.blogContent.blogId}">${blogfourlist.zan}</span><br/>
+                                <span class="total-comments-on-post pull-right">
+                           <a href="<%= basePath %>single/main.action?blogId=${blogfourlist.blogContent.blogId}" class="fontdiv">${blogfourlist.pinglun} 条评论</a>
+                             </span>
+                            </p>
+                        </div>
                         <div class="fh5co_suceefh5co_height_position_absolute_font_2">
                          <i class="fa fa-clock-o"></i>&nbsp;&nbsp;<fmt:formatDate value="${blogfourlist.blogContent.blogcreatetime}" pattern="MM-dd-yyyy"/>
-                            <p class="texthidden"  style=" width:300px;"><a href="single.jsp" class="fh5co_good_font_2 texthidden"> ${blogfourlist.blogContent.blogcontent} </a></p>
+                            <p class="texthidden"  style=" width:300px;"><a href="<%=basePath%>single/main.action?blogId=${blogfourlist.blogContent.blogId}" class="fh5co_good_font_2 texthidden"> ${blogfourlist.blogContent.blogcontent} </a></p>
                         </div>
                       </div>
                     </div>
@@ -179,12 +216,25 @@
             <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">家居</div>
         </div>
         <div class="owl-carousel owl-theme js" id="slider1">
+
             <c:forEach items="${blogJiaJu}" var="blogJiaJu">
-                <div class="item px-2" onclick="window.location.href='<%=basePath%>single/main.action?blogId=${blogJiaJu.blogContent.blogId}'">
+                <div class="item px-2" >
                     <div class="fh5co_latest_trading_img_position_relative">
-                        <div class="fh5co_latest_trading_img">
-                            <img src="<%=basePath%>${blogJiaJu.blogPics.pic}" alt="img"/></div>
-                        <div class="fh5co_latest_trading_img_position_absolute"></div>
+                        <div class="fh5co_latest_trading_img"onclick="window.location.href='<%=basePath%>single/main.action?blogId=${blogJiaJu.blogContent.blogId}'">
+                            <img src="<%=basePath%>${blogJiaJu.blogPics.pic}" alt="img"/>
+                        </div>
+                        <div class="fh5co_latest_trading_img_position_absolute">
+                            <p class="fontdiv" style="margin:30px;text-align: right">
+                                热度：${blogJiaJu.liulan}<br/>
+                                <a href="javascript:void(0)" onclick="getZan('${blogJiaJu.blogContent.blogId}')">
+                                    <span  onclick="changeZanImg()">
+                                        <img  src="<%= basePath %>images/shudong-images/Zan.png"/></span>
+                                </a> <span name="${blogJiaJu.blogContent.blogId}">${blogJiaJu.zan}</span><br/>
+                                <span class="total-comments-on-post pull-right">
+                           <a href="<%= basePath %>single/main.action?blogId=${blogJiaJu.blogContent.blogId}" class="fontdiv">${blogJiaJu.pinglun} 条评论</a>
+                             </span>
+                            </p>
+                        </div>
                         <div class="fh5co_latest_trading_img_position_absolute_1">
                             <p class="text-white texthidden "  style=" width:240px;"> <a href="<%=basePath%>single/main.action?blogId=${blogJiaJu.blogContent.blogId}" class="text-white"> ${blogJiaJu.blogContent.blogcontent} </a></p>
                             <div class="fh5co_latest_trading_date_and_name_color c_g">
@@ -198,8 +248,6 @@
 </div>
 
 
-
-
 <div class="container-fluid pb-4 pt-5">
     <div class="container animate-box">
         <div>
@@ -210,7 +258,7 @@
                 <div class="item px-2" onclick="window.location.href='<%=basePath%>single/main.action?blogId=${blogLvXing.blogContent.blogId}'">
                     <div class="fh5co_hover_news_img">
                         <div class="fh5co_news_img">
-                            <img src="<%=basePath%>${blogLvXing.blogPics.pic}" alt="img"/></div>
+                            <img src="<%=basePath%>${blogLvXing.blogPics.pic}"style="width:100%;margin:auto" alt="img"/></div>
                         <div>
                             <p class="texthidden" style="width: 350px"><a href="<%=basePath%>single/main.action?blogId=${blogLvXing.blogContent.blogId}" class="fh5co_small_post_heading " >${blogLvXing.blogContent.blogcontent}</a></p>
                             <p style="text-align: right"><fmt:formatDate value="${blogLvXing.blogContent.blogcreatetime}" pattern="yyyy-MM-dd HH:mm:ss"/></p>
@@ -289,7 +337,7 @@
                 <div class="clearfix"></div>
                 <div class="fh5co_tags_all">
                     <c:forEach items="${labelList}" var="labellist">
-                        <a href="#" class="fh5co_tagg">${labellist.labelname}</a>
+                        <a href="<%=basePath%>topic/main.action?labelId=${labellist.labelId}" class="fh5co_tagg">${labellist.labelname}</a>
                     </c:forEach>
                     <a href="#" class="fh5co_tagg">更多...</a>
                 </div>

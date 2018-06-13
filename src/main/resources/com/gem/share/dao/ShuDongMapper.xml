@@ -17,12 +17,32 @@
   left join labelinfo ON bloglabel.label_id=labelinfo.label_id
   left join (select blog_id,count(blog_id) as zan from blogzan group by blog_id) a on (a.blog_id=blogcontent.blog_id)
   left join (select blog_id,count(blog_id) as pinglun from blogcomment group by blog_id) b on (b.blog_id=blogcontent.blog_id)
-  left join	(select blog_id,blogBrowseCount as liulan from blogbrowse group by blog_id) c on (c.blog_id=blogcontent.blog_id)
+  left join	(select blog_id,COUNT(blog_id) as liulan from shudongbrowse group by blog_id) c on (c.blog_id=blogcontent.blog_id)
   where blogcontent.blogflag=1
   AND  blogcontent.blogContent like '%${_parameter}%'
   ORDER BY blogcontent.blogCreateTime DESC
   </select>
-
+  <!--//    按照热度排序&#45;&#45;浏览量 如果浏览量相同按照点赞排序，再按照评论排序-->
+  <!--public List<shuDong> selectAllShuDongContentBySDBrowse(String searchContent);-->
+  <select id="selectAllShuDongContentBySDBrowse" resultType="shuDong" parameterType="String">
+  select blogcontent.user_id,blogcontent.blog_id,blogcontent.blogContent,blogcontent.blogCreateTime,
+  case when a.zan is null then 0 else a.zan end as bbrowse,
+  case when b.pinglun is null then 0 else b.pinglun end as bcCount,
+  case when c.liulan is null then 0 else c.liulan end as blogBrowseCount
+  from blogcontent
+  left join userinfo ON blogcontent.user_id=userinfo.user_id
+  left join blogpics ON blogcontent.blogPics_id=blogpics.blogPics_id
+  left join bloglabel ON blogcontent.blog_id=bloglabel.blog_id
+  left join labelinfo ON bloglabel.label_id=labelinfo.label_id
+  left join (select blog_id,count(blog_id) as zan from blogzan group by blog_id) a on (a.blog_id=blogcontent.blog_id)
+  left join (select blog_id,count(blog_id) as pinglun from blogcomment group by blog_id) b on (b.blog_id=blogcontent.blog_id)
+  left join	(select blog_id,COUNT(blog_id) as liulan from shudongbrowse group by blog_id) c on (c.blog_id=blogcontent.blog_id)
+  where blogcontent.blogflag=1
+  AND  blogcontent.blogContent like '%${_parameter}%'
+  ORDER BY c.liulan DESC,
+  a.zan DESC,
+  b.pinglun DESC
+  </select>
 
   <!--//    根据用户id查询用户是否对该博客有点赞记录-->
   <!--public List<BlogZan> selectZanRecordByUserId(int blog_id,int user_id);-->
@@ -51,7 +71,7 @@
   <!--//    获得具体树洞页面内容-->
   <!--public List<shuDongDetail> selectAllShuDongComment(int blog_id);-->
   <select id="selectAllShuDongComment" parameterType="int" resultType="shuDongDetail">
-    SELECT bc.blog_id,bc.blogContent,bc.blogCreateTime,userinfo.userAccount,userinfo.userNickName,
+    SELECT bc.blog_id,bc.blogContent,bc.blogCreateTime,userinfo.user_id,userinfo.userAccount,userinfo.userNickName,
 case when blogcomment.comment_id is null then 0 else blogcomment.comment_id end as comment_id,
 case when blogcomment.commentTime is null then 0 else blogcomment.commentTime end as commentTime,
 case when blogcomment.commentContent is null then 0 else blogcomment.commentContent end as commentContent
@@ -69,7 +89,7 @@ WHERE blogFlag=1 AND bc.blog_id=#{_parameter}
 
   <!--//    根据一级评论的comment_id获得树洞评论的评论 二级评论-->
   <!--public List<ReplyCommentDetail> selectAllReplyComment(int comment_id);-->
-  <select id="selectAllReplyComment" parameterType="int" resultType="replyCommentDetail">
+  <select id="selectAllReplyComment" parameterType="int" resultType="ReplyCommentDetail">
     SELECT r.replycomment_id,bc.commentUser_id,u.user_id,u.userAccount,u.userNickName,r.replycommentcontent,r.replycommenttime
     FROM replycomment r,blogcomment bc,userinfo u
     WHERE r.comment_id=bc.comment_id AND u.user_id=r.user_id  AND r.comment_id=#{_parameter}
@@ -84,7 +104,7 @@ WHERE blogFlag=1 AND bc.blog_id=#{_parameter}
 
   <!--//    从二级评论中得到所有的replyComment_id，进而查出所有三级及以下评论-->
   <!-- public List<ReplyCommentDetail> selectAllThirdReplyComment(int replyComment_id);-->
-  <select id="selectAllThirdReplyComment" resultType="replyCommentDetail">
+  <select id="selectAllThirdReplyComment" resultType="ReplyCommentDetail">
 SELECT DISTINCT rr.replycomment_id,rb.user_id commentUser_id,rr.user_id,u.userAccount,u.userNickName,rr.replycommentcontent,rr.replycommenttime
 from replycomment rr,replycomment rb,userinfo u,blogcomment bc
 WHERE rr.replycomment=#{_parameter}
@@ -114,24 +134,18 @@ AND rr.replycomment = rb.replycomment_id
     WHERE comment_id = #{_parameter}
   </select>
 
-  <!--//    搜索功能-->
-  <!--public List<shuDong> searchShuDong(String searchSDContent);-->
-  <select id="searchShuDong" parameterType="String" resultType="shuDong">
-    select blogcontent.user_id,blogcontent.blog_id,blogcontent.blogContent,blogcontent.blogCreateTime,
-case when a.zan is null then 0 else a.zan end as bbrowse,
-case when b.pinglun is null then 0 else b.pinglun end as bcCount,
-case when c.liulan is null then 0 else c.liulan end as blogBrowseCount
-from blogcontent
-left join userinfo ON blogcontent.user_id=userinfo.user_id
-left join blogpics ON blogcontent.blogPics_id=blogpics.blogPics_id
-left join bloglabel ON blogcontent.blog_id=bloglabel.blog_id
-left join labelinfo ON bloglabel.label_id=labelinfo.label_id
-left join (select blog_id,count(blog_id) as zan from blogzan group by blog_id) a on (a.blog_id=blogcontent.blog_id)
-left join (select blog_id,count(blog_id) as pinglun from blogcomment group by blog_id) b on (b.blog_id=blogcontent.blog_id)
-left join	(select blog_id,blogBrowseCount as liulan from blogbrowse group by blog_id) c on (c.blog_id=blogcontent.blog_id)
-WHERE blogcontent.blogflag=1
-AND  blogcontent.blogContent like '%${_parameter}%'
-</select>
+  <!--//    树洞浏览量-->
+  <!--public int selectSDBrowseByUserIdAndBlogId(int user_id,int blog_id);-->
+  <select id="selectSDBrowseByUserIdAndBlogId" resultType="int">
+  select COUNT(blogbrowse_id) from shudongbrowse where user_id=#{param1} and blog_id=#{param2}
+  </select>
+
+  <!--//    当浏览量不超过5时，浏览量+1-->
+  <!--public void insertSDBrowse(int user_id,int blog_id);-->
+  <insert id="insertSDBrowse" useGeneratedKeys="true" keyProperty="blogbrowseId">
+    insert into shudongbrowse(blog_id,user_id)
+    VALUES(#{param2},#{param1})
+  </insert>
 
   <!--//    发布各类博客-->
   <!--public boolean publishAllType(BlogContent blogContent);-->
@@ -139,6 +153,10 @@ AND  blogcontent.blogContent like '%${_parameter}%'
     INSERT INTO blogcontent
     VALUES(#{blogId},#{userId},#{blogpicsId},#{blogcreatetime},#{blogflag},#{essayflag},#{blogcontent})
   </insert>
-
+  <!--//    删除评论-->
+  <!--public boolean deleteComment(int replyComment_id);-->
+  <delete id="deleteComment" parameterType="int">
+    DELETE FROM replycomment where replycomment_id=#{_parameter}
+  </delete>
 
 </mapper>

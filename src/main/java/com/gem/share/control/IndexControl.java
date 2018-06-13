@@ -10,6 +10,7 @@ import com.gem.share.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -38,13 +39,13 @@ public class IndexControl {
 //        System.out.println("----------"+pic.get(0));
         request.setAttribute("blogfourlist",blogflist);
 
-        List<BlogUserPicsLabel> blogjiaju=blogService.selectBlogUserPicsByLabelName("家居");
+        List<BlogUserPicsLabel> blogjiaju=blogService.selectBlogUserPicsLabelByLabelNameOrderLiuLan("家居");
         request.setAttribute("blogJiaJu",blogjiaju);
 
-        List<BlogUserPicsLabel> bloglvxing=blogService.selectBlogUserPicsByLabelName("旅行");
+        List<BlogUserPicsLabel> bloglvxing=blogService.selectBlogUserPicsLabelByLabelNameOrderZan("旅行");
         request.setAttribute("blogLvXing",bloglvxing);
 
-        List<BlogUserPicsLabel> blogfood=blogService.selectBlogUserPicsByLabelName("美食");
+        List<BlogUserPicsLabel> blogfood=blogService.selectBlogUserPicsLabelByLabelNameOrderTime("美食");
         request.setAttribute("blogFood",blogfood);
 
         List<BlogUserPicsLabel> blogbook=blogService.selectBlogUserPicsCountByLabelName("书籍",4);
@@ -62,17 +63,18 @@ public class IndexControl {
 
 
     @RequestMapping("/zan.action")
-    public void zan(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String userId = request.getParameter("userId");
+    public @ResponseBody int zan(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int userId = 1;//后期从session获取
         String blogId = request.getParameter("blogId");
 
-        List<BlogZan> blogZans =blogService.selectZanRecordByUserId(Integer.parseInt(blogId),Integer.parseInt(userId));
+        List<BlogZan> blogZans =blogService.selectZanRecordByUserId(Integer.parseInt(blogId),userId);
+        int sdCount = 0;
         if(blogZans != null && blogZans.size()>0){
 //            删除记录
             boolean f1 = blogService.deleteZanRecordByZanId(blogZans.get(0).getBlogzanId());
             if(f1){
 //                删除成功，得到该篇文章点赞数
-                int sdCount = blogService.selectBlogUserPicsByBlogId(Integer.parseInt(blogId)).getZan();
+                sdCount = blogService.selectBlogUserPicsByBlogId(Integer.parseInt(blogId)).getZan();
             }else{
 //                删除失败
                 System.out.println("系统维护中，点赞数删除失败");
@@ -81,16 +83,16 @@ public class IndexControl {
 //        如果没有，增加该记录
             BlogZan blogZan = new BlogZan();
             blogZan.setBlogId(Integer.parseInt(blogId));
-            blogZan.setUserId(Integer.parseInt(userId));
+            blogZan.setUserId(userId);
             blogZan.setZanTime(new Date());
 
             blogService.addZanRecord(blogZan);
 
 //        文章点赞数+1
-            int sdCount = blogService.selectBlogUserPicsByBlogId(Integer.parseInt(blogId)).getZan();
+            sdCount = blogService.selectBlogUserPicsByBlogId(Integer.parseInt(blogId)).getZan();
         }
+        return sdCount;
 
-        request.getRequestDispatcher("/index/main.action").forward(request,response);
     }
 
 

@@ -30,23 +30,7 @@
 </head>
 <body class="home blog custom-background round-avatars" >
 
-<c:import url="header.jsp"></c:import>
-
 <div class="Yarn_Background" style="background-image: url( <%=basePath%>images/shudong-images/47fb3c_.jpg);"></div>
-<form class="js-search search-form search-form--modal" method="get" action="" role="search">
-    <div class="search-form__inner">
-        <div>
-            <div id="search-container" class="ajax_search">
-                <form method="get" id="searchform" action="">
-                    <div class="filter_container"><input type="text" value="" autocomplete="off" placeholder="Type then select or enter" name="s" id="search-input" />
-                        <ul id="search_filtered" class="search_filtered"></ul>
-                    </div>
-                    <input type="submit" name="submit" id="searchsubmit" class="searchsubmit" value="" />
-                </form>
-            </div>
-        </div>
-    </div>
-</form>
 <div class="navi" data-aos="fade-down">
     <div class="bt-nav">
         <div class="line line1"></div>
@@ -59,32 +43,21 @@
                 <div id="main-menu" class="main-menu-container">
                     <div class="menu-menu-container">
                         <ul id="primary-menu" class="menu">
-                            <li id="menu-item-17" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-17">
-                                <a href="index.html">首页</a>
-                            </li>
-                            <li id="menu-item-173" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-173">
-                                <a href="index.html">树洞</a>
-                            </li>
+                            <%--<li id="menu-item-17" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-17">--%>
+                            <%--<a href="#">首页</a>--%>
+                            <%--</li>--%>
 
-                            <li id="menu-item-252" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-252">
-                                <a href="archives.html">归档</a>
-                                <ul class="sub-menu">
-                                    <li id="menu-item-165" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-165">
-                                        <a href="">theme</a>
-                                    </li>
-                                    <li id="menu-item-163" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-163">
-                                        <a href="">Happen</a>
-                                    </li>
-                                    <li id="menu-item-924" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-924">
-                                        <a href="">WeWork</a>
-                                    </li>
-                                    <li id="menu-item-164" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-164">
-                                        <a href="">WordPress</a>
-                                    </li>
-                                </ul>
+                            <li id="menu-item-78" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78">
+                                <a href="<%=basePath%>shuDong/main.action" style="font-size: 16px;">树洞首页</a>
                             </li>
                             <li id="menu-item-57" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-57">
-                                <a href="gustbook.html">留言</a>
+                                <a href="<%= basePath %>shuDong/main.action?SDflag=1" style="font-size: 16px;">最热</a>
+                            </li>
+                            <li id="menu-item-57" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-57">
+                                <a href="<%= basePath %>shuDong/main.action?SDflag=2" style="font-size: 16px;">时空机</a>
+                            </li>
+                            <li id="menu-item-57" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-57">
+                                <a href="#" style="font-size: 16px;">发布</a>
                             </li>
                         </ul>
                     </div>
@@ -94,9 +67,7 @@
         </div>
     </div>
 </div>
-<div class="hebin" data-aos="fade-down">
-    <i class=" js-toggle-search iconfont">&#xe60e;</i>
-</div>
+
 <header id="masthead" class="overlay animated from-bottom" itemprop="brand" itemscope itemtype="http://schema.org/Brand">
     <div class="site-branding text-center">
         <a href="">
@@ -170,16 +141,16 @@
                                 <c:otherwise>
                                     <%--有数据显示--%>
                                     <div id="comment-969" class="comment_body contents">
+
                                         <div class="profile">
                                             <a href=""><img src="<%=basePath%>images/shudong-images/9cc50a9e422fb1c89aebafeb959cef7a.jpg" class="gravatar" alt="小布丁"></a>
                                         </div>
                                         <div class="main shadow">
+
                                             <div class="commentinfo">
                                                 <section class="commeta">
                                                     <div class="shang">
-                                                        <h4 class="author">
-                                                            <a href="" target="_blank">
-                                                                <img src="<%=basePath%>images/shudong-images/9cc50a9e422fb1c89aebafeb959cef7a.jpg" class="gravatarsmall" alt="小布丁">${sdd.userAccount}</a>
+                                                        <h4 class="author"><a href="" target="_blank"><img src="<%=basePath%>images/shudong-images/9cc50a9e422fb1c89aebafeb959cef7a.jpg" class="gravatarsmall" alt="小布丁">${sdd.userAccount}</a>
                                                                 <%--<a href="<%=basePath%>shuDong/ReplyComment.action?commentId=${sdd.commentId}" style="font-size: 13px;">&nbsp;&nbsp;&nbsp;&nbsp;显示所有评论</a>--%>
                                                             <span id="ReplyComment"><a href="javascript:void(0)" onclick="showAllReplyComment(this,'${sdd.commentId}')">&nbsp;&nbsp;&nbsp;&nbsp;显示评论</a></span>
                                                         </h4>
@@ -223,7 +194,7 @@
 <div class="p-header">
     <figure class="p-image" style="background-image: url(<%=basePath%>images/shudong-images/47fb3c_9afed6c259f94589881bd55376206366mv2_d_3840_5784_s_4_2.jpg);"></figure>
 </div>
-
+<
 
 <footer id="footer" class="overlay animated from-top">
 
@@ -242,7 +213,7 @@
             </i></a>
         </li>
     </div>
-</footer>
+
     <script type="text/javascript">
 
 //        评论回复遮罩层
@@ -269,6 +240,41 @@
 
         }
 
+        function deleteComment(replycommentId,commentId){
+            $.ajax({
+                type:"post",
+                url:'${pageContext.request.contextPath }/shuDong/deleteComment.action?commentId='+commentId,
+                data:{"replycommentId":replycommentId},
+                success:function (data) {
+//                    if(!$.isEmptyObject(data)){
+//                        重新赋值当前div
+                        $("div[name="+commentId+"]").empty();
+                        for (var i=0;i<data.length;i++){
+                            var str1="<i style='font-size: 15px; font-weight: bolder; color: #959381;'>"
+                                +data[i].userAccount+"&nbsp;&nbsp;评论了&nbsp;&nbsp;share_"+data[i].commentUserId+"&nbsp;&nbsp;:&nbsp;&nbsp;</i>";
+                            var str2="<i>"+data[i].replycommentcontent+"</i>";
+                            var str3="<time datetime=\"2018-03-09\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+data[i].replycommenttime+"</time>";
+
+                            var str10="";
+                            if(278==data[i].userId){
+                                str10="<a href='javascript:void(0)' onclick='deleteComment("+data[i].replycommentId+","+commentId+")'>&nbsp;&nbsp;&nbsp;&nbsp;删除</a>";
+                            }
+
+                            var str4="<a href='javascript:void(0)' onclick='blogComment(3,"+data[i].replycommentId+")'>&nbsp;&nbsp;&nbsp;&nbsp;回复ta</a>";
+                            var str8="<br>";
+                            var str9=str1+str2+str3+str10+str4+str8;
+                            $("div[name="+commentId+"]").append(str9);
+                        }
+                        var str6="<a href='javascript:void(0)' onclick='packUp(this,"+commentId+")'>&nbsp;&nbsp;&nbsp;&nbsp;收起</a></p>";
+                        $("div[name="+commentId+"]").append(str6);
+                    }
+//                    为空不执行任何操作
+
+//                }
+            });
+
+        }
+
 
 //        异步刷新评论
         function showAllReplyComment(obj,commentId){
@@ -286,9 +292,16 @@
                                 +data[i].userAccount+"&nbsp;&nbsp;评论了&nbsp;&nbsp;share_"+data[i].commentUserId+"&nbsp;&nbsp;:&nbsp;&nbsp;</i>";
                             var str2="<i>"+data[i].replycommentcontent+"</i>";
                             var str3="<time datetime=\"2018-03-09\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+data[i].replycommenttime+"</time>";
+
+                            var str10="";
+                            if(278==data[i].userId){
+                                str10="<a href='javascript:void(0)' onclick='deleteComment("+data[i].replycommentId+","+commentId+")'>&nbsp;&nbsp;&nbsp;&nbsp;删除</a>";
+                            }
+
                             var str4="<a href='javascript:void(0)' onclick='blogComment(3,"+data[i].replycommentId+")'>&nbsp;&nbsp;&nbsp;&nbsp;回复ta</a>";
                             var str8="<br>";
-                            $("div[name="+commentId+"]").append(str1+str2+str3+str4+str8);
+                            var str9=str1+str2+str3+str10+str4+str8;
+                            $("div[name="+commentId+"]").append(str9);
                         }
                         var str6="<a href='javascript:void(0)' onclick='packUp(this,"+commentId+")'>&nbsp;&nbsp;&nbsp;&nbsp;收起</a></p>";
                         $("div[name="+commentId+"]").append(str6);

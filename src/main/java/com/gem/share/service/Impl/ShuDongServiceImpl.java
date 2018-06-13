@@ -8,6 +8,7 @@ import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -19,8 +20,12 @@ public class ShuDongServiceImpl implements ShuDongService {
 
     @Override
     public List<shuDong> selectAllShuDongContent(String searchContent) {
-//        System.out.println("shudongserviceImpl========="+shuDongMapper.selectAllShuDongContent());
         return shuDongMapper.selectAllShuDongContent(searchContent);
+    }
+
+    @Override
+    public List<shuDong> selectAllShuDongContentBySDBrowse(String searchContent) {
+        return shuDongMapper.selectAllShuDongContentBySDBrowse(searchContent);
     }
 
     @Override
@@ -84,22 +89,43 @@ public class ShuDongServiceImpl implements ShuDongService {
     }
 
     @Override
-    public List<shuDong> searchShuDong(String searchSDContent) {
-        return shuDongMapper.searchShuDong(searchSDContent);
-    }
-
-    @Override
-    public PageInfo<shuDong> pageShuDong(Map<String, Object> map,String searchContent) {
+    public PageInfo<shuDong> pageShuDong(Map<String, Object> map,String searchContent,int pageShuDong) {
         int curPage= (int) map.get("curPage");
         int pageSize= (int) map.get("pageSize");
         PageHelper.startPage(curPage,pageSize);
-        List<shuDong> list=shuDongMapper.selectAllShuDongContent(searchContent);
+
+        List<shuDong> list = new ArrayList<>();
+        if(pageShuDong==0){
+//            按时间排序
+            list=shuDongMapper.selectAllShuDongContent(searchContent);
+        }else if(pageShuDong==1){
+//            按热度(浏览量)排序
+            list=shuDongMapper.selectAllShuDongContentBySDBrowse(searchContent);
+
+        }else if (pageShuDong==2){
+//            按照选定的时间显示---时光机
+        }
+
         PageInfo<shuDong> pageInfo=new PageInfo<>(list);
 
         return pageInfo;
 
     }
 
+    @Override
+    public int selectSDBrowseByUserIdAndBlogId(int user_id, int blog_id) {
+        return shuDongMapper.selectSDBrowseByUserIdAndBlogId(user_id,blog_id);
+    }
+
+    @Override
+    public void insertSDBrowse(int user_id, int blog_id) {
+        shuDongMapper.insertSDBrowse(user_id,blog_id);
+    }
+
+    @Override
+    public boolean deleteComment(int replyComment_id) {
+        return shuDongMapper.deleteComment(replyComment_id);
+    }
 
 }
 
