@@ -232,42 +232,18 @@
             <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">Trending</div>
         </div>
         <div class="owl-carousel owl-theme" id="slider2">
-            <div class="item px-2">
-                <div class="fh5co_hover_news_img">
-                    <div class="fh5co_news_img"><img src="<%=basePath%>images/index-images/39-324x235.jpg" alt=""/></div>
-                    <div>
-                        <a href="#" class="d-block fh5co_small_post_heading"><span class="">The top 10 best computer speakers in the market</span></a>
-                        <div class="c_g"><i class="fa fa-clock-o"></i> Oct 16,2017</div>
+            <c:forEach items="${blogUserPicsLabelList}" var="blogUserPicsLabelList">
+                <div class="item px-2">
+                    <div class="fh5co_hover_news_img">
+                        <div class="fh5co_news_img"><img src="<%=basePath%>${blogUserPicsLabelList.blogPics.pic}" alt=""/></div>
+                        <div style="margin-top: 10px;">
+                            <a href="#" class="d-block fh5co_small_post_heading">
+                                <span class=""><p class="texthidden">${blogUserPicsLabelList.blogContent.blogcontent}</p></span></a>
+                            <div class="c_g"><i class="fa fa-clock-o"></i> <fmt:formatDate value="${blogUserPicsLabelList.blogContent.blogcreatetime}" pattern="MM-dd,yyyy"/></div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="item px-2">
-                <div class="fh5co_hover_news_img">
-                    <div class="fh5co_news_img"><img src="<%=basePath%>images/index-images/joe-gardner-75333.jpg" alt=""/></div>
-                    <div>
-                        <a href="#" class="d-block fh5co_small_post_heading"><span class="">The top 10 best computer speakers in the market</span></a>
-                        <div class="c_g"><i class="fa fa-clock-o"></i> Oct 16,2017</div>
-                    </div>
-                </div>
-            </div>
-            <div class="item px-2">
-                <div class="fh5co_hover_news_img">
-                    <div class="fh5co_news_img"><img src="<%=basePath%>images/index-images/ryan-moreno-98837.jpg" alt=""/></div>
-                    <div>
-                        <a href="#" class="d-block fh5co_small_post_heading"><span class="">The top 10 best computer speakers in the market</span></a>
-                        <div class="c_g"><i class="fa fa-clock-o"></i> Oct 16,2017</div>
-                    </div>
-                </div>
-            </div>
-            <div class="item px-2">
-                <div class="fh5co_hover_news_img">
-                    <div class="fh5co_news_img"><img src="<%=basePath%>images/index-images/seth-doyle-133175.jpg" alt=""/></div>
-                    <div>
-                        <a href="#" class="d-block fh5co_small_post_heading"><span class="">The top 10 best computer speakers in the market</span></a>
-                        <div class="c_g"><i class="fa fa-clock-o"></i> Oct 16,2017</div>
-                    </div>
-                </div>
-            </div>
+            </c:forEach>
         </div>
     </div>
 </div>

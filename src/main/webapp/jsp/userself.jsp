@@ -32,8 +32,9 @@
     <link rel="stylesheet" href="<%=basePath%>css/index-css/main.css">
     <link rel='stylesheet' type='text/css' href='<%=basePath%>css/index-css/nav_font.css'>
     <link rel="stylesheet" type="text/css" href="<%=basePath%>css/index-css/style_1.css" />
-    <script src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
-    <script src="http://jq22.qiniudn.com/masonry-docs.min.js"></script>
+
+    <script src="<%=basePath%>/js/index-js/pubujs1.js"></script>
+    <script src="<%=basePath%>/js/index-js/pubujs2.js"></script>
     <script>
         $(function() {
             var $container = $('#masonry');
