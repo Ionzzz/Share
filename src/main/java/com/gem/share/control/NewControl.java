@@ -28,8 +28,10 @@ public class NewControl {
     @RequestMapping("/main.action")
     public void main(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String searchContent = request.getParameter("searchContent");
-        List<BlogUserPicsLabel> blogUserPicsLabels=blogService.selectBlogCountOrderLiulan(5);
+        List<BlogUserPicsLabel> blogUserPicsLabels=blogService.selectBlogCountOrderLiulan(7);
         request.setAttribute("blogpopular",blogUserPicsLabels);
+        List<BlogUserPicsLabel> blogUserPicsLabelList=blogService.selectBlogCountOrderZan(7);
+        request.setAttribute("blogUserPicsLabelList",blogUserPicsLabelList);
         Map<String,Object> map=new HashMap<>();
         int pageSize=5;
         int curPage=1;

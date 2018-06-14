@@ -411,7 +411,7 @@
     select * from userinfo where userNickName is not null limit #{_parameter}
   </select>
   <!--public List<UserInfo> selectOrderAllUserInfo();-->
-  <select id="selectOrderAllUserInfo" resultType="UserInfo" parameterType="int">
+  <select id="selectOrderAllUserInfo" resultType="UserInfo">
     select * from userinfo order by userEnergy desc
   </select>
   <!--public List<UserInfo> selectOrderCountUserInfo(int count);-->

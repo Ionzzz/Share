@@ -8,8 +8,11 @@ import java.util.List;
 import java.util.Map;
 
 public interface BlogService {
+//    查询用户最近点赞，评论的博客
+    public List<BlogUserPicsLabel> selectBlogZanPinglunByUserId(int user_id);
     public List<LabelInfo> selectLabelByBlogId(int blog_id);
     public List<BlogUserPicsLabel> selectCountBlogByUserId(int user_id,int count);
+    //     该用户发的所有博客
     public List<BlogUserPicsLabel> selectAllBlogByUserId(int user_id);
     //    插入二级评论内容-->
     public boolean insertReplyComment(ReplyComment replyComment);

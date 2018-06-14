@@ -94,9 +94,11 @@ public interface BlogContentMapper {
     public boolean insertThirdReplyComment(ReplyComment replyComment);
     //    三级评论：根据comment_id 查出 replycomment_id-->
     public int selectUserIdByCommentId(int comment_id);
-
+    //     该用户发的所有博客
     public List<BlogUserPicsLabel> selectAllBlogByUserId(int user_id);
 
     public List<BlogUserPicsLabel> selectCountBlogByUserId(int user_id,int count);
+    //    查询用户最近点赞，评论的博客
+    public List<BlogUserPicsLabel> selectBlogZanPinglunByUserId(int user_id);
 
 }

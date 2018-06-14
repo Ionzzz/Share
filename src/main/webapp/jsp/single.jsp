@@ -55,12 +55,15 @@
 <c:import url="${basePath}header.jsp" ></c:import>
 
 
-<div id="fh5co-title-box" style=" background-image: url(<%=basePath%>images/index-images/letter_bg_01.jpg);  background-position: 0px 50%;" data-stellar-background-ratio="0.5">
+<div id="fh5co-title-box" style=" background-image: url(<%=basePath%>images/index-images/letter_bg_01.jpg);height: 500px;  background-position: 0px 50%;" data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
     <div class="page-title">
-        <img src="<%=basePath%>images/index-images/person_1.jpg" alt="Free HTML5 by FreeHTMl5.co">
-        <span>${blog.blogContent.blogcreatetime}</span>
+        <img src="<%=basePath%>img${blog.userInfo.userimg}"style="width: 80px;height: 80px;" alt="Free HTML5 by FreeHTMl5.co">
+        <span>>${blog.userInfo.usernickname}</span>
+        <span>${blog.userInfo.userintroduce}</span>
+<%--
         <h2>How to write interesting articles</h2>
+--%>
     </div>
 </div>
 <div id="fh5co-single-content" class="container-fluid pb-4 pt-4 paddding">
@@ -187,12 +190,12 @@
             <c:forEach items="${bpopular}" var="bpopular">
                 <div class="item px-2">
                     <div class="fh5co_hover_news_img">
-                        <div class="fh5co_news_img">
+                        <div class="fh5co_news_img" style="height: 170px;">
                             <a href="<%=basePath%>single/main.action?blogId=${bpopular.blogContent.blogId}" style="margin: auto" >
                                 <img src="<%=basePath%>${bpopular.blogPics.pic}" style="width:100%;margin:auto"  alt=""/>
                             </a>
                         </div>
-                        <div>
+                        <div style="margin-top: 10px;">
                             <a href="<%=basePath%>single/main.action?blogId=${bpopular.blogContent.blogId}" class="d-block fh5co_small_post_heading">
                                 <p class="texthidden">${bpopular.blogContent.blogcontent}</p>
                             </a>

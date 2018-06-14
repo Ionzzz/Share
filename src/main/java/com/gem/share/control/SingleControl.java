@@ -52,7 +52,7 @@ public class SingleControl {
         request.setAttribute("blog", blogUserPicsLabel);
         request.setAttribute("LabelInfo",labelInfos);
 
-        List<BlogUserPicsLabel> bmore=blogService.selectCountBlogByUserId(blogUserPicsLabel.getUserInfo().getUserId(),3);
+        List<BlogUserPicsLabel> bmore=blogService.selectCountBlogByUserId(blogUserPicsLabel.getUserInfo().getUserId(),4);
         request.setAttribute("bmore",bmore);
         List<BlogUserPicsLabel> bpopular=blogService.selectBlogUserPicsCountByLabelName(blogUserPicsLabel.getLabelInfo().getLabelname(),10);
         request.setAttribute("bpopular",bpopular);

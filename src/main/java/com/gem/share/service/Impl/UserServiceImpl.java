@@ -30,7 +30,7 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public List<UserInfo> selectOrderAllUserInfo() {
-        return null;
+        return userInfoMapper.selectAllUserInfo();
     }
     @Override
     public List<UserInfo> selectOrderCountUserInfo(int count) {

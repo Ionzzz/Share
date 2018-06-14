@@ -29,6 +29,11 @@ public class BlogServiceImpl implements BlogService {
     private LabelInfoMapper labelInfoMapper;
 
     @Override
+    public List<BlogUserPicsLabel> selectBlogZanPinglunByUserId(int user_id) {
+        return blogContentMapper.selectBlogZanPinglunByUserId(user_id);
+    }
+
+    @Override
     public List<LabelInfo> selectLabelByBlogId(int blog_id) {
         return blogLabelMapper.selectLabelByBlogId(blog_id);
     }

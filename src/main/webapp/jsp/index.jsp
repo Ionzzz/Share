@@ -153,30 +153,30 @@
     <div class="row mx-0">
         <div class="col-md-6 col-12 paddding animate-box" data-animate-effect="fadeIn">
             <div class="fh5co_suceefh5co_height">
-                <a href="<%=basePath%>single/main.action?blogId=${blogone.blogContent.blogId}">
-                    <img src="<%=basePath%>${blogone.blogPics.pic}" style="height:100%" alt="img"/>
+                <a href="<%=basePath%>single/main.action?blogId=${indexmap['blogone'].blogContent.blogId}">
+                    <img src="<%=basePath%>${indexmap['blogone'].blogPics.pic}" style="height:100%" alt="img"/>
                 </a>
                 <div class="fh5co_suceefh5co_height_position_absolute">
                     <p  class="fontdiv" style="margin:30px;text-align: right">
-                        热度：${blogone.liulan}<br/>
-                        <a href="javascript:void(0)" onclick="getZan('${blogone.blogContent.blogId}')" class="fontdiv">
+                        热度：${indexmap['blogone'].liulan}<br/>
+                        <a href="javascript:void(0)" onclick="getZan('${indexmap['blogone'].blogContent.blogId}')" class="fontdiv">
                             <span  onclick="changeZanImg()">
                                 <img  src="<%= basePath %>images/shudong-images/Zan.png"/></span>
-                        </a> <span name="${blogone.blogContent.blogId}">${blogone.zan}</span><br/>
+                        </a> <span name="${indexmap['blogone'].blogContent.blogId}">${indexmap['blogone'].zan}</span><br/>
                         <span class="total-comments-on-post pull-right">
-                           <a href="<%= basePath %>single/main.action?blogId=${blogone.blogContent.blogId}"class="fontdiv">${blogone.pinglun} 条评论</a>
+                           <a href="<%= basePath %>single/main.action?blogId=${indexmap['blogone'].blogContent.blogId}"class="fontdiv">${indexmap['blogone'].pinglun} 条评论</a>
                         </span>
                     </p>
                 </div>
                 <div class="fh5co_suceefh5co_height_position_absolute_font">
-                     <i class="fa fa-clock-o"></i>&nbsp;&nbsp;<fmt:formatDate value="${blogone.blogContent.blogcreatetime}" pattern="MM-dd-yyyy"/>
-                    <p class="texthidden"  style=" width:600px;"><a href="<%=basePath%>single/main.action?blogId=${blogone.blogContent.blogId}" class="fh5co_good_font"> ${blogone.blogContent.blogcontent} </a></p>
+                     <i class="fa fa-clock-o"></i>&nbsp;&nbsp;<fmt:formatDate value="${indexmap['blogone'].blogContent.blogcreatetime}" pattern="MM-dd-yyyy"/>
+                    <p class="texthidden"  style=" width:600px;"><a href="<%=basePath%>single/main.action?blogId=${indexmap['blogone'].blogContent.blogId}" class="fh5co_good_font"> ${indexmap['blogone'].blogContent.blogcontent} </a></p>
                 </div>
             </div>
         </div>
         <div class="col-md-6">
             <div class="row">
-                <c:forEach items="${blogfourlist}" var="blogfourlist">
+                <c:forEach items="${indexmap['blogfourlist']}" var="blogfourlist">
                     <div class="col-md-6 col-6 paddding animate-box"data-animate-effect="fadeIn">
                       <div class="fh5co_suceefh5co_height_2">
                           <img src="<%=basePath%>${blogfourlist.blogPics.pic}" style="width: 100%" alt="img"/>
@@ -217,7 +217,7 @@
         </div>
         <div class="owl-carousel owl-theme js" id="slider1">
 
-            <c:forEach items="${blogJiaJu}" var="blogJiaJu">
+            <c:forEach items="${indexmap['blogJiaJu']}" var="blogJiaJu">
                 <div class="item px-2" >
                     <div class="fh5co_latest_trading_img_position_relative">
                         <div class="fh5co_latest_trading_img"onclick="window.location.href='<%=basePath%>single/main.action?blogId=${blogJiaJu.blogContent.blogId}'">
@@ -238,7 +238,7 @@
                         <div class="fh5co_latest_trading_img_position_absolute_1">
                             <p class="text-white texthidden "  style=" width:240px;"> <a href="<%=basePath%>single/main.action?blogId=${blogJiaJu.blogContent.blogId}" class="text-white"> ${blogJiaJu.blogContent.blogcontent} </a></p>
                             <div class="fh5co_latest_trading_date_and_name_color c_g">
-                                    ${blogJiaJu.userInfo.usernickname} - <fmt:formatDate value="${blogJiaJu.blogContent.blogcreatetime}" pattern="yyyy-MM-dd HH:mm:ss"/> </div>
+                                    ${blogJiaJu.userInfo.usernickname} - <fmt:formatDate value="${blogJiaJu.blogContent.blogcreatetime}" pattern="yyyy-MM-dd  HH:mm"/> </div>
                         </div>
                     </div>
                 </div>
@@ -254,14 +254,14 @@
             <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">旅行</div>
         </div>
         <div class="owl-carousel owl-theme" id="slider2">
-            <c:forEach items="${blogLvXing}" var="blogLvXing">
+            <c:forEach items="${indexmap['blogLvXing']}" var="blogLvXing">
                 <div class="item px-2" onclick="window.location.href='<%=basePath%>single/main.action?blogId=${blogLvXing.blogContent.blogId}'">
                     <div class="fh5co_hover_news_img">
                         <div class="fh5co_news_img">
                             <img src="<%=basePath%>${blogLvXing.blogPics.pic}"style="width:100%;margin:auto" alt="img"/></div>
                         <div>
                             <p class="texthidden" style="width: 350px"><a href="<%=basePath%>single/main.action?blogId=${blogLvXing.blogContent.blogId}" class="fh5co_small_post_heading " >${blogLvXing.blogContent.blogcontent}</a></p>
-                            <p style="text-align: right"><fmt:formatDate value="${blogLvXing.blogContent.blogcreatetime}" pattern="yyyy-MM-dd HH:mm:ss"/></p>
+                            <p style="text-align: right"><fmt:formatDate value="${blogLvXing.blogContent.blogcreatetime}" pattern="yyyy-MM-dd  HH:mm"/></p>
                         </div>
                     </div>
                 </div>
@@ -277,7 +277,7 @@
         </div>
         <div>
             <div class="owl-carousel owl-theme js" id="slider3">
-                <c:forEach items="${blogFood}" var="blogfood">
+                <c:forEach items="${indexmap['blogFood']}" var="blogfood">
                     <div class="item px-2" ><%--onclick="window.location.href='<%=basePath%>single/main.action?blogId=${blogfood.blogContent.blogId}'"--%>
                         <div class="fh5co_hover_news_img">
                             <div class="fh5co_news_img">
@@ -286,8 +286,10 @@
                                 </a>
                             </div>
                             <div>
-                                <p class="text-white texthidden" style="width: 350px"><a href="<%=basePath%>single/main.action?blogId=${blogfood.blogContent.blogId}" class="fh5co_small_post_heading fh5co_small_post_heading_1" >${blogfood.blogContent.blogcontent}</a></p>
-                                <p style="text-align: right"><fmt:formatDate value="${blogfood.blogContent.blogcreatetime}" pattern="yyyy-MM-dd HH:mm:ss"/></p>
+                                <p class="text-white texthidden" style="width: 350px">
+                                    <a href="<%=basePath%>single/main.action?blogId=${blogfood.blogContent.blogId}" class="fh5co_small_post_heading fh5co_small_post_heading_1" >${blogfood.blogContent.blogcontent}</a>
+                                </p>
+                                <p style="text-align: right"><fmt:formatDate value="${blogfood.blogContent.blogcreatetime}" pattern="yyyy-MM-dd  HH:mm"/></p>
                             </div>
                         </div>
                     </div>
@@ -305,7 +307,7 @@
                 <div>
                     <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">书籍</div>
                 </div>
-                <c:forEach items="${blogBook4}" var="blogbook">
+                <c:forEach items="${indexmap['blogBook4']}" var="blogbook">
                     <div class="row pb-4">
                         <div class="col-md-4"> <%--onclick="window.location.href='<%=basePath%>single/main.action?blogId=${blogbook.blogContent.blogId}'"--%>
                             <div class="fh5co_hover_news_img">
@@ -323,35 +325,43 @@
                                     <c:set var="bookname" value="${blogbook.blogContent.blogcontent}"/>
                                       《${fn:substringBefore(bookname,"||" )}》  </a></p>
 
-                                    ${blogbook.userInfo.username} -  <fmt:formatDate value="${blogbook.blogContent.blogcreatetime}" pattern="yyyy-MM-dd HH:mm:ss"/>
+                                    ${blogbook.userInfo.username} -  <fmt:formatDate value="${blogbook.blogContent.blogcreatetime}" pattern="yyyy-MM-dd  HH:mm"/>
                             <div class="fh5co_consectetur"> ${blogbook.blogContent.blogcontent}
                             </div>
                         </div>
                     </div>
                 </c:forEach>
             </div>
+
             <div class="col-md-3 animate-box" data-animate-effect="fadeInRight">
                 <div>
                     <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">话题</div>
                 </div>
                 <div class="clearfix"></div>
                 <div class="fh5co_tags_all">
-                    <c:forEach items="${labelList}" var="labellist">
+                    <c:forEach items="${indexmap['labelList']}" var="labellist">
                         <a href="<%=basePath%>topic/main.action?labelId=${labellist.labelId}" class="fh5co_tagg">${labellist.labelname}</a>
                     </c:forEach>
                     <a href="#" class="fh5co_tagg">更多...</a>
                 </div>
+
                 <div>
                     <div class="fh5co_heading fh5co_heading_border_bottom pt-3 py-2 mb-4">能量达人</div>
                 </div>
-                <c:forEach items="${userList5}" var="userlist">
-                    <div class="row pb-3"  style="margin: 20px 0;">
+                <c:forEach items="${indexmap['userList5']}" var="userlist">
+                    <div class="row pb-3"  style="margin: 20px 0;"onclick="window.location.href='<%=basePath%>index/userself.action?userId=${userlist.userId}'">
                         <div class="col-5 align-self-center">
-                            <img src="<%=basePath%>img${userlist.userimg}" alt="img" class="fh5co_most_trading"/>
+                            <a href="<%=basePath%>index/userself.action?userId=${userlist.userId}">
+                                <img src="<%=basePath%>img${userlist.userimg}" alt="img" class="fh5co_most_trading"/>
+                            </a>
                         </div>
                         <div class="col-7 paddding">
-                            <div class="most_fh5co_treding_font"> ${userlist.usernickname}</div>
-                            <div class="most_fh5co_treding_font_123"> ${userlist.userintroduce}</div>
+                            <div class="most_fh5co_treding_font">
+                                ${userlist.usernickname}
+                            </div>
+                            <div class="most_fh5co_treding_font_123">
+                                ${userlist.userintroduce}
+                            </div>
                         </div>
                     </div>
                 </c:forEach>
@@ -401,10 +411,10 @@
             <div class="col-12 col-md-3 col-lg-2">
                 <div class="footer_main_title py-3"> 话题</div>
                 <ul class="footer_menu">
-                    <c:forEach items="${labelList}" var="labellist">
-                        <li><a href="#" class=""><i class="fa fa-angle-right"></i>&nbsp;&nbsp; ${labellist.labelname}</a></li>
+                    <c:forEach items="${indexmap['labelList']}" var="labellist" begin="0" end="4">
+                        <li><a href="<%=basePath%>/topic/main.action?labelId=${labellist.labelId}" class=""><i class="fa fa-angle-right"></i>&nbsp;&nbsp; ${labellist.labelname}</a></li>
                     </c:forEach>
-                    <li><a href="#" class=""><i class="fa fa-angle-right"></i>&nbsp;&nbsp; 更多...</a></li>
+                    <li><a href="<%=basePath%>/topic/all.action" class=""><i class="fa fa-angle-right"></i>&nbsp;&nbsp; 更多...</a></li>
                 </ul>
             </div>
             <div class="col-12 col-md-5 col-lg-3 position_footer_relative">

@@ -16,8 +16,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 
 @RequestMapping("/index")
@@ -34,33 +33,58 @@ public class IndexControl {
     public void main(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         BlogUserPicsLabel blogtheone=blogService.selectOneBlogOrderBlogBrowse();
-        request.setAttribute("blogone",blogtheone);
         List<BlogUserPicsLabel> blogflist=blogService.selectBlogCountOrderZan(4);
 //        System.out.println("----------"+pic.get(0));
-        request.setAttribute("blogfourlist",blogflist);
 
         List<BlogUserPicsLabel> blogjiaju=blogService.selectBlogUserPicsLabelByLabelNameOrderLiuLan("家居");
-        request.setAttribute("blogJiaJu",blogjiaju);
 
         List<BlogUserPicsLabel> bloglvxing=blogService.selectBlogUserPicsLabelByLabelNameOrderZan("旅行");
-        request.setAttribute("blogLvXing",bloglvxing);
 
         List<BlogUserPicsLabel> blogfood=blogService.selectBlogUserPicsLabelByLabelNameOrderTime("美食");
-        request.setAttribute("blogFood",blogfood);
 
         List<BlogUserPicsLabel> blogbook=blogService.selectBlogUserPicsCountByLabelName("书籍",4);
-        request.setAttribute("blogBook4",blogbook);
 
         List<LabelInfo> labelInfos=labelInfoService.selectAllLabelInfo();
-        request.setAttribute("labelList",labelInfos);
 
         List<UserInfo> userInfos=userService.selectCountUserInfo(5);
-        request.setAttribute("userList5",userInfos);
-
+        Map<String,Object> map=new HashMap<>();
+        map.put("blogone",blogtheone);
+        map.put("blogfourlist",blogflist);
+        map.put("blogJiaJu",blogjiaju);
+        map.put("blogLvXing",bloglvxing);
+        map.put("blogFood",blogfood);
+        map.put("blogBook4",blogbook);
+        map.put("labelList",labelInfos);
+        map.put("userList5",userInfos);
+        request.setAttribute("indexmap",map);
         request.getRequestDispatcher("/jsp/index.jsp").forward(request,response);
 
     }
 
+    @RequestMapping("/userself.action")
+    public void userself(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String userId=request.getParameter("userId");
+
+        List<BlogUserPicsLabel> blogUserPicsLabels=blogService.selectAllBlogByUserId(Integer.parseInt(userId));
+        UserInfo userInfo=userService.selectUserInfoByUserId(Integer.parseInt(userId));
+        List<BlogUserPicsLabel> blogBrowse=blogService.selectBlogZanPinglunByUserId(Integer.parseInt(userId));
+        Set<LabelInfo> set=new HashSet<>();
+        for(BlogUserPicsLabel b:blogUserPicsLabels){
+            if(b.getLabelInfo()!=null){
+                LabelInfo labelInfo=b.getLabelInfo();
+                set.add(labelInfo);
+            }
+        }
+        Map<String,Object> map=new HashMap<>();
+        map.put("blogBrowse",blogBrowse);
+        map.put("blogUserPicsLabels",blogUserPicsLabels);
+        map.put("userInfo",userInfo);
+        map.put("labelInfo",set);
+        request.setAttribute("userselfmap",map);
+
+        request.getRequestDispatcher("/jsp/userself.jsp").forward(request,response);
+
+    }
 
     @RequestMapping("/zan.action")
     public @ResponseBody int zan(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
