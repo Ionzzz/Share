@@ -49,7 +49,7 @@
 
     <!--首页，启动页面 只要是项目名，就直接跳到这个启动页面-->
     <welcome-file-list>
-        <welcome-file>index/main.action</welcome-file>
+        <welcome-file>jsp/login-register/login_password.jsp</welcome-file>
     </welcome-file-list>
 
 

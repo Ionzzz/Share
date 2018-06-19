@@ -1,6 +1,7 @@
 package com.gem.share.service;
 
 import com.gem.share.entity.BlogContent;
+import com.gem.share.entity.FollowGroup;
 import com.gem.share.entity.UserInfo;
 import com.github.pagehelper.PageInfo;
 
@@ -38,8 +39,15 @@ public interface PersonalService {
     public PageInfo<UserInfo> selectAllUserByPage(int user_id, Map<String, Object> map);
 
     //    根据用户id查询所有的分组
-    public List<String> selectAllGroupByUserId(int user_id);
+    public List<FollowGroup> selectAllGroupByUserId(int user_id);
 
     //    根据用户id查询用户信息
     public UserInfo selectUserById(int id);
+
+    //    根据自己的id和关注人的id取消关注此人
+    public boolean deleteUserByUserIdAndFollowUser(int userId,int followUserId);
+
+    //    添加关注人
+    public Boolean insertfollow(int user_id,int followUser_id);
+
 }

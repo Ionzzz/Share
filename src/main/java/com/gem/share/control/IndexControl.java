@@ -32,6 +32,9 @@ public class IndexControl {
     @RequestMapping("/main.action")
     public void main(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        UserInfo userInfo= (UserInfo) request.getSession().getAttribute("userInfo");
+
+
         BlogUserPicsLabel blogtheone=blogService.selectOneBlogOrderBlogBrowse();
         List<BlogUserPicsLabel> blogflist=blogService.selectBlogCountOrderZan(4);
 //        System.out.println("----------"+pic.get(0));
@@ -44,7 +47,11 @@ public class IndexControl {
 
         List<BlogUserPicsLabel> blogbook=blogService.selectBlogUserPicsCountByLabelName("书籍",4);
 
+        /*foot*/
         List<LabelInfo> labelInfos=labelInfoService.selectAllLabelInfo();
+        List<BlogUserPicsLabel> footblog=blogService.selectAllBlogUserLabel();
+        request.setAttribute("foot",footblog);
+        request.setAttribute("labelList",labelInfos);
 
         List<UserInfo> userInfos=userService.selectCountUserInfo(5);
         Map<String,Object> map=new HashMap<>();
@@ -54,7 +61,6 @@ public class IndexControl {
         map.put("blogLvXing",bloglvxing);
         map.put("blogFood",blogfood);
         map.put("blogBook4",blogbook);
-        map.put("labelList",labelInfos);
         map.put("userList5",userInfos);
         request.setAttribute("indexmap",map);
         request.getRequestDispatcher("/jsp/index.jsp").forward(request,response);

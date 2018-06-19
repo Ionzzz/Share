@@ -6,6 +6,11 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+
 <html>
 <head>
     <title>评论</title>
@@ -17,22 +22,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
     function hideURLbar(){ window.scrollTo(0,1); } </script>
     <!-- //for-mobile-apps -->
-    <link href="../../css/chat-css/bootstrap.css" type="text/css" rel="stylesheet" media="all" />
-    <link href="../../css/chat-css/style.css" rel="stylesheet" type="text/css" media="all" />
-    <link href="../../css/chat-css/chat.css" rel="stylesheet" type="text/css" media="all" />
-    <link rel="stylesheet" type="text/css" href="../../fonts/chat-fonts/font_Icon/iconfont.css" />
+    <link href="<%=basePath%>css/chat-css/bootstrap.css" type="text/css" rel="stylesheet" media="all" />
+    <link href="<%=basePath%>css/chat-css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="<%=basePath%>css/chat-css/chat.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>fonts/chat-fonts/font_Icon/iconfont.css" />
     <!-- CSS -->
-    <link rel="stylesheet" href="../../css/chat-css/main.css" />
+    <link rel="stylesheet" href="<%=basePath%>css/chat-css/main.css" />
 
-    <link rel="stylesheet" type="text/css" href="../../css/chat-css/notice.css" />
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>css/chat-css/notice.css" />
 
     <!-- js -->
-    <script src="../../js/chat-js/jquery-1.11.1.min.js"></script>
+    <script src="<%=basePath%>js/chat-js/jquery-1.11.1.min.js"></script>
     <!-- //js -->
     <!-- for bootstrap working -->
-    <script src="../../js/chat-js/bootstrap.js"></script>
+    <script src="<%=basePath%>js/chat-js/bootstrap.js"></script>
     <!-- //for bootstrap working -->
-    <script src="../../js/chat-js/jquery.wmuSlider.js"></script>
+    <script src="<%=basePath%>js/chat-js/jquery.wmuSlider.js"></script>
 
 
 </head>
@@ -137,7 +142,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <div class="shang row">
                             <div class="touxiang col-md-2">
                                 <a href="#">
-                                    <img src="../../images/chat-images/images/co.png" />
+                                    <img src="<%=basePath%>images/chat-images/images/co.png" />
                                 </a>
                             </div>
                             <div class="qita col-md-10">

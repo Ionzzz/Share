@@ -94,11 +94,17 @@ $(document).ready(function(){
 
             // If it's the last tab then hide the last button and show the finish instead
             if($current >= $total) {
-                $($wizard).find('.btn-next').hide();
-                $($wizard).find('.btn-finish').show();
-            } else {
-                $($wizard).find('.btn-next').show();
-                $($wizard).find('.btn-finish').hide();
+                $($wizard).find('.btn-register').hide();
+                $($wizard).find('.btn-select').hide();
+                $($wizard).find('.btn-login').show();
+            } else if($current == $total - 1){
+                $($wizard).find('.btn-register').hide();
+                $($wizard).find('.btn-select').show();
+                $($wizard).find('.btn-login').hide();
+            }else {
+                $($wizard).find('.btn-register').show();
+                $($wizard).find('.btn-select').hide();
+                $($wizard).find('.btn-login').hide();
             }
 
             button_text = navigation.find('li:nth-child(' + $current + ') a').html();

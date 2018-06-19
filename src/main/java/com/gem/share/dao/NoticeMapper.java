@@ -2,8 +2,9 @@ package com.gem.share.dao;
 
 import com.gem.share.entity.Notice;
 import com.gem.share.entity.NoticeExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface NoticeMapper {
     long countByExample(NoticeExample example);
@@ -27,4 +28,7 @@ public interface NoticeMapper {
     int updateByPrimaryKeySelective(Notice record);
 
     int updateByPrimaryKey(Notice record);
+
+//    查询评论我的用户信息
+//    public List<UserInfo> selectCommentUserInfo( )
 }

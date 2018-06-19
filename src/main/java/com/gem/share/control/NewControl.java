@@ -1,6 +1,7 @@
 package com.gem.share.control;
 
 import com.gem.share.entity.BlogUserPicsLabel;
+import com.gem.share.entity.LabelInfo;
 import com.gem.share.service.BlogService;
 import com.gem.share.service.LabelInfoService;
 import com.github.pagehelper.PageInfo;
@@ -23,7 +24,7 @@ public class NewControl {
     @Autowired
     private BlogService blogService;
     @Autowired
-    private LabelInfoService infoService;
+    private LabelInfoService labelInfoService;
 
     @RequestMapping("/main.action")
     public void main(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -45,7 +46,12 @@ public class NewControl {
         PageInfo<BlogUserPicsLabel> pageInfo=blogService.selectAllBlogUserPicsByPage(map);
         request.setAttribute("pageInfo",pageInfo);
 
-        request.setAttribute("labelList",infoService.selectAllLabelInfo());
+   /*foot*/
+        List<LabelInfo> labelInfos=labelInfoService.selectAllLabelInfo();
+        List<BlogUserPicsLabel> footblog=blogService.selectAllBlogUserLabel();
+        request.setAttribute("foot",footblog);
+        request.setAttribute("labelList",labelInfos);
+
         request.setAttribute("searchContent",searchContent);
         request.getRequestDispatcher("/jsp/new.jsp").forward(request,response);
 

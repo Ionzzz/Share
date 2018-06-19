@@ -2,6 +2,7 @@ package com.gem.share.service.Impl;
 
 import com.gem.share.dao.PersonalMapper;
 import com.gem.share.entity.BlogContent;
+import com.gem.share.entity.FollowGroup;
 import com.gem.share.entity.UserInfo;
 import com.gem.share.service.PersonalService;
 import com.github.pagehelper.PageHelper;
@@ -70,12 +71,23 @@ public class PersonalServiceImpl implements PersonalService {
     }
 
     @Override
-    public List<String> selectAllGroupByUserId(int user_id) {
+    public List<FollowGroup> selectAllGroupByUserId(int user_id) {
         return personalMapper.selectAllGroupByUserId(user_id);
     }
 
     @Override
     public UserInfo selectUserById(int id) {
         return personalMapper.selectUserById(id);
+    }
+
+    @Override
+    public boolean deleteUserByUserIdAndFollowUser(int userId,int followUserId){
+        return personalMapper.deleteUserByUserIdAndFollowUser(userId,followUserId);
+    }
+
+
+    @Override
+    public Boolean insertfollow(int user_id, int followUser_id) {
+        return personalMapper.insertfollow(user_id,followUser_id);
     }
 }

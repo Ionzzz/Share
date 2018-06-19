@@ -101,4 +101,6 @@ public interface BlogContentMapper {
     //    查询用户最近点赞，评论的博客
     public List<BlogUserPicsLabel> selectBlogZanPinglunByUserId(int user_id);
 
+    public List<BlogUserPicsLabel> selectAllBlogUserLabel();
+
 }

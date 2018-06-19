@@ -173,94 +173,143 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
             <script type="text/javascript">
 
-                //       异步刷新右侧关注人
-                function showAllFollowInfo(followGroupName){
+                function showgroup() {
+                    alert("aaa");
+                    var select = document.getElementById("select1");
+                    alert(select);
+                    var slen = select.length;
+                    for(var i = slen ; i >0 ; i--){
+                        select.options.remove(i);
+                    }
+//                    alert("select");
                     $.ajax({
                         type:"post",
-                        url:'${pageContext.request.contextPath }/personalpage/groupfellow.action',
-                        data : {"followGroupName":followGroupName},
+                        url:'${pageContext.request.contextPath }/personalpage/groupname.action',
+//                        data : {"followGroupName":followGroupName},
                         dateType:'json',
                         success:function (data) {
-//                  获得不同分组的关注人信息
+//                            alert(data);
                             var len = data.length;
-                            var tableStr = "<table class='table'>"
-                                         + "<thead>"+followGroupName+len+"</thead>";
-//                            alert(tableStr);
-                            if(len==0){
-                                tableStr = tableStr + "<tr style='text-align: center'>"
-                                    +"<td colspan='6'><font color='#cd0a0a'>该分组没有关注的人</font></td>"
-                                    +"</tr>";
-                            }else {
-                                tableStr = tableStr + "<tr>"
-                                for (var i = 0; i < len; i++) {
-                                    tableStr = tableStr
-                                        + "<td width='33.3%' style='margin: 5px;border:5px solid white;background-color:#F0F0F0;'>"
-                                        + "<div class='list-detail'>"
-                                        + "<div class='profile-photo col-md-4'>"
-                                        + "<a href='#'>"
-                                        + "<div class='imgtest'>"
-                                        + "<figure>"
-                                        + "<div>"
-                                        + "<img src='<%=basePath%>img" + data[i].userimg + "'/>"
-                                        + "</div>"
-                                        + "</figure>"
-                                        + "</div>"
-                                        + "</a>"
-                                        + "</div>"
-                                        + "<div class='fellow-detail col-md-8' style='border-left: solid 1px'>"
-                                        + "<p>"
-                                        + "<a href='#'><strong>" + data[i].usernickname + "</strong></a>"
-                                        + "</p>"
-                                        + "<p>已关注</p>"
-                                        + "<p>" + data[i].userintroduce + "</p>"
-                                        + "<p>"
-                                        + "<select class='form-control' style='float:left;height:27px;width:67px;font-size:4px;padding:0;'>"
-                                        + "<option>特别关心</option>"
-                                        + "<option>DIY</option>"
-                                        + "<option>音乐</option>"
-                                        + "<option>影视</option>"
-                                        + "<option>设计</option>"
-                                        + "<option>美妆</option>"
-                                        + "</select>"
-                                        + "<button class='btn btn-default' type='submit'" +
-                                        "                                style='float:left;height:27px;width: 50px;font-size:3px;padding: 0;margin-left: 3px'>取消关注</button>"
-                                        + "</p>"
-                                        + "</div>"
-                                        + "</div>"
-                                        + "</td>";
-                                    if ((i + 1) % 3 == 0) {
-                                        tableStr = tableStr + "</tr>"
-                                    }
-                                }
+                            for(var i = 0; i < len ; i++) {
+//                                alert(data[i].followgroupname);
+                                select.options.add(new Option(data[i].followgroupname));
                             }
-                            tableStr = tableStr + "<tr></tr></table>";
-//                            alert(tableStr);
-                            //添加到div中
-                            $("#fellow-list").html(tableStr);
                         }
-
-                    });
+                    })
                 }
 
+                //       异步刷新右侧关注人
+                function showAllFollowInfo(followGroupName){
+                    if(followGroupName == "care"){
+                        $("#fans-list").attr("style","display:none;");
+                        $("#follow-list").hide();
+                        $("#fellow-list").show();
+                    }else if(followGroupName == "fans"){
+                        $("#follow-list").hide();
+                        $("#fellow-list").hide();
+                        $("#fans-list").attr("style","display:block;");
+                    } else {
+//                        alert(followGroupName);
+                        $.ajax({
+                            type:"post",
+                            url:'${pageContext.request.contextPath }/personalpage/groupfellow.action',
+                            data : {"followGroupName":followGroupName},
+                            dateType:'json',
+                            success:function (data) {
+//                  获得不同分组的关注人信息
+                                var len = data.length;
+                                var tableStr = "<table class='table'>"
+                                    + "<thead>"+followGroupName+len+"</thead>";
+//                            alert(tableStr);
+                                if(len==0){
+                                    tableStr = tableStr + "<tr style='text-align: center'>"
+                                        +"<td colspan='6'><font color='#cd0a0a'>该分组没有关注的人</font></td>"
+                                        +"</tr>";
+                                }else {
+                                    tableStr = tableStr + "<tr>"
+                                    for (var i = 0; i < len; i++) {
+                                        tableStr = tableStr
+                                            + "<td width='33.3%' style='margin: 5px;border:5px solid white;background-color:#F0F0F0;'>"
+                                            + "<div class='list-detail'>"
+                                            + "<div class='profile-photo col-md-4'>"
+                                            + "<a href='#'>"
+                                            + "<div class='imgtest'>"
+                                            + "<figure>"
+                                            + "<div>"
+                                            + "<img src='<%=basePath%>img" + data[i].userimg + "'/>"
+                                            + "</div>"
+                                            + "</figure>"
+                                            + "</div>"
+                                            + "</a>"
+                                            + "</div>"
+                                            + "<div class='fellow-detail col-md-8' style='border-left: solid 1px'>"
+                                            + "<p>"
+                                            + "<a href='#'><strong>" + data[i].usernickname + "</strong></a>"
+                                            + "</p>"
+                                            + "<p>已关注</p>"
+                                            + "<p>" + data[i].userintroduce + "</p>"
+                                            + "<p>"
+                                            + "<select id='select1' onclick='showgroup()' class='form-control' style='float:left;height:27px;width:67px;font-size:4px;padding:0;'>"
+                                            + "<option>"+followGroupName+"</option>"
+                                            + "</select>"
+                                            + "<button class='btn btn-default' type='submit' onclick='deleteCare("+data[i].userId+")' style='float:left;height:27px;width: 50px;font-size:3px;padding: 0;margin-left: 3px'>取消关注</button>"
+                                            + "</p>"
+                                            + "</div>"
+                                            + "</div>"
+                                            + "</td>";
+                                        if ((i + 1) % 3 == 0) {
+                                            tableStr = tableStr + "</tr>"
+                                        }
+                                    }
+                                }
+                                tableStr = tableStr + "<tr></tr></table>";
+//                            alert(tableStr);
+                                $("#fans-list").attr("style","display:none;");
+                                $("#fellow-list").hide();
+                                $("#follow-list").show();
+                                //添加到div中
+                                $("#follow-list").html(tableStr);
+                            }
+
+                        });
+
+                        <%--$.ajax({--%>
+<%--//                           获得分组名--%>
+                            <%--type:"post",--%>
+                            <%--url:'${pageContext.request.contextPath }/personalpage/groupname.action',--%>
+                            <%--dateType:'json',--%>
+                            <%--success:function (group) {--%>
+<%--//                                                    alert(group);--%>
+                                <%--var select = document.getElementById("select1");--%>
+                                <%--alert(select);--%>
+                                <%--for(var j = 0; j <= group.length; j++){--%>
+<%--//                                                        alert(group[j]);--%>
+                                    <%--select.options.add(new Option(group[j].followgroupname,group[j].followgroupId));--%>
+                                <%--}--%>
+                            <%--}--%>
+                        <%--});--%>
+                    }
+
+                }
 
 
                 //                <button class="btn btn-default" type="submit">取消关注</button>
                 //             点击取消关注在关注列表中删除此人
                 function deleteCare(userId) {
-//                    alert("11111111111111111111111111111111"+userId);
+                    alert("11111111111111111111111111111111"+userId);
                     $.ajax({
                         type:"post",
                         url:'${pageContext.request.contextPath }/personalpage/deletefollow.action',
                         data:{"userId":userId},
                         dataType:'json',
                         success:function (data) {
-//                            alert(data);
-                            if(data == true){
+                            alert("11111");
+                            alert(data);
+                            if(data == 0){
                                 alert("删除成功！！");
                             }else {
                                 alert("删除失败！！");
                             }
-
                         }
                     });
                 }
@@ -273,23 +322,26 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="col-md-3 group" style="float: left;">
                     <ul>
                         <li id="allcare" class="current">
-                            <a href="javascript:void(0)">关注&nbsp;254</a>
+                            <a href="javascript:void(0)" onclick="showAllFollowInfo('care')">关注</a>
                             <ul>
                                 <c:forEach items="${group}" var="groups">
                                     <li>
-                                        <a href="javascript:void(0)" onclick="showAllFollowInfo('${groups}')"> ${groups}</a>
+                                        <a href="javascript:void(0)" onclick="showAllFollowInfo('${groups.followgroupname}')"> ${groups.followgroupname}</a>
                                     </li>
                                 </c:forEach>
                             </ul>
                         </li>
                         <li id="follow">
-                            <a href="javascript:void(0)">粉丝&nbsp;59</a>
+                            <a href="javascript:void(0)" onclick="showAllFollowInfo('fans')">粉丝</a>
                         </li>
                     </ul>
                 </div>
 
                 <div id="content">
 
+                    <div class="col-md-9 fellow-list" id="follow-list" name="follow-list">
+
+                    </div>
                     <div class="col-md-9 fellow-list" id="fellow-list" name="fellow-list">
                         <form action="<%=basePath%>personalpage/fellow.action" id="mainForm" method="post">
                             <table class="table">
@@ -319,7 +371,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                     <p>
                                                         <select class="form-control" style="float:left;height:27px;width:67px;font-size:4px;padding:0;">
                                                             <c:forEach items="${group}" var="groups">
-                                                                <option>${groups}</option>
+                                                                <option>${groups.followgroupname}</option>
                                                             </c:forEach>
                                                         </select>
                                                         <button class="btn btn-default" type="submit" onclick="deleteCare('${concerns.userId}')"
@@ -376,7 +428,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </form>
                     </div>
 
-                    <div  class="col-md-9 fellow-list" style="display: none">
+                    <div  class="col-md-9 fellow-list" id="fans-list" style="display: none">
                         <table class="table">
                             <thead>粉丝</thead>
                             <tr>

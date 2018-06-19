@@ -164,7 +164,9 @@
                                 <img  src="<%= basePath %>images/shudong-images/Zan.png"/></span>
                         </a> <span name="${indexmap['blogone'].blogContent.blogId}">${indexmap['blogone'].zan}</span><br/>
                         <span class="total-comments-on-post pull-right">
-                           <a href="<%= basePath %>single/main.action?blogId=${indexmap['blogone'].blogContent.blogId}"class="fontdiv">${indexmap['blogone'].pinglun} 条评论</a>
+                            <c:if test="${indexmap['blogone'].pinglun!=0}">
+                                <a href="<%= basePath %>single/main.action?blogId=${indexmap['blogone'].blogContent.blogId}"class="fontdiv">${indexmap['blogone'].pinglun} 条评论</a>
+                            </c:if>
                         </span>
                     </p>
                 </div>
@@ -188,8 +190,10 @@
                                         <img  src="<%= basePath %>images/shudong-images/Zan.png"/></span>
                                 </a> <span name="${blogfourlist.blogContent.blogId}">${blogfourlist.zan}</span><br/>
                                 <span class="total-comments-on-post pull-right">
-                           <a href="<%= basePath %>single/main.action?blogId=${blogfourlist.blogContent.blogId}" class="fontdiv">${blogfourlist.pinglun} 条评论</a>
-                             </span>
+                                    <c:if test="${blogfourlist.pinglun!=0}">
+                                        <a href="<%= basePath %>single/main.action?blogId=${blogfourlist.blogContent.blogId}" class="fontdiv">${blogfourlist.pinglun} 条评论</a>
+                                    </c:if>
+                                </span>
                             </p>
                         </div>
                         <div class="fh5co_suceefh5co_height_position_absolute_font_2">
@@ -231,8 +235,10 @@
                                         <img  src="<%= basePath %>images/shudong-images/Zan.png"/></span>
                                 </a> <span name="${blogJiaJu.blogContent.blogId}">${blogJiaJu.zan}</span><br/>
                                 <span class="total-comments-on-post pull-right">
-                           <a href="<%= basePath %>single/main.action?blogId=${blogJiaJu.blogContent.blogId}" class="fontdiv">${blogJiaJu.pinglun} 条评论</a>
-                             </span>
+                                    <c:if test="${blogJiaJu.pinglun!=0}">
+                                        <a href="<%= basePath %>single/main.action?blogId=${blogJiaJu.blogContent.blogId}" class="fontdiv">${blogJiaJu.pinglun} 条评论</a>
+                                    </c:if>
+                                </span>
                             </p>
                         </div>
                         <div class="fh5co_latest_trading_img_position_absolute_1">
@@ -260,7 +266,20 @@
                         <div class="fh5co_news_img">
                             <img src="<%=basePath%>${blogLvXing.blogPics.pic}"style="width:100%;margin:auto" alt="img"/></div>
                         <div>
-                            <p class="texthidden" style="width: 350px"><a href="<%=basePath%>single/main.action?blogId=${blogLvXing.blogContent.blogId}" class="fh5co_small_post_heading " >${blogLvXing.blogContent.blogcontent}</a></p>
+                            <p class="texthidden" style="width: 350px">
+                                <a href="<%=basePath%>single/main.action?blogId=${blogLvXing.blogContent.blogId}" class="fh5co_small_post_heading " >${blogLvXing.blogContent.blogcontent}</a>
+                            </p>
+                            <p class="" style="margin:30px;text-align: right">
+                                热度：${blogLvXing.liulan}<br/>
+                                <a href="javascript:void(0)" onclick="getZan('${blogLvXing.blogContent.blogId}')"><span  onclick="changeZanImg()">
+                                    <img  src="<%= basePath %>images/shudong-images/Zan.png"/></span>
+                                </a> <span name="${blogLvXing.blogContent.blogId}">${blogLvXing.zan}</span><br/>
+                                <span class="total-comments-on-post pull-right">
+                                    <c:if test="${blogLvXing.pinglun!=0}">
+                                    <a href="<%= basePath %>single/main.action?blogId=${blogLvXing.blogContent.blogId}" class="">${blogLvXing.pinglun} 条评论</a>
+                                </c:if>
+                                </span>
+                            </p>
                             <p style="text-align: right"><fmt:formatDate value="${blogLvXing.blogContent.blogcreatetime}" pattern="yyyy-MM-dd  HH:mm"/></p>
                         </div>
                     </div>
@@ -339,10 +358,10 @@
                 </div>
                 <div class="clearfix"></div>
                 <div class="fh5co_tags_all">
-                    <c:forEach items="${indexmap['labelList']}" var="labellist">
+                    <c:forEach items="${labelList}" var="labellist">
                         <a href="<%=basePath%>topic/main.action?labelId=${labellist.labelId}" class="fh5co_tagg">${labellist.labelname}</a>
                     </c:forEach>
-                    <a href="#" class="fh5co_tagg">更多...</a>
+                    <a href="<%=basePath%>topic/all.action" class="fh5co_tagg">更多...</a>
                 </div>
 
                 <div>
@@ -357,7 +376,7 @@
                         </div>
                         <div class="col-7 paddding">
                             <div class="most_fh5co_treding_font">
-                                ${userlist.usernickname}
+                                ${userlist.usernickname}<span style="float:right;"><a href="" style="text-decoration: blink">关注</a></span>
                             </div>
                             <div class="most_fh5co_treding_font_123">
                                 ${userlist.userintroduce}
@@ -373,93 +392,10 @@
     </div>
 </div>
 
+<c:import url="${basePath}footer.jsp" ></c:import>
 
 
 
-
-
-
-<div class="container-fluid fh5co_footer_bg pb-3">
-    <div class="container animate-box">
-        <div class="row">
-            <div class="col-12 spdp_right py-5"><img src="<%=basePath%>images/index-images/white_logo.png" alt="img" class="footer_logo"/></div>
-            <div class="clearfix"></div>
-            <div class="col-12 col-md-4 col-lg-3">
-                <div class="footer_main_title py-3"> 关于我们</div>
-                <div class="footer_sub_about pb-3">
-                    生活不止眼前的苟且<br/>
-                    不止诗和远方<br/>
-                    更是记录的仪式感<br/>
-                    认真的年轻<br/>
-                    认真地老去<br/>
-                </div>
-                <div class="footer_mediya_icon">
-                    <div class="text-center d-inline-block"><a class="fh5co_display_table_footer">
-                        <div class="fh5co_verticle_middle"><i class="fa fa-linkedin"></i></div>
-                    </a></div>
-                    <div class="text-center d-inline-block"><a class="fh5co_display_table_footer">
-                        <div class="fh5co_verticle_middle"><i class="fa fa-google-plus"></i></div>
-                    </a></div>
-                    <div class="text-center d-inline-block"><a class="fh5co_display_table_footer">
-                        <div class="fh5co_verticle_middle"><i class="fa fa-twitter">111</i></div>
-                    </a></div>
-                    <div class="text-center d-inline-block"><a class="fh5co_display_table_footer">
-                        <div class="fh5co_verticle_middle"><i class="fa fa-facebook"></i></div>
-                    </a></div>
-                </div>
-            </div>
-            <div class="col-12 col-md-3 col-lg-2">
-                <div class="footer_main_title py-3"> 话题</div>
-                <ul class="footer_menu">
-                    <c:forEach items="${indexmap['labelList']}" var="labellist" begin="0" end="4">
-                        <li><a href="<%=basePath%>/topic/main.action?labelId=${labellist.labelId}" class=""><i class="fa fa-angle-right"></i>&nbsp;&nbsp; ${labellist.labelname}</a></li>
-                    </c:forEach>
-                    <li><a href="<%=basePath%>/topic/all.action" class=""><i class="fa fa-angle-right"></i>&nbsp;&nbsp; 更多...</a></li>
-                </ul>
-            </div>
-            <div class="col-12 col-md-5 col-lg-3 position_footer_relative">
-                <div class="footer_main_title py-3"> 最新发布</div>
-                <div class="footer_makes_sub_font"> Dec 31, 2018</div>
-                <a href="#" class="footer_post pb-4"> Success is not a good teacher failure makes you humble </a>
-                <div class="footer_makes_sub_font"> Dec 31, 2018</div>
-                <a href="#" class="footer_post pb-4"> Success is not a good teacher failure makes you humble </a>
-                <div class="footer_makes_sub_font"> Dec 31, 2018</div>
-                <a href="#" class="footer_post pb-4"> Success is not a good teacher failure makes you humble </a>
-                <div class="footer_position_absolute"><img src="<%=basePath%>images/index-images/footer_sub_tipik.png" alt="img" class="width_footer_sub_img"/></div>
-            </div>
-            <div class="col-12 col-md-12 col-lg-4 ">
-                <div class="footer_main_title py-3"> 动态</div>
-                <a href="#" class="footer_img_post_6"><img src="<%=basePath%>images/index-images/allef-vinicius-108153.jpg" alt="img"/></a>
-                <a href="#" class="footer_img_post_6"><img src="<%=basePath%>images/index-images/32-450x260.jpg" alt="img"/></a>
-                <a href="#" class="footer_img_post_6"><img src="<%=basePath%>images/index-images/download (1).jpg" alt="img"/></a>
-                <a href="#" class="footer_img_post_6"><img src="<%=basePath%>images/index-images/science-578x362.jpg" alt="img"/></a>
-                <a href="#" class="footer_img_post_6"><img src="<%=basePath%>images/index-images/vil-son-35490.jpg" alt="img"/></a>
-                <a href="#" class="footer_img_post_6"><img src="<%=basePath%>images/index-images/zack-minor-15104.jpg" alt="img"/></a>
-                <a href="#" class="footer_img_post_6"><img src="<%=basePath%>images/index-images/download.jpg" alt="img"/></a>
-                <a href="#" class="footer_img_post_6"><img src="<%=basePath%>images/index-images/download (2).jpg" alt="img"/></a>
-                <a href="#" class="footer_img_post_6"><img src="<%=basePath%>images/index-images/ryan-moreno-98837.jpg" alt="img"/></a>
-            </div>
-        </div>
-        <div class="row justify-content-center pt-2 pb-4">
-            <div class="col-12 col-md-8 col-lg-7 ">
-                <div class="input-group">
-                    <span class="input-group-addon fh5co_footer_text_box" id="basic-addon1"><i class="fa fa-envelope"></i></span>
-                    <input type="text" class="form-control fh5co_footer_text_box" placeholder="邮箱" aria-describedby="basic-addon1">
-                    <a href="#" class="input-group-addon fh5co_footer_subcribe" id="basic-addon12"> <i class="fa fa-paper-plane-o"></i>&nbsp;&nbsp;发送</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="container-fluid fh5co_footer_right_reserved">
-    <div class="container">
-
-    </div>
-</div>
-
-<div class="gototop js-top">
-    <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
-</div>
 
 <script src="<%=basePath%>js/index-js/jquery.min.js"></script>
 <script src="<%=basePath%>js/index-js/owl.carousel.min.js"></script>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gem.share.dao.UserLoginMapper">
+
+
+    <!--//    插入用户信息数据-->
+    <!--public Boolean insertNewUser(String phone,String nickname,String email,String pass);-->
+    <insert id="insertNewUser">
+        INSERT INTO userinfo(userPhone,userNickName,userEmail,userPwd)
+              VALUES(#{phone},#{nickname},#{email},#{pass})
+    </insert>
+
+    <!--//    根据用户id插入lable-->
+    <!--public Boolean insertLableByUserId(int userId,int lableId);-->
+    <insert id="insertLableByUserId">
+        INSERT INTO userlabel(user_id,label_id) VALUES(#{userId},#{lableId})
+    </insert>
+    <!--//    根据手机号或者邮箱查询用户信息-->
+    <!--public UserInfo selectUserInfoByPhoneOrEmail(String input);-->
+    <select id="selectUserInfoByPhoneOrEmail" parameterType="String" resultType="UserInfo">
+        SELECT * FROM userinfo WHERE userPhone = #{_parameter} OR userEmail = #{_parameter}
+    </select>
+
+    <!--//   根据用户名查询用户信息-->
+    <!--public UserInfo selectUserInfoByNickName(String nickname);-->
+    <select id="selectUserInfoByNickName" parameterType="String" resultType="UserInfo">
+        SELECT * FROM userinfo WHERE usernickname = #{_parameter}
+    </select>
+
+    <!--//    修改密码-->
+    <!--    public Boolean updatePassByPhone(String userphone,String newpass);-->
+    <update id="updatePassByPhone">
+        UPDATE userinfo SET userPwd = #{userphone} WHERE userPhone = #{newpass}
+    </update>
+
+</mapper>

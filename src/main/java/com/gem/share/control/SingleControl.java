@@ -3,6 +3,7 @@ package com.gem.share.control;
 
 import com.gem.share.entity.*;
 import com.gem.share.service.BlogService;
+import com.gem.share.service.LabelInfoService;
 import com.gem.share.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,6 +24,8 @@ public class SingleControl {
     private BlogService blogService;
     @Autowired
     private UserService userService;
+    @Autowired
+    private LabelInfoService labelInfoService;
 
     @RequestMapping("/main.action")
     public void main(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -42,20 +45,24 @@ public class SingleControl {
             userInfos.add(u);
         }
         Map<String,Object> map=new HashMap<>();
-        map.put("blogComments",blogComments);
-        map.put("blogCommentUser",userInfos);
-        request.setAttribute("blogmap",map);
+   /*foot*/
+        List<LabelInfo> labels=labelInfoService.selectAllLabelInfo();
+        List<BlogUserPicsLabel> footblog=blogService.selectAllBlogUserLabel();
+        request.setAttribute("foot",footblog);
+        request.setAttribute("labelList",labels);
+
         BlogUserPicsLabel blogUserPicsLabel = blogService.selectBlogUserPicsByBlogId(Integer.parseInt(blogId));
         List<LabelInfo> labelInfos=blogService.selectLabelByBlogId(Integer.parseInt(blogId));
-
-
-        request.setAttribute("blog", blogUserPicsLabel);
-        request.setAttribute("LabelInfo",labelInfos);
-
         List<BlogUserPicsLabel> bmore=blogService.selectCountBlogByUserId(blogUserPicsLabel.getUserInfo().getUserId(),4);
-        request.setAttribute("bmore",bmore);
         List<BlogUserPicsLabel> bpopular=blogService.selectBlogUserPicsCountByLabelName(blogUserPicsLabel.getLabelInfo().getLabelname(),10);
-        request.setAttribute("bpopular",bpopular);
+
+        map.put("blogComments",blogComments);
+        map.put("blogCommentUser",userInfos);
+        map.put("blog", blogUserPicsLabel);
+        map.put("LabelInfo",labelInfos);
+        map.put("bmore",bmore);
+        map.put("bpopular",bpopular);
+        request.setAttribute("blogmap",map);
         request.getRequestDispatcher("/jsp/single.jsp").forward(request,response);
 
     }
@@ -108,7 +115,7 @@ public class SingleControl {
 //            内容不为空
             if("1".equals(flag)){
                 //            插入blogComment表
-                BlogComment blogComment = new BlogComment(Integer.parseInt(blogid),212,content2,commentTime);
+                BlogComment blogComment = new BlogComment(Integer.parseInt(blogid),122,content2,commentTime);
                 boolean flag = blogService.insertBlogComment(blogComment);
             }else if ("2".equals(flag)){
                 //             插入replyComment表  二级评论
@@ -125,15 +132,13 @@ public class SingleControl {
                 replyComment.setReplycommenttime(commentTime);
 
                 boolean f = blogService.insertThirdReplyComment(replyComment);
-            }
 
+            }
+            request.getRequestDispatcher("/single/main.action?blogId=").forward(request,response);
         }else{
 //            内容为空
             request.getRequestDispatcher("/jsp/single.jsp").forward(request,response);
         }
-
     }
-
-
 
 }

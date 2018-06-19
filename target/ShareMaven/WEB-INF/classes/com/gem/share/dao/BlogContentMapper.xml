@@ -455,7 +455,22 @@
     </association>
 
   </resultMap>
+  <!--public List<BlogUserPicsLabel> selectAllBlogUserLabel();-->
+<select id="selectAllBlogUserLabel" resultMap="selectBlogUserLabelMap">
+   select blogcontent.*,userinfo.*,blogpics.*,bloglabel.*,labelinfo.*,
+    case when a.zan is null then 0 else a.zan end as zan,
+    case when b.pinglun is null then 0 else b.pinglun end as pinglun,
+    case when c.liulan is null then 0 else c.liulan end as liulan
+    from blogcontent
+    left join userinfo ON blogcontent.user_id=userinfo.user_id
+    left join blogpics ON blogcontent.blogPics_id=blogpics.blogPics_id
+    left join bloglabel ON blogcontent.blog_id=bloglabel.blog_id
+    left join labelinfo ON bloglabel.label_id=labelinfo.label_id
+    left join (select blog_id,count(blog_id) as zan from blogzan group by blog_id) a on (a.blog_id=blogcontent.blog_id)
+    left join (select blog_id,count(blog_id) as pinglun from blogcomment group by blog_id) b on (b.blog_id=blogcontent.blog_id)
+    left join (select blog_id,blogBrowseCount as liulan from blogbrowse group by blog_id) c on (c.blog_id=blogcontent.blog_id)
 
+</select>
   <!--public BlogUserPicsLabel selectBlogUserPicsByBlogId(int blog_id);-->
   <select id="selectBlogUserPicsByBlogId" resultMap="selectBlogUserLabelMap" parameterType="int">
     select blogcontent.*,userinfo.*,blogpics.*,bloglabel.*,labelinfo.*,
@@ -645,8 +660,8 @@
     case when a.zan is null then 0 else a.zan end as zan,
     case when b.pinglun is null then 0 else b.pinglun end as pinglun,
     case when c.liulan is null then 0 else c.liulan end as liulan
-    from blogcontent
-    left join userinfo ON blogcontent.user_id=userinfo.user_id
+    from userinfo
+    left join blogcontent ON blogcontent.user_id=userinfo.user_id
     left join blogpics ON blogcontent.blogPics_id=blogpics.blogPics_id
     left join bloglabel ON blogcontent.blog_id=bloglabel.blog_id
     left join labelinfo ON bloglabel.label_id=labelinfo.label_id
@@ -682,8 +697,8 @@
     case when a.zan is null then 0 else a.zan end as zan,
     case when b.pinglun is null then 0 else b.pinglun end as pinglun,
     case when c.liulan is null then 0 else c.liulan end as liulan
-    from blogcontent
-    left join userinfo ON blogcontent.user_id=userinfo.user_id
+    from userinfo
+    left join blogcontent ON blogcontent.user_id=userinfo.user_id
     left join blogpics ON blogcontent.blogPics_id=blogpics.blogPics_id
     left join bloglabel ON blogcontent.blog_id=bloglabel.blog_id
     left join labelinfo ON bloglabel.label_id=labelinfo.label_id
@@ -691,7 +706,7 @@
     left join (select blog_id,count(blog_id) as pinglun from blogcomment group by blog_id) b on (b.blog_id=blogcontent.blog_id)
     left join (select blog_id,blogBrowseCount as liulan from blogbrowse group by blog_id) c on (c.blog_id=blogcontent.blog_id)
 	where blogcontent.blog_id in (select blog_id from blogzan where blogzan.user_id=#{_parameter})
-							  or (select blog_id from blogcomment where blogcomment.commentUser_id=#{_parameter})
+	  or  blogcontent.blog_id in (select blog_id from blogcomment where blogcomment.commentUser_id=#{_parameter})
     order by blogcontent.blogcreatetime desc
   </select>
 

@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 public interface BlogService {
+    public List<BlogUserPicsLabel> selectAllBlogUserLabel();
 //    查询用户最近点赞，评论的博客
     public List<BlogUserPicsLabel> selectBlogZanPinglunByUserId(int user_id);
     public List<LabelInfo> selectLabelByBlogId(int blog_id);

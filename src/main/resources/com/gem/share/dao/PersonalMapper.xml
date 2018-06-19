@@ -74,10 +74,10 @@
     </select>
 
     <!--//    根据用户id查询所有的分组-->
-    <!--public List<String> selectAllGroupByUserId(int user_id);-->
-    <select id="selectAllGroupByUserId" parameterType="int" resultType="String">
-        SELECT followGroupName FROM followgroup WHERE followGroup_id IN
-        (SELECT followGroup_id FROM followrelation WHERE user_id = 3)
+    <!--public List<FollowGroup> selectAllGroupByUserId(int user_id);-->
+    <select id="selectAllGroupByUserId" parameterType="int" resultType="FollowGroup">
+        SELECT * FROM followgroup WHERE followGroup_id IN
+        (SELECT followGroup_id FROM followrelation WHERE user_id = #{_parameter})
     </select>
 
     <resultMap id="UserInfoMap" type="UserInfo">
@@ -114,4 +114,17 @@
         select u.*,a.* from userInfo u,address a
         where u.addresss_id = a.address_id AND user_id = #{_paramter}
     </select>
+
+
+    <!--//    根据自己的id和关注人的id取消关注此人-->
+    <!--public boolean deleteUserByUserIdAndFollowUser(int userId,int followUserId);-->
+    <delete id="deleteUserByUserIdAndFollowUser">
+        delete FROM followrelation WHERE user_id = #{param1} AND followUser_id = #{param2}
+    </delete>
+
+    <!--//    添加关注人-->
+    <!--public Boolean insertfollow(int user_id,int followUser_id);-->
+    <insert id="insertfollow">
+        INSERT INTO followrelation(user_id,followUser_id) VALUES(#{user_id},#{followUser_id})
+    </insert>
 </mapper>
