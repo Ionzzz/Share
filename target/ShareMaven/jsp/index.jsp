@@ -159,13 +159,13 @@
                 <div class="fh5co_suceefh5co_height_position_absolute">
                     <p  class="fontdiv" style="margin:30px;text-align: right">
                         热度：${indexmap['blogone'].liulan}<br/>
-                        <a href="javascript:void(0)" onclick="getZan('${indexmap['blogone'].blogContent.blogId}')" class="fontdiv">
+                        <a href="javascript:void(0)" onclick="getZan('${indexmap['blogone'].blogContent.blogId}')" class="fontdiv" style="text-decoration: blink">
                             <span  onclick="changeZanImg()">
                                 <img  src="<%= basePath %>images/shudong-images/Zan.png"/></span>
                         </a> <span name="${indexmap['blogone'].blogContent.blogId}">${indexmap['blogone'].zan}</span><br/>
                         <span class="total-comments-on-post pull-right">
                             <c:if test="${indexmap['blogone'].pinglun!=0}">
-                                <a href="<%= basePath %>single/main.action?blogId=${indexmap['blogone'].blogContent.blogId}"class="fontdiv">${indexmap['blogone'].pinglun} 条评论</a>
+                                <a href="<%= basePath %>single/main.action?blogId=${indexmap['blogone'].blogContent.blogId}"class="fontdiv" style="text-decoration: blink">${indexmap['blogone'].pinglun} 条评论</a>
                             </c:if>
                         </span>
                     </p>
@@ -178,27 +178,27 @@
         </div>
         <div class="col-md-6">
             <div class="row">
-                <c:forEach items="${indexmap['blogfourlist']}" var="blogfourlist">
+                <c:forEach items="${indexmap['blogfour']}" var="blogfour">
                     <div class="col-md-6 col-6 paddding animate-box"data-animate-effect="fadeIn">
                       <div class="fh5co_suceefh5co_height_2">
-                          <img src="<%=basePath%>${blogfourlist.blogPics.pic}" style="width: 100%" alt="img"/>
+                          <img src="<%=basePath%>${blogfour.blogPics.pic}" style="width: 100%" alt="img"/>
                         <div class="fh5co_suceefh5co_height_position_absolute">
                             <p class="fontdiv" style="margin:30px;text-align: right">
-                                热度：${blogfourlist.liulan}<br/>
-                                <a href="javascript:void(0)" onclick="getZan('${blogfourlist.blogContent.blogId}')">
+                                热度：${blogfour.liulan}<br/>
+                                <a href="javascript:void(0)" onclick="getZan('${blogfour.blogContent.blogId}')" style="text-decoration: blink">
                                     <span  onclick="changeZanImg()">
                                         <img  src="<%= basePath %>images/shudong-images/Zan.png"/></span>
-                                </a> <span name="${blogfourlist.blogContent.blogId}">${blogfourlist.zan}</span><br/>
+                                </a> <span name="${blogfour.blogContent.blogId}">${blogfour.zan}</span><br/>
                                 <span class="total-comments-on-post pull-right">
-                                    <c:if test="${blogfourlist.pinglun!=0}">
-                                        <a href="<%= basePath %>single/main.action?blogId=${blogfourlist.blogContent.blogId}" class="fontdiv">${blogfourlist.pinglun} 条评论</a>
+                                    <c:if test="${blogfour.pinglun!=0}">
+                                        <a href="<%= basePath %>single/main.action?blogId=${blogfour.blogContent.blogId}" style="text-decoration: blink" class="fontdiv">${blogfour.pinglun} 条评论</a>
                                     </c:if>
                                 </span>
                             </p>
                         </div>
                         <div class="fh5co_suceefh5co_height_position_absolute_font_2">
-                         <i class="fa fa-clock-o"></i>&nbsp;&nbsp;<fmt:formatDate value="${blogfourlist.blogContent.blogcreatetime}" pattern="MM-dd-yyyy"/>
-                            <p class="texthidden"  style=" width:300px;"><a href="<%=basePath%>single/main.action?blogId=${blogfourlist.blogContent.blogId}" class="fh5co_good_font_2 texthidden"> ${blogfourlist.blogContent.blogcontent} </a></p>
+                         <i class="fa fa-clock-o"></i>&nbsp;&nbsp;<fmt:formatDate value="${blogfour.blogContent.blogcreatetime}" pattern="MM-dd-yyyy"/>
+                            <p class="texthidden"  style=" width:300px;"><a href="<%=basePath%>single/main.action?blogId=${blogfour.blogContent.blogId}" class="fh5co_good_font_2 texthidden"> ${blogfour.blogContent.blogcontent} </a></p>
                         </div>
                       </div>
                     </div>
@@ -217,34 +217,46 @@
 <div class="container-fluid pt-3">
     <div class="container animate-box" data-animate-effect="fadeIn">
         <div>
-            <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">家居</div>
+            <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">${indexmap['blogonelist'].get(0).labelInfo.labelname}</div>
         </div>
         <div class="owl-carousel owl-theme js" id="slider1">
 
-            <c:forEach items="${indexmap['blogJiaJu']}" var="blogJiaJu">
-                <div class="item px-2" >
-                    <div class="fh5co_latest_trading_img_position_relative">
-                        <div class="fh5co_latest_trading_img"onclick="window.location.href='<%=basePath%>single/main.action?blogId=${blogJiaJu.blogContent.blogId}'">
-                            <img src="<%=basePath%>${blogJiaJu.blogPics.pic}" alt="img"/>
+            <c:forEach items="${indexmap['blogonelist']}" var="blogonelist" begin="0" end="9">
+                <div class="item px-2" onclick="window.location.href='<%=basePath%>single/main.action?blogId=${blogonelist.blogContent.blogId}">
+                    <div class="fh5co_latest_trading_img_position_relative" >
+                        <div class="fh5co_latest_trading_img">
+
+                                <img src="<%=basePath%>${blogonelist.blogPics.pic}" alt="img"/>
+
                         </div>
                         <div class="fh5co_latest_trading_img_position_absolute">
                             <p class="fontdiv" style="margin:30px;text-align: right">
-                                热度：${blogJiaJu.liulan}<br/>
-                                <a href="javascript:void(0)" onclick="getZan('${blogJiaJu.blogContent.blogId}')">
+                                热度：${blogonelist.liulan}<br/>
+                                <a href="javascript:void(0)" onclick="getZan('${blogonelist.blogContent.blogId}')" style="text-decoration: blink">
                                     <span  onclick="changeZanImg()">
                                         <img  src="<%= basePath %>images/shudong-images/Zan.png"/></span>
-                                </a> <span name="${blogJiaJu.blogContent.blogId}">${blogJiaJu.zan}</span><br/>
+                                </a> <span name="${blogonelist.blogContent.blogId}">${blogonelist.zan}</span><br/>
                                 <span class="total-comments-on-post pull-right">
-                                    <c:if test="${blogJiaJu.pinglun!=0}">
-                                        <a href="<%= basePath %>single/main.action?blogId=${blogJiaJu.blogContent.blogId}" class="fontdiv">${blogJiaJu.pinglun} 条评论</a>
+                                    <c:if test="${blogonelist.pinglun!=0}">
+                                        <a href="<%= basePath %>single/main.action?blogId=${blogonelist.blogContent.blogId}" class="fontdiv" style="text-decoration: blink">${blogonelist.pinglun} 条评论</a>
                                     </c:if>
                                 </span>
                             </p>
                         </div>
                         <div class="fh5co_latest_trading_img_position_absolute_1">
-                            <p class="text-white texthidden "  style=" width:240px;"> <a href="<%=basePath%>single/main.action?blogId=${blogJiaJu.blogContent.blogId}" class="text-white"> ${blogJiaJu.blogContent.blogcontent} </a></p>
+                            <p class="text-white texthidden "  style=" width:240px;">
+                                <a href="<%=basePath%>single/main.action?blogId=${blogonelist.blogContent.blogId}" class="text-white">
+                                    <c:if test="${blogonelist.labelInfo.labelname=='书籍'}">
+                                        <c:set var="bookname" value=" ${blogonelist.blogContent.blogcontent} "/>
+                                        《${fn:substringBefore(bookname,"||" )}》
+                                    </c:if>
+                                    <c:if test="${blogonelist.labelInfo.labelname!='书籍'}">
+                                        ${blogonelist.blogContent.blogcontent}
+                                    </c:if>
+                                </a>
+                            </p>
                             <div class="fh5co_latest_trading_date_and_name_color c_g">
-                                    ${blogJiaJu.userInfo.usernickname} - <fmt:formatDate value="${blogJiaJu.blogContent.blogcreatetime}" pattern="yyyy-MM-dd  HH:mm"/> </div>
+                            ${blogonelist.userInfo.usernickname} - <fmt:formatDate value="${blogonelist.blogContent.blogcreatetime}" pattern="yyyy-MM-dd  HH:mm"/> </div>
                         </div>
                     </div>
                 </div>
@@ -257,30 +269,38 @@
 <div class="container-fluid pb-4 pt-5">
     <div class="container animate-box">
         <div>
-            <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">旅行</div>
+            <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">${indexmap['blogtwolist'].get(0).labelInfo.labelname}</div>
         </div>
         <div class="owl-carousel owl-theme" id="slider2">
-            <c:forEach items="${indexmap['blogLvXing']}" var="blogLvXing">
-                <div class="item px-2" onclick="window.location.href='<%=basePath%>single/main.action?blogId=${blogLvXing.blogContent.blogId}'">
+            <c:forEach items="${indexmap['blogtwolist']}" var="blogtwolist" begin="0" end="9">
+                <div class="item px-2" onclick="window.location.href='<%=basePath%>single/main.action?blogId=${blogtwolist.blogContent.blogId}'">
                     <div class="fh5co_hover_news_img">
                         <div class="fh5co_news_img">
-                            <img src="<%=basePath%>${blogLvXing.blogPics.pic}"style="width:100%;margin:auto" alt="img"/></div>
+                            <img src="<%=basePath%>${blogtwolist.blogPics.pic}"style="width:100%;margin:auto" alt="img"/></div>
                         <div>
                             <p class="texthidden" style="width: 350px">
-                                <a href="<%=basePath%>single/main.action?blogId=${blogLvXing.blogContent.blogId}" class="fh5co_small_post_heading " >${blogLvXing.blogContent.blogcontent}</a>
+                                <a href="<%=basePath%>single/main.action?blogId=${blogtwolist.blogContent.blogId}" class="fh5co_small_post_heading " >
+                                    <c:if test="${blogtwolist.labelInfo.labelname=='书籍'}">
+                                        <c:set var="bookname" value=" ${blogtwolist.blogContent.blogcontent} "/>
+                                        《${fn:substringBefore(bookname,"||" )}》
+                                    </c:if>
+                                    <c:if test="${blogtwolist.labelInfo.labelname!='书籍'}">
+                                        ${blogtwolist.blogContent.blogcontent}
+                                    </c:if>
+                                </a>
                             </p>
                             <p class="" style="margin:30px;text-align: right">
-                                热度：${blogLvXing.liulan}<br/>
-                                <a href="javascript:void(0)" onclick="getZan('${blogLvXing.blogContent.blogId}')"><span  onclick="changeZanImg()">
+                                热度：${blogtwolist.liulan}<br/>
+                                <a href="javascript:void(0)" onclick="getZan('${blogtwolist.blogContent.blogId}')"><span  onclick="changeZanImg()">
                                     <img  src="<%= basePath %>images/shudong-images/Zan.png"/></span>
-                                </a> <span name="${blogLvXing.blogContent.blogId}">${blogLvXing.zan}</span><br/>
+                                </a> <span name="${blogtwolist.blogContent.blogId}">${blogtwolist.zan}</span><br/>
                                 <span class="total-comments-on-post pull-right">
-                                    <c:if test="${blogLvXing.pinglun!=0}">
-                                    <a href="<%= basePath %>single/main.action?blogId=${blogLvXing.blogContent.blogId}" class="">${blogLvXing.pinglun} 条评论</a>
+                                    <c:if test="${blogtwolist.pinglun!=0}">
+                                    <a href="<%= basePath %>single/main.action?blogId=${blogtwolist.blogContent.blogId}" class="">${blogtwolist.pinglun} 条评论</a>
                                 </c:if>
                                 </span>
                             </p>
-                            <p style="text-align: right"><fmt:formatDate value="${blogLvXing.blogContent.blogcreatetime}" pattern="yyyy-MM-dd  HH:mm"/></p>
+                            <p style="text-align: right"><fmt:formatDate value="${blogtwolist.blogContent.blogcreatetime}" pattern="yyyy-MM-dd  HH:mm"/></p>
                         </div>
                     </div>
                 </div>
@@ -292,23 +312,32 @@
 <div class="container-fluid fh5co_video_news_bg pb-4">
     <div class="container animate-box" data-animate-effect="fadeIn">
         <div>
-            <div class="fh5co_heading fh5co_heading_border_bottom pt-5 pb-2 mb-4  text-white">美食</div>
+            <div class="fh5co_heading fh5co_heading_border_bottom pt-5 pb-2 mb-4  text-white">${indexmap['blogthreelist'].get(0).labelInfo.labelname}</div>
         </div>
         <div>
             <div class="owl-carousel owl-theme js" id="slider3">
-                <c:forEach items="${indexmap['blogFood']}" var="blogfood">
-                    <div class="item px-2" ><%--onclick="window.location.href='<%=basePath%>single/main.action?blogId=${blogfood.blogContent.blogId}'"--%>
+                <c:forEach items="${indexmap['blogthreelist']}" var="blogthreelist" begin="0" end="9">
+                    <div class="item px-2" ><%--onclick="window.location.href='<%=basePath%>single/main.action?blogId=${blogthreelist.blogContent.blogId}'"--%>
                         <div class="fh5co_hover_news_img">
                             <div class="fh5co_news_img">
-                                <a href="<%=basePath%>single/main.action?blogId=${blogfood.blogContent.blogId}">
-                                    <img src="<%=basePath%>${blogfood.blogPics.pic}" style="width: 100%;" alt="img"/>
+                                <a href="<%=basePath%>single/main.action?blogId=${blogthreelist.blogContent.blogId}">
+                                    <img src="<%=basePath%>${blogthreelist.blogPics.pic}" style="width: 100%;" alt="img"/>
                                 </a>
                             </div>
                             <div>
                                 <p class="text-white texthidden" style="width: 350px">
-                                    <a href="<%=basePath%>single/main.action?blogId=${blogfood.blogContent.blogId}" class="fh5co_small_post_heading fh5co_small_post_heading_1" >${blogfood.blogContent.blogcontent}</a>
+                                    <a href="<%=basePath%>single/main.action?blogId=${blogthreelist.blogContent.blogId}" class="fh5co_small_post_heading fh5co_small_post_heading_1" >
+                                        <c:if test="${blogthreelist.labelInfo.labelname=='书籍'}">
+                                            <c:set var="bookname" value=" ${blogthreelist.blogContent.blogcontent} "/>
+                                            《${fn:substringBefore(bookname,"||" )}》
+                                        </c:if>
+                                        <c:if test="${blogthreelist.labelInfo.labelname!='书籍'}">
+                                            ${blogthreelist.blogContent.blogcontent}
+                                        </c:if>
+                                    </a>
                                 </p>
-                                <p style="text-align: right"><fmt:formatDate value="${blogfood.blogContent.blogcreatetime}" pattern="yyyy-MM-dd  HH:mm"/></p>
+
+                                <p style="text-align: right"><fmt:formatDate value="${blogthreelist.blogContent.blogcreatetime}" pattern="yyyy-MM-dd  HH:mm"/></p>
                             </div>
                         </div>
                     </div>
@@ -324,15 +353,15 @@
         <div class="row mx-0">
             <div class="col-md-8 animate-box" data-animate-effect="fadeInLeft">
                 <div>
-                    <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">书籍</div>
+                    <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">${indexmap['blogfourlist'].get(0).labelInfo.labelname}</div>
                 </div>
-                <c:forEach items="${indexmap['blogBook4']}" var="blogbook">
+                <c:forEach items="${indexmap['blogfourlist']}" var="blogfourlist" begin="0" end="3">
                     <div class="row pb-4">
-                        <div class="col-md-4"> <%--onclick="window.location.href='<%=basePath%>single/main.action?blogId=${blogbook.blogContent.blogId}'"--%>
+                        <div class="col-md-4"> <%--onclick="window.location.href='<%=basePath%>single/main.action?blogId=${blogfourlist.blogContent.blogId}'"--%>
                             <div class="fh5co_hover_news_img">
                                 <div class="fh5co_news_img" style="width: 200px;">
-                                    <a href="<%=basePath%>single/main.action?blogId=${blogbook.blogContent.blogId}">
-                                        <img src="<%=basePath%>${blogbook.blogPics.pic}"style="width: 200px;" alt=""/>
+                                    <a href="<%=basePath%>single/main.action?blogId=${blogfourlist.blogContent.blogId}">
+                                        <img src="<%=basePath%>${blogfourlist.blogPics.pic}"style="width: 200px;" alt=""/>
                                     </a>
                                 </div>
                             </div>
@@ -340,12 +369,33 @@
                         <div class="col-md-7">
                             <p></p>
                             <p class="texthidden" style="width: 400px">
-                                <a href="<%=basePath%>single/main.action?blogId=${blogbook.blogContent.blogId}" class="fh5co_magna py-2">
-                                    <c:set var="bookname" value="${blogbook.blogContent.blogcontent}"/>
-                                      《${fn:substringBefore(bookname,"||" )}》  </a></p>
+                                <a href="<%=basePath%>single/main.action?blogId=${blogfourlist.blogContent.blogId}" class="fh5co_magna py-2">
+                                    <c:if test="${blogfourlist.labelInfo.labelname=='书籍'}">
+                                        <c:set var="bookname" value=" ${blogfourlist.blogContent.blogcontent} "/>
+                                        《${fn:substringBefore(bookname,"||" )}》
+                                    </c:if>
+                                    <c:if test="${blogfourlist.labelInfo.labelname!='书籍'}">
+                                        ${blogfourlist.blogContent.blogcontent}
+                                    </c:if>
+                                </a>
+                                <span class="" style="text-align: right;float: right">
+                                    热度：${blogfourlist.liulan}<br/>
+                                    <a href="javascript:void(0)" onclick="getZan('${blogfourlist.blogContent.blogId}')"><span  onclick="changeZanImg()">
+                                        <img  src="<%= basePath %>images/shudong-images/Zan.png"/></span>
+                                    </a> <span name="${blogfourlist.blogContent.blogId}">${blogfourlist.zan}</span><br/>
+                                    <span class="total-comments-on-post pull-right">
+                                        <c:if test="${blogfourlist.pinglun!=0}">
+                                            <a href="<%= basePath %>single/main.action?blogId=${blogfourlist.blogContent.blogId}" class="">${blogfourlist.pinglun} 条评论</a>
+                                        </c:if>
+                                    </span>
+                                </span>
+                                <br/><br/>
+                                <span>${blogfourlist.userInfo.username} -  <fmt:formatDate value="${blogfourlist.blogContent.blogcreatetime}" pattern="yyyy-MM-dd  HH:mm"/>
+                                </span>
 
-                                    ${blogbook.userInfo.username} -  <fmt:formatDate value="${blogbook.blogContent.blogcreatetime}" pattern="yyyy-MM-dd  HH:mm"/>
-                            <div class="fh5co_consectetur"> ${blogbook.blogContent.blogcontent}
+                            </p>
+
+                            <div class="fh5co_consectetur"> ${blogfourlist.blogContent.blogcontent}
                             </div>
                         </div>
                     </div>
@@ -367,8 +417,8 @@
                 <div>
                     <div class="fh5co_heading fh5co_heading_border_bottom pt-3 py-2 mb-4">能量达人</div>
                 </div>
-                <c:forEach items="${indexmap['userList5']}" var="userlist">
-                    <div class="row pb-3"  style="margin: 20px 0;"onclick="window.location.href='<%=basePath%>index/userself.action?userId=${userlist.userId}'">
+                <c:forEach items="${indexmap['userList5']}" var="userlist" begin="0" end="4">
+                    <div class="row pb-3"  style="margin: 20px 0;">
                         <div class="col-5 align-self-center">
                             <a href="<%=basePath%>index/userself.action?userId=${userlist.userId}">
                                 <img src="<%=basePath%>img${userlist.userimg}" alt="img" class="fh5co_most_trading"/>
@@ -376,7 +426,7 @@
                         </div>
                         <div class="col-7 paddding">
                             <div class="most_fh5co_treding_font">
-                                ${userlist.usernickname}<span style="float:right;"><a href="" style="text-decoration: blink">关注</a></span>
+                                <span onclick="window.location.href='<%=basePath%>index/userself.action?userId=${userlist.userId}'">${userlist.usernickname}</span><span style="float:right;"><a href="" style="text-decoration: blink">关注</a></span>
                             </div>
                             <div class="most_fh5co_treding_font_123">
                                 ${userlist.userintroduce}

@@ -35,10 +35,13 @@
     <link href="<%=basePath%>css/index-css/content_font.css" rel="stylesheet">
     <link href="<%=basePath%>css/index-css/owl.carousel.css" rel="stylesheet" type="text/css"/>
     <link href="<%=basePath%>css/index-css/owl.theme.default.css" rel="stylesheet" type="text/css"/>
-    <%--<link href="<%=basePath%>css/chat-css/demo.css" rel="stylesheet" type="text/css"/>--%>
-
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>css/vendor/reset.css">
+    <%--只是样式--%>
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>css/vendor/styles.css">
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>css/shudong-css/style.css">
     <!-- Modernizr JS -->
     <script src="<%=basePath%>js/index-js/modernizr-3.5.0.min.js"></script>
+    <script src="<%=basePath%>js/chat-js/jquery-1.11.1.min.js"></script>
     <script>
         function getPage(curPage) {
             document.getElementById("curPage").value=curPage;
@@ -46,6 +49,7 @@
             document.getElementById("mainForm").submit();
         }
 
+        var arr;
         function getZan(blogId) {
             $.ajax({
                 type:"post",
@@ -53,43 +57,64 @@
                 data : {"blogId":blogId},
                 dateType:'json',
                 success:function (data) {
-                    $("span[name="+blogId+"]").html(data);
+                    arr = data.split("&");
+                    $("span[name="+blogId+"]").html(arr[0]);
                 }
             });
         }
 
-//        点赞特效
-        function changeZanImg(){
-            var praise_img = $("#praise-img");
-            var text_box = $("#add-num");
-            if(praise_img.attr("src") == ("<%=basePath%>images/shudong-images/yizan.png")){
-                $(this).html("<img src='<%=basePath%>images/shudong-images/Zan.png' id='praise-img' class='animation' />");
-                text_box.show().html("<em class='add-animation'>-1</em>");
-                $(".add-animation").removeClass("hover");
-            }else{
-                $(this).html("<img src='<%=basePath%>images/shudong-images/yizan.png' id='praise-img' class='animation' />");
-                text_box.show().html("<em class='add-animation'>+1</em>");
-                $(".add-animation").addClass("hover");
-            }
+//        实时搜索
+        function pipeiSearch() {
+            var searchContent = $("#search-highlight").val();
+            $("#form2").submit();
+            alert("searchContent="+searchContent);
         }
+    </script>
 
+    <script type="text/javascript">
+        $(document).ready(function(){
+            //读取数据库，当前用户是否对该博客点赞，确定能够class
+
+            $('body').on("click",'.heart',function(){
+                if(arr[1]=="true"){
+                    $('.heart').removeClass("heartAnimation").attr("rel","like");
+                    $('.heart').css("background-position","left");
+                }else{
+                    $('.heart').removeClass("heartAnimation").attr("rel","like");
+                    $('.heart').addClass("heartAnimation").attr("rel","unlike");
+                }
+
+                var A=$(this).attr("id");
+                var B=A.split("like");
+                $(this).css("background-position","");
+                var D=$(this).attr("rel");
+                if(D === 'like') {
+                    $(this).addClass("heartAnimation").attr("rel","unlike");
+                }
+                else{
+                    $(this).removeClass("heartAnimation").attr("rel","like");
+                    $(this).css("background-position","left");
+                }
+            });
+
+        });
     </script>
 
 </head>
 <body>
 
 <body class="home blog custom-background round-avatars">
-
 <div class="Yarn_Background" style="background-image: url( <%= basePath %>images/shudong-images/47fb3c_.jpg);"></div>
-<form class="js-search search-form search-form--modal" method="post" action="<%=basePath%>shuDong/main.action?SDflag=${SDflag}" role="search">
+<form class="js-search search-form search-form--modal" id="form2" method="post" action="<%=basePath%>shuDong/main.action?SDflag=${SDflag}" role="search">
     <div class="search-form__inner">
         <div>
             <div id="search-container" class="ajax_search">
                     <div class="filter_container">
-                        <input type="text" value="" style="color:black;font-size:18px;" autocomplete="off" placeholder="请输入需要搜索的内容" name="searchContent" id="search-input" />
+                        <input type="text" oninput="pipeiSearch()" id="search-highlight" data-list=".highlight_list" value="" style="color:black;font-size:18px; float: left;" autocomplete="off" placeholder="请输入需要搜索的内容" name="searchContent"/>
                         <input type="submit" name="submit" id="searchsubmit" class="searchsubmit" value="" style="color: white; font-size: 20px;"/>搜索
                         <ul id="search_filtered" class="search_filtered"></ul>
                     </div>
+
             </div>
         </div>
     </div>
@@ -118,14 +143,15 @@
                             <li id="menu-item-57" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-57">
                                 <a href="<%= basePath %>shuDong/main.action?SDflag=1" style="font-size: 16px;">最热</a>
                             </li>
-                                <li id="menu-item-57" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-57">
-                                    <a href="<%= basePath %>shuDong/main.action?SDflag=2" style="font-size: 16px;">时空机</a>
+                                <%--<li id="menu-item-57" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-57">--%>
+                                    <%--&lt;%&ndash;<a href="<%= basePath %>shuDong/main.action?SDflag=2" style="font-size: 16px;">时空机</a>&ndash;%&gt;--%>
+                                    <%--<a href="javascript:void(0)" style="font-size: 16px;">时空机</a>--%>
                                     <%--<ul class="sub-menu">--%>
                                         <%--<li id="menu-item-165" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-165">--%>
                                             <%--<a id="getDate" href="javascript:void(0)" onclick="WdatePicker()" class="form-contro">日期</a>--%>
                                         <%--</li>--%>
                                     <%--</ul>--%>
-                                </li>
+                                <%--</li>--%>
 
                             <li id="menu-item-57" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-57">
                                 <a href="#" style="font-size: 16px;">发布</a>
@@ -163,7 +189,10 @@
 <body>
 <div id="main" class="content">
     <div class="container">
-        <form action="<%= basePath %>shuDong/main.action" id="mainForm" method="post">
+        <%--<form action="<%= basePath %>shuDong/main.action" id="mainForm" method="post">--%>
+        <form onlic id="mainForm" method="post">
+
+
         <%--mainPage--%>
         <article itemscope="itemscope">
 
@@ -175,7 +204,7 @@
 
                 <c:choose>
                     <c:when test="${pageInfo.total==0}">
-                        <div >
+                        <div style="font-size:18px; text-align: center;">
                             <img src="<%= basePath %>images/shudong-images/noinfo.gif"/>
                             <a href="#">暂时没有此类树洞存在，快去发布一个吧</a>
                         </div>
@@ -183,6 +212,7 @@
                     <c:otherwise>
                         <%--有数据--%>
                         <c:forEach items="${pageInfo.list}" var="sd">
+                        <ul class="vertical highlight_list">
                             <div class="post post-layout-list" data-aos="fade-up">
                                 <div class="postnormal review ">
                                     <div class="post-container review-item">
@@ -207,22 +237,25 @@
                                         </div>
                                     </div>
                                     <div class="post-container">
-                                        <div class="entry-content">${sd.blogContent}</div>
+                                        <div class="entry-content"><a href="<%= basePath %>shuDong/DetailComment.action?blogId=${sd.blogId}"  style="text-decoration: none;">${sd.blogContent}</a></div>
                                         <div class="post-footer">
                                                 <%--<a class="gaz-btn primary" href="">READ MORE</a>--%>
-                                            <%--<a href="<%= basePath %>shuDong/Zan.action?userId=1&blogId=${sd.blogId}">--%>
-                                            <a href="javascript:void(0)" onclick="getZan('${sd.blogId}')">
-                                                <%--<span id="add-num"><em>+1</em></span>--%>
-                                                <span id="praise" onclick="changeZanImg()"><img id="praise-img" src="<%= basePath %>images/shudong-images/Zan.png"/></span>
-                                            </a>
-                                            <span class="total-comments-on-post pull-right"><a href="<%= basePath %>shuDong/DetailComment.action?blogId=${sd.blogId}">${sd.bcCount} 条评论</a></span>
+                                                    <a onclick="getZan('${sd.blogId}')">
+                                                            <%--<span id="add-num"><em>+1</em></span>--%>
+                                                        <%--<span id="praise" onclick="changeZan()"><img id="praise-img" src="<%= basePath %>images/shudong-images/Zan.png"/></span>--%>
+                                                         <div  class="heart" id="like2" rel="like"></div>
+                                                    </a>
+
+                                                    <span class="total-comments-on-post pull-right"><a href="<%= basePath %>shuDong/DetailComment.action?blogId=${sd.blogId}" style="text-decoration: none;">${sd.bcCount} 条评论</a></span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                        </ul>
                         </c:forEach>
                     </c:otherwise>
                 </c:choose>
+
 
             </div>
         </article>
@@ -294,6 +327,14 @@
 <script type='text/javascript' src='<%=basePath %>js/index-js/tree/script.js'></script>
 <script type='text/javascript' src='<%=basePath %>js/index-js/tree/particles.js'></script>
 <script type='text/javascript' src='<%=basePath %>js/index-js/tree/aos.js'></script>
-<script type='text/javascript' src='<%=basePath %>My97DatePicker/WdatePicker.js'></script>
+
+<%--实时搜索--%>
+<!-- JS -->
+<script type="text/javascript" src="<%=basePath %>js/vendor/waypoints.min.js"></script>
+<script type="text/javascript" src="<%=basePath %>js/vendor/waypoints-sticky.min.js"></script>
+<script type="text/javascript" src="<%=basePath %>js/vendor/jquery.hideseek.min.js"></script>
+<script type="text/javascript" src="<%=basePath %>js/vendor/rainbow-custom.min.js"></script>
+<script type="text/javascript" src="<%=basePath %>js/vendor/jquery.anchor.js"></script>
+<script src="<%=basePath %>js/vendor/initializers.js"></script>
 
 </html>

@@ -42,7 +42,7 @@
                     <%-- class="current-menu-item"--%>
                     <li><a href="<%=basePath%>topic/all.action">话题</a></li>
                     <li><a href="single.jsp">发布</a></li>
-                    <li><a href="<%=basePath%>shudong/main.action">树洞</a></li>
+                    <li><a href="<%=basePath%>shuDong/main.action">树洞</a></li>
                     <li><a href="about.jsp">关于我们</a></li>
                     <li><a href="contactUs.jsp">联系我们</a></li>
                 </ul><!-- .menu -->

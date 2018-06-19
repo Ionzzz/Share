@@ -103,4 +103,7 @@ public interface BlogContentMapper {
 
     public List<BlogUserPicsLabel> selectAllBlogUserLabel();
 
+    public List<BlogUserPicsLabel> selectBlogUserPicsCountByLabelId(int label_id);
+
+
 }

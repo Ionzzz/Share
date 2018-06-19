@@ -136,9 +136,21 @@
                                                         ${blog.blogContent.blogcontent}
                                                     </c:if>
                                                 </a>
+
                                             </p>
+                                            <span class="" style="text-align: right;float: right">
+                                                热度：${blog.liulan}<br/>
+                                                <a href="javascript:void(0)" onclick="getZan('${blog.blogContent.blogId}')" style="text-decoration: blink">
+                                                    <span  onclick="changeZanImg()"><img  src="<%= basePath %>images/shudong-images/Zan.png"/></span>
+                                                </a> <span name="${blog.blogContent.blogId}">${blog.zan}</span><br/>
+                                                <span class="total-comments-on-post pull-right">
+                                                    <c:if test="${blog.pinglun!=0}">
+                                                        <a href="<%= basePath %>single/main.action?blogId=${blog.blogContent.blogId}" style="text-decoration: blink">${blog.pinglun} 条评论</a>
+                                                    </c:if>
+                                                </span>
+                                            </span>
                                                 <a href="<%=basePath%>single/main.action?blogId=${blog.blogContent.blogId}" class="fh5co_mini_time py-3">${blog.userInfo.usernickname}-<fmt:formatDate value="${blog.blogContent.blogcreatetime}" pattern="yyyy-MM-dd HH:mm:ss"/> </a>
-                                            <p  style="float: right;position: relative">浏览量${blog.liulan}</p><br/>
+
                                             <div class="fh5co_consectetur"> ${blog.blogContent.blogcontent}</div>
                                         </div>
                                     </div>

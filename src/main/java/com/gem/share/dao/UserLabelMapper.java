@@ -2,8 +2,9 @@ package com.gem.share.dao;
 
 import com.gem.share.entity.UserLabel;
 import com.gem.share.entity.UserLabelExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface UserLabelMapper {
     long countByExample(UserLabelExample example);
@@ -27,4 +28,8 @@ public interface UserLabelMapper {
     int updateByPrimaryKeySelective(UserLabel record);
 
     int updateByPrimaryKey(UserLabel record);
+
+//userid查询该用户所选择labelid
+    public List<UserLabel> selectLabelIdByUserId(int user_id);
+
 }

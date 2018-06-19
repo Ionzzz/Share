@@ -1,8 +1,10 @@
 package com.gem.share.service.Impl;
 
 import com.gem.share.dao.UserInfoMapper;
+import com.gem.share.dao.UserLabelMapper;
 import com.gem.share.entity.Notice;
 import com.gem.share.entity.UserInfo;
+import com.gem.share.entity.UserLabel;
 import com.gem.share.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +16,14 @@ import java.util.List;
 public class UserServiceImpl implements UserService{
     @Autowired
     private UserInfoMapper userInfoMapper;
+    @Autowired
+    private UserLabelMapper userLabelMapper;
+
+    @Override
+    public List<UserLabel> selectLabelIdByUserId(int user_id) {
+
+        return userLabelMapper.selectLabelIdByUserId(user_id);
+    }
 
     @Override
     public List<UserInfo> selectAllUserInfo() {

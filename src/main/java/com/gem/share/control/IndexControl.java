@@ -1,9 +1,6 @@
 package com.gem.share.control;
 
-import com.gem.share.entity.BlogUserPicsLabel;
-import com.gem.share.entity.BlogZan;
-import com.gem.share.entity.LabelInfo;
-import com.gem.share.entity.UserInfo;
+import com.gem.share.entity.*;
 import com.gem.share.service.BlogService;
 import com.gem.share.service.LabelInfoService;
 import com.gem.share.service.UserService;
@@ -31,41 +28,87 @@ public class IndexControl {
 
     @RequestMapping("/main.action")
     public void main(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        UserInfo userInfo= (UserInfo) request.getSession().getAttribute("userInfo");
-
-
-        BlogUserPicsLabel blogtheone=blogService.selectOneBlogOrderBlogBrowse();
-        List<BlogUserPicsLabel> blogflist=blogService.selectBlogCountOrderZan(4);
-//        System.out.println("----------"+pic.get(0));
-
-        List<BlogUserPicsLabel> blogjiaju=blogService.selectBlogUserPicsLabelByLabelNameOrderLiuLan("家居");
-
-        List<BlogUserPicsLabel> bloglvxing=blogService.selectBlogUserPicsLabelByLabelNameOrderZan("旅行");
-
-        List<BlogUserPicsLabel> blogfood=blogService.selectBlogUserPicsLabelByLabelNameOrderTime("美食");
-
-        List<BlogUserPicsLabel> blogbook=blogService.selectBlogUserPicsCountByLabelName("书籍",4);
-
-        /*foot*/
+ /*foot*/
         List<LabelInfo> labelInfos=labelInfoService.selectAllLabelInfo();
         List<BlogUserPicsLabel> footblog=blogService.selectAllBlogUserLabel();
         request.setAttribute("foot",footblog);
         request.setAttribute("labelList",labelInfos);
 
+        UserInfo userInfo= (UserInfo) request.getSession().getAttribute("userInfo");
+        List<UserLabel> userLabels=userService.selectLabelIdByUserId(userInfo.getUserId());
+
+        List<Integer> set=new ArrayList<>();
+        Random random=new Random();
+        while(set.size()<=4){
+            int i=random.nextInt(labelInfos.size())+1;
+            if(!set.contains(i)){
+                for(UserLabel u:userLabels){
+                    if(u.getLabelId()!=i){
+                        set.add(i);
+//                        System.out.println("======="+i);
+                        break;
+                    }
+                }
+            }
+
+        }
+        for(Integer i:set){
+            System.out.println("-------"+i);
+        }
+
+        List<BlogUserPicsLabel> onelist;
+        List<BlogUserPicsLabel> twolist;
+        List<BlogUserPicsLabel> threelist;
+        List<BlogUserPicsLabel> fourlist;
+        if((userLabels.size()==1&&userLabels.get(0)==null)||userLabels.size()==0){
+            onelist=blogService.selectBlogUserPicsCountByLabelId(set.get(0));
+            twolist=blogService.selectBlogUserPicsCountByLabelId(set.get(1));
+            threelist=blogService.selectBlogUserPicsCountByLabelId(set.get(2));
+            fourlist=blogService.selectBlogUserPicsCountByLabelId(set.get(3));
+        }else if(userLabels.size()==1){
+            onelist=blogService.selectBlogUserPicsCountByLabelId(userLabels.get(0).getLabelId());
+            twolist=blogService.selectBlogUserPicsCountByLabelId(set.get(1));
+            threelist=blogService.selectBlogUserPicsCountByLabelId(set.get(2));
+            fourlist=blogService.selectBlogUserPicsCountByLabelId(set.get(3));
+        }else if(userLabels.size()==2){
+            onelist=blogService.selectBlogUserPicsCountByLabelId(userLabels.get(0).getLabelId());
+            twolist=blogService.selectBlogUserPicsCountByLabelId(userLabels.get(1).getLabelId());
+            threelist=blogService.selectBlogUserPicsCountByLabelId(set.get(2));
+            fourlist=blogService.selectBlogUserPicsCountByLabelId(set.get(3));
+        }else if(userLabels.size()==3){
+            onelist=blogService.selectBlogUserPicsCountByLabelId(userLabels.get(0).getLabelId());
+            twolist=blogService.selectBlogUserPicsCountByLabelId(userLabels.get(1).getLabelId());
+            threelist=blogService.selectBlogUserPicsCountByLabelId(userLabels.get(2).getLabelId());
+            fourlist=blogService.selectBlogUserPicsCountByLabelId(set.get(3));
+        }else{
+            onelist=blogService.selectBlogUserPicsCountByLabelId(userLabels.get(0).getLabelId());
+            twolist=blogService.selectBlogUserPicsCountByLabelId(userLabels.get(1).getLabelId());
+            threelist=blogService.selectBlogUserPicsCountByLabelId(userLabels.get(2).getLabelId());
+            fourlist=blogService.selectBlogUserPicsCountByLabelId(userLabels.get(3).getLabelId());
+        }
+
+        BlogUserPicsLabel blogtheone=blogService.selectOneBlogOrderBlogBrowse();
+        List<BlogUserPicsLabel> blogflist=blogService.selectBlogCountOrderZan(4);
+//        System.out.println("----------"+pic.get(0));
+        List<BlogUserPicsLabel> blogjiaju=blogService.selectBlogUserPicsLabelByLabelNameOrderLiuLan("家居");
+        List<BlogUserPicsLabel> bloglvxing=blogService.selectBlogUserPicsLabelByLabelNameOrderZan("旅行");
+        List<BlogUserPicsLabel> blogfood=blogService.selectBlogUserPicsLabelByLabelNameOrderTime("美食");
+        List<BlogUserPicsLabel> blogbook=blogService.selectBlogUserPicsCountByLabelName("书籍",4);
         List<UserInfo> userInfos=userService.selectCountUserInfo(5);
         Map<String,Object> map=new HashMap<>();
         map.put("blogone",blogtheone);
-        map.put("blogfourlist",blogflist);
-        map.put("blogJiaJu",blogjiaju);
-        map.put("blogLvXing",bloglvxing);
-        map.put("blogFood",blogfood);
-        map.put("blogBook4",blogbook);
+        map.put("blogfour",blogflist);
+
+        map.put("blogonelist",onelist);
+        map.put("blogtwolist",twolist);
+        map.put("blogthreelist",threelist);
+        map.put("blogfourlist",fourlist);
+
         map.put("userList5",userInfos);
         request.setAttribute("indexmap",map);
         request.getRequestDispatcher("/jsp/index.jsp").forward(request,response);
-
     }
+
 
     @RequestMapping("/userself.action")
     public void userself(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

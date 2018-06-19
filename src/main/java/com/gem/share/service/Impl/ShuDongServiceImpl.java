@@ -102,9 +102,10 @@ public class ShuDongServiceImpl implements ShuDongService {
 //            按热度(浏览量)排序
             list=shuDongMapper.selectAllShuDongContentBySDBrowse(searchContent);
 
-        }else if (pageShuDong==2){
-//            按照选定的时间显示---时光机
         }
+//        else if (pageShuDong==2){
+////            按照选定的时间显示---时光机
+//        }
 
         PageInfo<shuDong> pageInfo=new PageInfo<>(list);
 
@@ -126,6 +127,37 @@ public class ShuDongServiceImpl implements ShuDongService {
     public boolean deleteComment(int replyComment_id) {
         return shuDongMapper.deleteComment(replyComment_id);
     }
+
+    @Override
+    public boolean publishAllType(BlogContent blogContent) {
+        return shuDongMapper.publishAllType(blogContent);
+    }
+
+    @Override
+    public int selectPublishBlogId(BlogContent blogContent) {
+        return shuDongMapper.selectPublishBlogId(blogContent);
+    }
+
+    @Override
+    public boolean insertPublishPics(int blog_id, String pic) {
+        return shuDongMapper.insertPublishPics(blog_id,pic);
+    }
+
+    @Override
+    public int getPublishPicsId(int blog_id, String pic) {
+        return shuDongMapper.getPublishPicsId(blog_id,pic);
+    }
+
+    @Override
+    public boolean updateBlog(BlogContent blogContent) {
+        return shuDongMapper.updateBlog(blogContent);
+    }
+
+    @Override
+    public boolean insertPublishLabel(int blog_id, int label_id) {
+        return shuDongMapper.insertPublishLabel(blog_id,label_id);
+    }
+
 
 }
 

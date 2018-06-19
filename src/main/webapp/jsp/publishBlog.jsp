@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: 刘琪
@@ -20,6 +21,10 @@
     <link href="<%=basePath%>css/index-css/Poppins.css" rel="stylesheet">
     <link href="<%=basePath%>css/index-css/owl.carousel.css" rel="stylesheet" type="text/css"/>
     <link href="<%=basePath%>css/index-css/owl.theme.default.css" rel="stylesheet" type="text/css"/>
+
+    <link href="<%=basePath%>css/index-css/style_1.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=basePath%>css/index-css/main.css" rel="stylesheet" >
+    <link href="<%=basePath%>css/index-css/nav_font.css" rel='stylesheet' type='text/css'>
     <!-- Bootstrap CSS -->
     <link href="<%=basePath%>css/index-css/style_1.css" rel="stylesheet" type="text/css"/>
     <!-- Modernizr JS -->
@@ -37,8 +42,16 @@
     <!-- Main -->
     <script src="<%=basePath%>js/index-js/main.js"></script>
     <script type="text/javascript">
-        var blogFlag = $('input:radio[name="blogFlag"]:checked').val();
-        var blogFlag = $('input:radio[name="essayFlag"]:checked').val();
+
+
+        var value1;
+        var value2;
+        var value3;
+        function getInfo() {
+            value1 = $('#select1').val();
+            value2 = $('#select2').val();
+            value3 = $('#select3').val();
+        }
 
         //实例化编辑器
         //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
@@ -51,64 +64,88 @@
 
             var arr1 = [];
             arr1.push(UE.getEditor('editor').getPlainTxt());
+            alert("arr1="+arr1);
 
             $("#hidden1").val(arr);
             $("#hidden2").val(arr1);
-            var blogFlag = $('#f1 input[name="blogFlag"]:checked ').val();
-            var essayFlag = $('#f2 input[name="essayFlag"]:checked ').val();
-            $("#hidden3").val(blogFlag);
-            $("#hidden4").val(essayFlag);
+            $("#hidden3").val(value1);
+            $("#hidden4").val(value2);
+            $("#hidden5").val(value3);
 
             document.getElementById("form1").submit();
         }
+
+//关闭弹窗
+function closeLayer(){
+    var arr = [];
+    arr.push(UE.getEditor('editor').hasContents());
+
+    if(arr=="false"){
+        confirm("还没有填写任何信息哦");
+    }else{
+        confirm("发布成功");
+    }
+    parent.layer.closeAll();
+    window.parent.location.reload();
+}
     </script>
 
 </head>
-<body>
+<body style="margin-bottom: 100px;">
+<c:import url="header.jsp"></c:import>
 
 <!--tags-->
 <div>
-
-    <div class="fh5co_tags_all">
-        <a href="#" class="fh5co_tagg">音乐</a>
-        <a href="#" class="fh5co_tagg">旅行</a>
-        <a href="#" class="fh5co_tagg">美食</a>
-        <a href="#" class="fh5co_tagg">手绘</a>
-        <a href="#" class="fh5co_tagg">书籍</a>
-        <a href="#" class="fh5co_tagg">手工DIY</a>
-        <a href="#" class="fh5co_tagg">家居</a>
-        <a href="#" class="fh5co_tagg">设计</a>
-        <a href="#" class="fh5co_tagg">插花</a>
-        <a href="#" class="fh5co_tagg">搭配</a>
-        <a href="#" class="fh5co_tagg">美妆</a>
-        <a href="#" class="fh5co_tagg">拍照</a>
-        <a href="#" class="fh5co_tagg">更多...</a>
-    </div>
-
     <form id="form1" action="<%=basePath %>shuDong/publishAllType.action">
         <%--判断内容是否为空--%>
         <input type="hidden" name="content1" id="hidden1"/>
         <%--获取内容--%>
         <input type="hidden" name="content2" id="hidden2"/>
+            <%--标志--%>
         <input type="hidden" name="content3" id="hidden3"/>
         <input type="hidden" name="content4" id="hidden4"/>
-            <div style="margin-top:10px;margin-left:100px;font-size:18px;">
-        <div id="f1" class="radio" style="float: left; margin-right: 50px;">
-            <input type="radio" name="blogFlag" id="optionsRadios1" value="blog" checked>发布博客
-            <input type="radio" name="blogFlag" id="optionsRadios2" value="shuDong">发布树洞
-        </div>
-        <div id="f2" class="radio">
-            <input type="radio" name="essayFlag" id="optionsRadios3" value="longText">发布文本
-            <input type="radio" name="essayFlag" id="optionsRadios4" value="shortText" checked>随便写写
-        </div>
-            </div>
+        <input type="hidden" name="content5" id="hidden5"/>
     </form>
     <!--demo-->
 
-    <script id="editor" type="text/plain" style="width: 90%;height:500px;margin: 0 auto;"></script></div>
-<div class="col-12 py-3 text-center">
-  <a href="#" class="btn contact_btn" onclick="hasContent()">发布</a>
+    <script id="editor" type="text/plain" style="width: 90%;height:500px; margin-left: 120px;margin-top: 70px; z-index: 1;"></script></div>
+
+<div style="margin-left:130px;">
+<div style="margin-top:20px;"><div style="float:left;">发布选择：</div><select class="form-control col-md-4" onclick="getInfo()" id="select1">
+    <option value="-1" selected>请选择</option>
+    <option value="0">博客</option>
+    <option value="1">树洞</option>
+</select></div>
+    <div style="margin-top:20px;"><div style="float:left;">文章类型：</div><select class="form-control col-md-4" onclick="getInfo()" id="select2">
+        <option value="-1" selected>请选择</option>
+        <option value="0">随便写写</option>
+        <option value="1">长文本</option>
+    </select></div>
+
+    <div style="margin-top:20px;"><div style="float:left;">标&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;签：</div><select class="form-control col-md-4" onclick="getInfo()" id="select3">
+        <option value="-1" selected>请选择</option>
+        <option value="1">拍照</option>
+        <option value="2">音乐</option>
+        <option value="3">旅行</option>
+        <option value="4">美食</option>
+        <option value="5">手绘</option>
+        <option value="6">书籍</option>
+        <option value="7">手工DIY</option>
+        <option value="8">家居</option>
+        <option value="9">设计</option>
+        <option value="10">插花</option>
+        <option value="11">搭配</option>
+        <option value="12">美妆</option>
+    </select></div>
+
+
 </div>
+
+<div class="col-12 py-3 text-center" style="margin-right:400px;">
+    <span onclick="closeLayer()"><a href="javascript:void(0)" class="btn contact_btn" onclick="hasContent()">发布</a></span>
+</div>
+
+
 
 
 

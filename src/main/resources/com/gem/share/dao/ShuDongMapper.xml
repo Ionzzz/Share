@@ -71,7 +71,7 @@
   <!--//    获得具体树洞页面内容-->
   <!--public List<shuDongDetail> selectAllShuDongComment(int blog_id);-->
   <select id="selectAllShuDongComment" parameterType="int" resultType="shuDongDetail">
-    SELECT bc.blog_id,bc.blogContent,bc.blogCreateTime,userinfo.user_id,userinfo.userAccount,userinfo.userNickName,
+    SELECT bc.blog_id,bc.blogContent,bc.blogCreateTime,userinfo.userAccount,userinfo.userNickName,
 case when blogcomment.comment_id is null then 0 else blogcomment.comment_id end as comment_id,
 case when blogcomment.commentTime is null then 0 else blogcomment.commentTime end as commentTime,
 case when blogcomment.commentContent is null then 0 else blogcomment.commentContent end as commentContent
@@ -147,16 +147,54 @@ AND rr.replycomment = rb.replycomment_id
     VALUES(#{param2},#{param1})
   </insert>
 
-  <!--//    发布各类博客-->
-  <!--public boolean publishAllType(BlogContent blogContent);-->
-  <insert id="publishAllType" parameterType="BlogContent" useGeneratedKeys="true" keyProperty="replycommentId">
-    INSERT INTO blogcontent
-    VALUES(#{blogId},#{userId},#{blogpicsId},#{blogcreatetime},#{blogflag},#{essayflag},#{blogcontent})
-  </insert>
   <!--//    删除评论-->
   <!--public boolean deleteComment(int replyComment_id);-->
   <delete id="deleteComment" parameterType="int">
     DELETE FROM replycomment where replycomment_id=#{_parameter}
   </delete>
+
+  <!--//    发布各类博客&#45;&#45;返回博客id&#45;&#45;目的：插图片使用-->
+  <!--public boolean publishAllType(BlogContent blogContent);-->
+  <insert id="publishAllType" parameterType="BlogContent" useGeneratedKeys="true" keyProperty="replycommentId">
+    INSERT INTO blogcontent(user_id,blogContent,blogPics_id,blogCreateTime,blogFlag,essayFlag)
+    VALUES(#{userId},#{blogcontent},#{blogpicsId},#{blogcreatetime},#{blogflag},#{essayflag})
+  </insert>
+
+  <!--//    查询发布过后的博客id-->
+  <!--public int selectPublishBlogId(BlogContent blogContent);-->
+  <select id="selectPublishBlogId" parameterType="BlogContent" resultType="int">
+    SELECT blog_id from blogcontent
+    where user_id=#{userId} and blogCreateTime=#{blogcreatetime}
+  </select>
+
+  <!--//    将图片插入数据库-->
+  <!--public boolean insertPublishPics(int blog_id,String pic);-->
+  <insert id="insertPublishPics" useGeneratedKeys="true" keyProperty="blogpicsId">
+    insert into blogpics(blog_id,pic)
+    VALUES(#{param1},#{param2})
+  </insert>
+
+  <!--//    获取图片插入后的图片id-->
+  <!--public int getPublishPicsId(int blog_id,String pic);-->
+  <select id="getPublishPicsId" resultType="int">
+    SELECT blogPics_id from blogpics
+    where blog_id=#{param1} and pic=#{param2}
+  </select>
+
+  <!--//    更新带图片博客-->
+  <!--public boolean updateBlog(BlogContent blogContent);-->
+  <update id="updateBlog" parameterType="BlogContent">
+  update blogcontent
+  SET blogPics_id=#{blogpicsId}
+  where user_id=#{userId} and blogCreateTime=#{blogcreatetime}
+  </update>
+
+  <!--//    插入标签-->
+  <!--public boolean insertPublishLabel(int blog_id,int label_id);-->
+  <insert id="insertPublishLabel" useGeneratedKeys="true" keyProperty="bloglabelId">
+    insert into bloglabel(blog_id,label_id)
+    values(#{param1},#{param2})
+  </insert>
+
 
 </mapper>

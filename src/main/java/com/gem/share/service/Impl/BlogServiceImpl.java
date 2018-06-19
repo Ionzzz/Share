@@ -164,6 +164,11 @@ public class BlogServiceImpl implements BlogService {
         return pageInfo;
     }
 
+    @Override
+    public List<BlogUserPicsLabel> selectBlogUserPicsCountByLabelId(int label_id) {
+
+        return blogContentMapper.selectBlogUserPicsCountByLabelId(label_id);
+    }
 
 
     @Override

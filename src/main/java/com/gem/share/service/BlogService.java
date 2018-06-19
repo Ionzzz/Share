@@ -37,10 +37,9 @@ public interface BlogService {
     public List<BlogUserPicsLabel> selectBlogCountOrderLiulan(int count);
     public List<BlogUserPicsLabel> selectBlogCountOrderPinglun(int count);
     public PageInfo<BlogUserPicsLabel> selectAllBlogUserPicsByPage(Map<String,Object> map);
-
     public PageInfo<BlogUserPicsLabel> selectAllBlogUserPicsByPageLabelName(Map<String,Object> map);
 
-
+    public List<BlogUserPicsLabel> selectBlogUserPicsCountByLabelId(int label_id);
     public List<BlogUserPicsLabel> selectBlogUserPicsLabelByLabelNameOrderZan(String labelName);
     public List<BlogUserPicsLabel> selectBlogUserPicsLabelByLabelNameOrderPingLun(String labelName);
     public List<BlogUserPicsLabel> selectBlogUserPicsLabelByLabelNameOrderLiuLan(String labelName);

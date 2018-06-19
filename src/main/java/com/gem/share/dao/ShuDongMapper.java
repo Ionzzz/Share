@@ -56,14 +56,25 @@ public interface ShuDongMapper {
 //    当浏览量不超过5时，浏览量+1
     public void insertSDBrowse(int user_id, int blog_id);
 
-    //    删除评论
+//    删除评论
     public boolean deleteComment(int replyComment_id);
 
-
-
-
-
-//    发布各类博客
+//    发布各类博客--返回博客id--目的：插图片使用
     public boolean publishAllType(BlogContent blogContent);
+
+//    查询发布过后的博客id
+    public int selectPublishBlogId(BlogContent blogContent);
+
+//    将图片插入数据库
+    public boolean insertPublishPics(int blog_id, String pic);
+
+//    获取图片插入后的图片id
+    public int getPublishPicsId(int blog_id, String pic);
+
+    //    更新带图片博客
+    public boolean updateBlog(BlogContent blogContent);
+
+//    插入标签
+    public boolean insertPublishLabel(int blog_id, int label_id);
 
 }

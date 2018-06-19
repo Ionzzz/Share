@@ -3,23 +3,19 @@ package com.gem.share.control;
 import com.gem.share.entity.*;
 import com.gem.share.service.ShuDongService;
 import com.github.pagehelper.PageInfo;
-import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.FileUploadBase;
-import org.apache.commons.fileupload.FileUploadException;
-import org.apache.commons.fileupload.ProgressListener;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.*;
+import java.io.IOException;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 
 @RequestMapping("/shuDong")
 @Controller
@@ -32,8 +28,6 @@ public class ShuDongControl {
     public void main(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String searchContent = request.getParameter("searchContent");
         String SDflag = request.getParameter("SDflag");//区分最热排序或者时间排序
-        String getDate = request.getParameter("getDate");//获取日期
-        System.out.println("-------"+getDate);
 
         int flag = 0;
         if(null==SDflag || "".equals(SDflag)){
@@ -53,30 +47,32 @@ public class ShuDongControl {
         map.put("curPage",curPage);
         map.put("pageSize",pageSize);
         PageInfo<shuDong> pageInfo=shuDongService.pageShuDong(map,searchContent,flag);
-        request.setAttribute("pageInfo",pageInfo);
 
-        //搜索条件分页
-        request.setAttribute("searchContent",searchContent);
+        request.setAttribute("pageInfo",pageInfo);
+        request.setAttribute("searchContent",searchContent);//搜索条件分页
         request.setAttribute("SDflag",SDflag);
+
         request.getRequestDispatcher("/jsp/shuDong.jsp").forward(request,response);
 
     }
 
     @RequestMapping("/Zan.action")
-    public @ResponseBody int Zan(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
+    public @ResponseBody String Zan(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
         int userId = 1;//后期从session获取
         String blogId = request.getParameter("blogId");
 //        查询是否有该用户对该博客的点赞记录
         List<BlogZan> blogZans = shuDongService.selectZanRecordByUserId(Integer.parseInt(blogId),userId);
-        int sdCount = 0;
+        String sdCount = null;
+        String flag = "flase";//默认该用户没有点赞
 
 //        如果有，删除该记录，同时文章点赞数-1
         if(blogZans != null && blogZans.size()>0){
 //            删除记录
             boolean f1 = shuDongService.deleteZanRecordByZanId(blogZans.get(0).getBlogzanId());
+            flag = "true";
             if(f1){
 //                删除成功，得到该篇文章点赞数
-                sdCount = shuDongService.selectCountZan(Integer.parseInt(blogId));
+                sdCount = String.valueOf(shuDongService.selectCountZan(Integer.parseInt(blogId)));
 
             }else{
 //                删除失败
@@ -93,10 +89,10 @@ public class ShuDongControl {
             shuDongService.addZanRecord(blogZan);
 
 //        文章点赞数+1
-            sdCount = shuDongService.selectCountZan(Integer.parseInt(blogId));
+            sdCount = String.valueOf(shuDongService.selectCountZan(Integer.parseInt(blogId)));
         }
 
-        return sdCount;
+        return sdCount+"&"+flag;
 
 //        request.getRequestDispatcher("/shuDong/main.action").forward(request,response);
     }
@@ -203,8 +199,6 @@ public class ShuDongControl {
     public @ResponseBody List<ReplyCommentDetail> deleteComment(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
         String replycommentId = request.getParameter("replycommentId");
         String commentId = request.getParameter("commentId");
-        System.out.println("----------commentId--"+commentId);
-        System.out.println("----------replycommentId--"+replycommentId);
 
 //        获取到当前评论，并查出该评论下所有的评论，并删除
 
@@ -254,173 +248,75 @@ public class ShuDongControl {
         return replyCommentDetails1;
     }
 
-
-
-
-
-
-
-
-    @RequestMapping("/myUplaod.action")
-    public void uploadImage(MultipartFile imgFileUp,HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String path = request.getServletContext().getRealPath("images");
-        String temp = request.getServletContext().getRealPath("/temp");
-
-        File f = new File(path);
-        File tempFile = new File(temp);
-        if(!f.exists()) {
-            f.mkdir();
-        }
-        if(!tempFile.exists()) {
-            tempFile.mkdir();
-        }
-
-        DiskFileItemFactory factory = new DiskFileItemFactory();
-        factory.setSizeThreshold(1024*10);
-        factory.setRepository(tempFile);
-
-        ServletFileUpload upload = new ServletFileUpload(factory);
-        upload.setHeaderEncoding("UTF-8");
-
-        if(!ServletFileUpload.isMultipartContent(request)) {
-            String name = request.getParameter("username") ;
-            System.out.println(name+"-----------------");
-
-            return ;
-        }
-        //监听上传进度
-        upload.setProgressListener(new ProgressListener() {
-            /**
-             * readLength  已读取的大小
-             * sizeLength  总文件大小
-             * count 当前正在上传第几个文件
-             */
-            @Override
-            public void update(long readLength, long sizeLength, int count) {
-                // TODO Auto-generated method stub
-                System.out.println("文件大小为：" + sizeLength + ",当前已处理：" + readLength +"----当前是：【"+count+"】个文件");
+//    获取str属性
+    public  Set<String> getImgStr(String htmlStr) {
+        Set<String> pics = new HashSet<String>();
+        String img = "";
+        Pattern p_image;
+        Matcher m_image;
+        String regEx_img = "<img.*src\\s*=\\s*(.*?)[^>]*?>";
+        p_image = Pattern.compile(regEx_img, Pattern.CASE_INSENSITIVE);
+        m_image = p_image.matcher(htmlStr);
+        while (m_image.find()) {
+            // 得到<img />数据
+            img = m_image.group();
+            // 匹配<img>中的src数据
+            Matcher m = Pattern.compile("src\\s*=\\s*\"?(.*?)(\"|>|\\s+)").matcher(img);
+            while (m.find()) {
+                pics.add(m.group(1));
             }
-        });
-
-        String info = "";
-        try {
-            upload.setFileSizeMax(1024*1024*4); //单个文件最大4M
-            upload.setSizeMax(1024*1024*4*10); //所有文件加载一起40M
-
-            List<FileItem> list = upload.parseRequest(request);
-
-            for(FileItem item :list) {
-                if(item.isFormField()) {
-                    //普通表单
-                    String name = item.getFieldName();
-                    String value = item.getString();
-
-                    System.out.println(name+"-----"+value);
-                }else {
-                    //上传表单
-                    String filename = item.getName();
-                    if(filename == null || "".equals(filename)) {
-                        continue ;
-                    }
-
-                    System.out.println("文件名称:"+filename);
-                    //文件名称 根据浏览器不同 ，文件名称也不同
-                    //D:\apache-tomcat-8.0.50\webapps\JspDemo_4\images\abc.jpg
-                    filename = filename.substring(filename.lastIndexOf("\\")+1);
-
-                    //给每个上传文件 重新定义一个文件名
-                    String ms = System.currentTimeMillis()+"";
-                    String ss = UUID.randomUUID().toString();
-                    System.out.println("UUID:----"+ss);
-                    filename = ms+"_"+filename;
-
-                    InputStream in = item.getInputStream();
-                    String newPath = makePath(filename,path);
-                    FileOutputStream out = null;
-                    try {
-                        out = new FileOutputStream(new File(newPath+File.separator+filename));
-                    } catch (FileNotFoundException e) {
-                        e.printStackTrace();
-                    }
-
-                    byte[] buffer = new byte[1024];
-                    int len = 0;
-
-                    while((len=in.read(buffer)) > 0) {
-                        out.write(buffer, 0, len);
-                    }
-
-                    in.close();
-                    out.close();
-
-                }
-
-                item.delete();//清除上传文件过程中产生的缓存
-            }
-
-
-            info = "上传成功";
-
-            request.setAttribute("info", info);
-
-            request.getRequestDispatcher("/load/message.jsp").forward(request, response);
-        } catch(FileUploadBase.FileSizeLimitExceededException e) {
-            //单个文件超过最大值
-            e.getPermittedSize();
-            info = "单个文件超过上传的大小";
-            request.setAttribute("info", info);
-            request.getRequestDispatcher("/load/message.jsp").forward(request, response);
-        }catch (FileUploadBase.SizeLimitExceededException e) {
-            //超过上传总大小
-            e.getPermittedSize();
-            info = "超过上传文件的总大小";
-            request.setAttribute("info", info);
-            request.getRequestDispatcher("/load/message.jsp").forward(request, response);
-        }catch (FileUploadException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-            info = "上传失败";
-            request.setAttribute("info", info);
-            request.getRequestDispatcher("/load/message.jsp").forward(request, response);
-        } catch (IOException e) {
-            e.printStackTrace();
         }
+        return pics;
     }
-
-    //为防止一个目录下面出现太多文件，要使用hash算法打散存储
-    private String makePath(String filename,String savePath){
-        //得到文件名的hashCode的值，得到的就是filename这个字符串对象在内存中的地址
-        int hashcode = filename.hashCode();
-        int dir1 = hashcode&0xf;  //1111 //0--15    4
-        int dir2 = (hashcode&0xf0)>>4;  //0-15      9
-
-        System.out.println("-================"+dir1+"=================="+dir2);
-        //构造新的保存目录
-        String dir = savePath + "\\" + dir1 + "\\" + dir2;  //images\2\3  images\3\5
-        //D:\apache-tomcat-8.0.50\webapps\JspDemo_4\images\\2\4\\a.jpg
-        //D:\apache-tomcat-8.0.50\webapps\JspDemo_4\images\\7\\2\\b.jpg
-        //File既可以代表文件也可以代表目录
-        File file = new File(dir);
-        //如果目录不存在
-        if(!file.exists()){
-            //创建目录
-            file.mkdirs();
-        }
-        return dir;
-    }
-
 
     @RequestMapping("/publishAllType.action")
-    public void publishAllType(HttpServletRequest request,HttpServletResponse response){
+    public void publishAllType(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
         String content1 = request.getParameter("content1");//判断内容是否为空
         String content2 = request.getParameter("content2");//获取内容
         String content3 = request.getParameter("content3");//获取blogFlag
         String content4 = request.getParameter("content4");//获取essayFlag
+        String content5 = request.getParameter("content5");//标签
 
+        Set<String> set = getImgStr(content2);//src属性值
+        String[] str = new String[set.size()];
+        set.toArray(str);
+        String src[] = str[0].split("ShareMaven");
+        System.out.println("-----src[1]----"+src[1]);
 
+        int userId = 3;//后期从session获得
+        String zi[] = content2.split("<");;//文字内容
+        Date commentTime = new Date();
 
+        BlogContent blogContent = new BlogContent();
+        blogContent.setUserId(userId);
+        blogContent.setBlogcontent(zi[0]);
+        blogContent.setBlogcreatetime(commentTime);
+        if(Integer.parseInt(content3)!=-1 && Integer.parseInt(content4)!=-1){
+            blogContent.setBlogflag(content3);
+            blogContent.setEssayflag(content4);
+        }
 
+        shuDongService.publishAllType(blogContent);//发布博客或者树洞（没有图片）
+        int blogId = shuDongService.selectPublishBlogId(blogContent);
+        boolean flag = shuDongService.insertPublishPics(blogId,src[1]);//将图片插入blogPics
+        if(flag){
+//            插入成功
+            int blogPicsId = shuDongService.getPublishPicsId(blogId,src[1]);
+            blogContent.setBlogpicsId(blogPicsId);
+            boolean f1 = shuDongService.updateBlog(blogContent);//带图片插入博客
+
+//            插入标签
+            boolean f2 = shuDongService.insertPublishLabel(blogId,Integer.parseInt(content5));
+
+        }else{
+            System.out.println("插入失败");
+        }
+
+        request.getRequestDispatcher("/new/main.action").forward(request,response);
     }
+
+
+
 
 
 

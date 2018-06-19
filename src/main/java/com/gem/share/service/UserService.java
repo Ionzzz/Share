@@ -2,12 +2,14 @@ package com.gem.share.service;
 
 import com.gem.share.entity.Notice;
 import com.gem.share.entity.UserInfo;
+import com.gem.share.entity.UserLabel;
 
 import java.util.Date;
 import java.util.List;
 
 public interface UserService {
 
+    public List<UserLabel> selectLabelIdByUserId(int user_id);
     public List<UserInfo> selectAllUserInfo();
     public List<UserInfo> selectCountUserInfo(int count);
     public List<UserInfo> selectOrderAllUserInfo();

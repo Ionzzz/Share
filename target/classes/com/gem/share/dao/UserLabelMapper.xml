@@ -178,4 +178,9 @@
       label_id = #{labelId,jdbcType=INTEGER}
     where userLabel_id = #{userlabelId,jdbcType=INTEGER}
   </update>
+  <!--public List<UserLabel> selectLabelIdByUserId(int user_id);-->
+  <select id="selectLabelIdByUserId" resultType="UserLabel" parameterType="int">
+    select * from userlabel where user_id=#{_parameter}
+  </select>
+
 </mapper>

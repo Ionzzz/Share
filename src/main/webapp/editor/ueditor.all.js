@@ -6921,6 +6921,7 @@ var fillCharReg = new RegExp(domUtils.fillChar, 'g');
                     //设置默认字体和字号
                     //font-family不能呢随便改，在safari下fillchar会有解析问题
                     'body{margin:8px;font-family:sans-serif;font-size:16px;}' +
+                    'img{max-width:100px;max-height:100px;}'+
                     //设置段落间距
                     'p{margin:5px 0;}</style>' +
                     ( options.iframeCssUrl ? '<link rel=\'stylesheet\' type=\'text/css\' href=\'' + utils.unhtml(options.iframeCssUrl) + '\'/>' : '' ) +
@@ -24528,6 +24529,7 @@ UE.plugin.register('simpleupload', function (){
                             loader.setAttribute('_src', link);
                             loader.setAttribute('title', json.title || '');
                             loader.setAttribute('alt', json.original || '');
+                            loader.setAttribute('style','max-width:100px;max-height:100px;');
                             loader.removeAttribute('id');
                             domUtils.removeClasses(loader, 'loadingclass');
                         } else {
