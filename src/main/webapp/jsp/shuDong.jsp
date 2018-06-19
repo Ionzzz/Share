@@ -67,7 +67,6 @@
         function pipeiSearch() {
             var searchContent = $("#search-highlight").val();
             $("#form2").submit();
-            alert("searchContent="+searchContent);
         }
     </script>
 
