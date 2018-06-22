@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gem.share.dao.MngPicsMapper">
+    <resultMap id="BaseResultMap" type="com.gem.share.entity.BlogPics">
+        <id column="blogPics_id" jdbcType="INTEGER" property="blogpicsId" />
+        <result column="blog_id" jdbcType="INTEGER" property="blogId" />
+        <result column="pic" jdbcType="VARCHAR" property="pic" />
+    </resultMap>
+
+    <!--List<BlogPics> showPics();-->
+    <select id="showPics" resultMap="BaseResultMap">
+        select * from blogpics
+    </select>
+    <!--//获取博客Id-->
+    <!--int selectBlogByPic(int picid);-->
+    <select id="selectBlogByPic" parameterType="int" resultType="java.lang.Integer">
+        select blog_id from blogpics where blogpics_id=#{_parameter}
+    </select>
+    <!--//选择某博客下所有图片-->
+    <!--List<Integer> selectPicsByBlogId(int blogId);-->
+    <select id="selectPicsByBlogId" parameterType="int" resultType="java.lang.Integer">
+        select blogpics_id from blogpics where blog_id=#{_parameter}
+    </select>
+    <!--//更新博客图片外键
+    void updatePic(int blogPicsId);-->
+    <update id="updatePic">
+        update blogcontent set blogpics_id=#{picid} where blog_id=#{blogid}
+    </update>
+    <!--//无图片时更新博客图片外键为null-->
+    <!--void updatePicToNull(int blogid);-->
+    <update id="updatePicToNull">
+        update blogcontent set blogpics_id=null where blog_id=#{_parameter}
+    </update>
+    <!--void deletePic(int id);-->
+    <delete id="deletePic" parameterType="int">
+      delete from blogpics where blogpics_id=#{_parameter}
+    </delete>
+
+</mapper>

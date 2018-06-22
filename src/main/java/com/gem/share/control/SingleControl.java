@@ -34,7 +34,8 @@ public class SingleControl {
         if(blogId==null){
 
         }else{
-
+            //浏览数加一
+            blogService.updateBlogBrowse(Integer.parseInt(blogId));
         }
         List<shuDongDetail> blogComments = blogService.selectAllBlogCommentByBlogId(Integer.parseInt(blogId));
 
@@ -110,16 +111,20 @@ public class SingleControl {
         String content1 = request.getParameter("content1");//判断内容是否为空
         String content2 = request.getParameter("content2");//获取内容
         Date commentTime = new Date();
-
+        UserInfo userInfo= (UserInfo) request.getSession().getAttribute("userInfo");
+        int userid=userInfo.getUserId();
+        if(userInfo.getUserId()==null){
+            userid=122;
+        }
         if("true".equals(content1)){
 //            内容不为空
             if("1".equals(flag)){
                 //            插入blogComment表
-                BlogComment blogComment = new BlogComment(Integer.parseInt(blogid),122,content2,commentTime);
+                BlogComment blogComment = new BlogComment(Integer.parseInt(blogid),userid,content2,commentTime);
                 boolean flag = blogService.insertBlogComment(blogComment);
             }else if ("2".equals(flag)){
                 //             插入replyComment表  二级评论
-                ReplyComment replyComment = new ReplyComment(Integer.parseInt(blogid),144,content2,commentTime);
+                ReplyComment replyComment = new ReplyComment(Integer.parseInt(blogid),userid,content2,commentTime);
                 boolean f = blogService.insertReplyComment(replyComment);
             }else if("3".equals(flag)){
 //                三级评论
@@ -127,7 +132,7 @@ public class SingleControl {
 
 //                int replycommentId = blogService.selectUserIdByCommentId(Integer.parseInt(blogid));
                 replyComment.setReplycomment(Integer.parseInt(blogid));
-                replyComment.setUserId(201);
+                replyComment.setUserId(userid);
                 replyComment.setReplycommentcontent(content2);
                 replyComment.setReplycommenttime(commentTime);
 

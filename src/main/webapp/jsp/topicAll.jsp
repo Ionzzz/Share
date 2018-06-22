@@ -98,9 +98,9 @@
             <c:forEach items="${blogliulan}" var="bloglist">
                 <div class="blog-post-alt carousel-item" style="border: 1px solid white;">
                     <div class="blog-post-alt-thumb">
-                        <div class="blog-post-alt-thumb-inner" style="text-align: center">
+                        <div class="blog-post-alt-thumb-inner" style="width:243px;overflow:hidden;text-align: center">
                             <a href="<%=basePath%>single/main.action?blogId=${bloglist.blogContent.blogId}">
-                                <img src="<%=basePath%>${bloglist.blogPics.pic}" style="height:250px;margin: auto" alt="" />
+                                <img src="<%=basePath%>${bloglist.blogPics.pic}" style="height:250px;" alt="" />
                             </a>
                         </div><!-- .blog-post-alt-thumb-inner -->
                         <div class="blog-post-alt-thumb-cover"></div>
@@ -141,7 +141,7 @@
                 <div class="widget-content">
                     <div class="tags-cloud-widget"style="text-align: center">
                         <c:forEach items="${labelList}" var="labellist">
-                            <a href="#" class="fh5co_tagg">${labellist.labelname}</a>
+                            <a href="<%=basePath%>/topic/main.action?labelId=${labellist.labelId}" class="fh5co_tagg" title="${labellist.labelname}">${labellist.labelname}</a>
                         </c:forEach>
                     </div><!-- .tags-cloud-widget -->
                 </div><!-- .widget-content -->
@@ -154,18 +154,20 @@
                 </h3>
                 <div class="widget-content">
                     <div class="recent-posts-widget">
-                        <c:forEach items="${bloglist}" var="list">
+                        <c:forEach items="${bloglist}" var="list" begin="0" end="4">
                             <div class="recent-posts-widget-post">
                                 <div class="recent-posts-widget-thumb">
-                                    <a href=""><img src="" alt="" /></a>
+                                    <a href="<%=basePath%>/single/main.action?blogId=${list.blogContent.blogId}"><img src="<%=basePath%>${list.blogPics.pic}" alt="" /></a>
                                 </div><!-- .recent-posts-widget-thumb -->
                                 <div class="recent-posts-widget-main">
                                     <div class="recent-posts-widget-date">
                                         <fmt:formatDate  pattern="MM_dd,yyyy"
                                                          value="${list.blogContent.blogcreatetime}" />
                                     </div>
-                                    <div class="recent-posts-widget-title texthidden"><a href="">${list.blogContent.blogcontent}</a></div>
-                                    <div class="recent-posts-widget-category"><a href="">${list.labelInfo.labelname}</a></div>
+                                    <div class="recent-posts-widget-title texthidden">
+                                        <a href="<%=basePath%>/single/main.action?blogId=${list.blogContent.blogId}">${list.blogContent.blogcontent}</a></div>
+                                    <div class="recent-posts-widget-category">
+                                        <a href="<%=basePath%>/topic/main.action?labelId=${list.labelInfo.labelId}">${list.labelInfo.labelname}</a></div>
                                 </div><!-- .recent-posts-widget-main -->
                             </div><!-- .recent-posts-widget-post -->
                         </c:forEach>
@@ -177,10 +179,10 @@
 
         <div id="content" class="col" style="width:70%" >
             <div class="blog-posts clearfix">
-                <c:forEach items="${labelList}" var="labellist">
+                <c:forEach items="${labelList}" var="labellist" varStatus="status">
                     <div class="blog-post col col-4">
                         <div class="blog-post-main clearfix">
-                            <div class="blog-post-info" style="padding: 20px">
+                            <div class="blog-post-info" style="padding: 20px 55px">
                                 <div class="blog-post-info-inner">
                                     <div class="blog-post-title" style="margin-bottom: 0">
                                         <h2 class="texthidden">
@@ -190,14 +192,40 @@
                                         </h2>
                                     </div><!-- .blog-post-title -->
                                     <div class="blog-post-meta">
-                                        <fmt:formatDate  pattern="MM dd,yyyy,"
+                                        <fmt:formatDate  pattern="MM dd,yyyy"
                                                          value="${labellist.labelmodifytime}" />
-                                         In: <a href="">Spring</a>
+                                        <div id="season${status.count}" style="display: none" ><fmt:formatDate  pattern="MM"
+                                                                                                                value="${labellist.labelmodifytime}" /></div>
+                                        <a id="seasons${status.count}">
+                                        </a>
+                                        <script type="text/javascript">
+                                            var month=document.getElementById("season${status.count}").innerHTML;
+                                            //alert(month);
+                                            switch(month){
+                                                case "03":
+                                                case "04":
+                                                case "05": document.getElementById("seasons${status.count}").innerHTML="In:Spring";
+                                                    break;
+                                                case "06":
+                                                case "07":
+                                                case "08": document.getElementById("seasons${status.count}").innerHTML="In:Summer";
+                                                    break;
+                                                case "09":
+                                                case "10":
+                                                case "11": document.getElementById("seasons${status.count}").innerHTML="In:Autumn";
+                                                    break;
+                                                case "12":
+                                                case "01":
+                                                case "02": document.getElementById("seasons${status.count}").innerHTML="In:Winter";
+                                                    break;
+                                                default:break;
+                                            }
+                                        </script>
                                     </div><!-- .blog-post-meta -->
                                     <div class="blog-post-excerpt texthidden" >
                                         ${labellist.labelcontent}
                                     </div><!-- .dslc-blog-post-excerpt -->
-                                    <div class="blog-post-read-more"style="text-align: center;">
+                                    <div class="blog-post-read-more"style="text-align: center;margin-bottom: 10px;">
                                         <a href="<%=basePath%>topic/main.action?labelId=${labellist.labelId}">CONTINUE READING</a>
                                     </div><!-- .blog-post-read-more -->
                                 </div><!-- .blog-post-info-inner -->

@@ -160,7 +160,7 @@
                         </div>
                         <!-- .comment-info -->
                         <div class="comment-main">
-                            <p>${bcomment.commentContent}</p>
+                            <p >${bcomment.commentContent}</p>
 
                         </div>
                         <!-- .comment-main -->

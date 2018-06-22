@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gem.share.dao.MngBlogMapper">
+
+    <resultMap id="BlogContentMap" type="BlogContent">
+        <id column="blog_id" jdbcType="INTEGER" property="blogId" />
+        <result column="user_id" jdbcType="INTEGER" property="userId" />
+        <result column="blogPics_id" jdbcType="INTEGER" property="blogpicsId" />
+        <result column="blogCreateTime" jdbcType="TIMESTAMP" property="blogcreatetime" />
+        <result column="blogFlag" jdbcType="VARCHAR" property="blogflag" />
+        <result column="essayFlag" jdbcType="VARCHAR" property="essayflag" />
+    </resultMap>
+    <resultMap id="BlogBrowseMap" type="com.gem.share.entity.BlogBrowse">
+        <id column="blogBrowse_id" jdbcType="INTEGER" property="blogbrowseId" />
+        <result column="blog_id" jdbcType="INTEGER" property="blogId" />
+        <result column="blogBrowseCount" jdbcType="INTEGER" property="blogbrowsecount" />
+    </resultMap>
+    <!--List<BlogContent> showBlogInfos();-->
+    <select id="showBlogInfos" resultMap="BlogContentMap">
+        select * from blogcontent
+    </select>
+    <!--int selectBrowseCountByBlogId(int blogid);-->
+    <select id="selectBrowseCountByBlogId" parameterType="int" resultType="java.lang.Integer">
+        select blogBrowseCount from blogbrowse where blog_id=#{id}
+    </select>
+    <!--BlogContent selectBlogById(int id);-->
+<select id="selectBlogById" parameterType="int" resultMap="BlogContentMap">
+    SELECT * from blogcontent where blog_id=#{_parameter}
+</select>
+    <!--//返回博客下所有的评论的Id-->
+    <!--List<Integer> selectCommentByBlogId(int blogid);-->
+    <select id="selectCommentByBlogId" parameterType="int" resultType="java.lang.Integer">
+        SELECT comment_id from blogcomment where blog_id=#{_parameter}
+    </select>
+    <!--void deleteBlog(int id);-->
+    <delete id="deleteBlog" parameterType="int" >
+        delete from replycomment where comment_id in (select comment_id from blogcomment where blog_id = #{id});
+        delete from blogcommentzan where blog_id in (select comment_id from blogcomment where blog_id = #{id});
+        delete from blogbrowse where blog_id=#{id};
+        delete from shudongbrowse where blog_id=#{id};
+        delete from blogcollect where blog_id=#{id};
+        delete from blogcomment where blog_id=#{id};
+        delete from bloglabel where blog_id=#{id};
+        delete from blogzan where blog_id=#{id};
+        SET FOREIGN_KEY_CHECKS=0;
+        delete from blogpics where blog_id=#{id};
+        delete from blogcontent where blog_id=#{id};
+        SET FOREIGN_KEY_CHECKS=1;
+    </delete>
+
+</mapper>

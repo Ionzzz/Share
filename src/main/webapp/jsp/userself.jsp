@@ -175,7 +175,8 @@
                                 <c:forEach items="${userselfmap['blogBrowse']}" var="blogbrowse" begin="0" end="4">
                                     <div class="recent-posts-widget-post">
                                         <div class="recent-posts-widget-thumb">
-                                            <a href="<%=basePath%>/single/main.action?blogId=${blogbrowse.blogContent.blogId}"><img src="<%=basePath%>${blogbrowse.blogPics.pic}" alt="" /></a>
+                                            <a href="<%=basePath%>/single/main.action?blogId=${blogbrowse.blogContent.blogId}">
+                                                <img src="<%=basePath%>${blogbrowse.blogPics.pic}" alt="" /></a>
                                         </div><!-- .recent-posts-widget-thumb -->
                                         <div class="recent-posts-widget-main">
                                             <div class="recent-posts-widget-date"> <fmt:formatDate value="${blogbrowse.blogContent.blogcreatetime}" pattern="yyyy-MM-dd"/></div>

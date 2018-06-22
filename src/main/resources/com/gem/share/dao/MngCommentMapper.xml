@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gem.share.dao.MngCommentMapper">
+    <resultMap id="BlogCommentMap" type="com.gem.share.entity.BlogComment">
+        <id column="comment_id" jdbcType="INTEGER" property="commentId" />
+        <result column="blog_id" jdbcType="INTEGER" property="blogId" />
+        <result column="commentUser_id" jdbcType="INTEGER" property="commentuserId" />
+        <result column="commentContent" jdbcType="VARCHAR" property="commentcontent" />
+        <result column="commentTime" jdbcType="TIMESTAMP" property="commenttime" />
+    </resultMap>
+    <resultMap id="ReplyCommentMap" type="com.gem.share.entity.ReplyComment">
+        <id column="replyComment_id" jdbcType="INTEGER" property="replycommentId" />
+        <result column="comment_id" jdbcType="INTEGER" property="commentId" />
+        <result column="user_id" jdbcType="INTEGER" property="userId" />
+        <result column="replyCommentContent" jdbcType="VARCHAR" property="replycommentcontent" />
+        <result column="replyCommentTime" jdbcType="TIMESTAMP" property="replycommenttime" />
+    </resultMap>
+
+    <!--//选择所有的评论、回复，按时间排序-->
+    <!--List<Map<String, Object>> selectCommentInfos();-->
+    <select id="selectCommentInfos" resultMap="BlogCommentMap">
+        select * from blogcomment
+    </select>
+    <!--List<ReplyComment> selectReplyInfos();-->
+    <select id="selectReplyInfos" resultMap="ReplyCommentMap">
+            select * from replycomment
+    </select>
+    <!--//根据评论id选择子回复-->
+    <!--List<Integer> selectReply(int cmtid);-->
+    <select id="selectReply" parameterType="int" resultType="java.lang.Integer">
+        select replycomment_id from replycomment where comment_id=#{_parameter}
+    </select>
+    <!--//根据上级回复id选择子回复-->
+    <!--List<Integer> selectSubReply(int replyid);-->
+    <select id="selectSubReply" parameterType="int" resultType="java.lang.Integer">
+        select replycomment_id from replycomment where replycomment=#{_parameter}
+    </select>
+    <!--void deleteCommentZan(int cmtid);-->
+    <delete id="deleteCommentZan" parameterType="int">
+        delete from blogCommentZan where blog_id=#{_parameter}
+    </delete>
+    <!--void deleteComment(int id);-->
+    <delete id="deleteComment" parameterType="int">
+        delete from blogcomment where comment_id=#{_parameter}
+    </delete>
+    <!--void deleteReply(int id);-->
+    <delete id="deleteReply" parameterType="int">
+        delete from replycomment where replycomment_id=#{_parameter};
+    </delete>
+</mapper>

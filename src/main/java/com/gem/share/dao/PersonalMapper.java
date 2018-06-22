@@ -1,27 +1,12 @@
 package com.gem.share.dao;
 
-import com.gem.share.entity.BlogContent;
-import com.gem.share.entity.FollowGroup;
-import com.gem.share.entity.UserInfo;
+import com.gem.share.entity.*;
 
 import java.util.List;
 
 public interface PersonalMapper {
     //    根据用户id查询该用户的所有博客  按时间倒序排列
     public List<BlogContent> selectBlogContentByUserId(int userid);
-
-    //  通过用户id找到用户点赞过的博客内容，并按时间倒序排列
-    public List<BlogContent> selectBlogByUserZan(int user_id);
-
-    //  通过用户id找到用户点赞过的博客内容的用户信息，并按时间倒序排列
-    public List<UserInfo> selectUserByUserZan(int user_id);
-
-    //    通过用户id找到用户评论过的博客内容，并按时间倒序排列
-    public List<BlogContent> selectBlogByUserComment(int user_id);
-
-
-    //  通过用户id找到用户评论过的博客内容的用户信息，并按时间倒序排列
-    public List<UserInfo> selectUserByUserComment(int user_id);
 
     //    根据用户id查找自己的粉丝
     public List<UserInfo> selectFollowUserByUserId(int user_id);
@@ -39,8 +24,18 @@ public interface PersonalMapper {
     public UserInfo selectUserById(int id);
 
     //    根据自己的id和关注人的id取消关注此人
-    public boolean deleteUserByUserIdAndFollowUser(int userId,int followUserId);
+    public boolean deleteUserByUserIdAndFollowUser(int userId, int followUserId);
 
 //    添加关注人
-    public Boolean insertfollow(int user_id,int followUser_id);
+    public Boolean insertfollow(int user_id, int followUser_id);
+
+
+//    查询我所有的评论内容、评论的博客内容、发布这条博客的用户信息、评论时间降序
+    public List<MyAllComment> selectallcomment(int commentUser_id);
+
+//    查询我所有点赞的博客内容、发布这条博客的用户信息、点赞时间降序
+    public List<MyAllZan> selectallzan(int zanUser_id);
+
+//    查询我所有收藏的博客内容、发布这条博客的用户信息、点赞时间降序
+    public List<MyAllZan> selectallCollect(int collectUser_id);
 }

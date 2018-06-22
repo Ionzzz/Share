@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gem.share.dao.MngUserInfoMapper">
+    <resultMap id="BaseResultMap" type="com.gem.share.entity.UserInfo">
+        <id column="user_id" jdbcType="INTEGER" property="userId" />
+        <result column="userAccount" jdbcType="VARCHAR" property="useraccount" />
+        <result column="userPwd" jdbcType="VARCHAR" property="userpwd" />
+        <result column="userSex" jdbcType="CHAR" property="usersex" />
+        <result column="userAge" jdbcType="INTEGER" property="userage" />
+        <result column="userEducate" jdbcType="VARCHAR" property="usereducate" />
+        <result column="userGraduate" jdbcType="VARCHAR" property="usergraduate" />
+        <result column="userIntroduce" jdbcType="VARCHAR" property="userintroduce" />
+        <result column="userNickName" jdbcType="VARCHAR" property="usernickname" />
+        <result column="userImg" jdbcType="VARCHAR" property="userimg" />
+        <result column="userEmail" jdbcType="VARCHAR" property="useremail" />
+        <result column="addresss_id" jdbcType="INTEGER" property="addresssId" />
+        <result column="userPhone" jdbcType="CHAR" property="userphone" />
+        <result column="userEnergy" jdbcType="VARCHAR" property="userenergy" />
+        <result column="userIdNumber" jdbcType="CHAR" property="useridnumber" />
+        <result column="userStatus" jdbcType="VARCHAR" property="userstatus" />
+    </resultMap>
+    <!--UserInfo selectUserById(int id);-->
+    <select id="selectUserById" parameterType="int" resultMap="BaseResultMap">
+        select * FROM userinfo where user_id=#{_parameter}
+    </select>
+    <!--List<UserInfo> showUserInfos();-->
+    <select id="showUserInfos" resultMap="BaseResultMap">
+        SELECT * FROM userinfo
+    </select>
+    <!--void changeUserStatus(int id);-->
+    <update id="changeUserStatus" parameterType="com.gem.share.entity.UserInfo">
+        UPDATE userinfo SET userstatus=#{userstatus} WHERE user_id=#{userId}
+    </update>
+    <!--void changeUserEnergy(int id);-->
+    <update id="changeUserEnergy" parameterType="com.gem.share.entity.UserInfo">
+        UPDATE userinfo SET userEnergy=#{userenergy} WHERE user_id=#{userId}
+    </update>
+</mapper>

@@ -35,69 +35,115 @@ public class IndexControl {
         request.setAttribute("labelList",labelInfos);
 
         UserInfo userInfo= (UserInfo) request.getSession().getAttribute("userInfo");
-        List<UserLabel> userLabels=userService.selectLabelIdByUserId(userInfo.getUserId());
 
-        List<Integer> set=new ArrayList<>();
-        Random random=new Random();
-        while(set.size()<=4){
-            int i=random.nextInt(labelInfos.size())+1;
-            if(!set.contains(i)){
-                for(UserLabel u:userLabels){
-                    if(u.getLabelId()!=i){
-                        set.add(i);
-//                        System.out.println("======="+i);
-                        break;
-                    }
-                }
-            }
-
-        }
-        for(Integer i:set){
-            System.out.println("-------"+i);
-        }
-
+        BlogUserPicsLabel blogtheone;
+        List<BlogUserPicsLabel> blogflist;
         List<BlogUserPicsLabel> onelist;
         List<BlogUserPicsLabel> twolist;
         List<BlogUserPicsLabel> threelist;
         List<BlogUserPicsLabel> fourlist;
-        if((userLabels.size()==1&&userLabels.get(0)==null)||userLabels.size()==0){
-            onelist=blogService.selectBlogUserPicsCountByLabelId(set.get(0));
-            twolist=blogService.selectBlogUserPicsCountByLabelId(set.get(1));
-            threelist=blogService.selectBlogUserPicsCountByLabelId(set.get(2));
-            fourlist=blogService.selectBlogUserPicsCountByLabelId(set.get(3));
-        }else if(userLabels.size()==1){
-            onelist=blogService.selectBlogUserPicsCountByLabelId(userLabels.get(0).getLabelId());
-            twolist=blogService.selectBlogUserPicsCountByLabelId(set.get(1));
-            threelist=blogService.selectBlogUserPicsCountByLabelId(set.get(2));
-            fourlist=blogService.selectBlogUserPicsCountByLabelId(set.get(3));
-        }else if(userLabels.size()==2){
-            onelist=blogService.selectBlogUserPicsCountByLabelId(userLabels.get(0).getLabelId());
-            twolist=blogService.selectBlogUserPicsCountByLabelId(userLabels.get(1).getLabelId());
-            threelist=blogService.selectBlogUserPicsCountByLabelId(set.get(2));
-            fourlist=blogService.selectBlogUserPicsCountByLabelId(set.get(3));
-        }else if(userLabels.size()==3){
-            onelist=blogService.selectBlogUserPicsCountByLabelId(userLabels.get(0).getLabelId());
-            twolist=blogService.selectBlogUserPicsCountByLabelId(userLabels.get(1).getLabelId());
-            threelist=blogService.selectBlogUserPicsCountByLabelId(userLabels.get(2).getLabelId());
-            fourlist=blogService.selectBlogUserPicsCountByLabelId(set.get(3));
-        }else{
-            onelist=blogService.selectBlogUserPicsCountByLabelId(userLabels.get(0).getLabelId());
-            twolist=blogService.selectBlogUserPicsCountByLabelId(userLabels.get(1).getLabelId());
-            threelist=blogService.selectBlogUserPicsCountByLabelId(userLabels.get(2).getLabelId());
-            fourlist=blogService.selectBlogUserPicsCountByLabelId(userLabels.get(3).getLabelId());
-        }
-
-        BlogUserPicsLabel blogtheone=blogService.selectOneBlogOrderBlogBrowse();
-        List<BlogUserPicsLabel> blogflist=blogService.selectBlogCountOrderZan(4);
-//        System.out.println("----------"+pic.get(0));
-        List<BlogUserPicsLabel> blogjiaju=blogService.selectBlogUserPicsLabelByLabelNameOrderLiuLan("家居");
-        List<BlogUserPicsLabel> bloglvxing=blogService.selectBlogUserPicsLabelByLabelNameOrderZan("旅行");
-        List<BlogUserPicsLabel> blogfood=blogService.selectBlogUserPicsLabelByLabelNameOrderTime("美食");
-        List<BlogUserPicsLabel> blogbook=blogService.selectBlogUserPicsCountByLabelName("书籍",4);
         List<UserInfo> userInfos=userService.selectCountUserInfo(5);
         Map<String,Object> map=new HashMap<>();
+
+        if(userInfo!=null&&!"".equals(userInfo)){
+            List<UserLabel> userLabels=userService.selectLabelIdByUserId(userInfo.getUserId());
+
+            List<Integer> set=new ArrayList<>();
+            Random random=new Random();
+            while(set.size()<=4){
+                int i=random.nextInt(labelInfos.size())+1;
+                if(!set.contains(i)){
+                    for(UserLabel u:userLabels){
+                        if(u.getLabelId()!=i){
+                            set.add(i);
+//                        System.out.println("======="+i);
+                            break;
+                        }
+                    }
+                }
+            }
+            if(userLabels.size()==1){
+                onelist=blogService.selectBlogUserPicsByLabelId(userLabels.get(0).getLabelId());
+                twolist=blogService.selectBlogUserPicsByLabelId(set.get(1));
+                threelist=blogService.selectBlogUserPicsByLabelId(set.get(2));
+                fourlist=blogService.selectBlogUserPicsByLabelId(set.get(3));
+
+                LabelInfo l=labelInfoService.selectLabelInfoByLabelId(userLabels.get(0).getLabelId());
+                blogtheone=blogService.selectBlogUserPicsLabelByLabelNameOrderLiuLan(l.getLabelname()).get(0);
+                blogflist=blogService.selectBlogCountOrderZan(4);
+            }else if(userLabels.size()==2){
+                onelist=blogService.selectBlogUserPicsByLabelId(userLabels.get(0).getLabelId());
+                twolist=blogService.selectBlogUserPicsByLabelId(userLabels.get(1).getLabelId());
+                threelist=blogService.selectBlogUserPicsByLabelId(set.get(2));
+                fourlist=blogService.selectBlogUserPicsByLabelId(set.get(3));
+
+
+                LabelInfo l=labelInfoService.selectLabelInfoByLabelId(userLabels.get(0).getLabelId());
+                LabelInfo ll=labelInfoService.selectLabelInfoByLabelId(userLabels.get(1).getLabelId());
+                int i=random.nextInt(userLabels.size());
+                blogtheone=blogService.selectBlogUserPicsLabelByLabelNameOrderLiuLan(labelInfoService.selectLabelInfoByLabelId(userLabels.get(i).getLabelId()).getLabelname()).get(0);
+
+                blogflist=blogService.selectBlogUserPicsLabelByLabelNameOrderLiuLan(l.getLabelname());
+                blogflist.addAll(blogService.selectBlogUserPicsLabelByLabelNameOrderLiuLan(ll.getLabelname()));
+
+            }else if(userLabels.size()==3){
+                onelist=blogService.selectBlogUserPicsByLabelId(userLabels.get(0).getLabelId());
+                twolist=blogService.selectBlogUserPicsByLabelId(userLabels.get(1).getLabelId());
+                threelist=blogService.selectBlogUserPicsByLabelId(userLabels.get(2).getLabelId());
+                fourlist=blogService.selectBlogUserPicsByLabelId(set.get(3));
+
+                LabelInfo l=labelInfoService.selectLabelInfoByLabelId(userLabels.get(0).getLabelId());
+                LabelInfo ll=labelInfoService.selectLabelInfoByLabelId(userLabels.get(1).getLabelId());
+                LabelInfo lll=labelInfoService.selectLabelInfoByLabelId(userLabels.get(2).getLabelId());
+                int i=random.nextInt(userLabels.size());
+                blogtheone=blogService.selectBlogUserPicsLabelByLabelNameOrderLiuLan(labelInfoService.selectLabelInfoByLabelId(userLabels.get(i).getLabelId()).getLabelname()).get(0);
+                blogflist=blogService.selectBlogUserPicsLabelByLabelNameOrderLiuLan(l.getLabelname());
+                blogflist.addAll(blogService.selectBlogUserPicsLabelByLabelNameOrderLiuLan(ll.getLabelname()));
+                blogflist.addAll(blogService.selectBlogUserPicsLabelByLabelNameOrderLiuLan(lll.getLabelname()));
+            }else{
+                onelist=blogService.selectBlogUserPicsByLabelId(userLabels.get(0).getLabelId());
+                twolist=blogService.selectBlogUserPicsByLabelId(userLabels.get(1).getLabelId());
+                threelist=blogService.selectBlogUserPicsByLabelId(userLabels.get(2).getLabelId());
+                fourlist=blogService.selectBlogUserPicsByLabelId(userLabels.get(3).getLabelId());
+
+                LabelInfo l=labelInfoService.selectLabelInfoByLabelId(userLabels.get(0).getLabelId());
+                LabelInfo ll=labelInfoService.selectLabelInfoByLabelId(userLabels.get(1).getLabelId());
+                LabelInfo lll=labelInfoService.selectLabelInfoByLabelId(userLabels.get(2).getLabelId());
+                LabelInfo llll=labelInfoService.selectLabelInfoByLabelId(userLabels.get(3).getLabelId());
+                int i=random.nextInt(userLabels.size());
+                blogtheone=blogService.selectBlogUserPicsLabelByLabelNameOrderLiuLan(labelInfoService.selectLabelInfoByLabelId(userLabels.get(i).getLabelId()).getLabelname()).get(0);
+                blogflist=blogService.selectBlogUserPicsLabelByLabelNameOrderLiuLan(l.getLabelname());
+                blogflist.addAll(blogService.selectBlogUserPicsLabelByLabelNameOrderLiuLan(ll.getLabelname()));
+                blogflist.addAll(blogService.selectBlogUserPicsLabelByLabelNameOrderLiuLan(lll.getLabelname()));
+                blogflist.addAll(blogService.selectBlogUserPicsLabelByLabelNameOrderLiuLan(llll.getLabelname()));
+            }
+
+        }else {
+            List<Integer> set=new ArrayList<>();
+            Random random=new Random();
+            while(set.size()<=10){
+                int i=random.nextInt(labelInfos.size())+1;
+                if(!set.contains(i)){
+                    set.add(i);
+//                        System.out.println("======="+i);
+                }
+            }
+            onelist=blogService.selectBlogUserPicsByLabelId(set.get(0));
+            twolist=blogService.selectBlogUserPicsByLabelId(set.get(1));
+            threelist=blogService.selectBlogUserPicsByLabelId(set.get(2));
+            fourlist=blogService.selectBlogUserPicsByLabelId(set.get(3));
+            int j=random.nextInt(labelInfos.size());
+            System.out.println("---------"+j);
+            blogtheone=blogService.selectBlogUserPicsLabelByLabelNameOrderLiuLan(labelInfoService.selectLabelInfoByLabelId(labelInfos.get(j).getLabelId()).getLabelname()).get(0);
+
+            blogflist=blogService.selectBlogCountOrderZan(100);
+        }
+
+        Set s=new HashSet(blogflist);
+//        System.out.println("----------"+pic.get(0));
+
         map.put("blogone",blogtheone);
-        map.put("blogfour",blogflist);
+        map.put("blogfour",s);
 
         map.put("blogonelist",onelist);
         map.put("blogtwolist",twolist);
@@ -107,6 +153,7 @@ public class IndexControl {
         map.put("userList5",userInfos);
         request.setAttribute("indexmap",map);
         request.getRequestDispatcher("/jsp/index.jsp").forward(request,response);
+
     }
 
 
@@ -135,19 +182,30 @@ public class IndexControl {
 
     }
 
+
+
     @RequestMapping("/zan.action")
-    public @ResponseBody int zan(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int userId = 1;//后期从session获取
+    public @ResponseBody String zan(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        UserInfo userInfo = (UserInfo) request.getSession().getAttribute("userInfo");
+        int userId ;
+        if(userInfo==null){
+            userId=1;
+
+        }else{
+            userId= userInfo.getUserId();
+        }
         String blogId = request.getParameter("blogId");
 
         List<BlogZan> blogZans =blogService.selectZanRecordByUserId(Integer.parseInt(blogId),userId);
-        int sdCount = 0;
+        String sdCount = null;
+        String flag = "flase";//默认该用户没有点赞
         if(blogZans != null && blogZans.size()>0){
 //            删除记录
             boolean f1 = blogService.deleteZanRecordByZanId(blogZans.get(0).getBlogzanId());
             if(f1){
 //                删除成功，得到该篇文章点赞数
-                sdCount = blogService.selectBlogUserPicsByBlogId(Integer.parseInt(blogId)).getZan();
+                sdCount = String.valueOf(blogService.selectBlogUserPicsByBlogId(Integer.parseInt(blogId)).getZan());
             }else{
 //                删除失败
                 System.out.println("系统维护中，点赞数删除失败");
@@ -160,14 +218,9 @@ public class IndexControl {
             blogZan.setZanTime(new Date());
 
             blogService.addZanRecord(blogZan);
-
 //        文章点赞数+1
-            sdCount = blogService.selectBlogUserPicsByBlogId(Integer.parseInt(blogId)).getZan();
+            sdCount = String.valueOf(blogService.selectBlogUserPicsByBlogId(Integer.parseInt(blogId)).getZan());
         }
-        return sdCount;
-
+        return sdCount+"&"+flag;
     }
-
-
-
 }

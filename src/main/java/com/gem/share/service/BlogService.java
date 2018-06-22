@@ -39,7 +39,7 @@ public interface BlogService {
     public PageInfo<BlogUserPicsLabel> selectAllBlogUserPicsByPage(Map<String,Object> map);
     public PageInfo<BlogUserPicsLabel> selectAllBlogUserPicsByPageLabelName(Map<String,Object> map);
 
-    public List<BlogUserPicsLabel> selectBlogUserPicsCountByLabelId(int label_id);
+    public List<BlogUserPicsLabel> selectBlogUserPicsByLabelId(int label_id);
     public List<BlogUserPicsLabel> selectBlogUserPicsLabelByLabelNameOrderZan(String labelName);
     public List<BlogUserPicsLabel> selectBlogUserPicsLabelByLabelNameOrderPingLun(String labelName);
     public List<BlogUserPicsLabel> selectBlogUserPicsLabelByLabelNameOrderLiuLan(String labelName);
@@ -50,7 +50,7 @@ public interface BlogService {
 
     public List<BlogContent> selectBlogByLabelName(String labelName);
 
-
+    public boolean updateBlogBrowse(int blog_id);
 //    通过博客id修改博客
     public BlogContent updateBlogByBlogId(int blog_id);
 //    查询所有博客

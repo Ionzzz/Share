@@ -26,8 +26,11 @@
     <link href="<%=basePath%>css/index-css/owl.theme.default.css" rel="stylesheet" type="text/css"/>
     <!-- Bootstrap CSS -->
     <link href="<%=basePath%>css/index-css/style_1.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>css/shudong-css/style.css">
+
     <!-- Modernizr JS -->
     <script src="<%=basePath%>js/index-js/modernizr-3.5.0.min.js"></script>
+    <script src="<%=basePath%>js/chat-js/jquery-1.11.1.min.js"></script>
 
     <style>
         .texthidden{
@@ -39,28 +42,29 @@
             color:#FFFFFF;
             text-decoration:blink;
         }
+        .img-responsive {
+            display: inline-block;
+            height: auto;
+            max-width: 100%;
+        }
     </style>
     <script>
-
+        var arr;
         function getZan(blogId) {
             $.ajax({
                 type:"post",
-                url:'${pageContext.request.contextPath }/shuDong/Zan.action',
+                url:'${pageContext.request.contextPath}/index/zan.action',
                 data : {"blogId":blogId},
                 dateType:'json',
                 success:function (data) {
-                    $("span[name="+blogId+"]").html(data);
+                    arr = data.split("&");
+                    $("span[name="+blogId+"]").html(arr[0]);
                 }
             });
         }
-        $(function () {
-            setInterval(function () {
-
-            }, 1000);
-        });
-
 
     </script>
+
 </head>
 <body>
 <div class="container-fluid fh5co_header_bg" style="opacity: 0.9;">
@@ -118,7 +122,6 @@
             <button class="navbar-toggler navbar-toggler-right mt-3" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="Toggle navigation"><span class="fa fa-bars"></span></button>
-            <a class="navbar-brand" href="#"><img src="<%=basePath%>images/index-images/logo.png" alt="img" class="mobile_logo_width"/></a>
             <div class="collapse navbar-collapse" id="navbarSupportedContent" >
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
@@ -131,7 +134,7 @@
                         <a class="nav-link" href="<%=basePath%>topic/all.action">话题 <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link" href="<%=basePath%>publishBlog.jsp" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">发布</a>
+                        <a class="nav-link" href="<%=basePath%>jsp/publishBlog.jsp" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">发布</a>
                     </li>
                     <li class="nav-item ">
                         <a class="nav-link" href="<%=basePath%>shuDong/main.action">树洞 <span class="sr-only">(current)</span></a>
@@ -153,16 +156,19 @@
     <div class="row mx-0">
         <div class="col-md-6 col-12 paddding animate-box" data-animate-effect="fadeIn">
             <div class="fh5co_suceefh5co_height">
-                <a href="<%=basePath%>single/main.action?blogId=${indexmap['blogone'].blogContent.blogId}">
-                    <img src="<%=basePath%>${indexmap['blogone'].blogPics.pic}" style="height:100%" alt="img"/>
-                </a>
+                <img name="img" src="<%=basePath%>${indexmap['blogone'].blogPics.pic}" class="" alt="img"/>
+
                 <div class="fh5co_suceefh5co_height_position_absolute">
-                    <p  class="fontdiv" style="margin:30px;text-align: right">
+                    <div class="fontdiv" style="margin:20px 0 20px 20px;float: left;opacity:0.7;color:#1abc9c">${indexmap['blogone'].labelInfo.labelname}</div>
+                    <p  class="fontdiv" style="margin:30px;text-align: right;font-weight: 300;">
                         热度：${indexmap['blogone'].liulan}<br/>
-                        <a href="javascript:void(0)" onclick="getZan('${indexmap['blogone'].blogContent.blogId}')" class="fontdiv" style="text-decoration: blink">
-                            <span  onclick="changeZanImg()">
-                                <img  src="<%= basePath %>images/shudong-images/Zan.png"/></span>
-                        </a> <span name="${indexmap['blogone'].blogContent.blogId}">${indexmap['blogone'].zan}</span><br/>
+
+                        <a href="javascript:void(0)" onclick="getZan('${indexmap['blogone'].blogContent.blogId}')" style="text-decoration: blink">
+                                    <span  onclick="changeZanImg()">
+                                        <img  src="<%= basePath %>images/shudong-images/Zan.png" /></span>
+                        </a>
+
+                        <span name="${indexmap['blogone'].blogContent.blogId}">${indexmap['blogone'].zan}</span><br/>
                         <span class="total-comments-on-post pull-right">
                             <c:if test="${indexmap['blogone'].pinglun!=0}">
                                 <a href="<%= basePath %>single/main.action?blogId=${indexmap['blogone'].blogContent.blogId}"class="fontdiv" style="text-decoration: blink">${indexmap['blogone'].pinglun} 条评论</a>
@@ -170,24 +176,36 @@
                         </span>
                     </p>
                 </div>
-                <div class="fh5co_suceefh5co_height_position_absolute_font">
+                <div class="fh5co_suceefh5co_height_position_absolute_font" style="margin-top: 35px;">
                      <i class="fa fa-clock-o"></i>&nbsp;&nbsp;<fmt:formatDate value="${indexmap['blogone'].blogContent.blogcreatetime}" pattern="MM-dd-yyyy"/>
-                    <p class="texthidden"  style=" width:600px;"><a href="<%=basePath%>single/main.action?blogId=${indexmap['blogone'].blogContent.blogId}" class="fh5co_good_font"> ${indexmap['blogone'].blogContent.blogcontent} </a></p>
+                    <p class="texthidden"  style=" width:600px;">
+                        <a href="<%=basePath%>single/main.action?blogId=${indexmap['blogone'].blogContent.blogId}" class="fh5co_good_font" style="font-size: 30px;">
+                        <c:if test="${indexmap['blogone'].labelInfo.labelname=='书籍'}">
+                            <c:set var="bookname" value=" ${indexmap['blogone'].blogContent.blogcontent} "/>
+                            《${fn:substringBefore(bookname,"||" )}》
+                        </c:if>
+                        <c:if test="${indexmap['blogone'].labelInfo.labelname!='书籍'}">
+                            ${indexmap['blogone'].blogContent.blogcontent}
+                        </c:if>
+                        </a>
+                    </p>
                 </div>
             </div>
         </div>
         <div class="col-md-6">
             <div class="row">
-                <c:forEach items="${indexmap['blogfour']}" var="blogfour">
+                <c:forEach items="${indexmap['blogfour']}" var="blogfour" begin="0" end="3" varStatus="status">
                     <div class="col-md-6 col-6 paddding animate-box"data-animate-effect="fadeIn">
                       <div class="fh5co_suceefh5co_height_2">
-                          <img src="<%=basePath%>${blogfour.blogPics.pic}" style="width: 100%" alt="img"/>
+                          <img name="img" src="<%=basePath%>${blogfour.blogPics.pic}" alt="img"/>
+
                         <div class="fh5co_suceefh5co_height_position_absolute">
+                            <div class="fontdiv" style="margin:20px 0 20px 20px;float: left;opacity:0.7;color:#1abc9c">${blogfour.labelInfo.labelname}</div>
                             <p class="fontdiv" style="margin:30px;text-align: right">
                                 热度：${blogfour.liulan}<br/>
                                 <a href="javascript:void(0)" onclick="getZan('${blogfour.blogContent.blogId}')" style="text-decoration: blink">
                                     <span  onclick="changeZanImg()">
-                                        <img  src="<%= basePath %>images/shudong-images/Zan.png"/></span>
+                                        <img  src="<%= basePath %>images/shudong-images/Zan.png" /></span>
                                 </a> <span name="${blogfour.blogContent.blogId}">${blogfour.zan}</span><br/>
                                 <span class="total-comments-on-post pull-right">
                                     <c:if test="${blogfour.pinglun!=0}">
@@ -198,7 +216,16 @@
                         </div>
                         <div class="fh5co_suceefh5co_height_position_absolute_font_2">
                          <i class="fa fa-clock-o"></i>&nbsp;&nbsp;<fmt:formatDate value="${blogfour.blogContent.blogcreatetime}" pattern="MM-dd-yyyy"/>
-                            <p class="texthidden"  style=" width:300px;"><a href="<%=basePath%>single/main.action?blogId=${blogfour.blogContent.blogId}" class="fh5co_good_font_2 texthidden"> ${blogfour.blogContent.blogcontent} </a></p>
+                            <p class="texthidden"  style=" width:300px;"><a href="<%=basePath%>single/main.action?blogId=${blogfour.blogContent.blogId}" class="fh5co_good_font_2 texthidden">
+                                <c:if test="${blogfour.labelInfo.labelname=='书籍'}">
+                                    <c:set var="bookname" value=" ${blogfour.blogContent.blogcontent} "/>
+                                    《${fn:substringBefore(bookname,"||" )}》
+                                </c:if>
+                                <c:if test="${blogfour.labelInfo.labelname!='书籍'}">
+                                    ${blogfour.blogContent.blogcontent}
+                                </c:if>
+                                    </a>
+                            </p>
                         </div>
                       </div>
                     </div>
@@ -221,13 +248,27 @@
         </div>
         <div class="owl-carousel owl-theme js" id="slider1">
 
-            <c:forEach items="${indexmap['blogonelist']}" var="blogonelist" begin="0" end="9">
+            <c:forEach items="${indexmap['blogonelist']}" var="blogonelist" begin="0" end="9" varStatus="status">
                 <div class="item px-2" onclick="window.location.href='<%=basePath%>single/main.action?blogId=${blogonelist.blogContent.blogId}">
                     <div class="fh5co_latest_trading_img_position_relative" >
                         <div class="fh5co_latest_trading_img">
-
-                                <img src="<%=basePath%>${blogonelist.blogPics.pic}" alt="img"/>
-
+                                <img name="img" src="<%=basePath%>${blogonelist.blogPics.pic}" alt="img"/>
+                           <%-- <script type="text/javascript">
+                                var img = document.getElementById("blogonelist${status.count}");//通过ID获取IMG元素
+                                var image = new Image();//new一个image对象
+                                image.src=img.src;
+                                //获取尺寸
+                                image.onload = function () {
+                                    if (image.complete){
+                                        initFileSize=image.fileSize;
+                                        if(image.width>image.height){
+                                            document.getElementById("blogonelist${status.count}").style.height="100%";
+                                        }else{
+                                            document.getElementById("blogonelist${status.count}").style.width="100%";
+                                        }
+                                    }
+                                }
+                            </script>--%>
                         </div>
                         <div class="fh5co_latest_trading_img_position_absolute">
                             <p class="fontdiv" style="margin:30px;text-align: right">
@@ -276,7 +317,7 @@
                 <div class="item px-2" onclick="window.location.href='<%=basePath%>single/main.action?blogId=${blogtwolist.blogContent.blogId}'">
                     <div class="fh5co_hover_news_img">
                         <div class="fh5co_news_img">
-                            <img src="<%=basePath%>${blogtwolist.blogPics.pic}"style="width:100%;margin:auto" alt="img"/></div>
+                            <img name="img" src="<%=basePath%>${blogtwolist.blogPics.pic}"style="" alt="img"/></div>
                         <div>
                             <p class="texthidden" style="width: 350px">
                                 <a href="<%=basePath%>single/main.action?blogId=${blogtwolist.blogContent.blogId}" class="fh5co_small_post_heading " >
@@ -319,9 +360,9 @@
                 <c:forEach items="${indexmap['blogthreelist']}" var="blogthreelist" begin="0" end="9">
                     <div class="item px-2" ><%--onclick="window.location.href='<%=basePath%>single/main.action?blogId=${blogthreelist.blogContent.blogId}'"--%>
                         <div class="fh5co_hover_news_img">
-                            <div class="fh5co_news_img">
+                            <div class="fh5co_news_img" style="text-align: center">
                                 <a href="<%=basePath%>single/main.action?blogId=${blogthreelist.blogContent.blogId}">
-                                    <img src="<%=basePath%>${blogthreelist.blogPics.pic}" style="width: 100%;" alt="img"/>
+                                    <img name="img" src="<%=basePath%>${blogthreelist.blogPics.pic}" alt="img"/>
                                 </a>
                             </div>
                             <div>
@@ -361,7 +402,7 @@
                             <div class="fh5co_hover_news_img">
                                 <div class="fh5co_news_img" style="width: 200px;">
                                     <a href="<%=basePath%>single/main.action?blogId=${blogfourlist.blogContent.blogId}">
-                                        <img src="<%=basePath%>${blogfourlist.blogPics.pic}"style="width: 200px;" alt=""/>
+                                        <img name="img" src="<%=basePath%>${blogfourlist.blogPics.pic}"style="" alt=""/>
                                     </a>
                                 </div>
                             </div>
@@ -392,9 +433,7 @@
                                 <br/><br/>
                                 <span>${blogfourlist.userInfo.username} -  <fmt:formatDate value="${blogfourlist.blogContent.blogcreatetime}" pattern="yyyy-MM-dd  HH:mm"/>
                                 </span>
-
                             </p>
-
                             <div class="fh5co_consectetur"> ${blogfourlist.blogContent.blogcontent}
                             </div>
                         </div>
@@ -456,6 +495,42 @@
 <script src="<%=basePath%>js/index-js/jquery.waypoints.min.js"></script>
 <!-- Main -->
 <script src="<%=basePath%>js/index-js/main.js"></script>
+
+<script>
+    var img=document.getElementsByName("img");
+    //alert(img.length);
+    for(var i=0;i<img.length;i++){
+        if (!/*@cc_on!@*/0) {//if not IE
+            //Firefox2、Firefox3、Safari3.1+、Opera9.6+ support js.onload
+        // img[i].onload = funcition(){}
+            //alert(img[i].width+"----"+img[i].height);
+             if(img[i].width>img[i].height){
+                 img[i].style.height="100%";
+                 //alert("h");
+             }else{
+                 img[i].style.width="100%";
+                 //alert("w");
+             }
+        }else{
+            //IE6、IE7 support js.onreadystatechange
+            img[i].onreadystatechange = function () {
+                if (img[i].readyState == 'loaded' || img[i].readyState == 'complete') {
+                    if(img[i].width>img[i].height){
+                        img[i].style.height="100%";
+                    }else{
+                        img[i].style.width="100%";
+                    }
+                }
+            }
+        }
+    }
+
+
+</script>
+
+
+
+
 
 </body>
 </html>

@@ -68,6 +68,7 @@ public interface BlogContentMapper {
     public BlogUserPicsLabel selectOneBlogOrderBlogBrowse();
 //    增加一次浏览量
     public boolean updateBlogBrowse(int blog_id);
+    public boolean insertBlogBrowse(int blog_id);
 //      标签名查BlogUserPicsLabel
     public List<BlogUserPicsLabel> selectBlogUserPicsLabelByLabelNameOrderZan(String labelName);
     public List<BlogUserPicsLabel> selectBlogUserPicsLabelByLabelNameOrderPingLun(String labelName);
@@ -103,7 +104,7 @@ public interface BlogContentMapper {
 
     public List<BlogUserPicsLabel> selectAllBlogUserLabel();
 
-    public List<BlogUserPicsLabel> selectBlogUserPicsCountByLabelId(int label_id);
+    public List<BlogUserPicsLabel> selectBlogUserPicsByLabelId(int label_id);
 
 
 }

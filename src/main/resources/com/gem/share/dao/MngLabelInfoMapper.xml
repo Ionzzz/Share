@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gem.share.dao.MngLabelInfoMapper">
+    <resultMap id="BaseResultMap" type="com.gem.share.entity.LabelInfo">
+        <id column="label_id" jdbcType="INTEGER" property="labelId" />
+        <result column="labelName" jdbcType="VARCHAR" property="labelname" />
+        <result column="labelContent" jdbcType="VARCHAR" property="labelcontent" />
+        <result column="labelCreateTime" jdbcType="TIMESTAMP" property="labelcreatetime" />
+        <result column="labelModifyTime" jdbcType="TIMESTAMP" property="labelmodifytime" />
+    </resultMap>
+    <!--List<LabelInfo> selectAllLabelInfos();-->
+    <select id="selectAllLabelInfos" resultType="LabelInfo">
+        select * from labelinfo;
+    </select>
+    <!--LabelInfo selectLabelById(int id);-->
+    <select id="selectLabelById" parameterType="int" resultType="LabelInfo">
+        select * from labelinfo where label_id=#{_parameter}
+    </select>
+    <!--void insertLableInfo(LabelInfo labelInfo);-->
+    <insert id="insertLableInfo" parameterType="LabelInfo">
+        insert into labelinfo(labelName,labelContent,labelCreateTime,labelModifyTime)
+         values (#{labelname,jdbcType=VARCHAR}, #{labelcontent,jdbcType=VARCHAR},
+      now(), now())
+    </insert>
+    <!--void updateLabelInfo(LabelInfo labelInfo);-->
+    <update id="updateLabelInfo" parameterType="LabelInfo">
+        update labelinfo set labelName=#{labelname},labelContent=#{labelcontent},
+        labelModifyTime=now()
+        where label_id=#{labelId}
+    </update>
+    <!--void deleteLabelInfo(int id);-->
+     <delete id="deleteLabelInfo" parameterType="int">
+        DELETE FROM userlabel where label_id=#{_parameter};
+        DELETE FROM bloglabel where label_id=#{_parameter};
+        DELETE FROM labelinfo where label_id=#{_parameter}
+    </delete>
+
+</mapper>

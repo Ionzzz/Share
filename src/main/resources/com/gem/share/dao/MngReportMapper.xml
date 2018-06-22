@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gem.share.dao.MngReportMapper">
+    <resultMap id="BaseResultMap" type="com.gem.share.entity.Report">
+        <id column="report_id" jdbcType="INTEGER" property="reportId" />
+        <result column="user_id" jdbcType="INTEGER" property="userId" />
+        <result column="reportReason" jdbcType="VARCHAR" property="reportreason" />
+    </resultMap>
+    <!--List<Report> selectAll();-->
+<select id="selectAll" resultMap="BaseResultMap">
+    SELECT * FROM report
+</select>
+</mapper>

@@ -48,17 +48,33 @@ public class ShuDongControl {
         map.put("pageSize",pageSize);
         PageInfo<shuDong> pageInfo=shuDongService.pageShuDong(map,searchContent,flag);
 
-        request.setAttribute("pageInfo",pageInfo);
-        request.setAttribute("searchContent",searchContent);//搜索条件分页
-        request.setAttribute("SDflag",SDflag);
+        request.getServletContext().setAttribute("pageInfo",pageInfo);
+        request.getServletContext().setAttribute("searchContent",searchContent);//搜索条件分页
+        request.getServletContext().setAttribute("SDflag",SDflag);
 
         request.getRequestDispatcher("/jsp/shuDong.jsp").forward(request,response);
+//         response.sendRedirect(request.getContextPath()+"/jsp/shuDong.jsp");
 
+    }
+
+    @RequestMapping("/ZanFlag.action")
+    public @ResponseBody String ZanFlag(HttpServletRequest request,HttpServletResponse response){
+        UserInfo userInfo = (UserInfo) request.getSession().getAttribute("userInfo");
+        int userId = userInfo.getUserId();
+        String blogId = request.getParameter("blogId");
+        List<BlogZan> blogZans = shuDongService.selectZanRecordByUserId(Integer.parseInt(blogId),userId);
+        String flag = "flase";//默认该用户没有点赞
+        if(blogZans != null && blogZans.size()>0){
+            flag = "true";
+        }
+
+        return  flag;
     }
 
     @RequestMapping("/Zan.action")
     public @ResponseBody String Zan(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
-        int userId = 1;//后期从session获取
+        UserInfo userInfo = (UserInfo) request.getSession().getAttribute("userInfo");
+        int userId = userInfo.getUserId();
         String blogId = request.getParameter("blogId");
 //        查询是否有该用户对该博客的点赞记录
         List<BlogZan> blogZans = shuDongService.selectZanRecordByUserId(Integer.parseInt(blogId),userId);
@@ -100,7 +116,9 @@ public class ShuDongControl {
     @RequestMapping("/DetailComment.action")
     public void DetailComment(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
         String blogId = request.getParameter("blogId");
-        int userId = 3;//后期从session中获得
+        String bbrowse = request.getParameter("bbrowse");
+        UserInfo userInfo = (UserInfo) request.getSession().getAttribute("userInfo");
+        int userId = userInfo.getUserId();
 
 //        查询该用户对该博客树洞的浏览数：
 //        如果同一用户对该树洞浏览次数超过5次，则不做任何操作；否则浏览量加1
@@ -115,6 +133,7 @@ public class ShuDongControl {
 
         request.setAttribute("bcommentCount",bcommentCount);
         request.setAttribute("shuDongDetails",shuDongDetails);
+        request.setAttribute("bbrowse",bbrowse);
         request.getRequestDispatcher("/jsp/shuDongDetail.jsp").forward(request,response);
     }
 
@@ -156,7 +175,13 @@ public class ShuDongControl {
     public @ResponseBody int insertBlogCommentBlogId(HttpServletRequest request,HttpServletResponse response){
         blogid = request.getParameter("blogId");
         flag = request.getParameter("flag");
-        return 1;
+
+//        判断用户是否被禁言
+        UserInfo userInfo = (UserInfo) request.getSession().getAttribute("userInfo");
+        int userId = userInfo.getUserId();
+        int flag = shuDongService.getUserStatus(userId);//flag=0被禁言；flag=1正常
+
+        return flag;
     }
 
     @RequestMapping("/InsertBlogComment.action")
@@ -165,15 +190,18 @@ public class ShuDongControl {
         String content2 = request.getParameter("content2");//获取内容
         Date commentTime = new Date();
 
+        UserInfo userInfo = (UserInfo) request.getSession().getAttribute("userInfo");
+        int userId = userInfo.getUserId();
+
         if("true".equals(content1)){
 //            内容不为空
             if("1".equals(flag)){
                 //            插入blogComment表
-                BlogComment blogComment = new BlogComment(Integer.parseInt(blogid),409,content2,commentTime);
+                BlogComment blogComment = new BlogComment(Integer.parseInt(blogid),userId,content2,commentTime);
                 boolean flag = shuDongService.insertBlogComment(blogComment);
             }else if ("2".equals(flag)){
                 //             插入replyComment表  二级评论
-                ReplyComment replyComment = new ReplyComment(Integer.parseInt(blogid),277,content2,commentTime);
+                ReplyComment replyComment = new ReplyComment(Integer.parseInt(blogid),userId,content2,commentTime);
                 boolean f = shuDongService.insertReplyComment(replyComment);
             }else if("3".equals(flag)){
 //                三级评论
@@ -181,16 +209,18 @@ public class ShuDongControl {
 
 //                int replycommentId = shuDongService.selectUserIdByCommentId(Integer.parseInt(blogid));
                 replyComment.setReplycomment(Integer.parseInt(blogid));
-                replyComment.setUserId(233);
+                replyComment.setUserId(userId);
                 replyComment.setReplycommentcontent(content2);
                 replyComment.setReplycommenttime(commentTime);
 
                 boolean f = shuDongService.insertThirdReplyComment(replyComment);
             }
 
+            request.getRequestDispatcher("/shuDong/DetailComment.action?blogId="+blogid).forward(request,response);
+
         }else{
 //            内容为空
-            request.getRequestDispatcher("/jsp/shuDongDetail.jsp").forward(request,response);
+            request.getRequestDispatcher("/shuDong/DetailComment.action?blogId="+blogid).forward(request,response);
         }
 
     }
@@ -277,42 +307,63 @@ public class ShuDongControl {
         String content4 = request.getParameter("content4");//获取essayFlag
         String content5 = request.getParameter("content5");//标签
 
-        Set<String> set = getImgStr(content2);//src属性值
-        String[] str = new String[set.size()];
-        set.toArray(str);
-        String src[] = str[0].split("ShareMaven");
-        System.out.println("-----src[1]----"+src[1]);
-
-        int userId = 3;//后期从session获得
-        String zi[] = content2.split("<");;//文字内容
+        UserInfo userInfo = (UserInfo) request.getSession().getAttribute("userInfo");
+        int userId = userInfo.getUserId();
         Date commentTime = new Date();
-
         BlogContent blogContent = new BlogContent();
         blogContent.setUserId(userId);
-        blogContent.setBlogcontent(zi[0]);
         blogContent.setBlogcreatetime(commentTime);
         if(Integer.parseInt(content3)!=-1 && Integer.parseInt(content4)!=-1){
             blogContent.setBlogflag(content3);
             blogContent.setEssayflag(content4);
         }
 
-        shuDongService.publishAllType(blogContent);//发布博客或者树洞（没有图片）
-        int blogId = shuDongService.selectPublishBlogId(blogContent);
-        boolean flag = shuDongService.insertPublishPics(blogId,src[1]);//将图片插入blogPics
-        if(flag){
+        Set<String> set = getImgStr(content2);//src属性值
+        String[] str = new String[set.size()];
+        if(str.length>0){
+//            发布有图片
+            set.toArray(str);
+            String src[] = str[0].split("ShareMaven");
+            String zi[] = content2.split("<");;//文字内容
+
+            blogContent.setBlogcontent(zi[0]);
+            shuDongService.publishAllType(blogContent);//发布博客或者树洞（没有图片）
+            int blogId = shuDongService.selectPublishBlogId(blogContent);
+            boolean flag = shuDongService.insertPublishPics(blogId,src[1]);//将图片插入blogPics
+            if(flag){
 //            插入成功
-            int blogPicsId = shuDongService.getPublishPicsId(blogId,src[1]);
-            blogContent.setBlogpicsId(blogPicsId);
-            boolean f1 = shuDongService.updateBlog(blogContent);//带图片插入博客
+                int blogPicsId = shuDongService.getPublishPicsId(blogId,src[1]);
+                blogContent.setBlogpicsId(blogPicsId);
+                boolean f1 = shuDongService.updateBlog(blogContent);//带图片插入博客
 
 //            插入标签
-            boolean f2 = shuDongService.insertPublishLabel(blogId,Integer.parseInt(content5));
+                boolean f2 = shuDongService.insertPublishLabel(blogId,Integer.parseInt(content5));
 
+            }else{
+                System.out.println("插入失败");
+            }
         }else{
-            System.out.println("插入失败");
+//            发布只有文字
+            blogContent.setBlogcontent(content2);
+            shuDongService.publishAllType(blogContent);//发布博客或者树洞（没有图片）
+            int blogId = shuDongService.selectPublishBlogId(blogContent);
+            //            插入标签
+            boolean f2 = shuDongService.insertPublishLabel(blogId,Integer.parseInt(content5));
         }
 
+
+
         request.getRequestDispatcher("/new/main.action").forward(request,response);
+    }
+
+    @RequestMapping("/getPublishFlag.action")
+    public @ResponseBody int getPublishFlag(HttpServletRequest request,HttpServletResponse response){
+        System.out.println("---------userId-----");
+        String userId = request.getParameter("userId");
+        int flag = shuDongService.getUserStatus(Integer.parseInt(userId));
+//        flag=0 被禁言     flag=1正常
+
+        return flag;
     }
 
 

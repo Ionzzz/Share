@@ -1,30 +1,15 @@
 package com.gem.share.dao;
 
 import com.gem.share.entity.ManagerInfo;
-import com.gem.share.entity.ManagerInfoExample;
+import org.springframework.stereotype.Repository;
+
 import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
+@Repository
 public interface ManagerInfoMapper {
-    long countByExample(ManagerInfoExample example);
-
-    int deleteByExample(ManagerInfoExample example);
-
-    int deleteByPrimaryKey(Integer managerId);
-
-    int insert(ManagerInfo record);
-
-    int insertSelective(ManagerInfo record);
-
-    List<ManagerInfo> selectByExample(ManagerInfoExample example);
-
-    ManagerInfo selectByPrimaryKey(Integer managerId);
-
-    int updateByExampleSelective(@Param("record") ManagerInfo record, @Param("example") ManagerInfoExample example);
-
-    int updateByExample(@Param("record") ManagerInfo record, @Param("example") ManagerInfoExample example);
-
-    int updateByPrimaryKeySelective(ManagerInfo record);
-
-    int updateByPrimaryKey(ManagerInfo record);
+    List<ManagerInfo> selectAllManagerInfos();
+    ManagerInfo selectManagerInfoById(int id);
+    void insertManagerInfo(ManagerInfo ManagerInfo);
+    void updateManagerInfo(ManagerInfo ManagerInfo);
+    void deleteManagerInfo(int id);
 }

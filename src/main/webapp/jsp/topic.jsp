@@ -100,7 +100,7 @@
                     <div class="blog-post-alt-thumb">
                         <div class="blog-post-alt-thumb-inner" style="text-align: center">
                             <a href="<%=basePath%>single/main.action?blogId=${bloglist.blogContent.blogId}">
-                                <img src="<%=basePath%>${bloglist.blogPics.pic}" style="height:250px;;margin: auto" alt="" />
+                                <img src="<%=basePath%>${bloglist.blogPics.pic}" style="height:250px;margin: auto" alt="" />
                             </a>
                         </div><!-- .blog-post-alt-thumb-inner -->
                         <div class="blog-post-alt-thumb-cover"></div>
@@ -112,13 +112,23 @@
                                                 value="${bloglist.blogContent.blogcreatetime}" />
                             </div><!-- .blog-post-alt-date -->
                             <div class="blog-post-alt-title ">
-                                <h2 class="texthidden" style="width:200px;"><a href="single.jsp">${bloglist.blogContent.blogcontent}</a></h2>
+                                <h2 class="texthidden" style="width:200px;">
+                                    <a href="<%=basePath%>single/main.action?blogId=${bloglist.blogContent.blogId}">
+                                        <c:if test="${bloglist.labelInfo.labelname=='书籍'}">
+                                            <c:set var="bookname" value=" ${bloglist.blogContent.blogcontent} "/>
+                                            《${fn:substringBefore(bookname,"||" )}》
+                                        </c:if>
+                                        <c:if test="${bloglist.labelInfo.labelname!='书籍'}">
+                                            ${bloglist.blogContent.blogcontent}
+                                        </c:if>
+                                    </a>
+                                </h2>
                             </div><!-- .blog-post-alt-title -->
                             <div class="blog-post-alt-cat">
-                                <a href="single.jsp">${bloglist.labelInfo.labelname}</a>
+                                <a href="<%=basePath%>/topic/main.action?labelId=${bloglist.labelInfo.labelId}">${bloglist.labelInfo.labelname}</a>
                             </div><!-- .blog-post-alt-cat -->
                             <div class="blog-post-alt-read-more">
-                                <a href="single.jsp">READ ARTICLE</a>
+                                <a href="<%=basePath%>single/main.action?blogId=${bloglist.blogContent.blogId}">READ ARTICLE</a>
                             </div><!-- .blog-post-alt-read-more -->
                         </div><!-- .blog-post-alt-main-inner -->
                     </div><!-- .blog-post-alt-main -->
@@ -135,7 +145,7 @@
 <form action="<%=basePath%>topic/main.action?labelId=${labelinfo.labelId}" id="mainForm" method="post">
 
     <div id="main">
-        <div id="sidebar" class="col" style="width: 20%">
+        <div id="sidebar" class="col" style="width: 30%">
             <div class="widget">
                 <h3 class="widget-title">
                     <span class="widget-title-line"></span>
@@ -143,7 +153,7 @@
                 </h3>
                 <div class="widget-content">
                     <div class="tags-cloud-widget"style="text-align: center">
-                        <a href="#" class="fh5co_tagg" >${labelinfo.labelname}</a>
+                        <a  class="fh5co_tagg" title="${labelinfo.labelname}">${labelinfo.labelname}</a>
                     </div><!-- .tags-cloud-widget -->
                 </div><!-- .widget-content -->
             </div><!-- .widget -->
@@ -153,9 +163,9 @@
                     <span class="widget-title-line"></span>
                     <span class="widget-title-text">Implication</span>
                 </h3>
-                <h3 class="about-author-widget-position"style="text-align: center">${labelinfo.labelcontent}</h3>
+                <h3 class="about-author-widget-position"style="text-align: center" title="${labelinfo.labelcontent}">${labelinfo.labelcontent}</h3>
 
-                <div class="widget-content" style="text-align: center">
+                <div class="widget-content" style="text-align: center;font-size: 20px;">
                     ${labelinfo.labelcontent}
                 </div><!-- .widget-content -->
             </div><!-- .widget -->
@@ -166,18 +176,20 @@
                 </h3>
                 <div class="widget-content">
                     <div class="recent-posts-widget">
-                        <c:forEach items="${blogzan}" var="list">
+                        <c:forEach items="${blogzan}" var="list" begin="0" end="4">
                             <div class="recent-posts-widget-post">
                                 <div class="recent-posts-widget-thumb">
-                                    <a href=""><img src="" alt="" /></a>
+                                    <a href="<%=basePath%>single/main.action?blogId=${list.blogContent.blogId}"><img src="<%=basePath%>${list.blogPics.pic}" alt="" /></a>
                                 </div><!-- .recent-posts-widget-thumb -->
                                 <div class="recent-posts-widget-main">
                                     <div class="recent-posts-widget-date">
                                         <fmt:formatDate  pattern="MM_dd,yyyy"
                                                          value="${list.blogContent.blogcreatetime}" />
                                     </div>
-                                    <div class="recent-posts-widget-title texthidden"><a href="">${list.blogContent.blogcontent}</a></div>
-                                    <div class="recent-posts-widget-category"><a href="">${list.labelInfo.labelname}</a></div>
+                                    <div class="recent-posts-widget-title texthidden">
+                                        <a href="<%=basePath%>single/main.action?blogId=${list.blogContent.blogId}">${list.blogContent.blogcontent}</a></div>
+                                    <div class="recent-posts-widget-category">
+                                        <a href="<%=basePath%>/topic/main.action?labelId=${list.labelInfo.labelId}"><span style="font-size:9px; opacity: 0.6">TAG:</span>${list.labelInfo.labelname}</a></div>
                                 </div><!-- .recent-posts-widget-main -->
                             </div><!-- .recent-posts-widget-post -->
                         </c:forEach>
@@ -188,13 +200,13 @@
         </div><!-- #sidebar -->
 
 
-        <div id="content" class="col" style="width:80%" >
+        <div id="content" class="col" style="width:70%" >
             <div class="blog-posts clearfix">
                 <div class="blog-post">
-                    <div class="blog-post-thumb">
-                        <a href=""><img src="" alt="" /></a>
+                    <div class="blog-post-thumb" style="height:500px;overflow: hidden">
+                        <a href="<%=basePath%>single/main.action?blogId=${blogone.get(0).blogContent.blogId}">
+                            <img src="<%=basePath%>${blogone.get(0).blogPics.pic}" style="width:100%;background-position: center" alt="" /></a>
                     </div><!-- .blog-post-thumb -->
-
                     <div class="blog-post-main clearfix">
                         <div class="blog-post-author">
                             <div class="blog-post-author-avatar">
@@ -202,23 +214,33 @@
                             </div><!-- .blog-post-author-avatar -->
                             <div class="blog-post-author-name">
                                 <span>Posted By</span>
-                                <a href="">${blogone.get(0).userInfo.usernickname}</a>
+                                <a href="<%=basePath%>/index/userself.action?userId=${blogone.get(0).userInfo.userId}">${blogone.get(0).userInfo.usernickname}</a>
                             </div><!-- .blog-post-author-name -->
                             <div class="blog-post-meta">
                             <fmt:formatDate  pattern="MM dd,yyyy,"
                                              value="${blogone.get(0).blogContent.blogcreatetime}" />
-                            In: <a href="">${blogone.get(0).labelInfo.labelname}</a>
+                            In: <a href="<%=basePath%>/topic/main.action?labelId=${blogone.get(0).labelInfo.labelId}">${blogone.get(0).labelInfo.labelname}</a>
                         </div><!-- .blog-post-meta -->
                         </div><!-- .blog-post-author -->
                         <div class="blog-post-info">
-                            <div class="blog-post-info-inner">
+                            <div class="blog-post-info-inner" style="text-align: center">
                                 <div class="blog-post-title">
-                                    <h2 class="texthidden"><a href=""> ${blogone.get(0).blogContent.blogcontent}</a></h2>
+                                    <h2 class="texthidden">
+                                        <a href="<%=basePath%>single/main.action?blogId=${blogone.get(0).blogContent.blogId}" >
+                                            <c:if test="${blogone.get(0).labelInfo.labelname=='书籍'}">
+                                                <c:set var="bookname" value=" ${blogone.get(0).blogContent.blogcontent} "/>
+                                                《${fn:substringBefore(bookname,"||" )}》
+                                            </c:if>
+                                            <c:if test="${blogone.get(0).labelInfo.labelname!='书籍'}">
+                                                ${blogone.get(0).blogContent.blogcontent}
+                                            </c:if>
+                                        </a>
+                                    </h2>
                                 </div><!-- .blog-post-title -->
                                 <div class="blog-post-tags" style="margin-bottom: 20px">
-                                    <a href="">浏览</a>${blogone.get(0).liulan}
-                                    <a href="">点赞</a>${blogone.get(0).zan}
-                                    <a href="">评论</a>${blogone.get(0).pinglun}
+                                    <a >浏览</a>${blogone.get(0).liulan}
+                                    <a href="javascript:void(0)" onclick="getZan('${blogone.get(0).blogContent.blogId}')">点赞</a><span name="${blogone.get(0).blogContent.blogId}">${blogone.get(0).zan}</span>
+                                    <a href="<%=basePath%>single/main.action?blogId=${blogone.get(0).blogContent.blogId}">评论</a>${blogone.get(0).pinglun}
                                     <br/>
                                 </div><!-- .blog-post-tags -->
                           <%--      <div class="blog-post-excerpt texthidden">
@@ -234,15 +256,24 @@
 
                 <input type="hidden" name="curPage"  id="curPage">
 
-                <c:forEach items="${pageInfo.list}" var="bloglist">
+                <c:forEach items="${pageInfo.list}" var="bloglist" varStatus="status">
                     <div class="blog-post col col-4">
                         <div class="blog-post-thumb">
-                            <a href="<%=basePath%>single/main.action?blogId=${bloglist.blogContent.blogId}"><img src="<%=basePath%>${bloglist.blogPics.pic}" style="height:300px;;margin: auto" alt="" /></a>
+                            <a href="<%=basePath%>single/main.action?blogId=${bloglist.blogContent.blogId}">
+                                <img src="<%=basePath%>${bloglist.blogPics.pic}" style="height:200px;;margin: auto" alt="" />
+                            </a>
                         </div><!-- .blog-post-thumb -->
                         <div class="blog-post-main clearfix">
+
                             <div class="blog-post-info" >
+                                <div class="blog-post-tags" style="float: right;margin:15px 0;">
+                                    <a >浏览</a>${bloglist.liulan}<br/>
+                                    <a href="javascript:void(0)" onclick="getZan('${bloglist.blogContent.blogId}')">点赞</a><span name="${bloglist.blogContent.blogId}">${bloglist.zan}</span><br/>
+                                    <a href="<%=basePath%>single/main.action?blogId=${bloglist.blogContent.blogId}">评论</a>${bloglist.pinglun}
+                                    <br/>
+                                </div><!-- .blog-post-tags -->
                                 <div class="blog-post-info-inner">
-                                    <div class="blog-post-title">
+                                    <%--<div class="blog-post-title">
                                         <h2 class="texthidden">
                                             <a href="<%=basePath%>single/main.action?blogId=${bloglist.blogContent.blogId}" >
                                                 <c:if test="${bloglist.labelInfo.labelname=='书籍'}">
@@ -254,17 +285,54 @@
                                                 </c:if>
                                             </a>
                                         </h2>
-                                    </div><!-- .blog-post-title -->
+                                    </div><!-- .blog-post-title -->--%>
+                                    <div class="blog-post-author-name" style="font-size: 12px;">
+                                        <span style="opacity:0.6;">Posted By</span><br/>
+                                        <a href="<%=basePath%>/index/userself.action?userId=${bloglist.userInfo.userId}">${bloglist.userInfo.usernickname}</a>
+                                    </div><!-- .blog-post-author-name -->
                                     <div class="blog-post-meta">
-                                        <fmt:formatDate  pattern="MM dd,yyyy,"
-                                                         value="${bloglist.blogContent.blogcreatetime}" />
-                                         In: <a href="">Spring</a>
+                                        <fmt:formatDate  pattern="MM dd,yyyy"
+                                                         value="${bloglist.blogContent.blogcreatetime}" /><br/>
+                                        <div id="season${status.count}" style="display: none" ><fmt:formatDate  pattern="MM"
+                                                                         value="${bloglist.blogContent.blogcreatetime}" /></div>
+                                        <a id="seasons${status.count}">
+                                        </a>
+                                        <script type="text/javascript">
+                                                var month=document.getElementById("season${status.count}").innerHTML;
+//                                                alert(month);
+                                                switch(month){
+                                                    case "03":
+                                                    case "04":
+                                                    case "05": document.getElementById("seasons${status.count}").innerHTML="In:Spring";
+                                                        break;
+                                                    case "06":
+                                                    case "07":
+                                                    case "08": document.getElementById("seasons${status.count}").innerHTML="In:Summer";
+                                                        break;
+                                                    case "09":
+                                                    case "10":
+                                                    case "11": document.getElementById("seasons${status.count}").innerHTML="In:Autumn";
+                                                        break;
+                                                    case "12":
+                                                    case "01":
+                                                    case "02": document.getElementById("seasons${status.count}").innerHTML="In:Winter";
+                                                        break;
+                                                    default:break;
+                                                }
+                                        </script>
                                     </div><!-- .blog-post-meta -->
+
                                     <div class="blog-post-excerpt texthidden">
-                                        ${bloglist.blogContent.blogcontent}
+                                        <c:if test="${bloglist.labelInfo.labelname=='书籍'}">
+                                            <c:set var="bookname" value=" ${bloglist.blogContent.blogcontent} "/>
+                                            《${fn:substringBefore(bookname,"||" )}》
+                                        </c:if>
+                                        <c:if test="${bloglist.labelInfo.labelname!='书籍'}">
+                                            ${bloglist.blogContent.blogcontent}
+                                        </c:if>
                                     </div><!-- .dslc-blog-post-excerpt -->
-                                    <div class="blog-post-read-more">
-                                        <a href="">CONTINUE READING</a>
+                                    <div class="blog-post-read-more" style="text-align: center">
+                                        <a href="<%=basePath%>single/main.action?blogId=${bloglist.blogContent.blogId}">CONTINUE READING</a>
                                     </div><!-- .blog-post-read-more -->
                                 </div><!-- .blog-post-info-inner -->
                             </div><!-- .blog-post-info -->
@@ -274,45 +342,45 @@
             </div><!-- .blog-posts -->
         </div><!-- #content -->
     </div><!-- .wrapper -->
-    <div>${pageInfo.total} 条,共${pageInfo.getPages()}页,当前第${pageInfo.pageNum}页</p>
-    </div>
-    <div class="pagination"style="margin-bottom: 50px;text-align: center;">
+
+    <div class="pagination"style="margin-top: 50px;text-align: center;">
         <a href="javascript:getPage(1)" class="btn_mange_pagging"><i class="fa fa-long-arrow-left"></i>&nbsp;&nbsp; HOME PAGE</a>
         <c:if test="${pageInfo.pages==1}">
-            <a href="javascript:getPage(${pageInfo.pageNum})" class="btn_pagging">${pageInfo.pageNum}</a>
+            <a href="javascript:getPage(${pageInfo.pageNum})" class="btn_pagging" style="color: #1abc9c">${pageInfo.pageNum}</a>
         </c:if>
         <c:if test="${pageInfo.pages==2}">
             <c:if test="${pageInfo.pageNum==1}">
-                <a href="javascript:getPage(${pageInfo.pageNum})" class="btn_pagging">${pageInfo.pageNum}</a>
+                <a href="javascript:getPage(${pageInfo.pageNum})" class="btn_pagging" style="color: #1abc9c">${pageInfo.pageNum}</a>
                 <a href="javascript:getPage(${pageInfo.nextPage})" class="btn_pagging">${pageInfo.nextPage}</a>
             </c:if>
             <c:if test="${pageInfo.pageNum==2}">
                 <a href="javascript:getPage(${pageInfo.prePage})" class="btn_pagging">${pageInfo.prePage}</a>
-                <a href="javascript:getPage(${pageInfo.pageNum})" class="btn_pagging">${pageInfo.pageNum}</a>
+                <a href="javascript:getPage(${pageInfo.pageNum})" class="btn_pagging" style="color: #1abc9c">${pageInfo.pageNum}</a>
             </c:if>
         </c:if>
         <c:if test="${pageInfo.pages==3||pageInfo.pages>3}">
             <c:if test="${pageInfo.pageNum==1}">
-                <a href="javascript:getPage(${pageInfo.pageNum==1?1:pageInfo.prePage})" class="btn_pagging">${pageInfo.pageNum==1?1:pageInfo.prePage}</a>
+                <a href="javascript:getPage(${pageInfo.pageNum==1?1:pageInfo.prePage})" class="btn_pagging" style="color: #1abc9c">${pageInfo.pageNum==1?1:pageInfo.prePage}</a>
                 <a href="javascript:getPage(${pageInfo.pageNum==1?2:pageInfo.pageNum})" class="btn_pagging">${pageInfo.pageNum==1?2:pageInfo.pageNum}</a>
                 <a href="javascript:getPage(${pageInfo.pageNum==1?3:pageInfo.nextPage})" class="btn_pagging">${pageInfo.pageNum==1?3:pageInfo.nextPage}</a>
             </c:if>
             <c:if test="${pageInfo.pageNum!=1&&pageInfo.pageNum!=pageInfo.pages}">
                 <a href="javascript:getPage(${pageInfo.prePage})" class="btn_pagging">${pageInfo.prePage}</a>
-                <a href="javascript:getPage(${pageInfo.pageNum})" class="btn_pagging">${pageInfo.pageNum}</a>
+                <a href="javascript:getPage(${pageInfo.pageNum})" class="btn_pagging" style="color: #1abc9c">${pageInfo.pageNum}</a>
                 <a href="javascript:getPage(${pageInfo.nextPage})" class="btn_pagging">${pageInfo.nextPage}</a>
             </c:if>
             <c:if test="${pageInfo.pageNum==pageInfo.pages&&pageInfo.pageNum!=1}">
                 <a href="javascript:getPage(${pageInfo.pageNum==pageInfo.pages?pageInfo.prePage-1:pageInfo.prePage})" class="btn_pagging">${pageInfo.pageNum==pageInfo.pages?pageInfo.prePage-1:pageInfo.prePage}</a>
                 <a href="javascript:getPage(${pageInfo.pageNum==pageInfo.pages?pageInfo.prePage:pageInfo.pageNum})" class="btn_pagging">${pageInfo.pageNum==pageInfo.pages?pageInfo.prePage:pageInfo.pageNum}</a>
-                <a href="javascript:getPage(${pageInfo.pageNum==pageInfo.pages?pageInfo.pages:pageInfo.nextPage})" class="btn_pagging">${pageInfo.pageNum==pageInfo.pages?pageInfo.pages:pageInfo.nextPage}</a>
+                <a href="javascript:getPage(${pageInfo.pageNum==pageInfo.pages?pageInfo.pages:pageInfo.nextPage})" class="btn_pagging" style="color: #1abc9c">${pageInfo.pageNum==pageInfo.pages?pageInfo.pages:pageInfo.nextPage}</a>
             </c:if>
         </c:if>
 
         <a href="javascript:getPage(${pageInfo.pages})" class="btn_mange_pagging">END PAGE <i class="fa fa-long-arrow-right"></i>&nbsp;&nbsp; </a>
 
     </div><!-- .pagination -->
-
+    <div style="text-align: center;opacity:0.6;">${pageInfo.total} 条,共${pageInfo.getPages()}页,当前第${pageInfo.pageNum}页</p>
+    </div>
 </div><!-- #main -->
 </form>
 <!-- JavaScript -->
@@ -325,6 +393,44 @@
 //				触发表单提交事件
         document.getElementById("mainForm").submit();
     }
+    function getZan(blogId) {
+        $.ajax({
+            type:"post",
+            url:'${pageContext.request.contextPath }/index/zan.action',
+            data : {"blogId":blogId},
+            dateType:'json',
+            success:function (data) {
+                $("span[name="+blogId+"]").html(data);
+            }
+        });
+    }
 </script>
+<script type="text/javascript">
+    function season(){
+        var month=$("#season").text();
+        alert(1);
+        switch(month){
+            case 03:
+            case 04:
+            case 05: $("a[name='season']").html("In:Spring");
+                break;
+            case 06:
+            case 07:
+            case 08: $("a[name='season']").html("In:Summer");
+                break;
+            case 09:
+            case 10:
+            case 11: $("a[name='season']").html("In:Autumn");
+                break;
+            case 12:
+            case 01:
+            case 02: $("a[name='season']").html("In:Winter");
+                break;
+            default:break;
+        }
+    }
+</script>
+
+
 </body>
 </html>

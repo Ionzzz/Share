@@ -77,4 +77,7 @@ public interface ShuDongMapper {
 //    插入标签
     public boolean insertPublishLabel(int blog_id, int label_id);
 
+//    检查用户是否被禁言
+    public int getUserStatus(int userId);
+
 }

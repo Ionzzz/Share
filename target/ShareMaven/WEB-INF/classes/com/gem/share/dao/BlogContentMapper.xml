@@ -471,8 +471,8 @@
     left join (select blog_id,blogBrowseCount as liulan from blogbrowse group by blog_id) c on (c.blog_id=blogcontent.blog_id)
 
 </select>
-  <!--    public List<BlogUserPicsLabel> selectBlogUserPicsCountByLabelId(int label_id);-->
-  <select id="selectBlogUserPicsCountByLabelId" resultMap="selectBlogUserLabelMap" parameterType="int">
+  <!--    public List<BlogUserPicsLabel> selectBlogUserPicsByLabelId(int label_id);-->
+  <select id="selectBlogUserPicsByLabelId" resultMap="selectBlogUserLabelMap" parameterType="int">
     select blogcontent.*,userinfo.*,blogpics.*,bloglabel.*,labelinfo.*,
     case when a.zan is null then 0 else a.zan end as zan,
     case when b.pinglun is null then 0 else b.pinglun end as pinglun,
@@ -527,7 +527,10 @@
   <update id="updateBlogBrowse" parameterType="int">
     update blogbrowse set blogBrowseCount=blogBrowseCount+1 where blog_id=#{_parameter}
   </update>
-
+  <!--public boolean insertBlogBrowse(int blog_id);-->
+  <insert id="insertBlogBrowse" parameterType="int" useGeneratedKeys="true" keyProperty="blogBrowse_id">
+    insert into blogbrowse(blog_id,blogBrowseCount) values(#{_parameter},0)
+  </insert>
   <!--public List<BlogUserPicsLabel> selectBlogUserPicsLabelByLabelNameOrderZan(String labelName);-->
   <select id="selectBlogUserPicsLabelByLabelNameOrderZan" resultMap="selectBlogUserLabelMap" parameterType="String">
     select blogcontent.*,userinfo.*,blogpics.*,bloglabel.*,labelinfo.*,

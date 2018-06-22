@@ -121,8 +121,14 @@ public class BlogServiceImpl implements BlogService {
 
     @Override//查询前几条数据
     public List<BlogUserPicsLabel> selectBlogCountOrderZan(int count) {
+        List<BlogUserPicsLabel> b=new ArrayList<>();
         List<BlogUserPicsLabel> blogUserPicsLabels=blogContentMapper.selectBlogCountOrderZan(count);
-        return blogUserPicsLabels ;
+        for(BlogUserPicsLabel blog:blogUserPicsLabels){
+            if(blog.getBlogPics().getBlogpicsId()!=null){
+                b.add(blog);
+            }
+        }
+        return b ;
     }
 
     @Override
@@ -165,9 +171,9 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
-    public List<BlogUserPicsLabel> selectBlogUserPicsCountByLabelId(int label_id) {
+    public List<BlogUserPicsLabel> selectBlogUserPicsByLabelId(int label_id) {
 
-        return blogContentMapper.selectBlogUserPicsCountByLabelId(label_id);
+        return blogContentMapper.selectBlogUserPicsByLabelId(label_id);
     }
 
 
@@ -208,9 +214,16 @@ public class BlogServiceImpl implements BlogService {
     public List<BlogUserPicsLabel> selectBlogUserPicsCountByLabelName(String labelName, int count) {
         List<BlogUserPicsLabel> list=selectBlogUserPicsLabelByLabelNameOrderTime(labelName);
         List<BlogUserPicsLabel> blogUserPicLabels =new ArrayList<>();
-        for(int i=0;i<count;i++){
-            blogUserPicLabels.add(list.get(i));
+        for(int i=0;i<list.size();i++){
+            BlogPics bb=list.get(i).getBlogPics();
+            if(list.get(i).getBlogPics().getBlogpicsId()!=null){
+                blogUserPicLabels.add(list.get(i));
+                if(blogUserPicLabels.size()==count){
+                    break;
+                }
+            }
         }
+
         return blogUserPicLabels;
     }
 
@@ -234,6 +247,17 @@ public class BlogServiceImpl implements BlogService {
             blogContents.add(blogContent);
         }
         return blogContents;
+    }
+
+    @Override
+    public boolean updateBlogBrowse(int blog_id) {
+        BlogUserPicsLabel b=selectBlogUserPicsByBlogId(blog_id);
+        if(b.getLiulan()==0){
+            blogContentMapper.insertBlogBrowse(blog_id);
+        }
+
+
+        return blogContentMapper.updateBlogBrowse(blog_id);
     }
 
 

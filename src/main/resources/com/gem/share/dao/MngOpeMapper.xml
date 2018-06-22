@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gem.share.dao.MngOpeMapper">
+    <resultMap id="OpeContentMap" type="com.gem.share.entity.ManagerOpeContent">
+        <id column="managerOperate_id" jdbcType="INTEGER" property="manageroperateId" />
+        <result column="manager_id" jdbcType="INTEGER" property="managerId" />
+        <result column="managerOperate" jdbcType="VARCHAR" property="manageroperate" />
+    </resultMap>
+    <resultMap id="OpeTimeMap" type="com.gem.share.entity.ManagerOpeTime">
+        <result column="manager_id" jdbcType="INTEGER" property="managerId" />
+        <result column="managerOperate_id" jdbcType="INTEGER" property="manageroperateId" />
+        <result column="managerOperateTime" jdbcType="TIMESTAMP" property="manageroperatetime" />
+    </resultMap>
+
+    <!--List<ManagerOpeContent> selectOpeContents();-->
+    <select id="selectOpeContents" resultMap="OpeContentMap">
+        select * from manageropecontent
+    </select>
+    <!--ManagerOpeTime selectOpeTime();-->
+    <select id="selectOpeTime" parameterType="int" resultMap="OpeTimeMap">
+        select * from manageropetime where managerOperate_id=#{_parameter}
+    </select>
+    <!--void insertOpeRecord(int managerid,String message);-->
+    <insert id="insertOpeRecord">
+        insert into manageropecontent(manager_id,managerOperate) values(
+          #{managerid},
+          #{message});
+          insert into manageropetime(manager_id,managerOperate_id,managerOperateTime) values(
+          #{managerid},
+          last_insert_id(),
+          now())
+    </insert>
+</mapper>

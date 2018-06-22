@@ -1,4 +1,4 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%--
   Created by IntelliJ IDEA.
   User: 刘琪
@@ -21,6 +21,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>树洞</title>
+    <%--涟漪--%>
+
+
     <meta name="description" content="" />
     <meta name="keywords" content="" />
 
@@ -39,6 +42,29 @@
     <%--只是样式--%>
     <link rel="stylesheet" type="text/css" href="<%=basePath%>css/vendor/styles.css">
     <link rel="stylesheet" type="text/css" href="<%=basePath%>css/shudong-css/style.css">
+    <style>
+        a{
+            text-decoration: none;
+        }
+    </style>
+    <style>
+        /*#body {*/
+            /*color: #fff;*/
+            /*font-size: 16px;*/
+            /*font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;*/
+            /*background-image: url(../images/shudong-images/bg2.jpg);*/
+            /*background-size: cover;*/
+            /*background-position: 50% 0;*/
+            /*height: 100%;*/
+            /*text-align: center;*/
+        /*}*/
+        /*#body:before {*/
+            /*content: '';*/
+            /*display: inline-block;*/
+            /*vertical-align: middle;*/
+            /*height: 100%;*/
+        /*}*/
+    </style>
     <!-- Modernizr JS -->
     <script src="<%=basePath%>js/index-js/modernizr-3.5.0.min.js"></script>
     <script src="<%=basePath%>js/chat-js/jquery-1.11.1.min.js"></script>
@@ -68,35 +94,50 @@
             var searchContent = $("#search-highlight").val();
             $("#form2").submit();
         }
+
+//        根据用户状态检查是否可以发布
+        function publishFlag(){
+            var userId = ${sessionScope.userInfo.userId};
+            $.ajax({
+                data:{"userId":userId},
+                url:'${pageContext.request.contextPath }/shuDong/getPublishFlag.action',
+                success:function (flag) {
+                    if(flag==0){
+//                        用户已被禁言
+                        alert("您已被管理员禁言，不可进行操作");
+                        window.location.href="${pageContext.request.contextPath }/shuDong/main.action";
+                        <%--url:'${pageContext.request.contextPath }/shuDong/main.action';--%>
+                    }else{
+//                        用户正常
+                        window.location.href="${pageContext.request.contextPath }/jsp/publishBlog.jsp";
+                        <%--url:'${pageContext.request.contextPath }/jsp/publishBlog.jsp';--%>
+                    }
+                }
+            });
+        }
     </script>
 
     <script type="text/javascript">
         $(document).ready(function(){
-            //读取数据库，当前用户是否对该博客点赞，确定能够class
-
             $('body').on("click",'.heart',function(){
-                if(arr[1]=="true"){
-                    $('.heart').removeClass("heartAnimation").attr("rel","like");
-                    $('.heart').css("background-position","left");
-                }else{
-                    $('.heart').removeClass("heartAnimation").attr("rel","like");
-                    $('.heart').addClass("heartAnimation").attr("rel","unlike");
-                }
-
                 var A=$(this).attr("id");
                 var B=A.split("like");
-                $(this).css("background-position","");
+               // $(this).css("background-position","");
                 var D=$(this).attr("rel");
                 if(D === 'like') {
-                    $(this).addClass("heartAnimation").attr("rel","unlike");
+                    $(this).removeClass("heartAnimation");
+                    $(this).css("background-position","left").attr("rel","unlike");
                 }
                 else{
-                    $(this).removeClass("heartAnimation").attr("rel","like");
-                    $(this).css("background-position","left");
+                    $(this).addClass("heartAnimation").attr("rel","like");
+                    $(this).css("background-position","right");
+
                 }
             });
 
         });
+
+
     </script>
 
 </head>
@@ -142,18 +183,8 @@
                             <li id="menu-item-57" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-57">
                                 <a href="<%= basePath %>shuDong/main.action?SDflag=1" style="font-size: 16px;">最热</a>
                             </li>
-                                <%--<li id="menu-item-57" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-57">--%>
-                                    <%--&lt;%&ndash;<a href="<%= basePath %>shuDong/main.action?SDflag=2" style="font-size: 16px;">时空机</a>&ndash;%&gt;--%>
-                                    <%--<a href="javascript:void(0)" style="font-size: 16px;">时空机</a>--%>
-                                    <%--<ul class="sub-menu">--%>
-                                        <%--<li id="menu-item-165" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-165">--%>
-                                            <%--<a id="getDate" href="javascript:void(0)" onclick="WdatePicker()" class="form-contro">日期</a>--%>
-                                        <%--</li>--%>
-                                    <%--</ul>--%>
-                                <%--</li>--%>
-
                             <li id="menu-item-57" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-57">
-                                <a href="#" style="font-size: 16px;">发布</a>
+                                <a href="javascript:void(0)" onclick="publishFlag()" style="font-size: 16px;">发布</a>
                             </li>
                         </ul>
                     </div>
@@ -166,14 +197,14 @@
 <div class="hebin" data-aos="fade-down">
     <i class=" js-toggle-search iconfont">&#xe60e;</i>
 </div>
-<header id="masthead" class="overlay animated from-bottom" itemprop="brand">
+<header id="masthead" class="overlay animated from-bottom" itemprop="brand" style="max-width: 100%;">
     <div class="site-branding text-center">
         <a href="">
             <figure>
-                <img class="custom-logo avatar" src="<%= basePath %>images/shudong-images/omikron.png" />
+                <img class="custom-logo avatar" src="<%=basePath%>images/shudong-images/omikron.png" />
             </figure>
         </a>
-        <h3 class="blog-description"><p>说出平时生活不曾表达的</p></h3>
+        <h3 class="blog-description"><p>说出生活中不曾表达的</p></h3>
     </div>
     <!-- .site-branding -->
     <div class="decor-part">
@@ -181,13 +212,24 @@
     </div>
     <div class="animation-header">
         <div class="decor-wrapper">
-
+            <svg id="header-decor" class="decor bottom" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <path class="large left" d="M0 0 L50 50 L0 100" fill="rgba(255,255,255, .1)"></path>
+                <path class="large right" d="M100 0 L50 50 L100 100" fill="rgba(255,255,255, .1)"></path>
+                <path class="medium left" d="M0 100 L50 50 L0 33.3" fill="rgba(255,255,255, .3)"></path>
+                <path class="medium right" d="M100 100 L50 50 L100 33.3" fill="rgba(255,255,255, .3)"></path>
+                <path class="small left" d="M0 100 L50 50 L0 66.6" fill="rgba(255,255,255, .5)"></path>
+                <path class="small right" d="M100 100 L50 50 L100 66.6" fill="rgba(255,255,255, .5)"></path>
+                <path d="M0 99.9 L50 49.9 L100 99.9 L0 99.9" fill="rgba(255,255,255, 1)"></path>
+                <path d="M48 52 L50 49 L52 52 L48 52" fill="rgba(255,255,255, 1)"></path>
+            </svg>
         </div>
     </div>
 </header>
 <body>
+<%--<div id="body">--%>
 <div id="main" class="content">
-    <div class="container">
+    <%--<main>--%>
+        <div class="container">
         <%--<form action="<%= basePath %>shuDong/main.action" id="mainForm" method="post">--%>
         <form onlic id="mainForm" method="post">
 
@@ -217,13 +259,13 @@
                                     <div class="post-container review-item">
                                         <div class="row review-item-wrapper">
                                             <div class="col-sm-3">
-                                                <a rel="nofollow" href="<%= basePath %>shuDong/DetailComment.action?blogId=${sd.blogId}">
+                                                <a rel="nofollow" href="<%= basePath %>shuDong/DetailComment.action?blogId=${sd.blogId}&bbrowse=${sd.bbrowse}">
                                                     <div class="review-item-img" style="background-image: url(<%= basePath %>images/shudong-images/b0ce3f3cde0c084b6d42321b2dcbc407.jpeg);"></div>
                                                 </a>
                                             </div>
                                             <div class="col-sm-9 flex-xs-middle" style="color:black;">
                                                 <div class="review-item-title">
-                                                    <a href="<%= basePath %>shuDong/DetailComment.action?blogId=${sd.blogId}" rel="bookmark" style="font-size:20px; font-weight: bolder;">树洞X</a>
+                                                    <a href="<%= basePath %>shuDong/DetailComment.action?blogId=${sd.blogId}&bbrowse=${sd.bbrowse}" rel="bookmark" style="font-size:20px; font-weight: bolder;">树洞X</a>
                                                 </div>
                                                 <div class="review-item-creator" style="font-size:15px;"><b>发布日期：</b><fmt:formatDate value="${sd.blogCreateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></div>
                                                 <span class="review-item-info" style="font-size:15px;"><b>总浏览量：</b>${sd.blogBrowseCount}</span>
@@ -236,14 +278,26 @@
                                         </div>
                                     </div>
                                     <div class="post-container">
-                                        <div class="entry-content"><a href="<%= basePath %>shuDong/DetailComment.action?blogId=${sd.blogId}"  style="text-decoration: none;">${sd.blogContent}</a></div>
+                                        <div class="entry-content"><a href="<%= basePath %>shuDong/DetailComment.action?blogId=${sd.blogId}&bbrowse=${sd.bbrowse}"  style="text-decoration: none;">${sd.blogContent}</a></div>
                                         <div class="post-footer">
                                                 <%--<a class="gaz-btn primary" href="">READ MORE</a>--%>
                                                     <a onclick="getZan('${sd.blogId}')">
-                                                            <%--<span id="add-num"><em>+1</em></span>--%>
+                                                        <%--<span id="add-num"><em>+1</em></span>--%>
                                                         <%--<span id="praise" onclick="changeZan()"><img id="praise-img" src="<%= basePath %>images/shudong-images/Zan.png"/></span>--%>
-                                                         <div  class="heart" id="like2" rel="like"></div>
-                                                    </a>
+                                                    <div class="heart" id="like2" name="${sd.blogId}" rel="unlike"></div>
+                                                        <script type="text/javascript">
+                                                            $.ajax({
+                                                                url:'${pageContext.request.contextPath }/shuDong/ZanFlag.action?blogId='+${sd.blogId},
+                                                                success:function (data) {
+                                                                    if(data==="true"){
+                                                                        $('.heart[name=${sd.blogId}]').attr("rel","like").css("background-position","right");
+                                                                    }
+
+                                                                }
+                                                            });
+
+                                                        </script>
+                                                </a>
 
                                                     <span class="total-comments-on-post pull-right"><a href="<%= basePath %>shuDong/DetailComment.action?blogId=${sd.blogId}" style="text-decoration: none;">${sd.bcCount} 条评论</a></span>
                                         </div>
@@ -262,7 +316,7 @@
         <%--pageInfo--%>
         <div class="row mx-0" style="margin-top: 50px;">
             <div class="col-12 text-center pb-4 pt-4">
-                <a href="javascript:getPage(1)" class="btn_mange_pagging"><i class="fa fa-long-arrow-left"></i>&nbsp;&nbsp; 首页</a>
+                <a href="javascript:getPage(1)" class="btn_mange_pagging" style="font-size: 16px;color: black;font-weight: bolder;"><i class="fa fa-long-arrow-left"></i>&nbsp;&nbsp; 首页&nbsp;&nbsp;</a>
 
                 <c:if test="${pageInfo.pages==1}">
                     <a href="javascript:getPage(${pageInfo.pageNum})" class="btn_pagging">${pageInfo.pageNum}</a>
@@ -290,8 +344,8 @@
                 </c:if>
 
 
-                <a href="javascript:getPage(${pageInfo.pages})" class="btn_mange_pagging">末页 <i class="fa fa-long-arrow-right"></i>&nbsp;&nbsp; </a>
-                <b>共 ${pageInfo.total}</b> 条   <b>${pageInfo.getPages()}</b>页，当前第<b>${pageInfo.pageNum}</b>页
+                <a href="javascript:getPage(${pageInfo.pages})" class="btn_mange_pagging" style="font-size: 16px;color: black;font-weight: bolder;">&nbsp;&nbsp;末页 <i class="fa fa-long-arrow-right"></i>&nbsp;&nbsp; </a>
+                <b style="font-size: 14px;color: black;font-weight: bolder;">共 ${pageInfo.total}条</b>  <b style="font-size: 14px;color: black;font-weight: bolder;">${pageInfo.getPages()}页</b>，<b style="font-size: 14px;color: black;font-weight: bolder;">当前第${pageInfo.pageNum}页</b>
 
             </div>
         </div>
@@ -299,10 +353,24 @@
         </form>
         <!-- -pagination  -->
     </div>
+    <%--</main>--%>
 </div>
-
+<%--</div>--%>
 
 <footer id="footer" class="overlay animated from-top">
+
+    <div class="decor-wrapper">
+        <svg id="footer-decor" class="decor top" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <path class="large left" d="M0 0 L50 50 L0 100" fill="rgba(255,255,255, .1)"></path>
+            <path class="large right" d="M100 0 L50 50 L100 100" fill="rgba(255,255,255, .1)"></path>
+            <path class="medium left" d="M0 0 L50 50 L0 66.6" fill="rgba(255,255,255, .3)"></path>
+            <path class="medium right" d="M100 0 L50 50 L100 66.6" fill="rgba(255,255,255, .3)"></path>
+            <path class="small left" d="M0 0 L50 50 L0 33.3" fill="rgba(255,255,255, .5)"></path>
+            <path class="small right" d="M100 0 L50 50 L100 33.3" fill="rgba(255,255,255, .5)"></path>
+            <path d="M0 0 L50 50 L100 0 L0 0" fill="rgba(255,255,255, 1)"></path>
+            <path d="M48 48 L50 51 L52 48 L48 48" fill="rgba(255,255,255, 1)"></path>
+        </svg>
+    </div>
 
     <div class="socialize" data-aos="zoom-in">
         <li>
@@ -322,6 +390,7 @@
 
 
 <script type='text/javascript' src='<%=basePath %>js/index-js/tree/jquery.min.js'></script>
+<script type='text/javascript' src='<%=basePath %>js/index-js/tree/jquery.ripples.js'></script>
 <script type='text/javascript' src='<%=basePath %>js/index-js/tree/plugins.js'></script>
 <script type='text/javascript' src='<%=basePath %>js/index-js/tree/script.js'></script>
 <script type='text/javascript' src='<%=basePath %>js/index-js/tree/particles.js'></script>

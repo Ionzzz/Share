@@ -64,7 +64,6 @@
 
             var arr1 = [];
             arr1.push(UE.getEditor('editor').getPlainTxt());
-            alert("arr1="+arr1);
 
             $("#hidden1").val(arr);
             $("#hidden2").val(arr1);

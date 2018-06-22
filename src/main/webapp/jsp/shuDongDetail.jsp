@@ -24,7 +24,26 @@
 
     <link rel="stylesheet" type="text/css" href="<%=basePath%>css/index-css/index.css" media="all" />
     <link rel="stylesheet" type="text/css" href="<%=basePath%>css/index-css/detail.css" />
-
+<script>
+    //        根据用户状态检查是否可以发布
+    function publishFlag(){
+        var userId = ${sessionScope.userInfo.userId};
+        $.ajax({
+            data:{"userId":userId},
+            url:'${pageContext.request.contextPath }/shuDong/getPublishFlag.action',
+            success:function (flag) {
+                if(flag==0){
+//                        用户已被禁言
+                    alert("您已被管理员禁言，不可进行操作");
+                    window.location.href="${pageContext.request.contextPath }/shuDong/DetailComment.action?blogId=${shuDongDetails.get(0).blogId}&bbrowse=${bbrowse}";
+                }else{
+//                        用户正常
+                    window.location.href="${pageContext.request.contextPath }/jsp/publishBlog.jsp";
+                }
+            }
+        });
+    }
+</script>
 
 
 </head>
@@ -53,11 +72,11 @@
                             <li id="menu-item-57" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-57">
                                 <a href="<%= basePath %>shuDong/main.action?SDflag=1" style="font-size: 16px;">最热</a>
                             </li>
+                            <%--<li id="menu-item-57" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-57">--%>
+                                <%--<a href="<%= basePath %>shuDong/main.action?SDflag=2" style="font-size: 16px;">时空机</a>--%>
+                            <%--</li>--%>
                             <li id="menu-item-57" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-57">
-                                <a href="<%= basePath %>shuDong/main.action?SDflag=2" style="font-size: 16px;">时空机</a>
-                            </li>
-                            <li id="menu-item-57" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-57">
-                                <a href="#" style="font-size: 16px;">发布</a>
+                                <a href="javascript:void(0);" onclick="publishFlag()" style="font-size: 16px;">发布</a>
                             </li>
                         </ul>
                     </div>
@@ -68,7 +87,7 @@
     </div>
 </div>
 
-<header id="masthead" class="overlay animated from-bottom" itemprop="brand" itemscope itemtype="http://schema.org/Brand">
+<header id="masthead" class="overlay animated from-bottom" style="max-width: 100%;" itemprop="brand" itemscope itemtype="http://schema.org/Brand">
     <div class="site-branding text-center">
         <a href="">
             <figure>
@@ -83,7 +102,16 @@
     </div>
     <div class="animation-header">
         <div class="decor-wrapper">
-
+            <svg id="header-decor" class="decor bottom" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <path class="large left" d="M0 0 L50 50 L0 100" fill="rgba(255,255,255, .1)"></path>
+                <path class="large right" d="M100 0 L50 50 L100 100" fill="rgba(255,255,255, .1)"></path>
+                <path class="medium left" d="M0 100 L50 50 L0 33.3" fill="rgba(255,255,255, .3)"></path>
+                <path class="medium right" d="M100 100 L50 50 L100 33.3" fill="rgba(255,255,255, .3)"></path>
+                <path class="small left" d="M0 100 L50 50 L0 66.6" fill="rgba(255,255,255, .5)"></path>
+                <path class="small right" d="M100 100 L50 50 L100 66.6" fill="rgba(255,255,255, .5)"></path>
+                <path d="M0 99.9 L50 49.9 L100 99.9 L0 99.9" fill="rgba(255,255,255, 1)"></path>
+                <path d="M48 52 L50 49 L52 52 L48 52" fill="rgba(255,255,255, 1)"></path>
+            </svg>
         </div>
     </div>
 </header>
@@ -107,7 +135,7 @@
                 <div class="meta split split--responsive cf">
                     <div class="split__title">
                         <time datetime="2017-10-02 01:44"><fmt:formatDate value="${shuDongDetails.get(0).blogCreateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></time>
-                        <span><a rel='nofollow' class='comment-reply-link' href="javascript:void(0)"  aria-label='回复给ta' onclick="blogComment('1','${shuDongDetails.get(0).blogId}')">&nbsp;&nbsp;&nbsp;评论</a></span>
+                        <span>&nbsp;&nbsp;&nbsp;&nbsp;${bbrowse}赞<a rel='nofollow' class='comment-reply-link' href="javascript:void(0)"  aria-label='回复给ta' onclick="blogComment('1','${shuDongDetails.get(0).blogId}')">&nbsp;&nbsp;&nbsp;评论</a></span>
                     </div>
                     <%--<div id="social-share"><span class="entypo-share"><i class="iconfont">&#xe614;</i>分享</span></div>--%>
                     <div class="slide">
@@ -197,7 +225,6 @@
 <
 
 <footer id="footer" class="overlay animated from-top">
-
     <div class="socialize" data-aos="zoom-in">
         <li>
             <a title="weibo" class="socialicon" href=""><i class="iconfont" aria-hidden="true">&#xe601;
@@ -224,17 +251,25 @@
                 data:{'blogId':blogId},
                 dateType:'json',
                 success:function (data) {
-                    layer.open({
-                        type: 2,
-                        title: '写下你想说的话吧',
-                        maxmin: false,
-                        anim:4,
-                        String:"",
-                        shadeClose: true, //点击遮罩关闭层
-                        area: ['800px', '400px'],
-                        content: '<%=basePath%>jsp/publishShuDong.jsp',
+                    if(data==1){
+//                        用户正常
+                        layer.open({
+                            type: 2,
+                            title: '写下你想说的话吧',
+                            maxmin: false,
+                            anim:4,
+                            String:"",
+                            shadeClose: true, //点击遮罩关闭层
+                            area: ['800px', '400px'],
+                            content: '<%=basePath%>jsp/publishShuDong.jsp',
 
-                    });
+                        });
+                    }else{
+//                        用户被禁言
+                        alert("您已被禁言，无法进行此操作");
+                        window.location.href="${pageContext.request.contextPath }/shuDong/DetailComment.action?blogId=${shuDongDetails.get(0).blogId}&bbrowse=${bbrowse}";
+                    }
+
                 }
         });
 
@@ -256,8 +291,8 @@
                             var str3="<time datetime=\"2018-03-09\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+data[i].replycommenttime+"</time>";
 
                             var str10="";
-                            if(278==data[i].userId){
-                                str10="<a href='javascript:void(0)' onclick='deleteComment("+data[i].replycommentId+","+commentId+")'>&nbsp;&nbsp;&nbsp;&nbsp;删除</a>";
+                            if("${sessionScope.userInfo.userId}"==data[i].userId){
+                                str10="<a href='javascript:void(0)' onclick='deleteComment("+data[i].replycommentId+","+commentId+")'><span onclick='return confirm('是否确认删除?')'>&nbsp;&nbsp;&nbsp;&nbsp;删除</span</a>>";
                             }
 
                             var str4="<a href='javascript:void(0)' onclick='blogComment(3,"+data[i].replycommentId+")'>&nbsp;&nbsp;&nbsp;&nbsp;回复ta</a>";
@@ -294,7 +329,7 @@
                             var str3="<time datetime=\"2018-03-09\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+data[i].replycommenttime+"</time>";
 
                             var str10="";
-                            if(278==data[i].userId){
+                            if("${sessionScope.userInfo.userId}"==data[i].userId){
                                 str10="<a href='javascript:void(0)' onclick='deleteComment("+data[i].replycommentId+","+commentId+")'>&nbsp;&nbsp;&nbsp;&nbsp;删除</a>";
                             }
 

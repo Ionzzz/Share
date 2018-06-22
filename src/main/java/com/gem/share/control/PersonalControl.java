@@ -25,30 +25,43 @@ public class PersonalControl {
     @Autowired
     private PersonalService personalService;
 
-    @RequestMapping("personal.action")
+    @RequestMapping("/personal.action")
     public void personal(HttpSession session,HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         UserInfo userInfo = (UserInfo)request.getSession().getAttribute("userInfo");
         int userid = userInfo.getUserId();
-        session.setAttribute("userblog",personalService.selectBlogContentByUserId(userid));
-        session.setAttribute("zan",personalService.selectBlogByUserZan(userid));
-        session.setAttribute("zanuser",personalService.selectUserByUserZan(userid));
-        session.setAttribute("comment",personalService.selectBlogByUserComment(userid));
-        session.setAttribute("commentuser",personalService.selectUserByUserComment(userid));
-        request.getSession();
-        request.getRequestDispatcher("/jsp/personalpage/personal.jsp").forward(request,response);
+        session.setAttribute("userinfo",personalService.selectUserById(userid));
+        System.out.println("------------------userinfo:"+personalService.selectUserById(userid));
+
+        request.setAttribute("userblog",personalService.selectBlogContentByUserId(userid));
+        request.setAttribute("myzan",personalService.selectallzan(userid));
+        request.setAttribute("mycollect",personalService.selectallCollect(userid));
+        request.setAttribute("mycomment",personalService.selectallcomment(userid));
+
+        request.getRequestDispatcher("/jsp/personalblog.jsp").forward(request,response);
     }
 
     @RequestMapping("picture.action")
     public void picture(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         request.getSession();
         request.getRequestDispatcher("/jsp/personalpage/picture.jsp").forward(request,response);
     }
 
     @RequestMapping("dynamic.action")
     public void dynamic(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getSession();
-        request.getRequestDispatcher("/jsp/personalpage/dynamic.jsp").forward(request,response);
+        UserInfo userInfo = (UserInfo)request.getSession().getAttribute("userInfo");
+        int userid = userInfo.getUserId();
+        String id = request.getParameter("id");
+        request.setAttribute("id",id);
+        if("zan".equals(id)){
+            request.setAttribute("myallcomment",personalService.selectallzan(userid));
+            request.getRequestDispatcher("/jsp/personaldynamic.jsp").forward(request,response);
+        }else if("collect".equals(id)){
+            request.setAttribute("myallcomment",personalService.selectallCollect(userid));
+            request.getRequestDispatcher("/jsp/personaldynamic.jsp").forward(request,response);
+        }else {
+            request.setAttribute("myallcomment",personalService.selectallcomment(userid));
+            request.getRequestDispatcher("/jsp/personaldynamic.jsp").forward(request,response);
+        }
     }
 
     @RequestMapping("fellow.action")
@@ -60,6 +73,13 @@ public class PersonalControl {
         String followGroupName = request.getParameter("followGroupName");
         request.setAttribute("care",personalService.selectFollowUserByUserIdAndGroupId(user_id,followGroupName));
         session.setAttribute("group",personalService.selectAllGroupByUserId(user_id));
+
+//        获得所有关注的人
+        List<UserInfo> users = personalService.selectUserByFollowUserId(user_id);
+        System.out.println("------------------"+users);
+        request.setAttribute("cares",users);
+
+
 
 //        分页
         Map<String,Object> map=new HashMap<>();
@@ -76,7 +96,7 @@ public class PersonalControl {
         PageInfo<UserInfo> pageInfo=personalService.selectAllUserByPage(user_id,map);
         request.setAttribute("pageInfo",pageInfo);
 
-        request.getRequestDispatcher("/jsp/personalpage/follow.jsp").forward(request,response);
+        request.getRequestDispatcher("/jsp/personalcare.jsp").forward(request,response);
     }
 
 
@@ -107,7 +127,9 @@ public class PersonalControl {
         session.setAttribute("userinfo",personalService.selectUserById(user_id));
         request.getSession();
         System.out.println("============="+personalService.selectUserById(user_id));
-        request.getRequestDispatcher("/jsp/personalpage/personaldata.jsp").forward(request,response);
+
+//        request.getRequestDispatcher("/jsp/personalpage/personaldata.jsp").forward(request,response);
+        request.getRequestDispatcher("/jsp/personaldata.jsp").forward(request,response);
     }
 
     //        根据用户id和关注人id取消关注
@@ -129,16 +151,51 @@ public class PersonalControl {
 
 
 
-//    点击关注
+    //    点击关注
     @RequestMapping("clickfollow.action")
-    public Boolean clickfollow(HttpServletRequest request,HttpServletResponse response){
+    public @ResponseBody int clickfollow(HttpServletRequest request,HttpServletResponse response){
+        int n = 1;
         UserInfo userInfo = (UserInfo)request.getSession().getAttribute("userInfo");
         int user_id = userInfo.getUserId();
+        System.out.println("user_id-----------------:"+user_id);
 
 //        从jsp传入被点击用户的id
-        int followUser_id = Integer.parseInt(request.getParameter("followUser_id"));
-//        点击者增加关注人
-        Boolean tf = personalService.insertfollow(user_id,followUser_id);
-        return tf;
+        int id = Integer.parseInt(request.getParameter("id"));
+        System.out.println("==========id:"+id);
+//        获取已经关注的人的用户信息
+        List<UserInfo> users = personalService.selectUserByFollowUserId(user_id);
+//        request.setAttribute("follower",users);
+        System.out.println("___________follower:"+users);
+        if(users.size() == 0){
+            System.out.println("aaaaaaaaaaaaaaaa");
+            Boolean tf = personalService.insertfollow(id,user_id);
+            System.out.println("++++++++++++++++tf:"+tf);
+            if (tf) {
+//            数据库插入成功
+                n = 0;
+            } else {
+                n = 1;
+            }
+        }else {
+            System.out.println("bbbbbbbbbbbbbbbbbbb");
+//        是否存在
+            for (UserInfo user : users) {
+                if (user.getUserId() == id) {
+//                    已经关注过了
+                    n = 2;
+                } else {
+                    //        点击者增加关注人
+                    Boolean tf = personalService.insertfollow(id,user_id);
+                    System.out.println(tf);
+                    if (tf) {
+//            数据库插入成功
+                        n = 0;
+                    } else {
+                        n = 1;
+                    }
+                }
+            }
+        }
+        return n;
     }
 }

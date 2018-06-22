@@ -196,5 +196,12 @@ AND rr.replycomment = rb.replycomment_id
     values(#{param1},#{param2})
   </insert>
 
+  <!--//    检查用户是否被禁言-->
+  <!--public int getUserStatus(int userId);-->
+  <select id="getUserStatus" parameterType="int" resultType="int">
+    select userStatus from userinfo
+    where user_id=#{_parameter}
+  </select>
+
 
 </mapper>

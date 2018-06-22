@@ -1,9 +1,7 @@
 package com.gem.share.service.Impl;
 
 import com.gem.share.dao.PersonalMapper;
-import com.gem.share.entity.BlogContent;
-import com.gem.share.entity.FollowGroup;
-import com.gem.share.entity.UserInfo;
+import com.gem.share.entity.*;
 import com.gem.share.service.PersonalService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -22,26 +20,6 @@ public class PersonalServiceImpl implements PersonalService {
     @Override
     public List<BlogContent> selectBlogContentByUserId(int userid) {
         return personalMapper.selectBlogContentByUserId(userid);
-    }
-
-    @Override
-    public List<BlogContent> selectBlogByUserZan(int user_id) {
-        return personalMapper.selectBlogByUserZan(user_id);
-    }
-
-    @Override
-    public List<UserInfo> selectUserByUserZan(int user_id) {
-        return personalMapper.selectUserByUserZan(user_id);
-    }
-
-    @Override
-    public List<BlogContent> selectBlogByUserComment(int user_id) {
-        return personalMapper.selectBlogByUserComment(user_id);
-    }
-
-    @Override
-    public List<UserInfo> selectUserByUserComment(int user_id) {
-        return personalMapper.selectUserByUserComment(user_id);
     }
 
     @Override
@@ -90,4 +68,20 @@ public class PersonalServiceImpl implements PersonalService {
     public Boolean insertfollow(int user_id, int followUser_id) {
         return personalMapper.insertfollow(user_id,followUser_id);
     }
+
+    @Override
+    public List<MyAllComment> selectallcomment(int commentUser_id) {
+        return personalMapper.selectallcomment(commentUser_id);
+    }
+
+    @Override
+    public List<MyAllZan> selectallzan(int zanUser_id) {
+        return personalMapper.selectallzan(zanUser_id);
+    }
+
+    @Override
+    public List<MyAllZan> selectallCollect(int collectUser_id) {
+        return personalMapper.selectallCollect(collectUser_id);
+    }
+
 }

@@ -158,6 +158,11 @@ public class ShuDongServiceImpl implements ShuDongService {
         return shuDongMapper.insertPublishLabel(blog_id,label_id);
     }
 
+    @Override
+    public int getUserStatus(int userId) {
+        return shuDongMapper.getUserStatus(userId);
+    }
+
 
 }
 

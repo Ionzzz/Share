@@ -916,7 +916,7 @@ select {
 				font-size: 12px;
 				font-weight: 500;
 				font-family: "Lora", sans-serif;
-				padding: 60px;
+				padding: 40px 60px;
 				width: 30%;
 				float: left;
 				text-align: center;
@@ -959,7 +959,7 @@ select {
 
 			.blog-post-info {
 				border-left: 1px solid #f2f2f2;
-				padding: 50px 60px;
+				padding: 40px 40px;
 				overflow: hidden;
 			}
 
@@ -975,10 +975,10 @@ select {
 					.blog-post-title h2, 
 					.blog-post-title h2 a {
 						color: #3f3f3f;
-						font-size: 34px;
+						font-size: 30px;
 						font-weight: 700;
 						font-family: "Lora", sans-serif;
-						line-height: 47px;
+						line-height: 48px;
 					}
 
 					.blog-post-meta {
@@ -1016,7 +1016,7 @@ select {
 							line-height: 1;
 							font-weight: 700;
 							font-family: "Montserrat", sans-serif;
-							padding: 11px 17px;
+							padding: 11px 15px;
 							text-transform: uppercase;
 						}
 
