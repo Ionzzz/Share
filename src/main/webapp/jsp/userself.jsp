@@ -24,7 +24,7 @@
     <meta charset="utf-8">
     <meta name="author" content="">
     <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 
     <!-- CSS -->
     <link rel="stylesheet" href="<%=basePath%>css/index-css/fonts/font-awesome.css">
@@ -77,7 +77,7 @@
                         </c:otherwise>
                     </c:choose>
                     </span>
-                    <span class="section-heading-text">Results For: Published</span>
+                    <span class="section-heading-text">已发布博客</span>
                 </div><!-- .section-heading -->
                 <div class="blog-posts-alt blog-posts-alt-diagonal-effect-enabled clearfix" id="masonry">
                     <c:choose>
@@ -116,7 +116,7 @@
                                                 <a href="<%=basePath%>single/main.action?blogId=${blog.blogContent.blogId}">${blog.labelInfo.labelname}</a>
                                             </div><!-- .blog-post-alt-cat -->
                                             <div class="blog-post-alt-read-more">
-                                                <a href="<%=basePath%>single/main.action?blogId=${blog.blogContent.blogId}">READ ARTICLE</a>
+                                                <a href="<%=basePath%>single/main.action?blogId=${blog.blogContent.blogId}">查看全文</a>
                                             </div><!-- .blog-post-alt-read-more -->
                                         </div><!-- .blog-post-alt-main-inner -->
                                     </div><!-- .blog-post-alt-main -->
@@ -137,18 +137,38 @@
                     <div class="about-author-widget-avatar">
                         <img src="<%=basePath%>img${userselfmap['userInfo'].userimg}" style="width: 80px;height: 80px;" alt="" />
                     </div>
-                    <h2 class="about-author-widget-name">${userselfmap['userInfo'].usernickname}<span ><a href="" style="float:right;text-decoration: blink">关注</a></span></h2>
-                    <h3 class="about-author-widget-position">Lifestyle Blogger</h3>
+                    <h2 class="about-author-widget-name">${userselfmap['userInfo'].usernickname}
+                        <span style="float:right;">
+                             <c:if test="${follower == null}">
+                                 <a id="cared" href="javascript:void(0)"
+                                    onclick="clickfollow(${userselfmap['userInfo'].userId})" style="text-decoration: blink">关注</a>
+                             </c:if>
+                            <c:set var="flag" value="true"></c:set>
+                            <c:forEach items="${follower}" var="follower">
+                                <c:if test="${follower.userId == userselfmap['userInfo'].userId}">
+                                    <c:set var="flag" value="false"></c:set>
+                                    <a id="${userselfmap['userInfo'].userId}" href="javascript:void(0)"
+                                       onclick="clickfollow(${userselfmap['userInfo'].userId})" style="text-decoration: blink">取消关注</a>
+                                </c:if>
+                            </c:forEach>
+                            <c:if test="${flag == 'true'}">
+                                <a id="${userselfmap['userInfo'].userId}" href="javascript:void(0)"
+                                   onclick="clickfollow(${userselfmap['userInfo'].userId})" style="text-decoration: blink">关注</a>
+                            </c:if>
+                        </span>
+                    </h2>
+                    <h3 class="about-author-widget-position">${userselfmap['userInfo'].useraccount}</h3>
                     <div class="about-author-widget-text">
                         ${userselfmap['userInfo'].userintroduce}
                     </div>
-                </div><!-- .about-author-widget -->
+                </div>
+
             </div><!-- .widget -->
             <c:if test="${userselfmap['blogUserPicsLabels'].get(0).blogContent!=null}">
                 <div class="widget">
                     <h3 class="widget-title">
                         <span class="widget-title-line"></span>
-                        <span class="widget-title-text">Tags</span>
+                        <span class="widget-title-text">标签</span>
                     </h3>
                     <div class="widget-content">
                         <div class="tags-cloud-widget">
@@ -163,7 +183,7 @@
             <div class="widget">
                 <h3 class="widget-title">
                     <span class="widget-title-line"></span>
-                    <span class="widget-title-text">Recent Browse</span>
+                    <span class="widget-title-text">动 态</span>
                 </h3>
                 <div class="widget-content">
                     <div class="recent-posts-widget">
@@ -198,6 +218,64 @@
         </div><!-- #sidebar -->
     </div><!-- .wrapper -->
 </div><!-- #main -->
+
+
+<script type="text/javascript">
+    //    点击关注  再点击删除
+    function clickfollow(id) {
+//        alert(id);
+        var aa = document.getElementById(id).innerText;
+//        alert(aa);
+        if (aa == "取消关注"){
+//            alert("你已关注过此用户！");
+            //在页面上弹出确认对话框
+            if(window.confirm('你确定要取消关注Ta吗？')){
+                //继续执行
+                $.ajax({
+                    type:"post",
+                    url:'${pageContext.request.contextPath }/personalpage/deletefollow.action',
+                    data:{"userId":id},
+                    dataType:'json',
+                    success:function (data) {
+//                        alert(data);
+                        if(data == 0){
+                            alert("取消关注成功！！");
+                            $("#"+id).html("<a id='"+id+"' href='javascript:void(0)' style='text-decoration: blink'>关注</a>")
+                        }else {
+                            alert("取消关注失败！！");
+                        }
+                    },
+                    error:function () {
+                        alert("服务器故障，请稍后重试")
+                    }
+                });
+            }
+
+        }else {
+//            alert("关注");
+            $.ajax({
+                type:"post",
+                url:'${pageContext.request.contextPath }/personalpage/clickfollow.action',
+                data : {"id":id},
+                dateType:'json',
+                success:function (data) {
+//                alert(data);
+                    if(data == 0){
+                        alert("关注成功！");
+                        $("#"+id).html("<a id='"+id+"' href='javascript:void(0)' style='text-decoration: blink'>取消关注</a>")
+                    }else if(data == 2){
+                        alert("你已关注过此用户！");
+                    }else {
+                        alert("请稍后重试！");
+                    }
+                },
+                error:function () {
+                    alert("服务器故障，请稍后重试")
+                }
+            });
+        }
+    }
+</script>
 
 
 </body>

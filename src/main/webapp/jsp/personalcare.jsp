@@ -15,6 +15,12 @@
 <html>
 <head>
     <title>关注的用户</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+
+    <link href="<%=basePath%>css/index-css/style_1.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=basePath%>css/index-css/main.css" rel="stylesheet" >
+    <link href="<%=basePath%>css/index-css/nav_font.css" rel='stylesheet' type='text/css'>
+
     <link href="<%=basePath%>css/personal-css/style.css" title="style" rel="stylesheet" type="text/css" />
     <link id="clink" href="<%=basePath%>css/personal-css/style-mango.css" title="style" rel="stylesheet" type="text/css" media="screen" />
     <script src="<%=basePath%>js/personal-js/jquery.min.js" type="text/javascript"></script>
@@ -105,6 +111,8 @@
     </script>
 
 <body>
+<c:import url="${basePath}header.jsp" ></c:import>
+
 <div id="bodypat">
     <section id="container">
         <!-- BEGIN HEADER -->
@@ -114,12 +122,14 @@
                 <img id="logo" src="<%=basePath%>img${userinfo.userimg}" alt="logo" />
                 <span id="sitename" style="font-size: 2.8em;">
                     ${userinfo.usernickname}
-                        <span>${userinfo.userstatus}</span>
+                        <c:if test="${userinfo.userstatus}==1"><span></span></c:if>
+                        <c:if test="${userinfo.userstatus}==0"><span>禁言</span></c:if>
+
             </span>
             </a>
 
             <nav>
-                <ul id="nav" class="clearfix">
+                <ul id="nav" class="clearfix" style="margin-top:35px;">
                     <!-- Menu Item 1 -->
                     <li><a href="/ShareMaven/personalpage/personal.action" title="Home"><span>首页</span></a></li>
                     <!-- Menu Item 4 -->
@@ -152,14 +162,15 @@
                 <div id="pg-content" class="clearfix">
 
                     <section id="sidebar">
-                        <div id="search" class="widget">
+                        <div id="search" class="widget" style="background: none;padding: 0">
                             <form action=" " />
+
                             <input id="search-field" type="search" name="sitesearch" class="placeholder" placeholder="Search" />
                             <input type="submit" id="search-submit" value=" "/>
                             </form>
                         </div>
 
-                        <div id="recent-box" class="widget">
+                        <div id="recent-box" class="widget"style="background: none">
                             <ul class="articles-widget" style="font-size:1.2em;">
                                 <li>
                                     <a href="javascript:void(0)" onclick="showAllFollowInfo('care')">关注</a>
@@ -193,7 +204,7 @@
                                 <c:forEach items="${pageInfo.list}" var="concerns" varStatus="st">
                                     <div class="about-person"  id="cares${concerns.userId}">
                                         <a href="#" class="no-text-dec">
-                                            <img class="about-portrait" src="<%=basePath%>img${concerns.userimg}" alt="Person 1" />
+                                            <img class="about-portrait" src="<%=basePath%>img${concerns.userimg}" alt="Person 1" style="width: 50px;height: 50px;" />
                                         </a>
                                         <h5>${concerns.usernickname}</h5>
                                         <a href="#"><p>
@@ -219,7 +230,7 @@
                                 </c:forEach>
 
                                 <%--pageInfo--%>
-                                <div class="pagination clearfix">
+                                <div class="pagination clearfix" style="opacity: 0.6;position: relative;margin: 50px 0 20 80px;">
                                     <a href="javascript:getPage(1)"><i class="fa fa-long-arrow-left"></i>&nbsp;&nbsp; 首页</a>
                                     <c:if test="${!pageInfo.isFirstPage}">
                                         <a href="javascript:getPage(${pageInfo.pageNum == 1?1:pageInfo.prePage})">上一页</a>

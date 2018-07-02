@@ -2,9 +2,7 @@ package com.gem.share.control;
 
 
 import com.gem.share.entity.*;
-import com.gem.share.service.BlogService;
-import com.gem.share.service.LabelInfoService;
-import com.gem.share.service.UserService;
+import com.gem.share.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,6 +24,10 @@ public class SingleControl {
     private UserService userService;
     @Autowired
     private LabelInfoService labelInfoService;
+    @Autowired
+    private ShuDongService shuDongService;
+    @Autowired
+    private PersonalService personalService;
 
     @RequestMapping("/main.action")
     public void main(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -64,6 +66,15 @@ public class SingleControl {
         map.put("bmore",bmore);
         map.put("bpopular",bpopular);
         request.setAttribute("blogmap",map);
+
+
+
+        UserInfo userInfo= (UserInfo) request.getSession().getAttribute("userInfo");
+        int user_id = userInfo.getUserId();
+        List<UserInfo> users = personalService.selectUserByFollowUserId(user_id);
+        request.setAttribute("follower",users);
+
+
         request.getRequestDispatcher("/jsp/single.jsp").forward(request,response);
 
     }
@@ -103,7 +114,12 @@ public class SingleControl {
     public @ResponseBody int insertBlogCommentBlogId(HttpServletRequest request,HttpServletResponse response){
         blogid = request.getParameter("blogId");
         flag = request.getParameter("flag");
-        return 1;
+        //        判断用户是否被禁言
+        UserInfo userInfo = (UserInfo) request.getSession().getAttribute("userInfo");
+        int userId = userInfo.getUserId();
+        int flag = shuDongService.getUserStatus(userId);//flag=0被禁言；flag=1正常
+
+        return flag;
     }
 
     @RequestMapping("/InsertBlogComment.action")

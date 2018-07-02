@@ -11,4 +11,5 @@ public interface MngBlogMapper {
     List<Integer> selectCommentByBlogId(int blogid);
     void deleteBlog(int id);
     BlogContent selectBlogById(int id);
+    int selectBrowseCountByShuDongId(int id);
 }

@@ -3,6 +3,7 @@ package com.gem.share.control;
 import com.gem.share.entity.*;
 import com.gem.share.service.BlogService;
 import com.gem.share.service.LabelInfoService;
+import com.gem.share.service.PersonalService;
 import com.gem.share.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,6 +26,8 @@ public class IndexControl {
     private LabelInfoService labelInfoService;
     @Autowired
     private UserService userService;
+    @Autowired
+    private PersonalService personalService;
 
     @RequestMapping("/main.action")
     public void main(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -46,6 +49,7 @@ public class IndexControl {
         Map<String,Object> map=new HashMap<>();
 
         if(userInfo!=null&&!"".equals(userInfo)){
+            map.put("userimg",userInfo.getUserimg());
             List<UserLabel> userLabels=userService.selectLabelIdByUserId(userInfo.getUserId());
 
             List<Integer> set=new ArrayList<>();
@@ -119,6 +123,7 @@ public class IndexControl {
             }
 
         }else {
+            map.put("userimg","images/index-images/person_1.jpg");
             List<Integer> set=new ArrayList<>();
             Random random=new Random();
             while(set.size()<=10){
@@ -133,7 +138,7 @@ public class IndexControl {
             threelist=blogService.selectBlogUserPicsByLabelId(set.get(2));
             fourlist=blogService.selectBlogUserPicsByLabelId(set.get(3));
             int j=random.nextInt(labelInfos.size());
-            System.out.println("---------"+j);
+
             blogtheone=blogService.selectBlogUserPicsLabelByLabelNameOrderLiuLan(labelInfoService.selectLabelInfoByLabelId(labelInfos.get(j).getLabelId()).getLabelname()).get(0);
 
             blogflist=blogService.selectBlogCountOrderZan(100);
@@ -152,6 +157,12 @@ public class IndexControl {
 
         map.put("userList5",userInfos);
         request.setAttribute("indexmap",map);
+
+
+        int user_id = userInfo.getUserId();
+        List<UserInfo> users = personalService.selectUserByFollowUserId(user_id);
+        request.setAttribute("follower",users);
+
         request.getRequestDispatcher("/jsp/index.jsp").forward(request,response);
 
     }
@@ -177,6 +188,13 @@ public class IndexControl {
         map.put("userInfo",userInfo);
         map.put("labelInfo",set);
         request.setAttribute("userselfmap",map);
+
+
+        UserInfo user = (UserInfo)request.getSession().getAttribute("userInfo");
+        int user_id = user.getUserId();
+        List<UserInfo> users = personalService.selectUserByFollowUserId(user_id);
+        request.setAttribute("follower",users);
+
 
         request.getRequestDispatcher("/jsp/userself.jsp").forward(request,response);
 

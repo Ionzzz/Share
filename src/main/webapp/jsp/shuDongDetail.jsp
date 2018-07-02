@@ -16,6 +16,8 @@
 <html>
 <head>
     <title>shuDongDetail</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+
     <script type='text/javascript' src='<%=basePath %>js/index-js/jquery-1.11.2.js'></script>
     <script type='text/javascript' src='<%=basePath %>layer/layer.js'></script>
     <link rel="stylesheet" type="text/css" href="<%=basePath%>css/index-css/index.css" media="all" />
@@ -222,7 +224,7 @@
 <div class="p-header">
     <figure class="p-image" style="background-image: url(<%=basePath%>images/shudong-images/47fb3c_9afed6c259f94589881bd55376206366mv2_d_3840_5784_s_4_2.jpg);"></figure>
 </div>
-<
+
 
 <footer id="footer" class="overlay animated from-top">
     <div class="socialize" data-aos="zoom-in">
@@ -276,6 +278,7 @@
         }
 
         function deleteComment(replycommentId,commentId){
+            alert("111");
             $.ajax({
                 type:"post",
                 url:'${pageContext.request.contextPath }/shuDong/deleteComment.action?commentId='+commentId,
@@ -292,7 +295,7 @@
 
                             var str10="";
                             if("${sessionScope.userInfo.userId}"==data[i].userId){
-                                str10="<a href='javascript:void(0)' onclick='deleteComment("+data[i].replycommentId+","+commentId+")'><span onclick='return confirm('是否确认删除?')'>&nbsp;&nbsp;&nbsp;&nbsp;删除</span</a>>";
+                                str10="<a href='javascript:void(0)' onclick='deleteComment("+data[i].replycommentId+","+commentId+")'>&nbsp;&nbsp;&nbsp;&nbsp;删除</a>";
                             }
 
                             var str4="<a href='javascript:void(0)' onclick='blogComment(3,"+data[i].replycommentId+")'>&nbsp;&nbsp;&nbsp;&nbsp;回复ta</a>";

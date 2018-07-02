@@ -38,47 +38,44 @@
 
 
 <header id="header" style="position:absolute;z-index:1001;">
+        <div id="header-top">
+            <div class="wrapper clearfix">
+                <nav id="navigation">
+                    <ul class="menu">
+                        <li>
+                            <a href="<%=basePath%>index/main.action">首页</a>
+                        </li>
+                        <li>
+                            <a href="<%=basePath%>new/main.action">最新</a>
+                            <%--<ul>
+                                <li><a href="#">Right Sidebar</a></li>
+                                <li><a href="#">Left Sidebar</a></li>
+                                <li><a href="#">No Sidebar</a></li>
+                            </ul>--%>
+                        </li>
+                        <li><a href="<%=basePath%>topic/all.action">话题</a></li>
+                        <li><a href="<%=basePath%>/jsp/publishBlog.jsp">发布</a></li>
+                        <li><a href="<%=basePath%>shuDong/main.action">树洞</a></li>
+                        <li class="current-menu-item"><a href="<%=basePath%>/jsp/about.jsp">关于我们</a></li>
+                        <li><a href="<%=basePath%>/jsp/contactUs.jsp">联系我们</a></li>
+                    </ul><!-- .menu -->
+                </nav><!-- #navigation -->
+                <%--<div id="header-search">
+                    <div class="header-search-inner">
+                        <form method="get" action="">
+                            <input type="text" name="s" placeholder="Search and hit enter" autocomplete="off"/>
+                        </form>
+                        <span class="header-search-icon"><span class="fa fa-search"></span></span>
+                    </div><!-- .search-form-wrapper -->
+                </div><!-- #header-search -->
+--%>
+            </div><!-- .wrapper -->
+        </div><!-- #header-top -->
 
-    <div id="header-top">
-        <div class="wrapper clearfix">
-            <nav id="navigation">
-                <ul class="menu">
-                    <li>
-                        <a href="index.jsp">首页</a>
-                        <ul>
-                            <li class="current-menu-item"><a href="index.jsp">Home Version 1</a></li>
-                            <li><a href="#">Home Version 2</a></li>
-                            <li><a href="#">Home Version 3</a></li>
-                            <li><a href="#">Home Version 4</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="new.jsp">最新</a>
-                        <ul>
-                            <li><a href="single.jsp">Right Sidebar</a></li>
-                            <li><a href="#">Left Sidebar</a></li>
-                            <li><a href="#">No Sidebar</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="topic.jsp">话题</a></li>
-                    <li><a href="single.jsp">发布</a></li>
-                    <li><a href="treehole.jsp">树洞</a></li>
-                    <li class="current-menu-item"><a href="about.jsp">关于我们</a></li>
-                    <li><a href="contactUs.jsp">联系我们</a></li>
+        <div id="header-main">
 
-                </ul><!-- .menu -->
-            </nav><!-- #navigation -->
-            <div id="header-search">
-                <div class="header-search-inner">
-                    <form method="get" action="">
-                        <input type="text" name="s" placeholder="Search and hit enter" autocomplete="off"/>
-                    </form>
-                    <span class="header-search-icon"><span class="fa fa-search"></span></span>
-                </div><!-- .search-form-wrapper -->
-            </div><!-- #header-search -->
-        </div><!-- .wrapper -->
-    </div><!-- #header-top -->
-</header>
+        </div><!-- #header-main -->
+    </header><!-- #header -->
 
 
 

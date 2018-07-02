@@ -50,41 +50,17 @@
         (SELECT followGroup_id FROM followrelation WHERE user_id = #{_parameter})
     </select>
 
-    <resultMap id="UserInfoMap" type="UserInfo">
-        <id column="user_id" property="userId"/>
-        <result column="userAccount" property="useraccount"/>
-        <result column="userSex" property="usersex"/>
-        <result column="userAge" property="userage"/>
-        <result column="userEducate" property="usereducate"/>
-        <result column="userGraduate" property="usergraduate"/>
-        <result column="userIntroduce" property="userintroduce"/>
-        <result column="userNickName" property="usernickname"/>
-        <result column="userImg" property="userimg"/>
-        <result column="userEmail" property="useremail"/>
-        <result column="userPhone" property="userphone"/>
-        <result column="userEnergy" property="userenergy"/>
-        <result column="userIdNumber" property="useridnumber"/>
-        <result column="userStatus" property="userstatus"/>
-        <result column="username" property="username"/>
-        <result column="userCreateTime" property="usercreatetime"/>
-        <result column="logintime" property="logintime"/>
-        <association property="address" javaType="Address">
-            <result column="address_id" property="addressId"/>
-            <result column="country" property="country"/>
-            <result column="province" property="province"/>
-            <result column="city" property="city"/>
-            <result column="county" property="county"/>
-            <result column="detail_address" property="detail_address"/>
-        </association>
-    </resultMap>
-
     <!--//    根据用户id查询用户信息-->
     <!--public UserInfo selectUserById(int user_id);-->
-    <select id="selectUserById" parameterType="int" resultMap="UserInfoMap">
-        select u.*,a.* from userInfo u,address a
-        where u.addresss_id = a.address_id AND user_id = #{_paramter}
+    <select id="selectUserById" parameterType="int" resultType="UserInfo">
+        select * from userInfo WHERE user_id = #{_paramter}
     </select>
 
+    <!--//    根据地址id查询地址信息-->
+    <!--public Address selectAddressByAddressId(int userId,int addressId);-->
+    <select id="selectAddressByAddressId" parameterType="int" resultType="Address">
+       SELECT * FROM address WHERE address_id = #{_parameter}
+    </select>
 
     <!--//    根据自己的id和关注人的id取消关注此人-->
     <!--public boolean deleteUserByUserIdAndFollowUser(int userId,int followUserId);-->
@@ -123,7 +99,58 @@
                WHERE bcon.blog_id = bcol.blog_id AND bcon.user_id = ui.user_id AND bcol.user_id = 170
     </select>
 
+    <!--//    修改个人昵称-->
+    <!--public boolean updateNickName(int user_id,String nickname);-->
+    <update id="updateNickName">
+        UPDATE userinfo SET userNickName = #{param2} WHERE user_id = #{param1}
+    </update>
 
+    <!--//    修改个人姓名-->
+    <!--public boolean updateName(int user_id,String name);-->
+    <update id="updateName">
+        UPDATE userinfo SET username = #{param2} WHERE user_id = #{param1}
+    </update>
 
+    <!--//    修改个人简介-->
+    <!--public boolean updateIntroduce(int user_id,String introduce);-->
+    <update id="updateIntroduce">
+        UPDATE userinfo SET userIntroduce = #{param2} WHERE user_id = #{param1}
+    </update>
+
+    <!--//    修改学校信息-->
+    <!--public boolean updateSchool(int user_id,String school);-->
+    <update id="updateSchool">
+        UPDATE userinfo SET userGraduate = #{param2} WHERE user_id = #{param1}
+    </update>
+
+    <!--//    修改出生日期-->
+    <!--public boolean updateCreateTime(int user_id, Date createdate);-->
+    <update id="updateCreateTime">
+        UPDATE userinfo SET userCreateTime = #{param2} WHERE user_id = #{param1}
+    </update>
+
+    <!--//    修改性别-->
+    <!--public boolean updateSex(int user_id,String sex);-->
+    <update id="updateSex">
+        UPDATE userinfo SET userSex = #{param2} WHERE user_id = #{param1}
+    </update>
+
+    <!--//    从地址表查询插入地址-->
+    <!--public Address selectaddress(String province,String city,String county);-->
+    <select id="selectaddress" resultType="Address">
+        SELECT * FROM address WHERE province = #{param1} AND city = #{param2} AND county = #{param3}
+    </select>
+
+    <!--//    在地址表中插入地址-->
+    <!--public boolean insertaddress(String province,String city,String county);-->
+    <insert id="insertaddress">
+        INSERT INTO address(country,province,city,county) VALUES('China',#{param1},#{param2},#{param3})
+    </insert>
+
+    <!--//    向用户信息表中插入地址信息-->
+    <!--public boolean updateaddressid(int user_id,int address_id);-->
+    <update id="updateaddressid">
+        UPDATE userinfo SET addresss_id = #{param2} WHERE user_id = #{param1}
+    </update>
 
 </mapper>

@@ -15,6 +15,12 @@
 <html>
 <head>
     <title>个人博客</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+
+    <link href="<%=basePath%>css/index-css/style_1.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=basePath%>css/index-css/main.css" rel="stylesheet" >
+    <link href="<%=basePath%>css/index-css/nav_font.css" rel='stylesheet' type='text/css'>
+
     <link href="<%=basePath%>css/personal-css/style.css" title="style" rel="stylesheet" type="text/css" />
     <link id="clink" href="<%=basePath%>css/personal-css/style-mango.css" title="style" rel="stylesheet" type="text/css" media="screen" />
     <script src="<%=basePath%>js/personal-js/jquery.min.js" type="text/javascript"></script>
@@ -43,6 +49,8 @@
     <script src="<%=basePath%>js/personal-js/javascript.js" type="text/javascript"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
 <body>
+<c:import url="${basePath}header.jsp" ></c:import>
+
 <div id="bodypat">
     <section id="container">
         <header class="clearfix">
@@ -51,12 +59,14 @@
             <img id="logo" src="<%=basePath%>img${userinfo.userimg}" alt="logo" />
             <span id="sitename" style="font-size: 2.8em;">
                     ${userinfo.usernickname}
-                        <span>${userinfo.userstatus}</span>
+                       <%--<span>${userblog.size()*5+mycomment.size()*3+myzan.size()*2}</span>--%>
+                        <c:if test="${userinfo.userstatus}==1"><span></span></c:if>
+                        <c:if test="${userinfo.userstatus}==0"><span>禁言</span></c:if>
             </span>
         </a>
 
-            <nav>
-                <ul id="nav" class="clearfix">
+            <nav >
+                <ul id="nav" class="clearfix" style="margin-top:35px;">
                     <!-- Menu Item 1 -->
                     <li class="current"><a href="/ShareMaven/personalpage/personal.action" title="Home"><span>首页</span></a></li>
                     <!-- Menu Item 4 -->
@@ -259,7 +269,7 @@
                                     <img style="height:60px;width:60px" src="<%=basePath%>img${mycomment.get(0).userimg}"/>
                                 </a>
                                 <a style="float:left;font-size: 2.0em;text-align:left;" href="#">
-                                        ${mycomment.get(0).usernickname}
+                                        ${mycomment.get(0).usernickname}&nbsp;
                                 </a>
                                 <a style="float:left;font-size: 1.6em;color: #FFFFFF;">
                                     <fmt:formatDate  value="${mycomment.get(0).blogcreatetime}" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate>
@@ -286,7 +296,7 @@
                                     <img style="height:60px;width:60px" src="<%=basePath%>img${myzan.get(0).userimg}"/>
                                 </a>
                                 <a style="float:left;font-size: 2.0em;text-align:left;" href="#">
-                                        ${myzan.get(0).usernickname}
+                                        ${myzan.get(0).usernickname}&nbsp;
                                 </a>
                                 <a style="float:left;font-size: 1.6em;color: #FFFFFF;">
                                     <fmt:formatDate  value="${myzan.get(0).blogcreatetime}" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate>
@@ -313,7 +323,7 @@
                                     <img style="height:60px;width:60px" src="<%=basePath%>img${mycollect.get(0).userimg}"/>
                                 </a>
                                 <a style="float:left;font-size: 2.0em;text-align:left;" href="#">
-                                        ${mycollect.get(0).usernickname}
+                                        ${mycollect.get(0).usernickname}&nbsp;
                                 </a>
                                 <a style="float:left;font-size: 1.6em;color: #FFFFFF;">
                                     <fmt:formatDate  value="${mycollect.get(0).blogcreatetime}" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate>

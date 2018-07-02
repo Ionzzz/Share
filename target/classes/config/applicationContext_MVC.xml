@@ -41,6 +41,53 @@
         </property>
     </bean>
 
+    <!--拦截器-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+                <mvc:mapping path="/shuDong/*"/>
+            <bean class="com.gem.share.util.LoginIntcepter"/>
+        </mvc:interceptor>
+
+        <mvc:interceptor>
+            <mvc:mapping path="/index/*"/>
+            <bean class="com.gem.share.util.LoginIntcepter"/>
+        </mvc:interceptor>
+
+        <mvc:interceptor>
+            <mvc:mapping path="/chat/*"/>
+            <bean class="com.gem.share.util.LoginIntcepter"/>
+        </mvc:interceptor>
+
+        <mvc:interceptor>
+            <mvc:mapping path="/new/*"/>
+            <bean class="com.gem.share.util.LoginIntcepter"/>
+        </mvc:interceptor>
+
+        <mvc:interceptor>
+            <mvc:mapping path="/notice/*"/>
+            <bean class="com.gem.share.util.LoginIntcepter"/>
+        </mvc:interceptor>
+
+        <mvc:interceptor>
+            <mvc:mapping path="/personalpage/*"/>
+            <bean class="com.gem.share.util.LoginIntcepter"/>
+        </mvc:interceptor>
+
+        <mvc:interceptor>
+            <mvc:mapping path="/single/*"/>
+            <bean class="com.gem.share.util.LoginIntcepter"/>
+        </mvc:interceptor>
+
+        <mvc:interceptor>
+            <mvc:mapping path="/topic/*"/>
+            <bean class="com.gem.share.util.LoginIntcepter"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+
+
+
+
 
 
 

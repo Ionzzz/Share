@@ -74,8 +74,12 @@ public class ManagerServiceImpl implements ManagerService{
         map.put("blogId",b.getBlogId());
         map.put("blogContent",b.getBlogcontent());
         map.put("blogCreateTime",b.getBlogcreatetime());
-        map.put("blogBrowseCount",mngBlogMapper.selectBrowseCountByBlogId(b.getBlogId()));
+        if("0".equals(b.getBlogflag())){
+            map.put("blogBrowseCount", mngBlogMapper.selectBrowseCountByBlogId(b.getBlogId()));
+        }else if("1".equals(b.getBlogflag())){
+            map.put("blogBrowseCount", mngBlogMapper.selectBrowseCountByShuDongId(b.getBlogId()));
 
+        }
         mapList.add(map);
     }
     return mapList;

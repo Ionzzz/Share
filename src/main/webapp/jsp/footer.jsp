@@ -16,7 +16,41 @@
 <html>
 <head>
     <title>Title</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+
 </head>
+
+<script>
+    var img=document.getElementsByName("img");
+    //alert(img.length);
+    for(var i=0;i<img.length;i++){
+        if (!/*@cc_on!@*/0) {//if not IE
+            //Firefox2、Firefox3、Safari3.1+、Opera9.6+ support js.onload
+            // img[i].onload = funcition(){}
+            //alert(img[i].width+"----"+img[i].height);
+            if(img[i].width>img[i].height){
+                img[i].style.height="100%";
+                //alert("h");
+            }else{
+                img[i].style.width="100%";
+                //alert("w");
+            }
+        }else{
+            //IE6、IE7 support js.onreadystatechange
+            img[i].onreadystatechange = function () {
+                if (img[i].readyState == 'loaded' || img[i].readyState == 'complete') {
+                    if(img[i].width>img[i].height){
+                        img[i].style.height="100%";
+                    }else{
+                        img[i].style.width="100%";
+                    }
+                }
+            }
+        }
+    }
+
+
+</script>
 <body>
 
 <div class="container-fluid fh5co_footer_bg pb-3">
@@ -41,7 +75,7 @@
                         <div class="fh5co_verticle_middle"><i class="fa fa-google-plus"></i></div>
                     </a></div>
                     <div class="text-center d-inline-block"><a class="fh5co_display_table_footer">
-                        <div class="fh5co_verticle_middle"><i class="fa fa-twitter">111</i></div>
+                        <div class="fh5co_verticle_middle"><i class="fa fa-twitter"></i></div>
                     </a></div>
                     <div class="text-center d-inline-block"><a class="fh5co_display_table_footer">
                         <div class="fh5co_verticle_middle"><i class="fa fa-facebook"></i></div>
@@ -52,23 +86,24 @@
                 <div class="footer_main_title py-3"> 话题</div>
                 <ul class="footer_menu">
                     <c:forEach items="${labelList}" var="labellist" begin="0" end="4">
-                        <li><a href="<%=basePath%>/topic/main.action?labelId=${labellist.labelId}" class=""><i class="fa fa-angle-right"></i>&nbsp;&nbsp; ${labellist.labelname}</a></li>
+                        <li><a href="<%=basePath%>/topic/main.action?labelId=${labellist.labelId}" class="" style="text-decoration: blink "><i class="fa fa-angle-right"></i>&nbsp;&nbsp; ${labellist.labelname}</a></li>
                     </c:forEach>
-                    <li><a href="<%=basePath%>/topic/all.action" class=""><i class="fa fa-angle-right"></i>&nbsp;&nbsp; 更多...</a></li>
+                    <li><a href="<%=basePath%>/topic/all.action" class="" style="text-decoration: blink "><i class="fa fa-angle-right"></i>&nbsp;&nbsp; 更多...</a></li>
                 </ul>
             </div>
             <div class="col-12 col-md-5 col-lg-3 position_footer_relative">
                 <div class="footer_main_title py-3"> 最新发布</div>
                 <c:forEach items="${foot}" var="foot" begin="0" end="2">
                     <div class="footer_makes_sub_font"style="margin: 10px 0;"><fmt:formatDate value="${foot.blogContent.blogcreatetime}" pattern="MM-dd,yyyy"/></div>
-                    <a href="<%=basePath%>single/main.action?blogId=${foot.blogContent.blogId}" class="footer_post pb-4 texthidden"> ${foot.blogContent.blogcontent} </a>
+                    <a href="<%=basePath%>single/main.action?blogId=${foot.blogContent.blogId}" class="footer_post pb-4 texthidden" style="text-decoration: blink "> ${foot.blogContent.blogcontent} </a>
                 </c:forEach>
                 <div class="footer_position_absolute"><img src="<%=basePath%>images/index-images/footer_sub_tipik.png" alt="img" class="width_footer_sub_img"/></div>
             </div>
             <div class="col-12 col-md-12 col-lg-4 ">
                 <div class="footer_main_title py-3"> 动态</div>
                 <c:forEach items="${foot}" var="img" begin="0" end="8">
-                    <a href="<%=basePath%>single/main.action?blogId=${img.blogContent.blogId}" class="footer_img_post_6"><img src="<%=basePath%>${img.blogPics.pic}" style="width: 94px;height: 50px;" alt="img"/></a>
+                    <a href="<%=basePath%>single/main.action?blogId=${img.blogContent.blogId}" class="footer_img_post_6">
+                        <img src="<%=basePath%>${img.blogPics.pic}" alt="img"/></a>
                 </c:forEach>
             </div>
         </div>

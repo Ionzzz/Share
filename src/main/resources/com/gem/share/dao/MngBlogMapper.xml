@@ -22,7 +22,9 @@
     <!--int selectBrowseCountByBlogId(int blogid);-->
     <select id="selectBrowseCountByBlogId" parameterType="int" resultType="java.lang.Integer">
         select blogBrowseCount from blogbrowse where blog_id=#{id}
-    </select>
+    </select><select id="selectBrowseCountByShuDongId" parameterType="int" resultType="java.lang.Integer">
+    select count(blog_id) from shudongbrowse where blog_id=#{id}
+</select>
     <!--BlogContent selectBlogById(int id);-->
 <select id="selectBlogById" parameterType="int" resultMap="BlogContentMap">
     SELECT * from blogcontent where blog_id=#{_parameter}

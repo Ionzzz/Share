@@ -13,6 +13,7 @@
 <html>
 <head>
     <title>header</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 
 </head>
 <body>
@@ -24,37 +25,37 @@
                 <ul class="menu">
                     <li>
                         <a href="<%=basePath%>index/main.action">首页</a>
-                        <ul>
+                        <%--<ul>
                             <li class="current-menu-item"><a href="index.jsp">Home Version 1</a></li>
                             <li><a href="#">Home Version 2</a></li>
                             <li><a href="#">Home Version 3</a></li>
                             <li><a href="#">Home Version 4</a></li>
-                        </ul>
+                        </ul>--%>
                     </li>
                     <li>
                         <a href="<%=basePath%>new/main.action">最新</a>
-                        <ul>
+                        <%--<ul>
                             <li><a href="single.jsp">Right Sidebar</a></li>
                             <li><a href="#">Left Sidebar</a></li>
                             <li><a href="#">No Sidebar</a></li>
-                        </ul>
+                        </ul>--%>
                     </li>
                     <%-- class="current-menu-item"--%>
                     <li><a href="<%=basePath%>topic/all.action">话题</a></li>
-                    <li><a href="single.jsp">发布</a></li>
+                    <li><a href="<%=basePath%>jsp/publishBlog.jsp">发布</a></li>
                     <li><a href="<%=basePath%>shuDong/main.action">树洞</a></li>
-                    <li><a href="about.jsp">关于我们</a></li>
-                    <li><a href="contactUs.jsp">联系我们</a></li>
+                    <li><a href="<%=basePath%>jsp/about.jsp">关于我们</a></li>
+                    <li><a href="<%=basePath%>jsp/contactUs.jsp">联系我们</a></li>
                 </ul><!-- .menu -->
             </nav><!-- #navigation -->
-            <div id="header-search">
+           <%-- <div id="header-search">
                 <div class="header-search-inner">
                     <form method="get" action="">
                         <input type="text" name="s" placeholder="Search and hit enter" autocomplete="off"/>
                     </form>
                     <span class="header-search-icon"><span class="fa fa-search"></span></span>
                 </div><!-- .search-form-wrapper -->
-            </div><!-- #header-search -->
+            </div><!-- #header-search -->--%>
         </div><!-- .wrapper -->
     </div><!-- #header-top -->
 </header>

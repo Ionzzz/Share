@@ -51,18 +51,20 @@
         }
     </style>
     <script>
-
+        var arr;
         function getZan(blogId) {
             $.ajax({
                 type:"post",
-                url:'${pageContext.request.contextPath }/index/zan.action',
+                url:'${pageContext.request.contextPath}/index/zan.action',
                 data : {"blogId":blogId},
                 dateType:'json',
                 success:function (data) {
-                    $("span[name="+blogId+"]").html(data);
+                    arr = data.split("&");
+                    $("span[name="+blogId+"]").html(arr[0]);
                 }
             });
         }
+
     </script>
 </head>
 <body>
@@ -74,33 +76,33 @@
                 <ul class="menu">
                     <li>
                         <a href="<%=basePath%>index/main.action">首页</a>
-                        <ul>
+                      <%--  <ul>
                             <li class="current-menu-item"><a href="index.jsp">Home Version 1</a></li>
                             <li><a href="#">Home Version 2</a></li>
                             <li><a href="#">Home Version 3</a></li>
                             <li><a href="#">Home Version 4</a></li>
-                        </ul>
+                        </ul>--%>
                     </li>
                     <li class="current-menu-item">
                         <a href="<%=basePath%>new/main.action">最新</a>
-                        <ul>
+                      <%--  <ul>
                             <li><a href="#">Right Sidebar</a></li>
                             <li><a href="#">Left Sidebar</a></li>
                             <li><a href="#">No Sidebar</a></li>
-                        </ul>
+                        </ul>--%>
                     </li>
                     <li><a href="<%=basePath%>topic/all.action">话题</a></li>
-                    <li><a href="<%=basePath%>single.jsp">发布</a></li>
+                    <li><a href="<%=basePath%>/jsp/publishBlog.jsp">发布</a></li>
                     <li><a href="<%=basePath%>shuDong/main.action">树洞</a></li>
-                    <li><a href="<%=basePath%>about.jsp">关于我们</a></li>
-                    <li><a href="<%=basePath%>contactUs.jsp">联系我们</a></li>
+                    <li><a href="<%=basePath%>/jsp/about.jsp">关于我们</a></li>
+                    <li><a href="<%=basePath%>/jsp/contactUs.jsp">联系我们</a></li>
 
                 </ul><!-- .menu -->
             </nav><!-- #navigation -->
             <form method="post" action="<%=basePath%>new/main.action">
                 <div id="header-search">
                     <div class="header-search-inner">
-                        <input type="text" placeholder="Search and hit enter" autocomplete="off"name="searchContent"/>
+                        <input type="text" placeholder="在这搜索哦..." autocomplete="off"name="searchContent"/>
                         <input type="submit" name="submit"style="display: none" value=""/>
                     </div><!-- .search-form-wrapper -->
                 </div><!-- #header-search -->
@@ -116,7 +118,7 @@
             <div class="row mx-0">
                     <div class="col-md-8 animate-box" data-animate-effect="fadeInLeft" style="width: 760px;">
                         <div>
-                            <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">News</div>
+                            <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">最新发布</div>
                         </div>
                             <input type="hidden" name="curPage" id="curPage">
                             <input type="hidden" name="searchContent" value="${searchContent}"></input>
@@ -175,7 +177,7 @@
 
                 <div class="col-md-3 animate-box" data-animate-effect="fadeInRight">
                     <div>
-                        <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">Tags</div>
+                        <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">标签</div>
                     </div>
                     <div class="clearfix"></div>
                     <div class="fh5co_tags_all">
@@ -187,7 +189,7 @@
 
 
                     <div>
-                        <div class="fh5co_heading fh5co_heading_border_bottom pt-3 py-2 mb-4">Most Popular</div>
+                        <div class="fh5co_heading fh5co_heading_border_bottom pt-3 py-2 mb-4">最流行</div>
                     </div>
 
                     <c:forEach items="${blogpopular}" var="bpopular">
@@ -196,7 +198,17 @@
                                 <img src="<%=basePath%>${bpopular.blogPics.pic}" alt="img" class="fh5co_most_trading"/>
                             </div>
                             <div class="col-7 paddding">
-                                <div class="most_fh5co_treding_font"> ${bpopular.blogContent.blogcontent}</div>
+                                <div class="most_fh5co_treding_font ">
+                                    <p class="texthidden" style="width: 200px;">
+                                        <c:if test="${bpopular.labelInfo.labelname=='书籍'}">
+                                            <c:set var="bookname" value=" ${bpopular.blogContent.blogcontent} "/>
+                                            《${fn:substringBefore(bookname,"||" )}》
+                                        </c:if>
+                                        <c:if test="${bpopular.labelInfo.labelname!='书籍'}">
+                                            ${bpopular.blogContent.blogcontent}
+                                        </c:if>
+                                    </p>
+                                </div>
                                 <div class="most_fh5co_treding_font_123"><fmt:formatDate value="${bpopular.blogContent.blogcreatetime}" pattern="MM-dd_yyyy"/></div>
                             </div>
                         </div>
@@ -206,19 +218,19 @@
 
             <div class="row mx-0" style="margin-top: 50px;">
                 <div class="col-12 text-center pb-4 pt-4">
-                    <a href="javascript:getPage(1)" class="btn_mange_pagging"><i class="fa fa-long-arrow-left"></i>&nbsp;&nbsp; HOME PAGE</a>
+                    <a href="javascript:getPage(1)" class="btn_mange_pagging" style="text-decoration: blink "><i class="fa fa-long-arrow-left"></i>&nbsp;&nbsp;首页</a>
 
                     <c:if test="${pageInfo.pages==1}">
-                        <a href="javascript:getPage(${pageInfo.pageNum})" class="btn_pagging" style="color: #1abc9c">${pageInfo.pageNum}</a>
+                        <a href="javascript:getPage(${pageInfo.pageNum})" class="btn_pagging" style="color: #1abc9c;text-decoration: blink ">${pageInfo.pageNum}</a>
                     </c:if>
                     <c:if test="${pageInfo.pages==2}">
                         <c:if test="${pageInfo.pageNum==1}">
-                            <a href="javascript:getPage(${pageInfo.pageNum})" class="btn_pagging" style="color: #1abc9c">${pageInfo.pageNum}</a>
+                            <a href="javascript:getPage(${pageInfo.pageNum})" class="btn_pagging" style="color: #1abc9c;text-decoration: blink ">${pageInfo.pageNum}</a>
                             <a href="javascript:getPage(${pageInfo.nextPage})" class="btn_pagging">${pageInfo.nextPage}</a>
                         </c:if>
                         <c:if test="${pageInfo.pageNum==2}">
                             <a href="javascript:getPage(${pageInfo.prePage})" class="btn_pagging">${pageInfo.prePage}</a>
-                            <a href="javascript:getPage(${pageInfo.pageNum})" class="btn_pagging" style="color: #1abc9c">${pageInfo.pageNum}</a>
+                            <a href="javascript:getPage(${pageInfo.pageNum})" class="btn_pagging" style="color: #1abc9c;text-decoration: blink ">${pageInfo.pageNum}</a>
                         </c:if>
                     </c:if>
                     <c:if test="${pageInfo.pages==3||pageInfo.pages>3}">
@@ -239,7 +251,7 @@
                         </c:if>
                     </c:if>
 
-                    <a href="javascript:getPage(${pageInfo.pages})" class="btn_mange_pagging">END PAGE <i class="fa fa-long-arrow-right"></i>&nbsp;&nbsp; </a>
+                    <a href="javascript:getPage(${pageInfo.pages})" class="btn_mange_pagging" style="text-decoration: blink ">末页 <i class="fa fa-long-arrow-right"></i>&nbsp;&nbsp; </a>
                     <div style=" margin-top:20px;opacity: 0.6"><b>${pageInfo.total}</b> 条,共<b>${pageInfo.getPages()}</b>页,当前第<b>${pageInfo.pageNum}</b>页
                     </div>
                 </div>
@@ -250,7 +262,7 @@
 <div class="container-fluid pb-4 pt-5">
     <div class="container animate-box">
         <div>
-            <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">Trending</div>
+            <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">热度最高</div>
         </div>
         <div class="owl-carousel owl-theme" id="slider2">
             <c:forEach items="${blogUserPicsLabelList}" var="blogUserPicsLabelList">
@@ -287,6 +299,35 @@
         document.getElementById("curPage").value=curPage;
 //				触发表单提交事件
         document.getElementById("mainForm").submit();
+    }
+</script>
+<script>
+    var img=document.getElementsByName("img");
+    //alert(img.length);
+    for(var i=0;i<img.length;i++){
+        if (!/*@cc_on!@*/0) {//if not IE
+            //Firefox2、Firefox3、Safari3.1+、Opera9.6+ support js.onload
+            // img[i].onload = funcition(){}
+            //alert(img[i].width+"----"+img[i].height);
+            if(img[i].width>img[i].height){
+                img[i].style.height="100%";
+                //alert("h");
+            }else{
+                img[i].style.width="100%";
+                //alert("w");
+            }
+        }else{
+            //IE6、IE7 support js.onreadystatechange
+            img[i].onreadystatechange = function () {
+                if (img[i].readyState == 'loaded' || img[i].readyState == 'complete') {
+                    if(img[i].width>img[i].height){
+                        img[i].style.height="100%";
+                    }else{
+                        img[i].style.width="100%";
+                    }
+                }
+            }
+        }
     }
 </script>
 </body>

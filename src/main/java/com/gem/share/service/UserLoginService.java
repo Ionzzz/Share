@@ -18,4 +18,7 @@ public interface UserLoginService {
 
     //    修改密码
     public Boolean updatePassByPhone(String userphone,String newpass);
+
+    //    更新信息，插入userAccount
+    public boolean insertUserAccount(String usesrAccount,int userId);
 }

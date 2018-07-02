@@ -15,6 +15,12 @@
 <html>
 <head>
     <title>我的动态</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+
+    <link href="<%=basePath%>css/index-css/style_1.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=basePath%>css/index-css/main.css" rel="stylesheet" >
+    <link href="<%=basePath%>css/index-css/nav_font.css" rel='stylesheet' type='text/css'>
+
     <link href="<%=basePath%>css/personal-css/style.css" title="style" rel="stylesheet" type="text/css" />
     <link id="clink" href="<%=basePath%>css/personal-css/style-mango.css" title="style" rel="stylesheet" type="text/css" media="screen" />
     <script src="<%=basePath%>js/personal-js/jquery.min.js" type="text/javascript"></script>
@@ -41,6 +47,8 @@
     <script src="<%=basePath%>js/personal-js/javascript.js" type="text/javascript"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
 <body>
+<c:import url="${basePath}header.jsp" ></c:import>
+
 <div id="bodypat">
     <section id="container">
 
@@ -50,12 +58,13 @@
                 <img id="logo" src="<%=basePath%>img${userinfo.userimg}" alt="logo" />
                 <span id="sitename" style="font-size: 2.8em;">
                     ${userinfo.usernickname}
-                        <span>${userinfo.userstatus}</span>
+                         <c:if test="${userinfo.userstatus}==1"><span></span></c:if>
+                        <c:if test="${userinfo.userstatus}==0"><span>禁言</span></c:if>
             </span>
             </a>
 
             <nav>
-                <ul id="nav" class="clearfix">
+                <ul id="nav" class="clearfix" style="margin-top:35px;">
                     <!-- Menu Item 1 -->
                     <li><a href="/ShareMaven/personalpage/personal.action" title="Home"><span>首页</span></a></li>
                     <!-- Menu Item 4 -->
@@ -96,7 +105,7 @@
                 <c:forEach items="${myallcomment}" var="myallcomments">
                     <c:if test="${id == 'comment' || id == null}">
                         <div class="bloglist" style="background-color:rgba(0,0,0,0.4)">
-                            <div style="float:left;height:50px;">
+                            <div style="float:left;height:50px;margin-bottom: 15px;">
                                 <P style="text-align:left;margin-left:50px;font-size:1.8em;width:500px;height:50px;line-height: 50px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;">
                                     我的点评：${myallcomments.commentcontent}
                                 </P>
@@ -155,7 +164,7 @@
             <!-- BEGIN SIDEBAR -->
             <section id="sidebar">
 
-                <div id="search" class="widget">
+                <div id="search" class="widget" style="background: none;padding: 0">
                     <form action=" " />
                     <input id="search-field" type="search" name="sitesearch" class="placeholder" placeholder="Search" />
                     <input type="submit" id="search-submit" value=" " />

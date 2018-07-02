@@ -40,5 +40,10 @@ public class UserLoginServiceImpl implements UserLoginService {
         return userLoginMapper.updatePassByPhone(userphone,newpass);
     }
 
+    @Override
+    public boolean insertUserAccount(String usesrAccount, int userId) {
+        return userLoginMapper.insertUserAccount(usesrAccount,userId);
+    }
+
 
 }

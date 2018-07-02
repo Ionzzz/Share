@@ -8,6 +8,7 @@ import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -59,6 +60,11 @@ public class PersonalServiceImpl implements PersonalService {
     }
 
     @Override
+    public Address selectAddressByAddressId(int addressId) {
+        return personalMapper.selectAddressByAddressId(addressId);
+    }
+
+    @Override
     public boolean deleteUserByUserIdAndFollowUser(int userId,int followUserId){
         return personalMapper.deleteUserByUserIdAndFollowUser(userId,followUserId);
     }
@@ -84,4 +90,48 @@ public class PersonalServiceImpl implements PersonalService {
         return personalMapper.selectallCollect(collectUser_id);
     }
 
+    @Override
+    public boolean updateNickName(int user_id, String nickname) {
+        return personalMapper.updateNickName(user_id,nickname);
+    }
+
+    @Override
+    public boolean updateName(int user_id, String name) {
+        return personalMapper.updateName(user_id,name);
+    }
+
+    @Override
+    public boolean updateIntroduce(int user_id, String introduce) {
+        return personalMapper.updateIntroduce(user_id,introduce);
+    }
+
+    @Override
+    public boolean updateSchool(int user_id, String school) {
+        return false;
+    }
+
+    @Override
+    public boolean updateCreateTime(int user_id, Date createdate) {
+        return personalMapper.updateCreateTime(user_id,createdate);
+    }
+
+    @Override
+    public boolean updateSex(int user_id, String sex) {
+        return personalMapper.updateSex(user_id,sex);
+    }
+
+    @Override
+    public Address selectaddress(String province, String city, String county) {
+        return personalMapper.selectaddress(province,city,county);
+    }
+
+    @Override
+    public boolean insertaddress(String province, String city, String county) {
+        return personalMapper.insertaddress(province,city,county);
+    }
+
+    @Override
+    public boolean updateaddressid(int user_id, int address_id) {
+        return personalMapper.updateaddressid(user_id,address_id);
+    }
 }

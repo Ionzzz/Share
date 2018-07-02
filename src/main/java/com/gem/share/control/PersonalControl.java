@@ -1,5 +1,6 @@
 package com.gem.share.control;
 
+import com.gem.share.entity.Address;
 import com.gem.share.entity.FollowGroup;
 import com.gem.share.entity.UserInfo;
 import com.gem.share.service.PersonalService;
@@ -14,6 +15,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,6 +33,7 @@ public class PersonalControl {
     public void personal(HttpSession session,HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         UserInfo userInfo = (UserInfo)request.getSession().getAttribute("userInfo");
         int userid = userInfo.getUserId();
+
         session.setAttribute("userinfo",personalService.selectUserById(userid));
         System.out.println("------------------userinfo:"+personalService.selectUserById(userid));
 
@@ -38,12 +43,6 @@ public class PersonalControl {
         request.setAttribute("mycomment",personalService.selectallcomment(userid));
 
         request.getRequestDispatcher("/jsp/personalblog.jsp").forward(request,response);
-    }
-
-    @RequestMapping("picture.action")
-    public void picture(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getSession();
-        request.getRequestDispatcher("/jsp/personalpage/picture.jsp").forward(request,response);
     }
 
     @RequestMapping("dynamic.action")
@@ -78,7 +77,6 @@ public class PersonalControl {
         List<UserInfo> users = personalService.selectUserByFollowUserId(user_id);
         System.out.println("------------------"+users);
         request.setAttribute("cares",users);
-
 
 
 //        分页
@@ -119,17 +117,101 @@ public class PersonalControl {
         return userInfos;
     }
 
-    @RequestMapping("data.action")
+    @RequestMapping("/data.action")
     public void data(HttpSession session,HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
+        request.getSession();
+        UserInfo userInfo = (UserInfo)request.getSession().getAttribute("userInfo");
+        //        查询地址
+        String addressId =  userInfo.getAddresssId() + "";
+        if(addressId == null){
+            request.setAttribute("address",null);
+        }else {
+            request.setAttribute("address",personalService.selectAddressByAddressId(userInfo.getAddresssId()));
+        }
+        request.getRequestDispatcher("/jsp/personaldata.jsp").forward(request,response);
+    }
 
+    @RequestMapping("updatecontent.action")
+    public @ResponseBody boolean updatecontent(HttpSession session,HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
+        request.getSession();
         UserInfo userInfo = (UserInfo)request.getSession().getAttribute("userInfo");
         int user_id = userInfo.getUserId();
-        session.setAttribute("userinfo",personalService.selectUserById(user_id));
-        request.getSession();
-        System.out.println("============="+personalService.selectUserById(user_id));
 
-//        request.getRequestDispatcher("/jsp/personalpage/personaldata.jsp").forward(request,response);
-        request.getRequestDispatcher("/jsp/personaldata.jsp").forward(request,response);
+//        查询地址
+        String addressId =  userInfo.getAddresssId() + "";
+        if(addressId == null){
+            request.setAttribute("address",null);
+        }else {
+            request.setAttribute("address",personalService.selectAddressByAddressId(userInfo.getAddresssId()));
+        }
+
+        String id = request.getParameter("id");
+        String content = request.getParameter("content");
+        Boolean tf = false;
+        if("nickname".equals(id)){
+            tf = personalService.updateNickName(user_id,content);
+        }
+        if("name".equals(id)){
+            tf = personalService.updateName(user_id,content);
+        }
+        if("introduce".equals(id)){
+            tf = personalService.updateIntroduce(user_id,content);
+        }
+        if("school".equals(id)){
+            tf = personalService.updateSchool(user_id,content);
+        }
+        return tf;
+
+    }
+
+    //        修改填写地址
+    @RequestMapping("updateAddress.action")
+    public @ResponseBody boolean updateAddress(HttpServletRequest request){
+        UserInfo userInfo = (UserInfo)request.getSession().getAttribute("userInfo");
+        int user_id = userInfo.getUserId();
+        String province = request.getParameter("province");
+        String city = request.getParameter("city");
+        String county = request.getParameter("county");
+
+        Boolean utf = false;
+        Address address = personalService.selectaddress(province,city,county);
+        if(address == null){
+            Boolean tf = personalService.insertaddress(province,city,county);
+            if(tf){
+                Address address1 = personalService.selectaddress(province,city,county);
+                utf = personalService.updateaddressid(user_id,address1.getAddressId());
+            }else {
+                utf = false;
+            }
+        }else {
+            utf = personalService.updateaddressid(user_id,address.getAddressId());
+        }
+        return utf;
+    }
+
+    //        修改出生日期
+    @RequestMapping("/updateCreateTime.action")
+    public @ResponseBody boolean updateCreateTime(HttpServletRequest request) throws ParseException {
+        UserInfo userInfo = (UserInfo)request.getSession().getAttribute("userInfo");
+        int user_id = userInfo.getUserId();
+        String date = request.getParameter("date");
+
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        Date createTime = formatter.parse(date);
+
+        Boolean tf = personalService.updateCreateTime(user_id,createTime);
+
+        return tf;
+    }
+
+    //        修改性别
+    @RequestMapping("/updateSex.action")
+    public @ResponseBody boolean updateSex(HttpServletRequest request) throws ParseException {
+        UserInfo userInfo = (UserInfo)request.getSession().getAttribute("userInfo");
+        int user_id = userInfo.getUserId();
+        String sex = request.getParameter("sex");
+        Boolean tf = personalService.updateSex(user_id,sex);
+        return tf;
     }
 
     //        根据用户id和关注人id取消关注
@@ -190,6 +272,7 @@ public class PersonalControl {
                     if (tf) {
 //            数据库插入成功
                         n = 0;
+                        break;
                     } else {
                         n = 1;
                     }

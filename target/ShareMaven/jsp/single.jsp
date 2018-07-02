@@ -19,7 +19,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title></title>
+    <title>${blogmap['blog'].userInfo.usernickname}'s Blog</title>
     <!-- Bootstrap CSS -->
     <link href="<%=basePath%>css/index-css/style_1.css" rel="stylesheet" type="text/css"/>
     <link href="<%=basePath%>css/index-css/main.css" rel="stylesheet" >
@@ -49,6 +49,13 @@
             background: url("<%=basePath%>images/index-images/default.jpg");
             no-repeat:50% 50%;
         }
+        .changeimg img{
+            cursor: pointer;
+            transition: all 0.6s;
+        }
+        .changeimg img:hover{
+            transform: scale(1.4);
+        }
     </style>
 </head>
 <body class="single">
@@ -61,8 +68,25 @@
         <a href="<%=basePath%>index/userself.action?userId=${blogmap['blog'].userInfo.userId}">
             <img src="<%=basePath%>img${blogmap['blog'].userInfo.userimg}"style="width: 80px;height: 80px;" alt="Free HTML5 by FreeHTMl5.co">
         </a>
-        <span onclick="window.location.href='<%=basePath%>index/userself.action?userId=${blogmap['blog'].userInfo.userId}'"> ${blogmap['blog'].userInfo.usernickname}</span>
-        <span>&nbsp;&nbsp;&nbsp;<a href="" style="text-decoration: blink">关注</a></span>
+        <span onclick="window.location.href='<%=basePath%>index/userself.action?userId=${blogmap['blog'].userInfo.userId}'"> 用户 : ${blogmap['blog'].userInfo.usernickname}</span>
+        <span>&nbsp;&nbsp;&nbsp;
+            <c:if test="${follower == null}">
+                 <a id="cared" href="javascript:void(0)"
+                    onclick="clickfollow(${userselfmap['userInfo'].userId})" style="text-decoration: blink">关注</a>
+            </c:if>
+            <c:set var="flag" value="true"></c:set>
+            <c:forEach items="${follower}" var="follower">
+                <c:if test="${follower.userId == userselfmap['userInfo'].userId}">
+                    <c:set var="flag" value="false"></c:set>
+                    <a id="${userselfmap['userInfo'].userId}" href="javascript:void(0)"
+                       onclick="clickfollow(${userselfmap['userInfo'].userId})" style="text-decoration: blink">取消关注</a>
+                </c:if>
+            </c:forEach>
+            <c:if test="${flag == 'true'}">
+                <a id="${userselfmap['userInfo'].userId}" href="javascript:void(0)"
+                   onclick="clickfollow(${userselfmap['userInfo'].userId})" style="text-decoration: blink">关注</a>
+            </c:if>
+        </span>
         <span>${blogmap['blog'].userInfo.userintroduce}</span>
 <%--
         <h2>How to write interesting articles</h2>
@@ -79,7 +103,7 @@
                 <div style="width:inherit;float: left;margin: 30px;" >
                     <span>${blogmap['blog'].blogContent.blogcontent}</span>
                 </div>
-                <div style="width:inherit">
+                <div class="changeimg" style="width:inherit">
                     <p> <img src="<%=basePath%>${blogmap['blog'].blogPics.pic}" style="height: 300px;margin:0 20px" align="left"hspace="5" vspace="5">
                     </p>
                 </div>
@@ -89,7 +113,7 @@
             </div>
             <div class="col-md-3 animate-box" data-animate-effect="fadeInRight">
                 <div>
-                    <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">Tags</div>
+                    <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">标签</div>
                 </div>
                 <div class="clearfix"></div>
                 <div class="fh5co_tags_all">
@@ -99,7 +123,7 @@
                     <a href="<%=basePath%>topic/all.action" class="fh5co_tagg">更多</a>
                 </div>
                 <div>
-                    <div class="fh5co_heading fh5co_heading_border_bottom pt-3 py-2 mb-4">Most Popular</div>
+                    <div class="fh5co_heading fh5co_heading_border_bottom pt-3 py-2 mb-4">最近流行</div>
                 </div>
                 <c:forEach items="${blogmap['bmore']}" var="bmore">
                     <div class="row pb-3">
@@ -190,7 +214,7 @@
 <div class="container-fluid pb-4 pt-5">
     <div class="container animate-box">
         <div>
-            <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">Trending</div>
+            <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">${blogmap['blog'].labelInfo.labelname}</div>
         </div>
         <div class="owl-carousel owl-theme" id="slider1">
             <c:forEach items="${blogmap['bpopular']}" var="bpopular">
@@ -228,17 +252,23 @@
             data:{'blogId':blogId},
             dateType:'json',
             success:function (data) {
-                layer.open({
-                    type: 2,
-                    title: '写下你想说的话吧',
-                    maxmin: false,
-                    anim:4,
-                    String:"",
-                    shadeClose: true, //点击遮罩关闭层
-                    area: ['800px', '400px'],
-                    content: '<%=basePath%>jsp/publishBlogComment.jsp',
+                if(data==1){
+                    layer.open({
+                        type: 2,
+                        title: '写下你想说的话吧',
+                        maxmin: false,
+                        anim:4,
+                        String:"",
+                        shadeClose: true, //点击遮罩关闭层
+                        area: ['800px', '400px'],
+                        content: '<%=basePath%>jsp/publishBlogComment.jsp',
 
-                });
+                    });
+                }else {
+                    alert("您已被禁言○( ＾皿＾)っ");
+                    window.location.href='${pageContext.request.contextPath}/single/main.action?blogId=${blogmap['blog'].blogContent.blogId}';
+                }
+
             }
         });
 
@@ -296,6 +326,63 @@
 
     }
 
+</script>
+
+<script type="text/javascript">
+    //    点击关注  再点击删除
+    function clickfollow(id) {
+//        alert(id);
+        var aa = document.getElementById(id).innerText;
+//        alert(aa);
+        if (aa == "取消关注"){
+//            alert("你已关注过此用户！");
+            //在页面上弹出确认对话框
+            if(window.confirm('你确定要取消关注Ta吗？')){
+                //继续执行
+                $.ajax({
+                    type:"post",
+                    url:'${pageContext.request.contextPath }/personalpage/deletefollow.action',
+                    data:{"userId":id},
+                    dataType:'json',
+                    success:function (data) {
+//                        alert(data);
+                        if(data == 0){
+                            alert("取消关注成功！！");
+                            $("#"+id).html("<a id='"+id+"' href='javascript:void(0)' style='text-decoration: blink'>关注</a>")
+                        }else {
+                            alert("取消关注失败！！");
+                        }
+                    },
+                    error:function () {
+                        alert("服务器故障，请稍后重试")
+                    }
+                });
+            }
+
+        }else {
+//            alert("关注");
+            $.ajax({
+                type:"post",
+                url:'${pageContext.request.contextPath }/personalpage/clickfollow.action',
+                data : {"id":id},
+                dateType:'json',
+                success:function (data) {
+//                alert(data);
+                    if(data == 0){
+                        alert("关注成功！");
+                        $("#"+id).html("<a id='"+id+"' href='javascript:void(0)' style='text-decoration: blink'>取消关注</a>")
+                    }else if(data == 2){
+                        alert("你已关注过此用户！");
+                    }else {
+                        alert("请稍后重试！");
+                    }
+                },
+                error:function () {
+                    alert("服务器故障，请稍后重试")
+                }
+            });
+        }
+    }
 </script>
 
 

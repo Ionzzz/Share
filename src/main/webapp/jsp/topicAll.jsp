@@ -17,14 +17,14 @@
 <html>
 <head>
 
-    <title>Hot of Share</title>
+    <title>TopicAll of Share</title>
 
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta charset="utf-8">
     <meta name="author" content="">
     <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 
     <!-- CSS -->
     <link rel="stylesheet" href="<%=basePath%>css/index-css/fonts/font-awesome.css">
@@ -58,27 +58,27 @@
                     </li>
                     <li>
                         <a href="<%=basePath%>new/main.action">最新</a>
-                        <ul>
+                      <%--  <ul>
                             <li><a href="#">Right Sidebar</a></li>
                             <li><a href="#">Left Sidebar</a></li>
                             <li><a href="#">No Sidebar</a></li>
-                        </ul>
+                        </ul>--%>
                     </li>
                     <li class="current-menu-item"><a href="<%=basePath%>topic/all.action">话题</a></li>
-                    <li><a href="<%=basePath%>single.jsp">发布</a></li>
+                    <li><a href="<%=basePath%>/jsp/publishBlog.jsp">发布</a></li>
                     <li><a href="<%=basePath%>shuDong/main.action">树洞</a></li>
-                    <li><a href="<%=basePath%>about.jsp">关于我们</a></li>
-                    <li><a href="<%=basePath%>contactUs.jsp">联系我们</a></li>
+                    <li><a href="<%=basePath%>/jsp/about.jsp">关于我们</a></li>
+                    <li><a href="<%=basePath%>/jsp/contactUs.jsp">联系我们</a></li>
                 </ul><!-- .menu -->
             </nav><!-- #navigation -->
-            <div id="header-search">
+            <%--<div id="header-search">
                 <div class="header-search-inner">
                     <form method="get" action="">
                         <input type="text" name="s" placeholder="Search and hit enter" autocomplete="off"/>
                     </form>
                     <span class="header-search-icon"><span class="fa fa-search"></span></span>
                 </div><!-- .search-form-wrapper -->
-            </div><!-- #header-search -->
+            </div><!-- #header-search -->--%>
 
         </div><!-- .wrapper -->
     </div><!-- #header-top -->
@@ -98,9 +98,9 @@
             <c:forEach items="${blogliulan}" var="bloglist">
                 <div class="blog-post-alt carousel-item" style="border: 1px solid white;">
                     <div class="blog-post-alt-thumb">
-                        <div class="blog-post-alt-thumb-inner" style="width:243px;overflow:hidden;text-align: center">
+                        <div class="blog-post-alt-thumb-inner" style="width:243px;overflow:hidden;">
                             <a href="<%=basePath%>single/main.action?blogId=${bloglist.blogContent.blogId}">
-                                <img src="<%=basePath%>${bloglist.blogPics.pic}" style="height:250px;" alt="" />
+                                <img src="<%=basePath%>${bloglist.blogPics.pic}" style="height:250px;margin:auto;" alt="" />
                             </a>
                         </div><!-- .blog-post-alt-thumb-inner -->
                         <div class="blog-post-alt-thumb-cover"></div>
@@ -118,7 +118,7 @@
                                 <a href="<%=basePath%>topic/main.action?labelId=${bloglist.labelInfo.labelId}">${bloglist.labelInfo.labelname}</a>
                             </div><!-- .blog-post-alt-cat -->
                             <div class="blog-post-alt-read-more">
-                                <a href="<%=basePath%>single/main.action?blogId=${bloglist.blogContent.blogId}">READ ARTICLE</a>
+                                <a href="<%=basePath%>single/main.action?blogId=${bloglist.blogContent.blogId}">查看全文</a>
                             </div><!-- .blog-post-alt-read-more -->
                         </div><!-- .blog-post-alt-main-inner -->
                     </div><!-- .blog-post-alt-main -->
@@ -136,7 +136,7 @@
             <div class="widget">
                 <h3 class="widget-title">
                     <span class="widget-title-line"></span>
-                    <span class="widget-title-text">Tag</span>
+                    <span class="widget-title-text">标签</span>
                 </h3>
                 <div class="widget-content">
                     <div class="tags-cloud-widget"style="text-align: center">
@@ -150,7 +150,7 @@
             <div class="widget">
                 <h3 class="widget-title">
                     <span class="widget-title-line"></span>
-                    <span class="widget-title-text">Recent Posts</span>
+                    <span class="widget-title-text">最近发布</span>
                 </h3>
                 <div class="widget-content">
                     <div class="recent-posts-widget">
@@ -226,7 +226,7 @@
                                         ${labellist.labelcontent}
                                     </div><!-- .dslc-blog-post-excerpt -->
                                     <div class="blog-post-read-more"style="text-align: center;margin-bottom: 10px;">
-                                        <a href="<%=basePath%>topic/main.action?labelId=${labellist.labelId}">CONTINUE READING</a>
+                                        <a href="<%=basePath%>topic/main.action?labelId=${labellist.labelId}">点击查看</a>
                                     </div><!-- .blog-post-read-more -->
                                 </div><!-- .blog-post-info-inner -->
                             </div><!-- .blog-post-info -->

@@ -87,6 +87,7 @@ public class UserLoginControl {
     @RequestMapping("/regist.action")
     public @ResponseBody Boolean regist(HttpSession session,HttpServletRequest request,HttpServletResponse response){
         String userPhone = request.getParameter("phone");
+        System.out.println("-----------------"+userPhone);
         String userNickName = request.getParameter("nickname");
         String userEmail = request.getParameter("email");
         String userPass = request.getParameter("pass");
@@ -95,14 +96,22 @@ public class UserLoginControl {
         System.out.println("-----------------------tf:"+tf);
         if(tf){
             UserInfo userInfo = userLoginService.selectUserInfoByPhoneOrEmail(userPhone);
-            session.setAttribute("userInfo",userInfo);
+            String userAccount = "share_"+userInfo.getUserId();
+            boolean flag = userLoginService.insertUserAccount(userAccount,userInfo.getUserId());
+            if(flag){
+                session.setAttribute("userInfo",userInfo);
+            }else{
+                tf = false;
+            }
+
+
         }
         return tf;
     }
 
     @RequestMapping("/register.action")
     public void register(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/jsp/login-register/register.jsp").forward(request,response);
+        request.getRequestDispatcher("/login-register/register.jsp").forward(request,response);
     }
 
 
@@ -118,16 +127,17 @@ public class UserLoginControl {
         int userId = userInfo.getUserId();
         System.out.println("userId-----------"+userId);
 
+        Boolean tf = false;
         if(lableArry.length>0){
             for(int i=0;i<lableArry.length;i++){
                 System.out.println("---000000000000");
                 int lableId = Integer.parseInt(lableArry[i]);
-                Boolean tf = userLoginService.insertLableByUserId(userId,lableId);
+                tf = userLoginService.insertLableByUserId(userId,lableId);
                 System.out.println("-----标签信息是否存入数据库："+tf);
                 return tf;
             }
         }
-        return false;
+        return tf;
     }
 
 //    密码登录------判断手机号是否注册、密码是否正确、记住密码-->登录
@@ -179,12 +189,12 @@ public class UserLoginControl {
                 } else {
 //                    System.out.println("2");
                     //密码错误
-                    response.sendRedirect(request.getContextPath() + "/jsp/login_password.jsp?info=1");
+                    response.sendRedirect(request.getContextPath() + "login_password.jsp?info=1");
                 }
             } else {
 //                System.out.println("3");
                 //用户不存在，重定向至登录页面
-                response.sendRedirect(request.getContextPath() + "/jsp/login_password.jsp?info=0");
+                response.sendRedirect(request.getContextPath() + "login_password.jsp?info=0");
             }
 
         }
@@ -211,13 +221,13 @@ public class UserLoginControl {
                     if(tf){
                         response.sendRedirect(request.getContextPath() +"/index/main.action");
                     }else {
-                        response.sendRedirect(request.getContextPath() + "/jsp/login-register/login_forget.jsp?info=0");
+                        response.sendRedirect(request.getContextPath() + "login-register/login_forget.jsp?info=0");
                     }
                 }else {
-                    response.sendRedirect(request.getContextPath() + "/jsp/login-register/login_forget.jsp?info=1");
+                    response.sendRedirect(request.getContextPath() + "login-register/login_forget.jsp?info=1");
                 }
             }else {
-                response.sendRedirect(request.getContextPath() + "/jsp/login-register/login_forget.jsp?info=2");
+                response.sendRedirect(request.getContextPath() + "login-register/login_forget.jsp?info=2");
             }
 
         }

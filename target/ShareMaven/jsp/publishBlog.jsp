@@ -14,6 +14,7 @@
 <html>
 <head>
     <title>publishBlog</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <link href="<%=basePath%>css/index-css/media_query.css" rel="stylesheet" type="text/css"/>
     <link href="<%=basePath%>css/index-css/bootstrap.css" rel="stylesheet" type="text/css"/>
     <link href="<%=basePath%>css/index-css/font-awesome.min.css">
@@ -47,6 +48,9 @@
         var value1;
         var value2;
         var value3;
+        var arr = [];
+        var arr1 = [];
+
         function getInfo() {
             value1 = $('#select1').val();
             value2 = $('#select2').val();
@@ -59,19 +63,23 @@
 
         //判断编辑器里是否有内容以及获取带有格式的内容
         function hasContent() {
-            var arr = [];
-            arr.push(UE.getEditor('editor').hasContents());
+            arr.push(UE.getEditor('editor').hasContents());//是否有内容
+            arr1.push(UE.getEditor('editor').getPlainTxt());//获取内容
 
-            var arr1 = [];
-            arr1.push(UE.getEditor('editor').getPlainTxt());
+            if(arr!=false && arr1.length!=1 && value1!=-1 && value2!=-1 && value3!=-1){
+                $("#hidden1").val(arr);
+                $("#hidden2").val(arr1);
+                $("#hidden3").val(value1);
+                $("#hidden4").val(value2);
+                $("#hidden5").val(value3);
 
-            $("#hidden1").val(arr);
-            $("#hidden2").val(arr1);
-            $("#hidden3").val(value1);
-            $("#hidden4").val(value2);
-            $("#hidden5").val(value3);
+                document.getElementById("form1").submit();
+            }else{
+                confirm("您还没有填写完毕，请重新填写哦");
+                window.location.href="<%=basePath%>jsp/publishBlog.jsp?arr1="+arr1+"&value1="+$('#select1').val()+"&value2="+$('#select2').val()+"&value3="+$('#select3').val();
+            }
 
-            document.getElementById("form1").submit();
+
         }
 
 //关闭弹窗
@@ -79,11 +87,6 @@ function closeLayer(){
     var arr = [];
     arr.push(UE.getEditor('editor').hasContents());
 
-    if(arr=="false"){
-        confirm("还没有填写任何信息哦");
-    }else{
-        confirm("发布成功");
-    }
     parent.layer.closeAll();
     window.parent.location.reload();
 }
@@ -110,18 +113,18 @@ function closeLayer(){
     <script id="editor" type="text/plain" style="width: 90%;height:500px; margin-left: 120px;margin-top: 70px; z-index: 1;"></script></div>
 
 <div style="margin-left:130px;">
-<div style="margin-top:20px;"><div style="float:left;">发布选择：</div><select class="form-control col-md-4" onclick="getInfo()" id="select1">
+<div style="margin-top:20px;"><div style="float:left;"><img src="<%=basePath%>/images/shudong-images/a.png" width="8px" height="4px"/> 发布选择：</div><select class="form-control col-md-4" onclick="getInfo()" id="select1">
     <option value="-1" selected>请选择</option>
     <option value="0">博客</option>
     <option value="1">树洞</option>
 </select></div>
-    <div style="margin-top:20px;"><div style="float:left;">文章类型：</div><select class="form-control col-md-4" onclick="getInfo()" id="select2">
+    <div style="margin-top:20px;"><div style="float:left;"><img src="<%=basePath%>/images/shudong-images/a.png" width="8px" height="4px"/>文章类型：</div><select class="form-control col-md-4" onclick="getInfo()" id="select2">
         <option value="-1" selected>请选择</option>
         <option value="0">随便写写</option>
         <option value="1">长文本</option>
     </select></div>
 
-    <div style="margin-top:20px;"><div style="float:left;">标&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;签：</div><select class="form-control col-md-4" onclick="getInfo()" id="select3">
+    <div style="margin-top:20px;"><div style="float:left;"><img src="<%=basePath%>/images/shudong-images/a.png" width="8px" height="4px"/>标&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;签：</div><select class="form-control col-md-4" onclick="getInfo()" id="select3">
         <option value="-1" selected>请选择</option>
         <option value="1">拍照</option>
         <option value="2">音乐</option>
