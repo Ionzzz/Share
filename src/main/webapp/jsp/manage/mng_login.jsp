@@ -13,14 +13,57 @@
     <meta name="description" content="share" />
     <link href="<%=basePath%>jsp/manage/assets/css/bootstrap.css" rel="stylesheet" />
     <script src="<%=basePath%>jsp/manage/assets/js/jquery-1.10.2.js"></script>
+    <style>
+        body {
+            background-image: url('<%=basePath%>images/login-images/wizard-city.jpg');
+            -webkit-font-smoothing: antialiased;
+            font: normal 14px Roboto,arial,sans-serif;
+        }
+
+        .container {
+            padding: 25px;
+            position: fixed;
+        }
+        .form-login {
+            background-color: #EDEDED;
+            padding-top: 10px;
+            padding-bottom: 20px;
+            padding-left: 20px;
+            padding-right: 20px;
+            border-radius: 15px;
+            border-color:#d2d2d2;
+            border-width: 5px;
+            box-shadow:0 1px 0 #cfcfcf;
+        }
+
+        h2 {
+            border:0 solid #fff;
+            border-bottom-width:1px;
+            padding-bottom:10px;
+            text-align: center;
+        }
+
+        .form-control {
+            border-radius: 10px;
+        }
+
+        .wrapper {
+            text-align: center;
+        }
+
+    </style>
 </head>
 
-<body class="login-bg">
-<div class="main ">
+<body>
     <script>
         function login() {
-            var name = $("#mngname").val();
-            var pass = $("#password").val();
+            var name = $("#userName").val();
+            var pass = $("#userPassword").val();
+            if("" == name){
+                alert("账户名不能为空");
+            }else if("" == pass){
+                alert("密码不能为空");
+            }
             $.ajax({
                 url:"${pageContext.request.contextPath }/mngAccount/login.action",
                 data:{
@@ -44,44 +87,29 @@
     </script>
     <!--登录-->
 
-        <div class="container">
-            <div style="position: absolute;left: 400px">
-                <p style='color:red;font-size:30px;'>管理员登录</p>
+    <div class="container" style=" margin-top: 150px;margin-left: -60px">
+        <div class="row">
+            <div class="col-md-offset-5 col-md-5">
+                <div class="form-login">
+                    <h2>管理员登录</h2>
+                    <div class="">
+                    <input type="text" id="userName" class="form-control input-sm chat-input" placeholder="输入管理员账号" />
+                    </br>
+                    <input type="password" id="userPassword" class="form-control input-sm chat-input" placeholder="输入账号密码" />
+                    </br>
+                    <div class="wrapper">
+            <span class="group-btn">
+                <button class="btn btn-primary btn-md" onclick="login();">登录 <i class="fa fa-sign-in"></i></button>
+            </span>
+                    </div>
+                </div>
 
             </div>
-
-            <hr />
-            <hr />
-
-            <form class="form-horizontal">
-                <div class="form-group">
-                    <label for="mngname" class="col-sm-2 control-label">账户名:</label>
-                    <div class="col-sm-4">
-                        <input type="text" class="form-control" name="mngname" id="mngname">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="password" class="col-sm-2 control-label">密码:</label>
-                    <div class="col-sm-4">
-                        <input type="password"  class="form-control" name="password" id="password">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                        <button type="button" class="btn btn-default" onclick="login()">登录</button>
-                    </div>
-                </div>
-            </form>
-
+        </div>
     </div>
-
-
     <div class="popupDom">
         <div class="popup text-default">
         </div>
     </div>
-</div>
 </body>
 </html>
